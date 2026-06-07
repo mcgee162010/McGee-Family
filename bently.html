@@ -7,7 +7,6 @@
   <title>In Memory of Bently · McGee Family</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* Softer, more muted palette for this page */
     body { background: #F5F0EA; }
 
     .memorial-hero {
@@ -21,7 +20,6 @@
       background:
         radial-gradient(ellipse 70% 60% at 50% 30%, rgba(222,198,172,0.40) 0%, transparent 65%),
         linear-gradient(175deg, #F5EFE6 0%, #EDE0D0 50%, #F0EAE0 100%);
-      position: relative;
     }
 
     .paw-float {
@@ -42,15 +40,13 @@
       color: var(--brown);
       margin-bottom: 10px;
     }
-
     .memorial-hero .dates {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--text-tertiary);
       font-weight: 500;
       letter-spacing: 0.04em;
       margin-bottom: 18px;
     }
-
     .memorial-hero .tagline {
       font-size: clamp(17px, 2.5vw, 21px);
       color: var(--text-secondary);
@@ -59,9 +55,8 @@
       line-height: 1.6;
     }
 
-    /* main content */
     .memorial-body {
-      max-width: 760px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 64px 24px 80px;
     }
@@ -73,13 +68,35 @@
       margin-bottom: 20px;
     }
 
+    /* Photo grid */
+    .bently-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 40px 0;
+    }
+    .bently-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .bently-grid img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 32px rgba(60,40,20,0.18);
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 640px) { .bently-grid { grid-template-columns: repeat(2, 1fr); } }
+
     .memory-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
       margin: 40px 0;
     }
-
     .memory-card {
       background: rgba(250,246,239,0.70);
       border: 1.5px solid rgba(107,79,58,0.14);
@@ -90,7 +107,6 @@
       text-align: center;
       box-shadow: 0 4px 20px rgba(60,40,20,0.08);
     }
-
     .memory-card .mem-icon  { font-size: 32px; display: block; margin-bottom: 10px; }
     .memory-card .mem-title { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 6px; }
     .memory-card .mem-desc  { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
@@ -119,10 +135,7 @@
       width: 2px;
       background: linear-gradient(to bottom, var(--brown-light), transparent);
     }
-    .tl-item {
-      position: relative;
-      margin-bottom: 28px;
-    }
+    .tl-item { position: relative; margin-bottom: 28px; }
     .tl-item::before {
       content: "";
       position: absolute;
@@ -164,15 +177,13 @@
     <button class="nav-mobile-toggle">☰</button>
   </nav>
 
-  <!-- HERO -->
   <div class="memorial-hero">
     <span class="paw-float">🐾</span>
     <h1>Bently</h1>
-    <div class="dates">2015 · 2016 · 2017 · 2018 · 2019 · 2020 · 2021 · 2022 · 2023 · 2024 · 2025 · April 9, 2026</div>
+    <div class="dates">2015 &nbsp;·&nbsp; April 9, 2026 &nbsp;·&nbsp; 10½ years of pure golden goodness</div>
     <p class="tagline">"The goodest boy. Brittney's best friend. Always and forever."</p>
   </div>
 
-  <!-- BODY -->
   <div class="memorial-body">
 
     <p class="memorial-prose">
@@ -186,6 +197,32 @@
     <p class="memorial-prose">
       Bently passed on April 9, 2026. He was 10 and a half years old. The house is quieter without him. But his paw prints are everywhere — on the floors, on the furniture, and permanently on the hearts of everyone who knew him.
     </p>
+
+    <!-- BENTLY PHOTO GALLERY -->
+    <h3 style="font-size:22px; margin-bottom:6px;">His Photos</h3>
+    <p style="font-size:15px; color:var(--text-tertiary); margin-bottom:20px;">Ten and a half years of the goodest boy.</p>
+
+    <div class="bently-grid">
+      <img src="photos/bently/IMG_0039.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_0061.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_0164.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_0638.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_0836.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_1280.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_1285.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_1339.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_1779.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_1788.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2111.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2112.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2294.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2628.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2629.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_2868.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_3455.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_3614.jpeg" alt="Bently" loading="lazy"/>
+      <img src="photos/bently/IMG_8919.jpeg" alt="Bently" loading="lazy"/>
+    </div>
 
     <!-- MEMORIES -->
     <div class="memory-cards">
@@ -267,6 +304,11 @@
     </ul>
     <div class="footer-copy">© 2026 The McGee Family · With love for Bently 🐾</div>
   </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

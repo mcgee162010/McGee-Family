@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="McGee Family photo gallery — family photoshoot, wedding in Greer AZ, and Thailand honeymoon."/>
+  <meta name="description" content="McGee Family photo gallery — family photoshoot, wedding, Thailand honeymoon, Phoenix, and Bently."/>
   <title>Gallery · McGee Family</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
@@ -26,11 +26,10 @@
       font-size: 14px;
       font-weight: 600;
       border-radius: var(--radius-full);
-      border: 1.5px solid transparent;
+      border: 1.5px solid rgba(107,79,58,0.14);
       cursor: pointer;
       background: var(--glass-bg);
       color: var(--text-secondary);
-      border-color: rgba(107,79,58,0.14);
       transition: all 0.18s;
     }
     .tab.active, .tab:hover {
@@ -71,6 +70,20 @@
       box-shadow: 0 10px 36px rgba(60,40,20,0.18);
     }
 
+    /* Bently memorial tone */
+    .bently-note {
+      background: var(--brown-pale);
+      border: 1.5px solid rgba(107,79,58,0.18);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     @media (max-width: 700px) { .masonry { columns: 2; } }
     @media (max-width: 420px) { .masonry { columns: 1; } }
   </style>
@@ -93,15 +106,17 @@
   <div class="page-hero">
     <div class="section-label">Our Photos</div>
     <h1>Gallery</h1>
-    <p>Family photoshoot, our wedding in Greer, and two weeks in Thailand.</p>
+    <p>Family photoshoot, our wedding in Greer, two weeks in Thailand, Phoenix, and our beloved Bently.</p>
   </div>
 
   <div class="section">
     <!-- TABS -->
     <div class="tab-bar">
       <button class="tab active" onclick="showGallery('family', this)">👨‍👩‍👦 Family</button>
-      <button class="tab" onclick="showGallery('wedding', this)" id="wedding-tab">💍 Wedding</button>
+      <button class="tab" onclick="showGallery('wedding', this)">💍 Wedding</button>
       <button class="tab" onclick="showGallery('honeymoon', this)">🌏 Honeymoon</button>
+      <button class="tab" onclick="showGallery('phoenix', this)">🐕 Phoenix</button>
+      <button class="tab" onclick="showGallery('bently', this)">🐾 Bently</button>
     </div>
 
     <!-- FAMILY -->
@@ -109,29 +124,29 @@
       <div class="gallery-header">
         <div>
           <h2>Family Photoshoot</h2>
-          <p>June 2026 · Queen Creek, Arizona</p>
+          <p>June 2026 · Baby McGee Announcement</p>
         </div>
       </div>
       <div class="masonry">
-        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/5505C84F-2D36-4EC8-BEA5-771AAD5D1EA6.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/72165688-768D-482B-9088-1855F89F3553.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/76E10423-5920-45D0-8BBC-A321F35ECE6E.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/82DDBCCD-D8DE-4424-B22E-60C5DC35274B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/87FA03CE-4A28-4F8A-83C5-CD9DB593392B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/968A99C1-9F38-4AE1-AAD8-63C96652727B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"  alt="McGee Family Photo" loading="lazy"/>
-        <img src="photos/family/F9C2D993-815E-43EF-97A5-7887C168D807.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/5505C84F-2D36-4EC8-BEA5-771AAD5D1EA6.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/72165688-768D-482B-9088-1855F89F3553.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/76E10423-5920-45D0-8BBC-A321F35ECE6E.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/82DDBCCD-D8DE-4424-B22E-60C5DC35274B.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/87FA03CE-4A28-4F8A-83C5-CD9DB593392B.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/968A99C1-9F38-4AE1-AAD8-63C96652727B.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F9C2D993-815E-43EF-97A5-7887C168D807.jpeg"  alt="McGee Family" loading="lazy"/>
       </div>
     </div>
 
@@ -163,36 +178,106 @@
         </div>
       </div>
       <div class="masonry">
-        <img src="photos/honeymoon/0695CC7D-0EC8-4CAB-8075-0FB00F5C2D0E_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/143D1408-F4BF-4A2D-BDBA-B35E0A457C9C_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/18739CD0-DD24-4659-893C-16F9EA259785_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/35DCBF53-7614-40B7-8218-58E8445DEBA0_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/42FFE530-5184-4B53-A15F-A43AAC1B0A5E_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/431B5640-DCA0-49A1-9D82-5BD495074989_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/43A0CC8D-5D88-417A-92FE-209BDAA399CE_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/58AC13C0-816B-4F87-8A40-7AFF835890EA_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/67C1DFEC-CCF6-4AFE-BB18-06BE4F98B622_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/6ABB2EEB-B217-4312-837E-9372F802AFBB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/6F1722C1-D3C9-41F8-8822-E55736EE6E0A_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/73C791B5-48FF-4BB2-8CD0-1FA2B7BB6EC2_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/77879028-A89D-480F-B588-FF8266226598_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/7B3D6E94-2F11-4D8A-8394-8E0998CF9FCB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/7B49FCD9-216F-4164-8317-1D07EA99F16F.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/8F783E2A-81ED-471F-9FAA-A91047B8A071_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/93926121-9D0A-498C-8419-7236C24BD454.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/9D2D007A-3AFF-4DE3-A53C-62EE04372718_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/9F9BB9C0-FB24-4A6B-82E6-90FAD876CBA0_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/A10D6B02-08A2-46CE-B2EE-6B32F404E43B_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/A8AC5052-626D-4444-9D97-07A4A02279F7_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/ACD631C7-06F7-4983-84C3-13FFE7F6C5D3.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/BBC32E05-D113-414D-B95A-7DC67D88B4E8_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/D3FF3E72-C359-4C22-991C-6C8F665EA35C_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/DCC02579-D1FC-4D4A-AA2A-F0D00610FB81.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/F8EF487E-C104-4DA0-A709-9C376E722187_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/FA4063C4-F083-4AD5-99D6-DC1E8AE44EFB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
-        <img src="photos/honeymoon/FB9AB1D7-C8F6-4929-88CB-DB6376D87686_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/0695CC7D-0EC8-4CAB-8075-0FB00F5C2D0E_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/143D1408-F4BF-4A2D-BDBA-B35E0A457C9C_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/18739CD0-DD24-4659-893C-16F9EA259785_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/35DCBF53-7614-40B7-8218-58E8445DEBA0_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/42FFE530-5184-4B53-A15F-A43AAC1B0A5E_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/431B5640-DCA0-49A1-9D82-5BD495074989_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/43A0CC8D-5D88-417A-92FE-209BDAA399CE_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/58AC13C0-816B-4F87-8A40-7AFF835890EA_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/67C1DFEC-CCF6-4AFE-BB18-06BE4F98B622_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/6ABB2EEB-B217-4312-837E-9372F802AFBB_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/6F1722C1-D3C9-41F8-8822-E55736EE6E0A_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/73C791B5-48FF-4BB2-8CD0-1FA2B7BB6EC2_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/77879028-A89D-480F-B588-FF8266226598_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/7B3D6E94-2F11-4D8A-8394-8E0998CF9FCB_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/7B49FCD9-216F-4164-8317-1D07EA99F16F.JPG"           alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/8F783E2A-81ED-471F-9FAA-A91047B8A071_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/93926121-9D0A-498C-8419-7236C24BD454.JPG"           alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/9D2D007A-3AFF-4DE3-A53C-62EE04372718_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/9F9BB9C0-FB24-4A6B-82E6-90FAD876CBA0_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/A10D6B02-08A2-46CE-B2EE-6B32F404E43B_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/A8AC5052-626D-4444-9D97-07A4A02279F7_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/ACD631C7-06F7-4983-84C3-13FFE7F6C5D3.JPG"           alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/BBC32E05-D113-414D-B95A-7DC67D88B4E8_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/D3FF3E72-C359-4C22-991C-6C8F665EA35C_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/DCC02579-D1FC-4D4A-AA2A-F0D00610FB81.JPG"           alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/F8EF487E-C104-4DA0-A709-9C376E722187_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/FA4063C4-F083-4AD5-99D6-DC1E8AE44EFB_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
+        <img src="photos/honeymoon/FB9AB1D7-C8F6-4929-88CB-DB6376D87686_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
       </div>
     </div>
+
+    <!-- PHOENIX -->
+    <div class="gallery-section" id="gallery-phoenix">
+      <div class="gallery-header">
+        <div>
+          <h2>Phoenix 🐕</h2>
+          <p>German Shorthair Pointer · Born November 28, 2021</p>
+        </div>
+      </div>
+      <div class="masonry">
+        <img src="photos/phoenix/69B544C4-F3D2-42A2-BC14-FE1143C30849.jpg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/CA2384F4-D661-4FA9-B406-1690D3C0306E.jpg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_0114.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_0590.JPG"  alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_1350.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_1354.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_1639.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_1656.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_2598.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_4125.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_4929.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_4937.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5018.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5133.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5184.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5244.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5341.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5348.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5353.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5576.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5726.jpeg" alt="Phoenix" loading="lazy"/>
+        <img src="photos/phoenix/IMG_5985.jpeg" alt="Phoenix" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- BENTLY -->
+    <div class="gallery-section" id="gallery-bently">
+      <div class="gallery-header">
+        <div>
+          <h2>Bently 🐾</h2>
+          <p>Golden Retriever · 2015 – April 9, 2026 · Forever in our hearts</p>
+        </div>
+      </div>
+      <div class="bently-note">
+        <span style="font-size:22px;">💛</span>
+        <span>In loving memory of Bently — Brittney's best friend and the goodest boy. <a href="bently.html">Read his full memorial →</a></span>
+      </div>
+      <div class="masonry">
+        <img src="photos/bently/IMG_0039.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_0061.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_0164.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_0638.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_0836.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_1280.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_1285.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_1339.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_1779.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_1788.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2111.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2112.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2294.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2628.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2629.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_2868.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_3455.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_3614.jpeg" alt="Bently" loading="lazy"/>
+        <img src="photos/bently/IMG_8919.jpeg" alt="Bently" loading="lazy"/>
+      </div>
+    </div>
+
   </div>
 
   <footer class="footer">
@@ -222,11 +307,9 @@
       document.getElementById('gallery-' + id).classList.add('visible');
       btn.classList.add('active');
     }
-
-    // Deep-link via hash  e.g. gallery.html#wedding
     window.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'wedding' || hash === 'honeymoon') {
+      if (['wedding','honeymoon','phoenix','bently'].includes(hash)) {
         const btn = document.querySelector(`.tab[onclick*="${hash}"]`);
         if (btn) showGallery(hash, btn);
       }
