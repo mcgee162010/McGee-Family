@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="McGee Family Events — Baby Shower July 25, 2026. RSVP here."/>
+  <title>Events · McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .page-hero {
+      background: linear-gradient(160deg, var(--terra-pale) 0%, var(--cream) 55%, var(--sage-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+    /* event card */
+    .event-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .event-layout { grid-template-columns: 1fr; } }
+
+    .event-card {
+      background: linear-gradient(145deg, var(--sage-pale), var(--terra-pale));
+      border: 2px solid rgba(122,158,126,0.25);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+    }
+    .event-emoji { font-size: 56px; display: block; margin-bottom: 18px; }
+    .event-title { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 8px; }
+    .event-subtitle { font-size: 16px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 24px; }
+
+    .event-details { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+    .event-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+    .event-detail .detail-icon {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(122,158,126,0.18);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .event-detail strong { display: block; font-size: 13px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 1px; }
+
+    .ics-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.70);
+      border: 1.5px solid rgba(107,79,58,0.18);
+      border-radius: var(--radius-full);
+      padding: 9px 18px;
+      font-size: 14px; font-weight: 600;
+      color: var(--forest);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .ics-btn:hover { background: rgba(255,255,255,0.90); }
+
+    /* RSVP form card */
+    .rsvp-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      padding: 36px 32px;
+    }
+    .rsvp-card h3 { font-size: 22px; margin-bottom: 6px; }
+    .rsvp-card .rsvp-sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 24px; }
+
+    .rsvp-success {
+      display: none;
+      text-align: center;
+      padding: 28px 0;
+    }
+    .rsvp-success .success-icon { font-size: 52px; display: block; margin-bottom: 14px; }
+    .rsvp-success h4 { font-size: 20px; color: var(--forest); margin-bottom: 8px; }
+    .rsvp-success p  { font-size: 15px; color: var(--text-secondary); max-width: 300px; margin: 0 auto; line-height: 1.6; }
+
+    .nursery-card {
+      background: var(--sage-pale);
+      border: 1.5px solid rgba(122,158,126,0.22);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;
+    }
+    .nursery-icons { font-size: 44px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+    .nursery-info h3 { font-size: 22px; color: var(--forest); margin-bottom: 8px; }
+    .nursery-info p  { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
+    .nursery-animals { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle">☰</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="section-label">Mark Your Calendar</div>
+    <h1>Events</h1>
+    <p>Baby shower coming July 25 — RSVP below and we'll send you the details.</p>
+  </div>
+
+  <!-- BABY SHOWER EVENT -->
+  <div class="section">
+    <div class="section-label">Upcoming Event</div>
+    <h2 class="section-title">Baby McGee Shower 🌿</h2>
+    <div class="event-layout">
+
+      <!-- Left: event info -->
+      <div class="event-card">
+        <span class="event-emoji">🌿</span>
+        <div class="event-title">Baby McGee Shower</div>
+        <div class="event-subtitle">Celebrating the arrival of Baby McGee — sex still a beautiful surprise!</div>
+
+        <div class="event-details">
+          <div class="event-detail">
+            <div class="detail-icon">📅</div>
+            <div><strong>Date</strong>Saturday, July 25, 2026</div>
+          </div>
+          <div class="event-detail">
+            <div class="detail-icon">⏰</div>
+            <div><strong>Time</strong>TBD — check back soon</div>
+          </div>
+          <div class="event-detail">
+            <div class="detail-icon">📍</div>
+            <div><strong>Location</strong>McGee Home · Queen Creek, Arizona<br/><span style="font-size:13px; color:var(--text-tertiary);">Address shared after RSVP</span></div>
+          </div>
+          <div class="event-detail">
+            <div class="detail-icon">🦊</div>
+            <div><strong>Theme</strong>Woodland Animals 🦔 🐻 🦉</div>
+          </div>
+          <div class="event-detail">
+            <div class="detail-icon">👶</div>
+            <div><strong>Due Date</strong>September 4, 2026</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a href="baby-shower.ics" download class="ics-btn">📆 Add to Apple Calendar</a>
+          <span style="font-size:13px; color:var(--text-tertiary);">Downloads a .ics calendar file</span>
+        </div>
+      </div>
+
+      <!-- Right: RSVP form -->
+      <div class="rsvp-card" id="rsvp-card">
+        <h3>RSVP 🎉</h3>
+        <p class="rsvp-sub">Let us know you're coming — we'll send the address to your email.</p>
+
+        <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
+          <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
+          <input type="hidden" name="_next" value=""/>
+
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="First & Last Name" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(480) 555-0100"/>
+          </div>
+
+          <div class="form-group">
+            <label for="guests">Number of Guests *</label>
+            <select id="guests" name="guests" required>
+              <option value="" disabled selected>Select headcount</option>
+              <option value="1">Just me</option>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+              <option value="5+">5 or more</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Note for Ben & Brittney (optional)</label>
+            <textarea id="message" name="message" placeholder="Dietary needs, questions, or just a kind note…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-terra" style="width:100%; justify-content:center;">
+            Send RSVP →
+          </button>
+
+          <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center; line-height:1.5;">
+            After submitting, Ben & Brittney will personally send you the address via email or text. 💌
+          </p>
+        </form>
+
+        <!-- Success state -->
+        <div class="rsvp-success" id="rsvp-success">
+          <span class="success-icon">🎉</span>
+          <h4>You're on the list!</h4>
+          <p>Ben & Brittney will send you the address and final details via email or text. Can't wait to celebrate together!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- NURSERY THEME -->
+  <div class="section">
+    <div class="section-label">Nursery</div>
+    <h2 class="section-title">The Theme: Woodland Animals 🌲</h2>
+    <div class="nursery-card">
+      <div class="nursery-icons"><span>🦊</span><span>🐻</span><span>🦔</span></div>
+      <div class="nursery-info">
+        <h3>Into the Woods</h3>
+        <p>Baby McGee's nursery is all about the beauty of the forest — warm earthy tones, cozy textures, and woodland creatures. Think foxes, bears, owls, hedgehogs, and deer. The room is coming together beautifully for whoever this little one turns out to be.</p>
+        <div class="nursery-animals">
+          <span class="tag tag-sage">🦊 Fox</span>
+          <span class="tag tag-sage">🐻 Bear</span>
+          <span class="tag tag-sage">🦔 Hedgehog</span>
+          <span class="tag tag-sage">🦉 Owl</span>
+          <span class="tag tag-sage">🦌 Deer</span>
+          <span class="tag tag-sage">🍄 Mushroom</span>
+          <span class="tag tag-sage">🌿 Fern</span>
+          <span class="tag tag-sage">🌲 Pine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Intercept Formspree submission for inline success state
+    const form = document.getElementById('rsvp-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('rsvp-success').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please try again or email benjmcgee@yahoo.com directly.');
+        }
+      } catch {
+        alert('Something went wrong. Please try again or email benjmcgee@yahoo.com directly.');
+      }
+    });
+  </script>
+</body>
+</html>

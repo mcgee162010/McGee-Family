@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="McGee Family Life Updates — what we're up to."/>
+  <title>Life Updates · McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .page-hero {
+      background: linear-gradient(160deg, var(--cream-dark) 0%, var(--cream) 60%, var(--sage-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+    .updates-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 36px;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .updates-layout { grid-template-columns: 1fr; } }
+
+    /* post */
+    .post {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .post:hover { transform: translateY(-2px); box-shadow: 0 16px 52px rgba(60,40,20,0.12); }
+
+    .post-header {
+      padding: 28px 28px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .post-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .post-meta { flex: 1; }
+    .post-date { font-size: 12px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .post-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
+    .post-category {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--forest);
+      background: var(--sage-pale);
+      border: 1px solid rgba(122,158,126,0.20);
+      border-radius: var(--radius-full);
+      padding: 3px 10px;
+      display: inline-block; margin-top: 6px;
+    }
+    .post-body { padding: 16px 28px 28px; }
+    .post-body p { font-size: 16px; line-height: 1.72; color: var(--text-secondary); margin-bottom: 12px; }
+    .post-body p:last-child { margin-bottom: 0; }
+
+    /* sidebar */
+    .sidebar-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: var(--text-primary); }
+
+    .milestone-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .milestone-list li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 14px; color: var(--text-secondary); line-height: 1.5;
+    }
+    .milestone-list .mi { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .milestone-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle">☰</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="section-label">What We're Up To</div>
+    <h1>Life Updates</h1>
+    <p>Milestones, moments, and everything in between — straight from the McGees.</p>
+  </div>
+
+  <div class="section">
+    <div class="updates-layout">
+
+      <!-- POSTS -->
+      <div>
+
+        <!-- Post 1 -->
+        <article class="post">
+          <div class="post-header">
+            <div class="post-icon" style="background:var(--sage-pale);">🌿</div>
+            <div class="post-meta">
+              <div class="post-date">June 6, 2026</div>
+              <div class="post-title">We're officially in the third trimester!</div>
+              <span class="post-category">Baby McGee</span>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>It's hard to believe Baby McGee is due in just under three months. The nursery is taking shape — woodland animals everywhere, warm earthy tones, and the coziest little corner you've ever seen. We still have no idea on the sex and we're keeping it that way. The surprise is half the joy.</p>
+            <p>Brittney is doing amazing, Levi is beyond excited to be a big brother, and Ben is quietly building a spreadsheet to manage the logistics of a newborn. (Of course he is.)</p>
+            <p>Baby shower is July 25 — <a href="events.html">RSVP here</a> if you haven't already. Can't wait to celebrate together. 🌲</p>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post">
+          <div class="post-header">
+            <div class="post-icon" style="background:var(--terra-pale);">📸</div>
+            <div class="post-meta">
+              <div class="post-date">June 5, 2026</div>
+              <div class="post-title">Family photoshoot day — what a night</div>
+              <span class="post-category">Family</span>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>We finally did it — family photos with a real photographer. Levi was full of energy, Brittney looked stunning, Phoenix made a cameo, and Ben somehow kept it together for most of the shots. The photos came out beautifully and we're so happy to have them to share.</p>
+            <p>Check out the full gallery <a href="gallery.html">here</a> — every single one is a keeper.</p>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post">
+          <div class="post-header">
+            <div class="post-icon" style="background:var(--brown-pale);">📚</div>
+            <div class="post-meta">
+              <div class="post-date">May 2026</div>
+              <div class="post-title">Levi is finishing 1st grade — 2nd grade here we come</div>
+              <span class="post-category">Levi</span>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>Levi is wrapping up 1st grade and we couldn't be more proud. This kid reads like a champ, loves math, and has more energy at 7 AM than most adults do with three coffees. This fall he starts 2nd grade, and this fall he also becomes a big brother. Big year, buddy.</p>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post">
+          <div class="post-header">
+            <div class="post-icon" style="background:var(--sage-pale);">🌏</div>
+            <div class="post-meta">
+              <div class="post-date">November 2025</div>
+              <div class="post-title">We got married — and spent two weeks in Thailand</div>
+              <span class="post-category">Wedding & Honeymoon</span>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>November 1, 2025. Greer, Arizona. Mountains, crisp air, our people, and the moment we officially became the McGees. The wedding was everything we hoped it would be — intimate, meaningful, and full of love.</p>
+            <p>Then we disappeared to Thailand for two weeks. Temples in Chiang Mai, beaches in the south, night markets, elephants, incredible food, and each other. It was perfect. Every single day.</p>
+            <p>See the photos in the <a href="gallery.html#wedding">Gallery</a>.</p>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="post">
+          <div class="post-header">
+            <div class="post-icon" style="background:#F3F0FF;">🎄</div>
+            <div class="post-meta">
+              <div class="post-date">Late December 2025</div>
+              <div class="post-title">The best Christmas gift — we're expecting!</div>
+              <span class="post-category">Baby McGee</span>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>Just weeks after returning from Thailand, we found out we were pregnant. Newlyweds + expecting = the best possible way to kick off our life as husband and wife. We were overwhelmed, overjoyed, and immediately started planning a woodland nursery.</p>
+            <p>Due September 4, 2026. The adventure continues. 🌿</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="sidebar-card">
+          <h4>📅 Upcoming</h4>
+          <ul class="milestone-list">
+            <li><span class="mi">🎉</span><div><strong>Baby Shower</strong>July 25, 2026 · Queen Creek, AZ</div></li>
+            <li><span class="mi">👶</span><div><strong>Baby McGee Due</strong>September 4, 2026</div></li>
+            <li><span class="mi">📚</span><div><strong>Levi Starts 2nd Grade</strong>Fall 2026</div></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>🌿 Baby Milestones</h4>
+          <ul class="milestone-list">
+            <li><span class="mi">✅</span><div><strong>Pregnancy Announced</strong>Late December 2025</div></li>
+            <li><span class="mi">✅</span><div><strong>Nursery Theme Chosen</strong>Woodland Animals</div></li>
+            <li><span class="mi">✅</span><div><strong>Baby Shower Scheduled</strong>July 25, 2026</div></li>
+            <li><span class="mi">⏳</span><div><strong>Baby Arrives</strong>~September 4, 2026</div></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>⚡ Family Snapshot</h4>
+          <ul class="milestone-list">
+            <li><span class="mi">🍎</span><div><strong>Ben</strong>Program Manager @ Apple</div></li>
+            <li><span class="mi">❤️</span><div><strong>Brittney</strong>Expecting, thriving</div></li>
+            <li><span class="mi">📚</span><div><strong>Levi</strong>Almost a 2nd grader</div></li>
+            <li><span class="mi">🐕</span><div><strong>Phoenix</strong>Running at full speed</div></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

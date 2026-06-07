@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="In loving memory of Bently — Brittney's golden retriever and best friend. 2015 – April 9, 2026."/>
+  <title>In Memory of Bently · McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* Softer, more muted palette for this page */
+    body { background: #F5F0EA; }
+
+    .memorial-hero {
+      min-height: 60svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 64px;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 30%, rgba(222,198,172,0.40) 0%, transparent 65%),
+        linear-gradient(175deg, #F5EFE6 0%, #EDE0D0 50%, #F0EAE0 100%);
+      position: relative;
+    }
+
+    .paw-float {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: sway 4s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0%,100% { transform: rotate(-4deg); }
+      50%      { transform: rotate(4deg); }
+    }
+
+    .memorial-hero h1 {
+      font-size: clamp(44px, 9vw, 88px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .memorial-hero .dates {
+      font-size: 18px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    .memorial-hero .tagline {
+      font-size: clamp(17px, 2.5vw, 21px);
+      color: var(--text-secondary);
+      font-style: italic;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    /* main content */
+    .memorial-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    .memorial-prose {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .memory-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    .memory-card {
+      background: rgba(250,246,239,0.70);
+      border: 1.5px solid rgba(107,79,58,0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(60,40,20,0.08);
+    }
+
+    .memory-card .mem-icon  { font-size: 32px; display: block; margin-bottom: 10px; }
+    .memory-card .mem-title { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 6px; }
+    .memory-card .mem-desc  { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+
+    .tribute-block {
+      background: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 44px 40px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .tribute-block .paw-row { font-size: 28px; letter-spacing: 8px; margin-bottom: 18px; display: block; }
+    .tribute-block h3 { font-size: 24px; color: #fff; margin-bottom: 14px; }
+    .tribute-block p  { font-size: 16px; color: rgba(255,255,255,0.70); line-height: 1.75; max-width: 500px; margin: 0 auto 16px; }
+    .tribute-block .quote { font-style: italic; font-size: 15px; color: rgba(255,255,255,0.50); }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin: 32px 0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--brown-light), transparent);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -27px; top: 5px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--brown-light);
+      border: 2px solid var(--cream);
+    }
+    .tl-year  { font-size: 12px; font-weight: 700; color: var(--brown-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+    .tl-event { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .tl-desc  { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      margin-top: 40px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--brown); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle">☰</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="memorial-hero">
+    <span class="paw-float">🐾</span>
+    <h1>Bently</h1>
+    <div class="dates">2015 · 2016 · 2017 · 2018 · 2019 · 2020 · 2021 · 2022 · 2023 · 2024 · 2025 · April 9, 2026</div>
+    <p class="tagline">"The goodest boy. Brittney's best friend. Always and forever."</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="memorial-body">
+
+    <p class="memorial-prose">
+      Bently was a golden retriever in every sense of the word — golden in color, golden in spirit, and golden in the way he made Brittney feel like the most important person in every room he walked into. He was her constant. Her comfort. Her best friend.
+    </p>
+
+    <p class="memorial-prose">
+      He came into the family as a puppy and spent 10 and a half years being exactly what a dog should be — loyal beyond measure, endlessly gentle, and completely devoted to the people he loved. He was there through every season of Brittney's life, and when the time came, he left the same way he lived: peacefully, and surrounded by love.
+    </p>
+
+    <p class="memorial-prose">
+      Bently passed on April 9, 2026. He was 10 and a half years old. The house is quieter without him. But his paw prints are everywhere — on the floors, on the furniture, and permanently on the hearts of everyone who knew him.
+    </p>
+
+    <!-- MEMORIES -->
+    <div class="memory-cards">
+      <div class="memory-card">
+        <span class="mem-icon">🦴</span>
+        <div class="mem-title">The Goodest Boy</div>
+        <p class="mem-desc">He never met a stranger. Everyone was a friend, and every moment was worth wagging about.</p>
+      </div>
+      <div class="memory-card">
+        <span class="mem-icon">☀️</span>
+        <div class="mem-title">10.5 Beautiful Years</div>
+        <p class="mem-desc">A full, happy life — lived entirely in love and adventure alongside his girl Brittney.</p>
+      </div>
+      <div class="memory-card">
+        <span class="mem-icon">💛</span>
+        <div class="mem-title">Brittney's Best Friend</div>
+        <p class="mem-desc">The kind of bond that only a dog and their person truly understand. Irreplaceable.</p>
+      </div>
+      <div class="memory-card">
+        <span class="mem-icon">🌅</span>
+        <div class="mem-title">At Peace</div>
+        <p class="mem-desc">He left gently on April 9, 2026 — held, loved, and at rest. Just as he deserved.</p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <h3 style="margin-bottom:8px; font-size:22px;">His Story</h3>
+    <p style="font-size:15px; color:var(--text-tertiary); margin-bottom:20px;">Ten and a half years of pure golden goodness.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">~2015</div>
+        <div class="tl-event">Bently comes home 🐶</div>
+        <div class="tl-desc">A golden retriever puppy joins Brittney's life and immediately claims the whole couch.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-event">Levi is born — Bently becomes a big brother 🧒</div>
+        <div class="tl-desc">He took his protective role seriously and never left Levi's side.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <div class="tl-event">Phoenix joins the family 🐕</div>
+        <div class="tl-desc">The German Shorthair Pointer arrives. Bently showed him the ropes with grace and patience.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">November 2025</div>
+        <div class="tl-event">Ben & Brittney get married 💍</div>
+        <div class="tl-desc">Bently was there in spirit — an honored member of the McGee family through every chapter.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">April 9, 2026</div>
+        <div class="tl-event">Bently passes peacefully 🌅</div>
+        <div class="tl-desc">10.5 years old. Loved completely. Gone too soon, but never forgotten.</div>
+      </div>
+    </div>
+
+    <!-- TRIBUTE -->
+    <div class="tribute-block">
+      <span class="paw-row">🐾 🐾 🐾</span>
+      <h3>Run free, Bently.</h3>
+      <p>You were more than a dog. You were a decade of mornings, naps, walks, and unconditional love. Brittney's shadow. Levi's first best friend. A golden boy in every sense of the word.</p>
+      <p class="quote">"Until we meet again at the rainbow bridge." 🌈</p>
+    </div>
+
+    <a href="family.html" class="back-link">← Back to Our Family</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · With love for Bently 🐾</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

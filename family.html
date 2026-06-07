@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Meet the McGee family — Ben, Brittney, Levi, Phoenix, and Baby McGee."/>
+  <title>Our Family · McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .page-hero {
+      background: linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--brown-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 520px; margin: 0 auto; }
+
+    /* member cards */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .member-card { padding: 0; }
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .member-info { padding: 26px 26px 28px; }
+    .member-avatar-fallback {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+    }
+    .member-name { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .member-role { font-size: 13px; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+    .member-bio  { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 16px; }
+    .member-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .pet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .baby-card {
+      background: linear-gradient(135deg, var(--sage-pale), var(--terra-pale));
+      border: 2px solid rgba(122,158,126,0.25);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .baby-icon { font-size: 64px; flex-shrink: 0; }
+    .baby-info h3 { font-size: 26px; color: var(--forest); margin-bottom: 8px; }
+    .baby-info p  { font-size: 16px; color: var(--text-secondary); line-height: 1.65; max-width: 480px; }
+    .baby-stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .baby-stat {
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(122,158,126,0.18);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+    .baby-stat span { font-weight: 400; color: var(--text-secondary); }
+
+    .wedding-strip {
+      background: var(--brown-pale);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .wedding-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(60,40,20,0.15);
+    }
+    .wedding-photo-fallback {
+      width: 220px; height: 220px;
+      background: var(--brown-pale);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; flex-shrink: 0;
+    }
+    .wedding-info h3 { font-size: 26px; color: var(--brown); margin-bottom: 8px; }
+    .wedding-info p  { font-size: 16px; color: var(--text-secondary); line-height: 1.65; max-width: 480px; }
+
+    .faith-block {
+      background: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      color: rgba(255,255,255,0.85);
+    }
+    .faith-block h3 { font-size: 26px; color: #fff; margin-bottom: 14px; }
+    .faith-block p  { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.72); max-width: 620px; }
+    .faith-block .verse { margin-top: 20px; font-style: italic; font-size: 15px; color: rgba(255,255,255,0.55); }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .hobby-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.2s;
+    }
+    .hobby-card:hover { transform: translateY(-3px); }
+    .hobby-icon  { font-size: 32px; display: block; margin-bottom: 8px; }
+    .hobby-label { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle">☰</button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="section-label">Who We Are</div>
+    <h1>Our Family</h1>
+    <p>Five people (and counting), one dog, a nursery in progress, and a whole lot of love.</p>
+  </div>
+
+  <!-- PEOPLE -->
+  <div class="section">
+    <div class="section-label">The People</div>
+    <h2 class="section-title">Meet the McGees</h2>
+    <div class="member-grid">
+
+      <!-- Ben -->
+      <div class="card member-card">
+        <div class="member-avatar-fallback" style="background: linear-gradient(135deg,#D1E8D3,#A8C8AC);">👨</div>
+        <div class="member-info">
+          <div class="member-name">Benjamin McGee</div>
+          <div class="member-role">Dad · Husband · October 28, 1991</div>
+          <p class="member-bio">Ben is a Program Manager at Apple and a man who builds things — systems at work, a life at home. He's detail-driven, progress-motivated, and at his best when the people he loves are thriving. Currently completing his BA at ASU while raising a family and getting ready for Baby #2.</p>
+          <div class="member-tags">
+            <span class="tag">🍎 Apple</span>
+            <span class="tag">💪 Fitness</span>
+            <span class="tag">🏡 Home Projects</span>
+            <span class="tag">📊 Data & Systems</span>
+            <span class="tag">🎓 ASU '27</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brittney -->
+      <div class="card member-card">
+        <div class="member-avatar-fallback" style="background: linear-gradient(135deg,#EDD9CA,#D4A98A);">👩</div>
+        <div class="member-info">
+          <div class="member-name">Brittney McGee</div>
+          <div class="member-role">Mom · Wife · October 25, 1995</div>
+          <p class="member-bio">Brittney is the heart of the McGee home — warm, grounded, and steady. She's an incredible mom to Levi, a devoted partner to Ben, and now excitedly preparing to welcome Baby McGee. She loves her animals, her family, and making their house feel like a home.</p>
+          <div class="member-tags">
+            <span class="tag">❤️ Family First</span>
+            <span class="tag">🌿 Wellness</span>
+            <span class="tag">🐾 Animal Lover</span>
+            <span class="tag">🍳 Cooking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Levi -->
+      <div class="card member-card">
+        <div class="member-avatar-fallback" style="background: linear-gradient(135deg,#FEF3C7,#FCD34D);">🧒</div>
+        <div class="member-info">
+          <div class="member-name">Levi McGee</div>
+          <div class="member-role">Big Brother · April 7, 2019 · 2nd Grade this fall</div>
+          <p class="member-bio">Levi is 7 years old, endlessly curious, and the kind of kid who lights up every room he walks into. This fall he starts 2nd grade, and soon he'll take on one of his biggest adventures yet — becoming a big brother.</p>
+          <div class="member-tags">
+            <span class="tag">⚡ Energetic</span>
+            <span class="tag">🎉 Joyful</span>
+            <span class="tag">📚 2nd Grade</span>
+            <span class="tag">🌟 Future Big Brother</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- BABY MCGEE -->
+  <div class="section">
+    <div class="section-label">Coming Soon</div>
+    <h2 class="section-title">Baby McGee 🌿</h2>
+    <div class="baby-card">
+      <div class="baby-icon">🌿</div>
+      <div class="baby-info">
+        <h3>Baby McGee is on the way!</h3>
+        <p>Ben and Brittney found out they were expecting in late December 2025 — a beautiful gift just after their wedding. The sex is a surprise, and we wouldn't have it any other way. The nursery is woodland-themed: foxes, bears, hedgehogs, and all things forest.</p>
+        <div class="baby-stats">
+          <div class="baby-stat">Due <span>September 4, 2026</span></div>
+          <div class="baby-stat">Theme <span>Woodland Animals</span></div>
+          <div class="baby-stat">Sex <span>It's a Surprise! 🎁</span></div>
+          <div class="baby-stat">Baby Shower <span>July 25, 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- PETS -->
+  <div class="section">
+    <div class="section-label">The Furry McGees</div>
+    <h2 class="section-title">Our Dogs</h2>
+    <div class="pet-grid">
+      <div class="card">
+        <div class="member-avatar-fallback" style="background: linear-gradient(135deg,#D1E8D3,#9BC49F); aspect-ratio:4/3;">🐕</div>
+        <div class="member-info">
+          <div class="member-name">Phoenix</div>
+          <div class="member-role">German Shorthair Pointer · Born November 28, 2021</div>
+          <p class="member-bio">Phoenix is Ben's dog — a German Shorthair Pointer with boundless energy, sharp instincts, and a love for the outdoors that matches his owner's. Born November 28, 2021, he's a full member of the McGee crew.</p>
+          <div class="member-tags">
+            <span class="tag tag-sage">🐾 GSP</span>
+            <span class="tag tag-sage">⚡ High Energy</span>
+            <span class="tag tag-sage">🌲 Outdoorsy</span>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="border: 2px dashed rgba(107,79,58,0.20); background: rgba(250,246,239,0.40);">
+        <div class="member-avatar-fallback" style="background: linear-gradient(135deg,#F5E4D8,#E8C9B0); aspect-ratio:4/3; opacity:0.7;">🐾</div>
+        <div class="member-info">
+          <div class="member-name" style="color:var(--text-tertiary);">Bently</div>
+          <div class="member-role">Golden Retriever · 2015 – April 9, 2026</div>
+          <p class="member-bio" style="font-style:italic;">Brittney's best friend and the goodest boy. Bently passed peacefully on April 9, 2026 at 10.5 years old. He will be forever loved and never forgotten.</p>
+          <a href="bently.html" class="btn btn-secondary" style="margin-top:12px; font-size:13px;">Read His Memorial →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- WEDDING -->
+  <div class="section" id="wedding">
+    <div class="section-label">November 1, 2025</div>
+    <h2 class="section-title">Married in Greer, Arizona 💍</h2>
+    <div class="wedding-strip">
+      <img src="photos/wedding/FA5EC445-DD56-4BE9-81C5-CEA8635AD4B3.JPG" alt="Ben & Brittney Wedding" class="wedding-photo"/>
+      <div class="wedding-info">
+        <h3>Mr. & Mrs. McGee</h3>
+        <p>Ben and Brittney were married on November 1, 2025 in the mountains of Greer, Arizona — surrounded by the people they love most. After the wedding they spent two weeks exploring Thailand for their honeymoon, adventuring through temples, beaches, markets, and everything in between.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;">
+          <span class="tag">📍 Greer, AZ</span>
+          <span class="tag">✝️ Christian Ceremony</span>
+          <span class="tag">🌏 Thailand Honeymoon</span>
+          <span class="tag">💍 November 1, 2025</span>
+        </div>
+        <a href="gallery.html#wedding" class="btn btn-primary" style="margin-top:20px;">See Wedding Photos →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- HOBBIES -->
+  <div class="section">
+    <div class="section-label">What We Love</div>
+    <h2 class="section-title">How We Spend Our Time</h2>
+    <div class="hobbies-grid">
+      <div class="hobby-card"><span class="hobby-icon">⛺</span><div class="hobby-label">Camping</div></div>
+      <div class="hobby-card"><span class="hobby-icon">🏓</span><div class="hobby-label">Pickleball</div></div>
+      <div class="hobby-card"><span class="hobby-icon">🌳</span><div class="hobby-label">The Park</div></div>
+      <div class="hobby-card"><span class="hobby-icon">🍳</span><div class="hobby-label">Cooking Together</div></div>
+      <div class="hobby-card"><span class="hobby-icon">🎲</span><div class="hobby-label">Game Nights</div></div>
+      <div class="hobby-card"><span class="hobby-icon">👨‍👩‍👦</span><div class="hobby-label">Family Time</div></div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- FAITH -->
+  <div class="section" id="faith">
+    <div class="faith-block">
+      <h3>✝️ Our Faith</h3>
+      <p>We are non-denominational Christians. We believe in Jesus Christ as Lord and Savior, and that salvation comes through faith alone — not by works, but by grace. Our faith isn't just something we practice on Sundays. It's the foundation our family, our marriage, and our decisions are built on.</p>
+      <p class="verse">"For it is by grace you have been saved, through faith — and this is not from yourselves, it is the gift of God." — Ephesians 2:8</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

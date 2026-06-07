@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Welcome to the McGee Family website — Ben, Brittney, Levi, and Baby McGee. Based in Queen Creek, AZ."/>
+  <title>The McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── PAGE-SPECIFIC ── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 100px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 55% at 15% 20%, rgba(178,205,181,0.45) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 85% 75%, rgba(237,224,212,0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 40% at 60% 5%,  rgba(196,113,74,0.12) 0%, transparent 55%),
+        linear-gradient(175deg, #F7F3EC 0%, #EAF2EB 40%, #F5EDE4 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle 2px at 20% 30%, rgba(107,79,58,0.10) 0%, transparent 100%),
+        radial-gradient(circle 2px at 70% 65%, rgba(122,158,126,0.12) 0%, transparent 100%),
+        radial-gradient(circle 2px at 50% 80%, rgba(196,113,74,0.08) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 6px 16px 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(60,40,20,0.08);
+    }
+    .hero-badge .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #34C759;
+      box-shadow: 0 0 0 3px rgba(52,199,89,0.20);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 11vw, 104px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .hero h1 .name {
+      display: block;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 50%, var(--terracotta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-secondary);
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; }
+
+    .hero-family-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero-member {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 7px 14px 7px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 10px rgba(60,40,20,0.07);
+    }
+    .hero-member .avatar { font-size: 18px; }
+
+    /* countdown */
+    .countdown-banner {
+      background: linear-gradient(135deg, var(--sage-pale), var(--terra-pale));
+      border: 1.5px solid rgba(122,158,126,0.25);
+      border-radius: var(--radius-xl);
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .countdown-icon { font-size: 52px; flex-shrink: 0; }
+    .countdown-text h3 { font-size: 22px; color: var(--forest); margin-bottom: 4px; }
+    .countdown-text p  { font-size: 15px; color: var(--text-secondary); margin: 0; }
+    .countdown-numbers {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .cd-block {
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(122,158,126,0.20);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 60px;
+    }
+    .cd-num { font-size: 26px; font-weight: 700; color: var(--forest); letter-spacing: -0.03em; }
+    .cd-lbl { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); }
+
+    /* quick links grid */
+    .ql-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 700px) { .ql-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .ql-grid { grid-template-columns: 1fr; } }
+
+    .ql-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 24px 22px;
+      text-decoration: none;
+    }
+    .ql-icon  { font-size: 32px; }
+    .ql-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+    .ql-desc  { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+
+    /* faith strip */
+    .faith-strip {
+      background: var(--brown);
+      color: rgba(255,255,255,0.85);
+      border-radius: var(--radius-xl);
+      padding: 40px 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .faith-strip .cross { font-size: 44px; flex-shrink: 0; }
+    .faith-strip h3 { font-size: 20px; color: #fff; margin-bottom: 8px; }
+    .faith-strip p  { font-size: 15px; color: rgba(255,255,255,0.70); line-height: 1.65; margin: 0; max-width: 540px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><span class="live-dot"></span> Queen Creek, Arizona</div>
+    <h1>The<span class="name">McGee</span>Family</h1>
+    <p class="hero-sub">Ben · Brittney · Levi · Phoenix · and Baby McGee on the way. A family rooted in faith, love, and a whole lot of adventure.</p>
+    <div class="hero-cta">
+      <a href="family.html" class="btn btn-primary">Meet the Family</a>
+      <a href="events.html" class="btn btn-secondary">Baby Shower RSVP 🎉</a>
+    </div>
+    <div class="hero-family-row">
+      <div class="hero-member"><span class="avatar">👨</span> Ben</div>
+      <div class="hero-member"><span class="avatar">👩</span> Brittney</div>
+      <div class="hero-member"><span class="avatar">🧒</span> Levi</div>
+      <div class="hero-member"><span class="avatar">🐕</span> Phoenix</div>
+      <div class="hero-member"><span class="avatar">🌿</span> Baby McGee</div>
+    </div>
+  </section>
+
+  <!-- BABY COUNTDOWN -->
+  <div style="background: var(--sage-pale); padding: 56px 24px;">
+    <div class="section" style="padding: 0; max-width: 860px;">
+      <div class="countdown-banner">
+        <div class="countdown-icon">🌿</div>
+        <div class="countdown-text">
+          <h3>Baby McGee is Coming!</h3>
+          <p>Due September 4, 2026 · Nursery theme: Woodland Animals 🦊🐻🦔</p>
+          <div class="countdown-numbers" id="countdown-wrap">
+            <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+            <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
+            <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
+            <div class="cd-block"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
+          </div>
+        </div>
+        <div style="margin-left:auto;">
+          <a href="events.html" class="btn btn-terra">RSVP to Baby Shower →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="section">
+    <div class="section-label">Explore</div>
+    <h2 class="section-title">Everything McGee</h2>
+    <p class="section-body">Photos, updates, events, and the story of our family — all in one place.</p>
+    <div class="ql-grid">
+      <a href="family.html" class="card ql-card">
+        <span class="ql-icon">👨‍👩‍👦</span>
+        <div class="ql-title">Our Family</div>
+        <p class="ql-desc">Meet Ben, Brittney, Levi, Phoenix, and Baby McGee.</p>
+      </a>
+      <a href="gallery.html" class="card ql-card">
+        <span class="ql-icon">📸</span>
+        <div class="ql-title">Gallery</div>
+        <p class="ql-desc">Family photos, our wedding in Greer, and our Thailand honeymoon.</p>
+      </a>
+      <a href="events.html" class="card ql-card">
+        <span class="ql-icon">🎉</span>
+        <div class="ql-title">Events</div>
+        <p class="ql-desc">Baby shower on July 25 — RSVP and get details here.</p>
+      </a>
+      <a href="updates.html" class="card ql-card">
+        <span class="ql-icon">📖</span>
+        <div class="ql-title">Life Updates</div>
+        <p class="ql-desc">What we're up to — pregnancy milestones, Levi's adventures, and more.</p>
+      </a>
+      <a href="bently.html" class="card ql-card">
+        <span class="ql-icon">🐾</span>
+        <div class="ql-title">In Memory of Bently</div>
+        <p class="ql-desc">A tribute to Brittney's golden boy. Forever in our hearts.</p>
+      </a>
+      <a href="family.html#faith" class="card ql-card">
+        <span class="ql-icon">✝️</span>
+        <div class="ql-title">Our Faith</div>
+        <p class="ql-desc">Non-denominational Christians. Saved by faith alone.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- FAMILY PHOTO STRIP -->
+  <div style="padding: 0 24px 72px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="photo-grid photo-grid-4" style="grid-template-columns: repeat(4,1fr);">
+        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="McGee Family" loading="lazy"/>
+      </div>
+      <div style="text-align:center; margin-top:18px;">
+        <a href="gallery.html" class="btn btn-secondary">View Full Gallery →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAITH STRIP -->
+  <div class="section" style="padding-top: 0;">
+    <div class="faith-strip" id="faith">
+      <span class="cross">✝️</span>
+      <div>
+        <h3>Our Faith</h3>
+        <p>We are non-denominational Christians. We believe in Jesus Christ as Lord and Savior, and that salvation is through faith alone — not by works, but by grace. Our faith is the foundation everything else is built on.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Countdown to Sep 4 2026
+    function updateCountdown() {
+      const due = new Date('2026-09-04T00:00:00');
+      const now = new Date();
+      const diff = due - now;
+      if (diff <= 0) {
+        document.getElementById('countdown-wrap').innerHTML = '<div style="font-size:22px;font-weight:700;color:var(--forest)">Baby McGee has arrived! 🎉</div>';
+        return;
+      }
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+      document.getElementById('cd-days').textContent  = days;
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

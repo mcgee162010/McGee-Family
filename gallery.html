@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="McGee Family photo gallery — family photoshoot, wedding in Greer AZ, and Thailand honeymoon."/>
+  <title>Gallery · McGee Family</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .page-hero {
+      background: linear-gradient(160deg, var(--brown-pale) 0%, var(--cream) 60%, var(--sage-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .tab {
+      padding: 9px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      background: var(--glass-bg);
+      color: var(--text-secondary);
+      border-color: rgba(107,79,58,0.14);
+      transition: all 0.18s;
+    }
+    .tab.active, .tab:hover {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
+
+    .gallery-section { display: none; }
+    .gallery-section.visible { display: block; }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .gallery-header h2 { font-size: 28px; margin-bottom: 4px; }
+    .gallery-header p  { font-size: 15px; color: var(--text-tertiary); margin: 0; }
+
+    .masonry {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .masonry img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      break-inside: avoid;
+    }
+    .masonry img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 36px rgba(60,40,20,0.18);
+    }
+
+    @media (max-width: 700px) { .masonry { columns: 2; } }
+    @media (max-width: 420px) { .masonry { columns: 1; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle">☰</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="section-label">Our Photos</div>
+    <h1>Gallery</h1>
+    <p>Family photoshoot, our wedding in Greer, and two weeks in Thailand.</p>
+  </div>
+
+  <div class="section">
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab active" onclick="showGallery('family', this)">👨‍👩‍👦 Family</button>
+      <button class="tab" onclick="showGallery('wedding', this)" id="wedding-tab">💍 Wedding</button>
+      <button class="tab" onclick="showGallery('honeymoon', this)">🌏 Honeymoon</button>
+    </div>
+
+    <!-- FAMILY -->
+    <div class="gallery-section visible" id="gallery-family">
+      <div class="gallery-header">
+        <div>
+          <h2>Family Photoshoot</h2>
+          <p>June 2026 · Queen Creek, Arizona</p>
+        </div>
+      </div>
+      <div class="masonry">
+        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/5505C84F-2D36-4EC8-BEA5-771AAD5D1EA6.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/72165688-768D-482B-9088-1855F89F3553.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/76E10423-5920-45D0-8BBC-A321F35ECE6E.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/82DDBCCD-D8DE-4424-B22E-60C5DC35274B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/87FA03CE-4A28-4F8A-83C5-CD9DB593392B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/968A99C1-9F38-4AE1-AAD8-63C96652727B.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+        <img src="photos/family/F9C2D993-815E-43EF-97A5-7887C168D807.jpeg"  alt="McGee Family Photo" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- WEDDING -->
+    <div class="gallery-section" id="gallery-wedding">
+      <div class="gallery-header">
+        <div>
+          <h2>Our Wedding 💍</h2>
+          <p>November 1, 2025 · Greer, Arizona</p>
+        </div>
+      </div>
+      <div class="masonry">
+        <img src="photos/wedding/30427AD0-59A6-4DA5-80C6-5FD98346CFFE.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
+        <img src="photos/wedding/4718C0DC-9EFB-441F-A79A-566F819B80AE.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
+        <img src="photos/wedding/B9A04CF4-4193-48EA-8735-5AFA585E4E17.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
+        <img src="photos/wedding/FA5EC445-DD56-4BE9-81C5-CEA8635AD4B3.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
+      </div>
+      <div style="margin-top:24px; padding:20px 24px; background:var(--brown-pale); border-radius:var(--radius-lg); font-size:15px; color:var(--text-secondary);">
+        📸 More wedding photos coming soon — check back after we receive the full gallery from our photographer.
+      </div>
+    </div>
+
+    <!-- HONEYMOON -->
+    <div class="gallery-section" id="gallery-honeymoon">
+      <div class="gallery-header">
+        <div>
+          <h2>Thailand Honeymoon 🌏</h2>
+          <p>November 2025 · Two weeks exploring Thailand</p>
+        </div>
+      </div>
+      <div class="masonry">
+        <img src="photos/honeymoon/0695CC7D-0EC8-4CAB-8075-0FB00F5C2D0E_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/143D1408-F4BF-4A2D-BDBA-B35E0A457C9C_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/18739CD0-DD24-4659-893C-16F9EA259785_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/35DCBF53-7614-40B7-8218-58E8445DEBA0_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/42FFE530-5184-4B53-A15F-A43AAC1B0A5E_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/431B5640-DCA0-49A1-9D82-5BD495074989_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/43A0CC8D-5D88-417A-92FE-209BDAA399CE_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/58AC13C0-816B-4F87-8A40-7AFF835890EA_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/67C1DFEC-CCF6-4AFE-BB18-06BE4F98B622_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/6ABB2EEB-B217-4312-837E-9372F802AFBB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/6F1722C1-D3C9-41F8-8822-E55736EE6E0A_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/73C791B5-48FF-4BB2-8CD0-1FA2B7BB6EC2_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/77879028-A89D-480F-B588-FF8266226598_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/7B3D6E94-2F11-4D8A-8394-8E0998CF9FCB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/7B49FCD9-216F-4164-8317-1D07EA99F16F.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/8F783E2A-81ED-471F-9FAA-A91047B8A071_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/93926121-9D0A-498C-8419-7236C24BD454.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/9D2D007A-3AFF-4DE3-A53C-62EE04372718_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/9F9BB9C0-FB24-4A6B-82E6-90FAD876CBA0_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/A10D6B02-08A2-46CE-B2EE-6B32F404E43B_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/A8AC5052-626D-4444-9D97-07A4A02279F7_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/ACD631C7-06F7-4983-84C3-13FFE7F6C5D3.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/BBC32E05-D113-414D-B95A-7DC67D88B4E8_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/D3FF3E72-C359-4C22-991C-6C8F665EA35C_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/DCC02579-D1FC-4D4A-AA2A-F0D00610FB81.JPG"           alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/F8EF487E-C104-4DA0-A709-9C376E722187_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/FA4063C4-F083-4AD5-99D6-DC1E8AE44EFB_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/honeymoon/FB9AB1D7-C8F6-4929-88CB-DB6376D87686_1_105_c.jpeg" alt="Thailand Honeymoon" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bently.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function showGallery(id, btn) {
+      document.querySelectorAll('.gallery-section').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('gallery-' + id).classList.add('visible');
+      btn.classList.add('active');
+    }
+
+    // Deep-link via hash  e.g. gallery.html#wedding
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'wedding' || hash === 'honeymoon') {
+        const btn = document.querySelector(`.tab[onclick*="${hash}"]`);
+        if (btn) showGallery(hash, btn);
+      }
+    });
+  </script>
+</body>
+</html>
