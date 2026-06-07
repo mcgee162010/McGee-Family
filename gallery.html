@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="McGee Family photo gallery — family photoshoot, wedding, Thailand honeymoon, Phoenix, and Bentley."/>
+  <meta name="description" content="McGee Family photo gallery — family photoshoot, wedding, Thailand honeymoon, Levi, Phoenix, and Bentley."/>
   <title>Gallery · McGee Family</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
@@ -70,10 +70,7 @@
       box-shadow: 0 10px 36px rgba(60,40,20,0.18);
     }
 
-    /* Bentley memorial tone */
-    .bentley-note {
-      background: var(--brown-pale);
-      border: 1.5px solid rgba(107,79,58,0.18);
+    .info-note {
       border-radius: var(--radius-lg);
       padding: 20px 24px;
       font-size: 15px;
@@ -83,6 +80,8 @@
       align-items: center;
       gap: 12px;
     }
+    .info-note.brown { background: var(--brown-pale); border: 1.5px solid rgba(107,79,58,0.18); }
+    .info-note.gold  { background: #FEF9EC; border: 1.5px solid rgba(180,140,40,0.18); }
 
     @media (max-width: 700px) { .masonry { columns: 2; } }
     @media (max-width: 420px) { .masonry { columns: 1; } }
@@ -98,7 +97,7 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="bentley.html">In Memory</a></li>
+      <li><a href="bently.html">In Memory</a></li>
     </ul>
     <button class="nav-mobile-toggle">☰</button>
   </nav>
@@ -106,15 +105,15 @@
   <div class="page-hero">
     <div class="section-label">Our Photos</div>
     <h1>Gallery</h1>
-    <p>Family photoshoot, our wedding in Greer, two weeks in Thailand, Phoenix, and our beloved Bentley.</p>
+    <p>Family, wedding, honeymoon, Levi, Phoenix, and our beloved Bentley.</p>
   </div>
 
   <div class="section">
-    <!-- TABS -->
     <div class="tab-bar">
       <button class="tab active" onclick="showGallery('family', this)">👨‍👩‍👦 Family</button>
       <button class="tab" onclick="showGallery('wedding', this)">💍 Wedding</button>
       <button class="tab" onclick="showGallery('honeymoon', this)">🌏 Honeymoon</button>
+      <button class="tab" onclick="showGallery('levi', this)">🧒 Levi</button>
       <button class="tab" onclick="showGallery('phoenix', this)">🐕 Phoenix</button>
       <button class="tab" onclick="showGallery('bentley', this)">🐾 Bentley</button>
     </div>
@@ -122,41 +121,35 @@
     <!-- FAMILY -->
     <div class="gallery-section visible" id="gallery-family">
       <div class="gallery-header">
-        <div>
-          <h2>Family Photoshoot</h2>
-          <p>June 2026 · Baby McGee Announcement</p>
-        </div>
+        <div><h2>Family Photoshoot</h2><p>June 2026 · Baby McGee Announcement</p></div>
       </div>
       <div class="masonry">
-        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/5505C84F-2D36-4EC8-BEA5-771AAD5D1EA6.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/72165688-768D-482B-9088-1855F89F3553.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/76E10423-5920-45D0-8BBC-A321F35ECE6E.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/82DDBCCD-D8DE-4424-B22E-60C5DC35274B.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/87FA03CE-4A28-4F8A-83C5-CD9DB593392B.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/968A99C1-9F38-4AE1-AAD8-63C96652727B.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"  alt="McGee Family" loading="lazy"/>
-        <img src="photos/family/F9C2D993-815E-43EF-97A5-7887C168D807.jpeg"  alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/5505C84F-2D36-4EC8-BEA5-771AAD5D1EA6.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/72165688-768D-482B-9088-1855F89F3553.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/76E10423-5920-45D0-8BBC-A321F35ECE6E.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/82DDBCCD-D8DE-4424-B22E-60C5DC35274B.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/87FA03CE-4A28-4F8A-83C5-CD9DB593392B.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/968A99C1-9F38-4AE1-AAD8-63C96652727B.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg" alt="McGee Family" loading="lazy"/>
+        <img src="photos/family/F9C2D993-815E-43EF-97A5-7887C168D807.jpeg" alt="McGee Family" loading="lazy"/>
       </div>
     </div>
 
     <!-- WEDDING -->
     <div class="gallery-section" id="gallery-wedding">
       <div class="gallery-header">
-        <div>
-          <h2>Our Wedding 💍</h2>
-          <p>November 1, 2025 · Greer, Arizona</p>
-        </div>
+        <div><h2>Our Wedding 💍</h2><p>November 1, 2025 · Greer, Arizona</p></div>
       </div>
       <div class="masonry">
         <img src="photos/wedding/30427AD0-59A6-4DA5-80C6-5FD98346CFFE.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
@@ -164,7 +157,7 @@
         <img src="photos/wedding/B9A04CF4-4193-48EA-8735-5AFA585E4E17.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
         <img src="photos/wedding/FA5EC445-DD56-4BE9-81C5-CEA8635AD4B3.JPG" alt="Ben & Brittney Wedding" loading="lazy"/>
       </div>
-      <div style="margin-top:24px; padding:20px 24px; background:var(--brown-pale); border-radius:var(--radius-lg); font-size:15px; color:var(--text-secondary);">
+      <div class="info-note brown">
         📸 More wedding photos coming soon — check back after we receive the full gallery from our photographer.
       </div>
     </div>
@@ -172,10 +165,7 @@
     <!-- HONEYMOON -->
     <div class="gallery-section" id="gallery-honeymoon">
       <div class="gallery-header">
-        <div>
-          <h2>Thailand Honeymoon 🌏</h2>
-          <p>November 2025 · Two weeks exploring Thailand</p>
-        </div>
+        <div><h2>Thailand Honeymoon 🌏</h2><p>November 2025 · Two weeks exploring Thailand</p></div>
       </div>
       <div class="masonry">
         <img src="photos/honeymoon/0695CC7D-0EC8-4CAB-8075-0FB00F5C2D0E_1_105_c.jpeg" alt="Thailand" loading="lazy"/>
@@ -209,13 +199,108 @@
       </div>
     </div>
 
+    <!-- LEVI -->
+    <div class="gallery-section" id="gallery-levi">
+      <div class="gallery-header">
+        <div><h2>Levi 🧒</h2><p>Growing up fast · Born April 7, 2019</p></div>
+      </div>
+      <div class="masonry">
+        <img src="photos/levi/80037627095__F0D5C81B-365A-4BDC-A608-1CA00568D947.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/BA53377F-688A-4435-B395-D310717588D6.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/FullSizeRender.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0055.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0129.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0197.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0474.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0745.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0786.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0855.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0873.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0875.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_0923.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1325.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1344.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1503.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1591.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1621.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1633.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1653.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1661.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1686.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1687.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1702.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1704.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1716.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1871.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_1990.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2078.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2230.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2246.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2275.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2284.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2292.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2295.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2299.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2307.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2315.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2319.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2363.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2450.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2490.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2597.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2634.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2701.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2736.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2738.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2758.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2855.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2929.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2933.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2953.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2961.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_2964.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_3643.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_3647.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_3651.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_3833.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_3953.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4169.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4440.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4534.JPG"  alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4574.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4731.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4814.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4963.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_4995.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5069.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5186.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5188.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5206.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5212.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5291.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5359.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5419.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5421.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5438.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5485.JPG"  alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5595.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5761.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5808.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_5851.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7206.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7370.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7390.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7406.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7411.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_7450.jpeg" alt="Levi" loading="lazy"/>
+        <img src="photos/levi/IMG_9233.jpeg" alt="Levi" loading="lazy"/>
+      </div>
+    </div>
+
     <!-- PHOENIX -->
     <div class="gallery-section" id="gallery-phoenix">
       <div class="gallery-header">
-        <div>
-          <h2>Phoenix 🐕</h2>
-          <p>German Shorthair Pointer · Born November 28, 2021</p>
-        </div>
+        <div><h2>Phoenix 🐕</h2><p>German Shorthair Pointer · Born November 28, 2021</p></div>
       </div>
       <div class="masonry">
         <img src="photos/phoenix/69B544C4-F3D2-42A2-BC14-FE1143C30849.jpg" alt="Phoenix" loading="lazy"/>
@@ -243,17 +328,14 @@
       </div>
     </div>
 
-    <!-- BENTLY -->
+    <!-- BENTLEY -->
     <div class="gallery-section" id="gallery-bentley">
       <div class="gallery-header">
-        <div>
-          <h2>Bentley 🐾</h2>
-          <p>Golden Retriever · 2015 – April 9, 2026 · Forever in our hearts</p>
-        </div>
+        <div><h2>Bentley 🐾</h2><p>Golden Retriever · 2015 – April 9, 2026 · Forever in our hearts</p></div>
       </div>
-      <div class="bentley-note">
+      <div class="info-note gold">
         <span style="font-size:22px;">💛</span>
-        <span>In loving memory of Bentley — Brittney's best friend and the goodest boy. <a href="bentley.html">Read his full memorial →</a></span>
+        <span>In loving memory of Bentley — Brittney's best friend and the goodest boy. <a href="bently.html">Read his full memorial →</a></span>
       </div>
       <div class="masonry">
         <img src="photos/bentley/IMG_0039.jpeg" alt="Bentley" loading="lazy"/>
@@ -289,7 +371,7 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="bentley.html">In Memory</a></li>
+      <li><a href="bently.html">In Memory</a></li>
     </ul>
     <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
   </footer>
@@ -309,7 +391,7 @@
     }
     window.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
-      if (['wedding','honeymoon','phoenix','bentley'].includes(hash)) {
+      if (['wedding','honeymoon','levi','phoenix','bentley'].includes(hash)) {
         const btn = document.querySelector(`.tab[onclick*="${hash}"]`);
         if (btn) showGallery(hash, btn);
       }
