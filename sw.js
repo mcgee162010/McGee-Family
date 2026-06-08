@@ -3,7 +3,7 @@
 // Especially useful for baby shower guests with spotty venue WiFi
 
 const CACHE_NAME = `mcgee-family-${CACHE_VERSION}`;
-const CACHE_VERSION = '2026-06-09';
+const CACHE_VERSION = '2026-06-08';
 
 // Pages and assets to cache immediately on install
 const PRECACHE = [
@@ -20,11 +20,13 @@ const PRECACHE = [
   '/bentley.html',
   '/vows.html',
   '/letters.html',
+  '/year-in-review.html',
+  '/baby-mcgee.html',
   '/css/style.css',
   '/js/main.js',
   '/favicon.svg',
   // Key photos
-  '/photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg',
+  '/photos/baby-mcgee/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg',
   '/photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg',
   '/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg',
 ];

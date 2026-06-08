@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 McGee Family Website — iCloud Photo Sync Script
 ================================================
@@ -28,6 +28,11 @@ import subprocess
 import sys
 from pathlib import Path
 from datetime import datetime
+try:
+    from PIL import Image as PILImage
+    PILLOW_OK = True
+except ImportError:
+    PILLOW_OK = False
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
@@ -69,6 +74,32 @@ def run(cmd, cwd=None):
 
 def is_photo(path: Path) -> bool:
     return path.suffix.lower() in PHOTO_EXTS and not path.name.startswith(".")
+
+# ── OPTIMIZE PHOTO ─────────────────────────────────────────────────────────────
+MAX_PX   = 1400    # Maximum dimension (width or height)
+JPEG_Q   = 82      # JPEG quality — good visual quality, meaningful size reduction
+MIN_SAVE = 100_000 # Only optimize if file is larger than this (100 KB)
+
+def optimize_photo(dest_path: Path) -> None:
+    """Resize and compress a JPEG in-place using Pillow. Never corrupts. Safe."""
+    if not PILLOW_OK:
+        return  # Pillow not available — skip silently
+    if dest_path.stat().st_size < MIN_SAVE:
+        return  # Already small enough
+    try:
+        with PILImage.open(dest_path) as img:
+            orig_size = dest_path.stat().st_size
+            if max(img.size) <= MAX_PX and orig_size < 500_000:
+                return  # Small enough — no action needed
+            img.thumbnail((MAX_PX, MAX_PX), PILImage.LANCZOS)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            img.save(dest_path, "JPEG", quality=JPEG_Q, optimize=True, progressive=True)
+            saved = (orig_size - dest_path.stat().st_size) // 1024
+            if saved > 0:
+                log(f"  🗜  Optimized {dest_path.name}: saved {saved}KB")
+    except Exception as e:
+        log(f"  ⚠️  Pillow failed on {dest_path.name}: {e} — file unchanged")
 
 # ── STEP 1: SYNC PHOTOS ───────────────────────────────────────────────────────
 
@@ -112,6 +143,7 @@ def sync_photos():
             dest_path = dest_dir / new_name
             if not dest_path.exists():
                 shutil.copy2(f, dest_path)           # raw copy — NO sips
+                optimize_photo(dest_path)                # Pillow resize if >1400px
                 added.append(f"{site_folder}/{new_name}")
                 changes = True
 
