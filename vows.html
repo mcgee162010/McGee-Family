@@ -17,78 +17,64 @@
   <meta name="theme-color"        content="#4A3728"/>
 
   <style>
-    /* ── RESET & ROOT ─────────────────────────────────────── */
+    /* ── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --parchment:   #F7F0E6;
-      --parchment-d: #EDE3D5;
-      --parchment-dd:#E2D5C4;
-      --ink:         #2C1F13;
-      --ink-mid:     #4A3728;
-      --ink-light:   #7A6050;
-      --ink-faint:   #A89080;
-      --sage:        #6B7A5A;
-      --sage-light:  #9BAD8A;
-      --gold:        #B8922A;
-      --gold-pale:   #F0E4C4;
+      --parchment:    #F7F0E6;
+      --parchment-d:  #EDE3D5;
+      --parchment-dd: #E2D5C4;
+      --ink:          #2C1F13;
+      --ink-mid:      #4A3728;
+      --ink-light:    #7A6050;
+      --ink-faint:    #A89080;
+      --gold:         #B8922A;
+      --gold-pale:    #F0E4C4;
     }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
       font-family: 'Cormorant Garamond', Georgia, serif;
       background: var(--parchment);
       color: var(--ink);
       overflow-x: hidden;
-      animation: vowsFade 0.8s ease both;
+      animation: pageFade 0.7s ease both;
     }
-
-    @keyframes vowsFade {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
+    @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
       *, body { animation: none !important; transition: none !important; }
     }
 
-    /* ── SKIP LINK ─────────────────────────────────────────── */
+    /* ── SKIP / NAV ─────────────────────────────────────────── */
     .skip-link {
       position: absolute; top: -40px; left: 0;
       background: var(--ink); color: var(--parchment);
-      padding: 8px 16px; z-index: 9999;
-      border-radius: 0 0 8px 0; font-size: 14px;
-      font-family: 'Lato', sans-serif; font-weight: 600;
+      padding: 8px 16px; z-index: 9999; border-radius: 0 0 8px 0;
+      font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 600;
       transition: top 0.2s;
     }
     .skip-link:focus { top: 0; }
 
-    /* ── NAV ───────────────────────────────────────────────── */
     .nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 max(32px, env(safe-area-inset-left));
       height: 56px;
-      background: rgba(247,240,230,0.92);
+      background: rgba(247,240,230,0.93);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-bottom: 1px solid rgba(74,55,40,0.10);
     }
     .nav-logo {
-      font-family: 'Lato', sans-serif;
-      font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
-      color: var(--ink-mid); text-decoration: none;
+      font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700;
+      letter-spacing: 0.02em; color: var(--ink-mid); text-decoration: none;
       display: flex; align-items: center; gap: 8px;
     }
     .nav-links { display: flex; gap: 2px; list-style: none; }
     .nav-links a {
-      font-family: 'Lato', sans-serif;
-      font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
-      color: var(--ink-light); text-decoration: none;
+      font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 400;
+      letter-spacing: 0.04em; color: var(--ink-light); text-decoration: none;
       padding: 6px 12px; border-radius: 999px;
       transition: background 0.15s, color 0.15s;
     }
@@ -106,15 +92,14 @@
         flex-direction: column;
         background: rgba(247,240,230,0.98);
         padding: 14px 20px 20px;
-        border-bottom: 1px solid rgba(74,55,40,0.08);
-        gap: 2px;
+        border-bottom: 1px solid rgba(74,55,40,0.08); gap: 2px;
       }
       .nav-links.open { display: flex; }
       .nav-links a { padding: 10px 14px; font-size: 15px; }
       .nav-mobile-toggle { display: block; }
     }
 
-    /* ── OPENING HERO ──────────────────────────────────────── */
+    /* ── OPENING HERO ───────────────────────────────────────── */
     .opening {
       position: relative;
       min-height: 100svh; min-height: 100vh;
@@ -127,21 +112,17 @@
     }
 
     .opening-photo {
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .opening-photo img {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
+      object-fit: cover; object-position: center top; display: block;
     }
     .opening-photo::after {
-      content: "";
-      position: absolute; inset: 0;
+      content: ""; position: absolute; inset: 0;
       background: linear-gradient(
-        to right,
-        transparent 50%,
-        rgba(247,240,230,0.6) 80%,
+        to right, transparent 50%,
+        rgba(247,240,230,0.55) 80%,
         var(--parchment) 100%
       );
     }
@@ -153,11 +134,9 @@
     }
 
     .opening-text {
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       justify-content: center;
       padding: 80px 64px 80px 48px;
-      position: relative;
     }
     @media (max-width: 900px) { .opening-text { padding: 60px 36px; } }
     @media (max-width: 768px) { .opening-text { padding: 40px 28px 64px; } }
@@ -168,50 +147,45 @@
       letter-spacing: 0.20em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 20px;
     }
-
     .opening-title {
       font-size: clamp(52px, 8vw, 88px);
       font-weight: 300; font-style: italic;
       line-height: 1.0; letter-spacing: -0.02em;
       color: var(--ink); margin-bottom: 16px;
     }
-
     .opening-date {
       font-family: 'Lato', sans-serif;
       font-size: 12px; font-weight: 400;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-faint); margin-bottom: 32px;
+      color: var(--ink-faint); margin-bottom: 28px;
     }
-
     .opening-rule {
       width: 48px; height: 1px;
-      background: var(--gold); opacity: 0.60;
+      background: var(--gold); opacity: 0.55;
       margin-bottom: 28px;
     }
-
     .opening-intro {
       font-size: clamp(17px, 2.2vw, 20px);
       font-style: italic; font-weight: 300;
-      line-height: 1.75; color: var(--ink-mid);
-      max-width: 400px;
+      line-height: 1.75; color: var(--ink-mid); max-width: 400px;
     }
 
-    /* ── CHAPTER INTRO ─────────────────────────────────────── */
+    /* ── CHAPTER INTRO ──────────────────────────────────────── */
     .chapter-intro {
       text-align: center;
-      padding: 100px 24px 60px;
+      padding: 90px 24px 56px;
       background: var(--parchment);
     }
     .chapter-line {
-      width: 1px; height: 80px;
-      background: linear-gradient(to bottom, transparent, var(--ink-faint), transparent);
-      margin: 0 auto 32px;
+      width: 1px; height: 72px;
+      background: linear-gradient(to bottom, transparent, rgba(74,55,40,0.22), transparent);
+      margin: 0 auto 28px;
     }
     .chapter-eyebrow {
       font-family: 'Lato', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.20em; text-transform: uppercase;
-      color: var(--ink-faint); margin-bottom: 14px;
+      color: var(--ink-faint); margin-bottom: 12px;
     }
     .chapter-title {
       font-size: clamp(36px, 6vw, 64px);
@@ -219,41 +193,65 @@
       color: var(--ink); line-height: 1.1;
     }
 
-    /* ── VOW SECTION — editorial layout ───────────────────── */
+    /* ── VOW SECTION — handwriting watermark background ─────── */
     .vow-section {
-      max-width: 1160px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Full-bleed handwriting watermark */
+    .vow-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.07;              /* subtle watermark */
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 0;
+      transform: scale(1.05);    /* slight zoom so edges don't show hard crop */
+      filter: grayscale(1) contrast(1.2);
+    }
+
+    /* The readable content sits above the watermark */
+    .vow-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 0 24px 100px;
+      padding: 72px 32px 96px;
     }
+    @media (max-width: 640px) { .vow-content { padding: 52px 24px 72px; } }
 
-    /* Vow header */
+    /* Alternating background tint so the two vows are distinguishable */
+    .vow-section.ben   { background: var(--parchment); }
+    .vow-section.britt { background: var(--parchment-d); }
+
+    /* ── VOW HEADER ─────────────────────────────────────────── */
     .vow-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-bottom: 1px solid rgba(74,55,40,0.10);
-      margin-bottom: 64px;
-      padding-bottom: 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(74,55,40,0.12);
+      flex-wrap: wrap;
     }
-    @media (max-width: 640px) {
-      .vow-header { grid-template-columns: 1fr; gap: 8px; }
-    }
-
-    .vow-to-block {}
-    .vow-from-block { text-align: right; }
-    @media (max-width: 640px) { .vow-from-block { text-align: left; } }
-
     .vow-to-label {
       font-family: 'Lato', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 4px;
+      color: var(--gold); margin-bottom: 6px;
     }
     .vow-recipient {
-      font-size: clamp(32px, 5vw, 52px);
+      font-size: clamp(36px, 5vw, 56px);
       font-weight: 300; font-style: italic;
-      color: var(--ink); line-height: 1.1;
+      color: var(--ink); line-height: 1.0;
     }
+    .vow-author-block { text-align: right; }
+    @media (max-width: 480px) { .vow-author-block { text-align: left; } }
     .vow-author-label {
       font-family: 'Lato', sans-serif;
       font-size: 10px; font-weight: 400;
@@ -261,55 +259,70 @@
       color: var(--ink-faint); margin-bottom: 4px;
     }
     .vow-author {
-      font-size: clamp(22px, 3vw, 32px);
+      font-size: clamp(20px, 3vw, 28px);
       font-weight: 300; color: var(--ink-mid);
     }
 
-    /* Vow body — magazine column layout */
-    .vow-body {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 64px;
-      align-items: start;
-    }
-    @media (max-width: 860px) {
-      .vow-body { grid-template-columns: 1fr; gap: 48px; }
-    }
-
-    /* Left — digital text */
-    .vow-text-col {}
-
+    /* ── VOW BODY TEXT ──────────────────────────────────────── */
     .vow-opening-line {
-      font-size: clamp(22px, 3vw, 30px);
+      font-size: clamp(22px, 3vw, 32px);
       font-weight: 300; font-style: italic;
-      color: var(--ink); line-height: 1.5;
+      color: var(--ink); line-height: 1.45;
       margin-bottom: 36px;
       padding-bottom: 28px;
       border-bottom: 1px solid rgba(74,55,40,0.08);
     }
 
     .vow-para {
-      font-size: clamp(16px, 2vw, 19px);
+      font-size: clamp(17px, 2vw, 20px);
       font-weight: 300; line-height: 1.90;
       color: var(--ink-mid); margin-bottom: 24px;
     }
     .vow-para:last-of-type { margin-bottom: 0; }
 
-    /* Vow promises */
+    /* Pull quote — the most powerful line */
+    .pull-quote {
+      margin: 40px 0;
+      padding: 28px 32px;
+      border-left: 2px solid var(--gold);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -16px; left: 24px;
+      font-size: 72px; color: var(--gold);
+      opacity: 0.18; font-family: Georgia, serif; line-height: 1;
+    }
+    .pull-quote blockquote {
+      font-size: clamp(20px, 2.8vw, 28px);
+      font-style: italic; font-weight: 300;
+      line-height: 1.50; color: var(--ink);
+    }
+
+    /* Promises — indented, distinct */
     .vow-promises {
       margin: 36px 0;
       padding: 28px 32px;
-      background: var(--parchment-d);
-      border-left: 2px solid var(--gold);
-      border-radius: 0 8px 8px 0;
+      background: rgba(247,240,230,0.70);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2px;
+      border: 1px solid rgba(74,55,40,0.10);
+    }
+    .vow-promises-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
     }
     .vow-promises p {
-      font-size: clamp(15px, 1.8vw, 17px);
+      font-size: clamp(16px, 1.8vw, 18px);
       font-style: italic; font-weight: 300;
-      line-height: 1.85; color: var(--ink-mid);
+      line-height: 1.80; color: var(--ink-mid);
       margin-bottom: 16px;
       padding-bottom: 16px;
-      border-bottom: 1px solid rgba(74,55,40,0.08);
+      border-bottom: 1px solid rgba(74,55,40,0.07);
     }
     .vow-promises p:last-child {
       margin-bottom: 0; padding-bottom: 0; border-bottom: none;
@@ -317,245 +330,192 @@
 
     /* Signature */
     .vow-signature {
-      margin-top: 40px;
-      font-size: clamp(24px, 3vw, 34px);
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(74,55,40,0.10);
+      font-size: clamp(26px, 3.5vw, 40px);
       font-style: italic; font-weight: 300;
       color: var(--ink);
     }
 
-    /* Right — notebook photos, woven in */
-    .vow-notebook-col {}
-
-    .notebook-accent {
-      margin-bottom: 20px;
-      position: relative;
+    /* ── NOTEBOOK STRIP — thumbnails below each vow ─────────── */
+    .notebook-strip {
+      background: var(--parchment-dd);
+      padding: 36px 24px;
+      overflow: hidden;
     }
-    .notebook-accent img {
-      width: 100%;
-      border-radius: 3px;
-      box-shadow:
-        0 4px 20px rgba(44,31,19,0.15),
-        0 1px 4px rgba(44,31,19,0.10);
-      display: block;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .notebook-accent:nth-child(odd)  img { transform: rotate(-1.2deg); }
-    .notebook-accent:nth-child(even) img { transform: rotate(0.8deg); }
-    .notebook-accent:hover img {
-      transform: rotate(0deg) scale(1.02) !important;
-      box-shadow: 0 12px 40px rgba(44,31,19,0.25);
-    }
-    .notebook-caption {
+    .notebook-strip-label {
       font-family: 'Lato', sans-serif;
-      font-size: 11px; font-weight: 400;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--ink-faint); margin-top: 8px;
-      text-align: center;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-faint); text-align: center;
+      margin-bottom: 20px;
     }
-
-    /* Pull quote — featured handwriting moment */
-    .pull-quote-block {
-      margin: 48px 0;
-      padding: 0;
+    .notebook-strip-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .notebook-strip-scroll::-webkit-scrollbar { display: none; }
+    .notebook-thumb {
+      flex-shrink: 0;
+      width: 160px;
       position: relative;
     }
-    .pull-quote-block::before {
-      content: '\201C';
-      position: absolute;
-      top: -20px; left: -8px;
-      font-size: 100px;
-      color: var(--gold);
-      opacity: 0.15;
-      font-family: Georgia, serif;
-      line-height: 1;
+    @media (max-width: 480px) { .notebook-thumb { width: 130px; } }
+    .notebook-thumb img {
+      width: 100%;
+      border-radius: 2px;
+      box-shadow: 0 4px 16px rgba(44,31,19,0.18), 0 1px 4px rgba(44,31,19,0.10);
+      cursor: zoom-in;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .pull-quote-block blockquote {
-      font-size: clamp(20px, 2.8vw, 28px);
-      font-style: italic; font-weight: 300;
-      line-height: 1.55; color: var(--ink);
-      padding-left: 24px;
-      border-left: 2px solid var(--gold);
+    .notebook-thumb:nth-child(odd)  img { transform: rotate(-1deg); }
+    .notebook-thumb:nth-child(even) img { transform: rotate(0.8deg); }
+    .notebook-thumb:hover img {
+      transform: rotate(0deg) scale(1.04) !important;
+      box-shadow: 0 12px 36px rgba(44,31,19,0.26);
     }
 
-    /* ── DIVIDER ───────────────────────────────────────────── */
+    /* ── SECTION DIVIDER ────────────────────────────────────── */
     .vow-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px 24px 80px;
-      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 12px 24px;
+      background: var(--parchment);
     }
     .vow-divider-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(74,55,40,0.15));
+      flex: 1; max-width: 200px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(74,55,40,0.18));
     }
     .vow-divider-line:last-child {
-      background: linear-gradient(to left, transparent, rgba(74,55,40,0.15));
+      background: linear-gradient(to left, transparent, rgba(74,55,40,0.18));
     }
-    .vow-divider-ornament {
-      font-size: 14px; letter-spacing: 14px;
-      color: var(--gold); opacity: 0.55;
+    .vow-divider-glyph {
+      font-size: 13px; letter-spacing: 12px;
+      color: var(--gold); opacity: 0.50;
     }
 
-    /* ── SHARED THEMES ─────────────────────────────────────── */
+    /* ── SHARED THEMES ──────────────────────────────────────── */
     .themes-section {
       background: var(--parchment-d);
       padding: 80px 24px;
       text-align: center;
     }
-    .themes-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    .themes-inner { max-width: 800px; margin: 0 auto; }
     .themes-eyebrow {
       font-family: 'Lato', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.20em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
+      color: var(--gold); margin-bottom: 16px;
     }
     .themes-title {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 300; font-style: italic;
-      color: var(--ink); margin-bottom: 52px;
-      line-height: 1.2;
+      color: var(--ink); margin-bottom: 48px; line-height: 1.2;
     }
     .themes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 24px;
-      margin-bottom: 52px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px; margin-bottom: 0;
     }
     .theme-card {
-      padding: 28px 20px;
+      padding: 24px 16px;
       background: var(--parchment);
-      border-radius: 4px;
-      box-shadow: 0 2px 12px rgba(44,31,19,0.07);
+      border-radius: 2px;
+      box-shadow: 0 2px 10px rgba(44,31,19,0.07);
     }
-    .theme-icon { font-size: 28px; display: block; margin-bottom: 12px; }
-    .theme-word {
-      font-size: 18px; font-style: italic;
-      font-weight: 300; color: var(--ink);
-      margin-bottom: 8px;
-    }
-    .theme-quote {
-      font-family: 'Lato', sans-serif;
-      font-size: 12px; color: var(--ink-faint);
-      line-height: 1.55;
-    }
+    .theme-icon { font-size: 26px; display: block; margin-bottom: 10px; }
+    .theme-word { font-size: 18px; font-style: italic; font-weight: 300; color: var(--ink); margin-bottom: 6px; }
+    .theme-quote { font-family: 'Lato', sans-serif; font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
 
-    /* ── CLOSING ───────────────────────────────────────────── */
-    .closing-section {
-      position: relative;
-      overflow: hidden;
-    }
-
+    /* ── CLOSING ────────────────────────────────────────────── */
+    .closing-section { position: relative; overflow: hidden; }
     .closing-photo {
-      width: 100%; max-height: 600px;
+      width: 100%; max-height: 580px;
       object-fit: cover; object-position: center 20%;
-      display: block;
-      filter: brightness(0.80);
+      display: block; filter: brightness(0.75);
     }
-
     .closing-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 20%,
-        rgba(44,31,19,0.5) 60%,
-        rgba(44,31,19,0.85) 100%
-      );
-      display: flex;
-      align-items: flex-end;
+      background: linear-gradient(to bottom, transparent 15%, rgba(44,31,19,0.55) 60%, rgba(44,31,19,0.88) 100%);
+      display: flex; align-items: flex-end;
       padding: 56px 24px;
     }
-
-    .closing-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-      width: 100%;
-    }
-
+    .closing-inner { max-width: 640px; margin: 0 auto; text-align: center; width: 100%; }
     .closing-scripture {
       font-size: clamp(20px, 3vw, 30px);
       font-style: italic; font-weight: 300;
-      color: rgba(247,240,230,0.95);
-      line-height: 1.5; margin-bottom: 14px;
+      color: rgba(247,240,230,0.95); line-height: 1.5; margin-bottom: 14px;
     }
-
     .closing-cite {
       font-family: 'Lato', sans-serif;
       font-size: 11px; font-weight: 400;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(247,240,230,0.55);
+      color: rgba(247,240,230,0.50);
     }
 
-    /* Final signatures */
+    /* ── SIGNATURES ─────────────────────────────────────────── */
     .signatures-section {
       background: var(--ink);
       padding: 72px 24px 80px;
       text-align: center;
     }
-    .signatures-inner { max-width: 600px; margin: 0 auto; }
+    .signatures-inner { max-width: 560px; margin: 0 auto; }
     .signatures-date {
       font-family: 'Lato', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.20em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 32px; opacity: 0.80;
+      color: var(--gold); margin-bottom: 28px; opacity: 0.80;
     }
     .signatures-names {
-      font-size: clamp(36px, 6vw, 60px);
+      font-size: clamp(40px, 7vw, 68px);
       font-weight: 300; font-style: italic;
-      color: var(--parchment);
-      line-height: 1.2; margin-bottom: 24px;
+      color: var(--parchment); line-height: 1.1; margin-bottom: 20px;
     }
     .signatures-rule {
       width: 40px; height: 1px;
-      background: var(--gold); opacity: 0.45;
-      margin: 0 auto 24px;
+      background: var(--gold); opacity: 0.40;
+      margin: 0 auto 20px;
     }
     .signatures-tagline {
       font-family: 'Lato', sans-serif;
       font-size: 11px; font-weight: 300;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(247,240,230,0.35);
-      margin-bottom: 40px;
+      color: rgba(247,240,230,0.30); margin-bottom: 36px;
     }
     .signatures-links {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      justify-content: center;
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
     }
     .sig-link {
       font-family: 'Lato', sans-serif;
       font-size: 12px; font-weight: 400;
       letter-spacing: 0.10em; text-transform: uppercase;
-      color: rgba(247,240,230,0.55);
-      text-decoration: none;
+      color: rgba(247,240,230,0.50); text-decoration: none;
       padding: 10px 22px;
-      border: 1px solid rgba(247,240,230,0.20);
+      border: 1px solid rgba(247,240,230,0.18);
       border-radius: 999px;
       transition: all 0.2s;
     }
     .sig-link:hover {
       color: var(--parchment);
-      border-color: rgba(247,240,230,0.50);
+      border-color: rgba(247,240,230,0.45);
       background: rgba(247,240,230,0.08);
     }
 
-    /* ── SCROLL REVEAL ─────────────────────────────────────── */
+    /* ── SCROLL REVEAL ──────────────────────────────────────── */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── LIGHTBOX ──────────────────────────────────────────── */
+    /* ── LIGHTBOX ───────────────────────────────────────────── */
     .lightbox {
       display: none; position: fixed; inset: 0; z-index: 999;
       background: rgba(20,12,5,0.96);
@@ -565,9 +525,9 @@
     }
     .lightbox.open { display: flex; }
     .lightbox img {
-      max-width: min(92vw, 1000px); max-height: 86svh; max-height: 86vh;
-      border-radius: 3px;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      max-width: min(94vw, 1100px); max-height: 86svh; max-height: 86vh;
+      border-radius: 2px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.60);
       object-fit: contain; cursor: zoom-out;
     }
     .lightbox-close {
@@ -582,42 +542,22 @@
     .lightbox-close:hover { background: rgba(255,255,255,0.20); }
     .lightbox-hint {
       font-family: 'Lato', sans-serif;
-      font-size: 11px; color: rgba(255,255,255,0.30);
+      font-size: 11px; color: rgba(255,255,255,0.28);
       letter-spacing: 0.08em; text-transform: uppercase;
     }
 
-    /* ── FOOTER ────────────────────────────────────────────── */
+    /* ── FOOTER ─────────────────────────────────────────────── */
     .footer {
-      background: var(--parchment-d);
-      text-align: center;
+      background: var(--parchment-d); text-align: center;
       padding: 36px 24px 48px;
       border-top: 1px solid rgba(74,55,40,0.10);
     }
-    .footer-logo {
-      font-size: 16px; font-weight: 300;
-      color: var(--ink-mid); margin-bottom: 6px;
-    }
-    .footer-tag {
-      font-family: 'Lato', sans-serif;
-      font-size: 12px; color: var(--ink-faint);
-      margin-bottom: 20px;
-    }
-    .footer-nav {
-      display: flex; justify-content: center;
-      flex-wrap: wrap; gap: 4px 12px;
-      list-style: none; margin-bottom: 20px;
-    }
-    .footer-nav a {
-      font-family: 'Lato', sans-serif;
-      font-size: 12px; color: var(--ink-faint);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
+    .footer-logo { font-size: 16px; font-weight: 300; color: var(--ink-mid); margin-bottom: 6px; }
+    .footer-tag { font-family: 'Lato', sans-serif; font-size: 12px; color: var(--ink-faint); margin-bottom: 20px; }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 12px; list-style: none; margin-bottom: 20px; }
+    .footer-nav a { font-family: 'Lato', sans-serif; font-size: 12px; color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
     .footer-nav a:hover { color: var(--ink-mid); }
-    .footer-copy {
-      font-family: 'Lato', sans-serif;
-      font-size: 11px; color: rgba(74,55,40,0.35);
-    }
+    .footer-copy { font-family: 'Lato', sans-serif; font-size: 11px; color: rgba(74,55,40,0.32); }
   </style>
 </head>
 <body>
@@ -637,257 +577,203 @@
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
 
-  <!-- ══ OPENING ════════════════════════════════════════════ -->
+  <!-- ══ OPENING HERO ══════════════════════════════════════════ -->
   <section class="opening" id="main-content" aria-label="Wedding vows opening">
-
     <div class="opening-photo">
       <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg"
            alt="Ben and Brittney McGee on their wedding day, November 1, 2025, Greer Arizona"
            loading="eager"/>
     </div>
-
     <div class="opening-text">
       <div class="opening-kicker reveal">November 1, 2025 · Greer, Arizona</div>
-      <h1 class="opening-title reveal" style="transition-delay:0.15s;">Our<br/>Vows</h1>
-      <div class="opening-date reveal" style="transition-delay:0.25s;">Ben & Brittney McGee · Christian Ceremony</div>
-      <div class="opening-rule reveal" style="transition-delay:0.35s;"></div>
-      <p class="opening-intro reveal" style="transition-delay:0.45s;">
-        The words we spoke before God and everyone we love.<br/>
-        Written by hand. Meant for a lifetime.
-      </p>
+      <h1 class="opening-title reveal" style="transition-delay:.12s;">Our<br/>Vows</h1>
+      <div class="opening-date reveal" style="transition-delay:.22s;">Ben & Brittney McGee · Christian Ceremony</div>
+      <div class="opening-rule reveal" style="transition-delay:.32s;"></div>
+      <p class="opening-intro reveal" style="transition-delay:.42s;">The words we spoke before God<br/>and everyone we love.<br/>Written by hand. Meant for a lifetime.</p>
     </div>
-
   </section>
 
-  <!-- ══ BEN'S CHAPTER ══════════════════════════════════════ -->
-  <div class="chapter-intro" aria-label="Ben's vows chapter">
+  <!-- ══ BEN'S CHAPTER INTRO ══════════════════════════════════ -->
+  <div class="chapter-intro" aria-label="Ben's vows">
     <div class="chapter-line reveal"></div>
-    <div class="chapter-eyebrow reveal" style="transition-delay:0.1s;">His Words</div>
-    <h2 class="chapter-title reveal" style="transition-delay:0.2s;">Ben, To Brittney</h2>
+    <div class="chapter-eyebrow reveal" style="transition-delay:.1s;">His Words</div>
+    <h2 class="chapter-title reveal" style="transition-delay:.2s;">Ben, To Brittney</h2>
   </div>
 
-  <section class="vow-section" aria-label="Ben's vows">
+  <!-- ══ BEN'S VOW SECTION — handwriting as background ════════ -->
+  <section class="vow-section ben" aria-label="Ben's wedding vows">
 
-    <div class="vow-header reveal">
-      <div class="vow-to-block">
-        <div class="vow-to-label">To My Wife</div>
-        <div class="vow-recipient">Brittney</div>
-      </div>
-      <div class="vow-from-block">
-        <div class="vow-author-label">Written by</div>
-        <div class="vow-author">Benjamin</div>
-      </div>
-    </div>
+    <!-- Watermark: Ben's handwriting pages tiled as background art -->
+    <div class="vow-bg" style="background-image: url('photos/vows/ben/IMG_2091.jpg');" aria-hidden="true"></div>
 
-    <div class="vow-body">
+    <div class="vow-content">
 
-      <!-- Left — digital vow text -->
-      <div class="vow-text-col">
-
-        <div class="pull-quote-block reveal">
-          <blockquote>
-            "From the moment our eyes met, I knew my life had changed."
-          </blockquote>
+      <div class="vow-header reveal">
+        <div>
+          <div class="vow-to-label">To My Wife</div>
+          <div class="vow-recipient">Brittney</div>
         </div>
-
-        <p class="vow-para reveal">From the moment our eyes met, I knew my life had changed. In that instant, I felt an unexplainable peace, something so rare and so deep it touched a place in my heart I didn't even know existed. You have taught me what true love really means.</p>
-
-        <p class="vow-para reveal">You have shown me grace, strength, and what it looks like to love without conditions. The way you encourage me when I chase my dreams, and the way you love Levi and me with your whole heart, humbles me every day.</p>
-
-        <p class="vow-para reveal">Watching the two of you together has been one of the greatest blessings of my life, and I will spend the rest of my days honoring that love and protecting the family we have built.</p>
-
-        <p class="vow-para reveal"><em>Before God and those who love us, I make this vow to you.</em></p>
-
-        <div class="vow-promises reveal">
-          <p>I will love you as Christ loves the church, with a heart that chooses sacrifice over pride, service over comfort, and grace over anger.</p>
-          <p>I will be quick to forgive, slow to anger, and devoted in my devotion.</p>
-          <p>I will lead our home not by power, but by prayer. Not by authority, but by example.</p>
-          <p>I will honor you as my equal and my partner in every season of life.</p>
-          <p>Today, I vow to keep choosing you. Through every adventure, every change, and every moment that feels both new and familiar.</p>
-          <p>I vow to keep growing with you, to laugh with you when life feels light, and to hold you close when life feels heavy.</p>
-          <p>I vow to be your teammate in everything — from raising our family, to chasing the life we have always talked about, to building that life brick by brick, hand in hand.</p>
-          <p>I will guard our marriage with faithfulness, cherish our covenant with joy, and nurture our love so that it reflects the love of Christ to the world.</p>
-          <p>I will be the one who prays with you, laughs with you, and stands with you through every season.</p>
-          <p>I will cherish you as my wife, my best friend, and my greatest blessing.</p>
+        <div class="vow-author-block">
+          <div class="vow-author-label">Written by</div>
+          <div class="vow-author">Benjamin</div>
         </div>
-
-        <p class="vow-para reveal">You are my home, Brittney. And standing here in front of everyone we love, I vow to spend the rest of my life making sure you never forget how loved, how seen, and how cherished you are.</p>
-
-        <div class="vow-signature reveal">I love you, Britt.</div>
-
       </div>
 
-      <!-- Right — Ben's notebook, woven in -->
-      <div class="vow-notebook-col">
-
-        <div class="notebook-accent reveal">
-          <img src="photos/vows/ben/IMG_2088.jpg"
-               alt="Ben's handwritten vows — opening page" loading="lazy"/>
-          <div class="notebook-caption">As written by Ben</div>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.1s;">
-          <img src="photos/vows/ben/IMG_2090.jpg"
-               alt="Ben's handwritten vows" loading="lazy"/>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.2s;">
-          <img src="photos/vows/ben/IMG_2092.jpg"
-               alt="Ben's handwritten vows — promises" loading="lazy"/>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.3s;">
-          <img src="photos/vows/ben/IMG_2094.jpg"
-               alt="Ben's handwritten vows" loading="lazy"/>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.4s;">
-          <img src="photos/vows/ben/IMG_2096.jpg"
-               alt="Ben's handwritten vows — signature" loading="lazy"/>
-          <div class="notebook-caption">Signed, November 1, 2025</div>
-        </div>
-
+      <div class="pull-quote reveal">
+        <blockquote>"From the moment our eyes met, I knew my life had changed."</blockquote>
       </div>
+
+      <p class="vow-para reveal">From the moment our eyes met, I knew my life had changed. In that instant, I felt an unexplainable peace, something so rare and so deep it touched a place in my heart I didn't even know existed. You have taught me what true love really means.</p>
+
+      <p class="vow-para reveal">You have shown me grace, strength, and what it looks like to love without conditions. The way you encourage me when I chase my dreams, and the way you love Levi and me with your whole heart, humbles me every day.</p>
+
+      <p class="vow-para reveal">Watching the two of you together has been one of the greatest blessings of my life, and I will spend the rest of my days honoring that love and protecting the family we have built.</p>
+
+      <p class="vow-para reveal"><em>Before God and those who love us, I make this vow to you.</em></p>
+
+      <div class="vow-promises reveal">
+        <div class="vow-promises-label">My Promises to You</div>
+        <p>I will love you as Christ loves the church, with a heart that chooses sacrifice over pride, service over comfort, and grace over anger.</p>
+        <p>I will be quick to forgive, slow to anger, and devoted in my devotion.</p>
+        <p>I will lead our home not by power, but by prayer. Not by authority, but by example.</p>
+        <p>I will honor you as my equal and my partner in every season of life.</p>
+        <p>Today, I vow to keep choosing you. Through every adventure, every change, and every moment that feels both new and familiar.</p>
+        <p>I vow to keep growing with you, to laugh with you when life feels light, and to hold you close when life feels heavy.</p>
+        <p>I vow to be your teammate in everything — from raising our family, to chasing the life we have always talked about, to building that life brick by brick, hand in hand.</p>
+        <p>I will guard our marriage with faithfulness, cherish our covenant with joy, and nurture our love so that it reflects the love of Christ to the world.</p>
+        <p>I will be the one who prays with you, laughs with you, and stands with you through every season.</p>
+        <p>I will cherish you as my wife, my best friend, and my greatest blessing.</p>
+      </div>
+
+      <p class="vow-para reveal">You are my home, Brittney. And standing here in front of everyone we love, I vow to spend the rest of my life making sure you never forget how loved, how seen, and how cherished you are.</p>
+
+      <div class="vow-signature reveal">I love you, Britt.</div>
+
     </div>
   </section>
 
-  <!-- Divider between vows -->
+  <!-- Ben's notebook thumbnails — compact strip -->
+  <div class="notebook-strip" aria-label="Ben's handwritten vow pages">
+    <div class="notebook-strip-label">In Ben's handwriting · November 1, 2025</div>
+    <div class="notebook-strip-scroll">
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2088.jpg" alt="Ben's handwritten vows — page 1" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2089.jpg" alt="Ben's handwritten vows — page 2" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2090.jpg" alt="Ben's handwritten vows — page 3" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2091.jpg" alt="Ben's handwritten vows — page 4" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2092.jpg" alt="Ben's handwritten vows — page 5" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2093.jpg" alt="Ben's handwritten vows — page 6" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2094.jpg" alt="Ben's handwritten vows — page 7" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2095.jpg" alt="Ben's handwritten vows — page 8" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/ben/IMG_2096.jpg" alt="Ben's handwritten vows — page 9" loading="lazy"/></div>
+    </div>
+  </div>
+
+  <!-- Divider -->
   <div class="vow-divider" aria-hidden="true">
     <div class="vow-divider-line"></div>
-    <div class="vow-divider-ornament">✦</div>
+    <div class="vow-divider-glyph">✦</div>
     <div class="vow-divider-line"></div>
   </div>
 
-  <!-- ══ BRITTNEY'S CHAPTER ══════════════════════════════════ -->
-  <div class="chapter-intro" aria-label="Brittney's vows chapter">
+  <!-- ══ BRITTNEY'S CHAPTER INTRO ══════════════════════════════ -->
+  <div class="chapter-intro" aria-label="Brittney's vows">
     <div class="chapter-line reveal"></div>
-    <div class="chapter-eyebrow reveal" style="transition-delay:0.1s;">Her Words</div>
-    <h2 class="chapter-title reveal" style="transition-delay:0.2s;">Brittney, To Ben</h2>
+    <div class="chapter-eyebrow reveal" style="transition-delay:.1s;">Her Words</div>
+    <h2 class="chapter-title reveal" style="transition-delay:.2s;">Brittney, To Ben</h2>
   </div>
 
-  <section class="vow-section" aria-label="Brittney's vows">
+  <!-- ══ BRITTNEY'S VOW SECTION ════════════════════════════════ -->
+  <section class="vow-section britt" aria-label="Brittney's wedding vows">
 
-    <div class="vow-header reveal">
-      <div class="vow-to-block">
-        <div class="vow-to-label">To My Husband</div>
-        <div class="vow-recipient">Benjamin</div>
-      </div>
-      <div class="vow-from-block">
-        <div class="vow-author-label">Written by</div>
-        <div class="vow-author">Brittney</div>
-      </div>
-    </div>
+    <!-- Watermark: Brittney's handwriting as background art -->
+    <div class="vow-bg" style="background-image: url('photos/vows/britt/IMG_2083.jpg');" aria-hidden="true"></div>
 
-    <div class="vow-body">
+    <div class="vow-content">
 
-      <!-- Left — digital vow text -->
-      <div class="vow-text-col">
-
-        <div class="vow-opening-line reveal">
-          Babe, we made it.
+      <div class="vow-header reveal">
+        <div>
+          <div class="vow-to-label">To My Husband</div>
+          <div class="vow-recipient">Benjamin</div>
         </div>
-
-        <p class="vow-para reveal">Who would have thought that running into each other 3 years ago at Buffalo Chip would turn into falling madly in love and getting married in front of all our loved ones. God is so good.</p>
-
-        <p class="vow-para reveal">You are my best friend, and you have shown me a love so unconditional and so selfless. You've taken the parts of me that I thought were unlovable and still needing healing and turned those things into something beautiful and cherished. You have grown flowers in the darkest parts of me.</p>
-
-        <div class="pull-quote-block reveal">
-          <blockquote>
-            "You have grown flowers in the darkest parts of me."
-          </blockquote>
+        <div class="vow-author-block">
+          <div class="vow-author-label">Written by</div>
+          <div class="vow-author">Brittney</div>
         </div>
-
-        <p class="vow-para reveal">You have far exceeded what I thought love was supposed to be like. The way your family loved me with no hesitation and arms wide open speaks to the love that you so effortlessly give — and that I can't wait to start a lifetime with.</p>
-
-        <p class="vow-para reveal">I am forever in love with your soul. With your "good morning beautiful," the way we can be complete goofballs together, how you're always down for a rap battle and a late-night snack. I love how you bring life into every room you enter — and how from the beginning you loved my son as if he were your own. I can't imagine a life without your random serenades and sweet kisses. I can't wait to grow old together, to continue to grow deeper in our faith together.</p>
-
-        <p class="vow-para reveal">To hear all the random songs you and Levi will make up together, and for you to lead our house. I can't forget popcorn and M&Ms for the rest of our life together.</p>
-
-        <div class="vow-promises reveal">
-          <p>I vow to never go to bed angry, to always look to God for how I can better serve you in our marriage.</p>
-          <p>I vow to honor you and let you lead our family, to always be bone of my bone, flesh of my flesh, and work together as equals.</p>
-          <p>I vow to be gospel-centered parents and tender-hearted.</p>
-          <p>To be quick to forgive, to have God's grace — to where I turn to "win the relationship, not the argument."</p>
-          <p>I vow to lift you and encourage you always, and to never stop fighting for us until our last breath.</p>
-        </div>
-
-        <div class="vow-signature reveal">I love you, Wife.</div>
-
       </div>
 
-      <!-- Right — Brittney's notebook, woven in -->
-      <div class="vow-notebook-col">
-
-        <div class="notebook-accent reveal">
-          <img src="photos/vows/britt/IMG_2081.jpg"
-               alt="Brittney's handwritten vows — opening page" loading="lazy"/>
-          <div class="notebook-caption">As written by Brittney</div>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.1s;">
-          <img src="photos/vows/britt/IMG_2083.jpg"
-               alt="Brittney's handwritten vows" loading="lazy"/>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.2s;">
-          <img src="photos/vows/britt/IMG_2085.jpg"
-               alt="Brittney's handwritten vows — promises" loading="lazy"/>
-        </div>
-
-        <div class="notebook-accent reveal" style="transition-delay:0.3s;">
-          <img src="photos/vows/britt/IMG_2087.jpg"
-               alt="Brittney's handwritten vows — signature" loading="lazy"/>
-          <div class="notebook-caption">Signed, November 1, 2025</div>
-        </div>
-
+      <div class="vow-opening-line reveal">
+        Babe, we made it.
       </div>
+
+      <p class="vow-para reveal">Who would have thought that running into each other 3 years ago at Buffalo Chip would turn into falling madly in love and getting married in front of all our loved ones. God is so good.</p>
+
+      <p class="vow-para reveal">You are my best friend, and you have shown me a love so unconditional and so selfless. You've taken the parts of me that I thought were unlovable and still needing healing and turned those things into something beautiful and cherished.</p>
+
+      <div class="pull-quote reveal">
+        <blockquote>"You have grown flowers in the darkest parts of me."</blockquote>
+      </div>
+
+      <p class="vow-para reveal">You have far exceeded what I thought love was supposed to be like. The way your family loved me with no hesitation and arms wide open speaks to the love that you so effortlessly give — and that I can't wait to start a lifetime with.</p>
+
+      <p class="vow-para reveal">I am forever in love with your soul. With your "good morning beautiful," the way we can be complete goofballs together, how you're always down for a rap battle and a late-night snack. I love how you bring life into every room you enter — and how from the beginning you loved my son as if he were your own.</p>
+
+      <p class="vow-para reveal">I can't imagine a life without your random serenades and sweet kisses. I can't wait to grow old together, to continue to grow deeper in our faith together. To hear all the random songs you and Levi will make up together, and for you to lead our house. I can't forget popcorn and M&Ms for the rest of our life together.</p>
+
+      <div class="vow-promises reveal">
+        <div class="vow-promises-label">My Promises to You</div>
+        <p>I vow to never go to bed angry, to always look to God for how I can better serve you in our marriage.</p>
+        <p>I vow to honor you and let you lead our family, to always be bone of my bone, flesh of my flesh, and work together as equals.</p>
+        <p>I vow to be gospel-centered parents and tender-hearted.</p>
+        <p>To be quick to forgive, to have God's grace — to where I turn to "win the relationship, not the argument."</p>
+        <p>I vow to lift you and encourage you always, and to never stop fighting for us until our last breath.</p>
+      </div>
+
+      <div class="vow-signature reveal">I love you, Wife.</div>
+
     </div>
   </section>
 
-  <!-- ══ SHARED THEMES ═══════════════════════════════════════ -->
-  <div class="themes-section" aria-label="Shared themes from the vows">
+  <!-- Brittney's notebook thumbnails -->
+  <div class="notebook-strip" style="background: var(--parchment-d);" aria-label="Brittney's handwritten vow pages">
+    <div class="notebook-strip-label">In Brittney's handwriting · November 1, 2025</div>
+    <div class="notebook-strip-scroll">
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2081.jpg" alt="Brittney's handwritten vows — page 1" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2082.jpg" alt="Brittney's handwritten vows — page 2" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2083.jpg" alt="Brittney's handwritten vows — page 3" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2084.jpg" alt="Brittney's handwritten vows — page 4" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2085.jpg" alt="Brittney's handwritten vows — page 5" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2086.jpg" alt="Brittney's handwritten vows — page 6" loading="lazy"/></div>
+      <div class="notebook-thumb"><img src="photos/vows/britt/IMG_2087.jpg" alt="Brittney's handwritten vows — page 7" loading="lazy"/></div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="vow-divider" style="background: var(--parchment-d);" aria-hidden="true">
+    <div class="vow-divider-line"></div>
+    <div class="vow-divider-glyph">✦</div>
+    <div class="vow-divider-line"></div>
+  </div>
+
+  <!-- ══ SHARED THEMES ══════════════════════════════════════════ -->
+  <div class="themes-section" aria-label="Shared promises from both vows">
     <div class="themes-inner">
       <div class="themes-eyebrow reveal">What They Both Promised</div>
-      <h2 class="themes-title reveal" style="transition-delay:0.1s;">Woven Through Both</h2>
+      <h2 class="themes-title reveal" style="transition-delay:.1s;">Woven Through Both</h2>
       <div class="themes-grid">
-        <div class="theme-card reveal">
-          <span class="theme-icon">✝️</span>
-          <div class="theme-word">Faith</div>
-          <div class="theme-quote">"Lead by prayer, not power"</div>
-        </div>
-        <div class="theme-card reveal" style="transition-delay:0.1s;">
-          <span class="theme-icon">🧒</span>
-          <div class="theme-word">Family</div>
-          <div class="theme-quote">"Loved my son as his own"</div>
-        </div>
-        <div class="theme-card reveal" style="transition-delay:0.2s;">
-          <span class="theme-icon">🌱</span>
-          <div class="theme-word">Growth</div>
-          <div class="theme-quote">"Grown flowers in the dark"</div>
-        </div>
-        <div class="theme-card reveal" style="transition-delay:0.3s;">
-          <span class="theme-icon">🤝</span>
-          <div class="theme-word">Partnership</div>
-          <div class="theme-quote">"Brick by brick, hand in hand"</div>
-        </div>
-        <div class="theme-card reveal" style="transition-delay:0.4s;">
-          <span class="theme-icon">💛</span>
-          <div class="theme-word">Grace</div>
-          <div class="theme-quote">"Quick to forgive, slow to anger"</div>
-        </div>
-        <div class="theme-card reveal" style="transition-delay:0.5s;">
-          <span class="theme-icon">∞</span>
-          <div class="theme-word">Forever</div>
-          <div class="theme-quote">"Until our last breath"</div>
-        </div>
+        <div class="theme-card reveal"><span class="theme-icon">✝️</span><div class="theme-word">Faith</div><div class="theme-quote">"Lead by prayer, not power"</div></div>
+        <div class="theme-card reveal" style="transition-delay:.08s;"><span class="theme-icon">🧒</span><div class="theme-word">Family</div><div class="theme-quote">"Loved my son as his own"</div></div>
+        <div class="theme-card reveal" style="transition-delay:.16s;"><span class="theme-icon">🌱</span><div class="theme-word">Growth</div><div class="theme-quote">"Grown flowers in the dark"</div></div>
+        <div class="theme-card reveal" style="transition-delay:.24s;"><span class="theme-icon">🤝</span><div class="theme-word">Partnership</div><div class="theme-quote">"Brick by brick, hand in hand"</div></div>
+        <div class="theme-card reveal" style="transition-delay:.32s;"><span class="theme-icon">💛</span><div class="theme-word">Grace</div><div class="theme-quote">"Quick to forgive, slow to anger"</div></div>
+        <div class="theme-card reveal" style="transition-delay:.40s;"><span class="theme-icon">∞</span><div class="theme-word">Forever</div><div class="theme-quote">"Until our last breath"</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ══ CLOSING ════════════════════════════════════════════ -->
+  <!-- ══ CINEMATIC CLOSING ══════════════════════════════════════ -->
   <div class="closing-section" aria-label="Closing moment">
     <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg"
-         alt="Ben and Brittney at their wedding ceremony, Greer Arizona"
+         alt="Ben and Brittney at their wedding, Greer Arizona"
          class="closing-photo" loading="lazy"/>
     <div class="closing-overlay">
       <div class="closing-inner reveal">
@@ -899,19 +785,17 @@
     </div>
   </div>
 
-  <!-- ══ SIGNATURES ═════════════════════════════════════════ -->
+  <!-- ══ SIGNATURES ════════════════════════════════════════════ -->
   <div class="signatures-section" aria-label="Final signatures">
     <div class="signatures-inner">
       <div class="signatures-date reveal">November 1, 2025 · Greer, Arizona</div>
-      <div class="signatures-names reveal" style="transition-delay:0.15s;">
-        Ben & Brittney
-      </div>
-      <div class="signatures-rule reveal" style="transition-delay:0.25s;"></div>
-      <div class="signatures-tagline reveal" style="transition-delay:0.35s;">Faith. Family. Forever.</div>
-      <div class="signatures-links reveal" style="transition-delay:0.45s;">
+      <div class="signatures-names reveal" style="transition-delay:.12s;">Ben & Brittney</div>
+      <div class="signatures-rule reveal" style="transition-delay:.22s;"></div>
+      <div class="signatures-tagline reveal" style="transition-delay:.32s;">Faith. Family. Forever.</div>
+      <div class="signatures-links reveal" style="transition-delay:.42s;">
         <a href="our-story.html" class="sig-link">Our Story</a>
         <a href="gallery.html#wedding" class="sig-link">Wedding Photos</a>
-        <a href="vows.html#main-content" class="sig-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Read Again ↑</a>
+        <a href="#main-content" class="sig-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Read Again ↑</a>
       </div>
     </div>
   </div>
@@ -932,7 +816,7 @@
   </footer>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer" aria-modal="true">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
     <img id="lightbox-img" src="" alt=""/>
     <div class="lightbox-hint" aria-hidden="true">← → to navigate · esc to close</div>
   </div>
@@ -941,24 +825,23 @@
   <script>
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
+    }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Lightbox — attach to all notebook images
-    const lightbox = document.getElementById('lightbox');
-    const lbImg    = document.getElementById('lightbox-img');
-    const lbClose  = document.getElementById('lightbox-close');
+    // Lightbox on notebook thumbnails
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lightbox-img');
+    const lbClose   = document.getElementById('lightbox-close');
+    let allThumbs   = [];
+    let currentIdx  = 0;
 
-    document.querySelectorAll('.notebook-accent img').forEach(img => {
-      img.style.cursor = 'zoom-in';
+    document.querySelectorAll('.notebook-thumb img').forEach((img, idx) => {
+      allThumbs.push(img);
       img.addEventListener('click', () => {
+        currentIdx = idx;
         lbImg.src = img.src;
         lbImg.alt = img.alt;
         lightbox.classList.add('open');
@@ -967,15 +850,24 @@
       });
     });
 
-    const closeLightbox = () => {
+    const closeLB = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
       lbImg.src = '';
     };
 
-    lbClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    lbClose.addEventListener('click', closeLB);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowRight' && currentIdx < allThumbs.length - 1) {
+        currentIdx++; lbImg.src = allThumbs[currentIdx].src; lbImg.alt = allThumbs[currentIdx].alt;
+      }
+      if (e.key === 'ArrowLeft' && currentIdx > 0) {
+        currentIdx--; lbImg.src = allThumbs[currentIdx].src; lbImg.alt = allThumbs[currentIdx].alt;
+      }
+    });
   </script>
 </body>
 </html>
