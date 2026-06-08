@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://mcgee162010.github.io/McGee-Family/sitemap.xml
+Sitemap: https://mcgeefamily2025.com/sitemap.xml

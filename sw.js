@@ -2,7 +2,7 @@
 // Caches key pages and assets for offline use
 // Especially useful for baby shower guests with spotty venue WiFi
 
-const CACHE_NAME = 'mcgee-family-v1';
+const CACHE_NAME = `mcgee-family-${CACHE_VERSION}`;
 const CACHE_VERSION = '2026-06-09';
 
 // Pages and assets to cache immediately on install
@@ -26,7 +26,7 @@ const PRECACHE = [
   // Key photos
   '/photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg',
   '/photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg',
-  '/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg',
+  '/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg',
 ];
 
 // Install — precache core assets

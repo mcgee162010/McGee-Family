@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (toggle && links) {
     toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+      const isOpen = links.classList.toggle('open');
+      toggle.textContent = isOpen ? '✕' : '☰';
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
     links.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
@@ -51,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { lbImg.src = ''; }, 300);
     };
 
-    // Attach to ALL images — photo-grid, masonry, member-photo, bently-grid, etc.
+    // Attach to ALL images — photo-grid, masonry, member-photo, bentley-grid, etc.
     const attachLightbox = () => {
       document.querySelectorAll(
-        '.photo-grid img, .masonry img, .bently-grid img, .member-photo'
+        '.photo-grid img, .masonry img, .bentley-grid img, .member-photo'
       ).forEach(img => {
         if (!img.dataset.lbBound) {
           img.dataset.lbBound = '1';
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lbImg.addEventListener('click', e => {
       // Clicking the image itself navigates to next
       const allImgs = [...document.querySelectorAll(
-        '.masonry img:not([style*="display:none"]), .photo-grid img, .bently-grid img'
+        '.masonry img:not([style*="display:none"]), .photo-grid img, .bentley-grid img'
       )].filter(img => img.offsetParent !== null); // only visible
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       const allImgs = [...document.querySelectorAll(
-        '.masonry img, .photo-grid img, .bently-grid img'
+        '.masonry img, .photo-grid img, .bentley-grid img'
       )].filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
