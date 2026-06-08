@@ -125,6 +125,124 @@
     }
     .hero-member .avatar { font-size: 18px; }
 
+    /* ── REDESIGNED HERO — photo-backed split ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo-panel { min-height: 55svh; }
+    }
+
+    .hero-photo-panel {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-photo-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(43,26,12,0.15) 0%, transparent 60%);
+    }
+
+    .hero-text-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 52px;
+      background:
+        radial-gradient(ellipse 80% 70% at 20% 20%, rgba(178,205,181,0.50) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(237,224,212,0.45) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--terra-pale) 100%);
+      gap: 18px;
+    }
+    @media (max-width: 800px) {
+      .hero-text-panel { padding: 52px 28px 60px; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 6px 16px 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 12px rgba(60,40,20,0.08);
+      width: fit-content;
+    }
+    .hero-badge .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #34C759;
+      box-shadow: 0 0 0 3px rgba(52,199,89,0.20);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .hero h1 .name {
+      display: block;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 50%, var(--terracotta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-secondary);
+      max-width: 380px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .hero-family-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .hero-member {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 5px 12px 5px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .hero-member .avatar { font-size: 16px; }
+
     /* countdown */
     .countdown-banner {
       background: linear-gradient(135deg, var(--sage-pale), var(--terra-pale));
@@ -222,32 +340,35 @@
     <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge"><span class="live-dot"></span> Queen Creek, Arizona</div>
-    <h1>The<span class="name">McGee</span>Family</h1>
-    <p class="hero-sub">Ben · Brittney · Levi · Phoenix · and Baby McGee on the way. A family rooted in faith, love, and a whole lot of adventure. <em style="display:block; margin-top:10px; font-style:italic; font-size:0.85em; opacity:0.75; letter-spacing:0.04em;">Faith. Family. Forever.</em></p>
-    <div class="hero-cta">
-      <a href="family.html" class="btn btn-primary">Meet the Family →</a>
-      <a href="baby-shower.html" class="btn btn-secondary">Baby Shower RSVP 🌿</a>
+  <!-- HERO — photo left, text right -->
+  <section class="hero" id="main-content">
+
+    <!-- LEFT: Family photo -->
+    <div class="hero-photo-panel">
+      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
+           alt="The McGee Family — Ben, Brittney, Levi and Phoenix in Queen Creek, AZ"
+           loading="eager"/>
     </div>
-    <div class="hero-family-row">
-      <div class="hero-member"><span class="avatar">👨</span> Ben</div>
-      <div class="hero-member"><span class="avatar">👩</span> Brittney</div>
-      <div class="hero-member"><span class="avatar">🧒</span> Levi</div>
-      <div class="hero-member"><span class="avatar">🐕</span> Phoenix</div>
-      <div class="hero-member"><span class="avatar">🌿</span> Baby McGee</div>
+
+    <!-- RIGHT: Text -->
+    <div class="hero-text-panel">
+      <div class="hero-badge"><span class="live-dot"></span> Queen Creek, Arizona</div>
+      <h1>The<span class="name">McGee</span>Family</h1>
+      <p class="hero-sub">Ben · Brittney · Levi · Phoenix · and Baby McGee on the way. A family rooted in faith, love, and a whole lot of adventure.<br/><em style="font-style:italic; font-size:0.85em; opacity:0.65; letter-spacing:0.04em;">Faith. Family. Forever.</em></p>
+      <div class="hero-cta">
+        <a href="family.html" class="btn btn-primary">Meet the Family →</a>
+        <a href="baby-shower.html" class="btn btn-secondary">Baby Shower RSVP 🌿</a>
+      </div>
+      <div class="hero-family-row">
+        <div class="hero-member"><span class="avatar">👨</span> Ben</div>
+        <div class="hero-member"><span class="avatar">👩</span> Brittney</div>
+        <div class="hero-member"><span class="avatar">🧒</span> Levi</div>
+        <div class="hero-member"><span class="avatar">🐕</span> Phoenix</div>
+        <div class="hero-member"><span class="avatar">🌿</span> Baby McGee</div>
+      </div>
     </div>
+
   </section>
-
-
-  <!-- HERO FAMILY PHOTO -->
-  <div style="width:100%; max-height:600px; overflow:hidden; position:relative;">
-    <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
-         alt="The McGee Family"
-         style="width:100%; max-height:600px; object-fit:cover; object-position:center top; display:block;"/>
-    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 60%, rgba(234,242,235,0.85) 100%);"></div>
-  </div>
 
 
   <!-- OUR STORY STRIP -->
@@ -339,10 +460,15 @@
         <div class="ql-title">In Memory of Bentley</div>
         <p class="ql-desc">A tribute to Brittney's golden boy. Forever in our hearts.</p>
       </a>
+      <a href="timeline.html" class="card ql-card">
+        <span class="ql-icon">📅</span>
+        <div class="ql-title">Family Timeline</div>
+        <p class="ql-desc">Every chapter from how we met to Baby McGee — all in one place.</p>
+      </a>
       <a href="family.html#faith" class="card ql-card">
         <span class="ql-icon">✝️</span>
         <div class="ql-title">Our Faith</div>
-        <p class="ql-desc">Christians. Saved by faith alone.</p>
+        <p class="ql-desc">Christians rooted at Redemption Tempe. All of life is all for Jesus.</p>
       </a>
     </div>
   </div>

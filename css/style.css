@@ -631,3 +631,78 @@ body {
 .post.post-milestone .post-title {
   font-size: 22px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — 3 canonical card patterns
+   Use these everywhere. Stop using inline styles for cards.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* card-glass — frosted glass, for primary content */
+.card-glass {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+  padding: 28px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-glass:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 52px rgba(60,40,20,0.13);
+}
+
+/* card-warm — cream/brown background, for storytelling */
+.card-warm {
+  background: var(--cream-dark);
+  border: 1.5px solid rgba(107,79,58,0.12);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+
+/* card-accent — colored bg, for highlights and CTAs */
+.card-accent {
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+.card-accent.sage  { background: var(--sage-pale);  border: 1.5px solid rgba(122,158,126,0.25); }
+.card-accent.brown { background: var(--brown-pale);  border: 1.5px solid rgba(107,79,58,0.18); }
+.card-accent.terra { background: var(--terra-pale);  border: 1.5px solid rgba(196,113,74,0.22); }
+.card-accent.dark  { background: var(--brown);       color: rgba(255,255,255,0.88); }
+
+/* ── PULL QUOTE ─────────────────────────────────────────────────── */
+.pull-quote {
+  border-left: 3px solid var(--sage);
+  padding: 16px 24px;
+  margin: 28px 0;
+  background: var(--sage-pale);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.pull-quote p {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.65;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── TYPOGRAPHY SCALE ───────────────────────────────────────────── */
+.text-display { font-size: clamp(48px, 9vw, 96px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; }
+.text-headline { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.text-title    { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; }
+.text-body-lg  { font-size: 18px; line-height: 1.75; color: var(--text-secondary); }
+.text-body     { font-size: 16px; line-height: 1.70; color: var(--text-secondary); }
+.text-small    { font-size: 13px; line-height: 1.55; color: var(--text-tertiary); }
+.text-caption  { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); }
+
+/* ── SPACING SCALE ──────────────────────────────────────────────── */
+.gap-xs  { gap: 8px;  }
+.gap-sm  { gap: 14px; }
+.gap-md  { gap: 20px; }
+.gap-lg  { gap: 32px; }
+.gap-xl  { gap: 48px; }
+
+/* ── GALLERY TAB — active count stays visible ───────────────────── */
+.tab.active .count { opacity: 0.75; }
