@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="McGee Family Events — Baby Shower July 25, 2026. RSVP here."/>
+  <meta name="description" content="McGee Family Events — upcoming and past family events."/>
   <title>Events · McGee Family</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
@@ -15,90 +15,139 @@
     .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
     .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
 
-    /* event card */
-    .event-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: start;
-    }
-    @media (max-width: 900px) { .event-layout { grid-template-columns: 1fr; } }
-
+    /* Event card */
     .event-card {
-      background: linear-gradient(145deg, var(--sage-pale), var(--terra-pale));
-      border: 2px solid rgba(122,158,126,0.25);
-      border-radius: var(--radius-xl);
-      padding: 40px 36px;
-    }
-    .event-emoji { font-size: 56px; display: block; margin-bottom: 18px; }
-    .event-title { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 8px; }
-    .event-subtitle { font-size: 16px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 24px; }
-
-    .event-details { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-    .event-detail {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 16px;
-      color: var(--text-secondary);
-    }
-    .event-detail .detail-icon {
-      width: 38px; height: 38px;
-      background: rgba(255,255,255,0.70);
-      border: 1px solid rgba(122,158,126,0.18);
-      border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .event-detail strong { display: block; font-size: 13px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 1px; }
-
-    .ics-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.70);
-      border: 1.5px solid rgba(107,79,58,0.18);
-      border-radius: var(--radius-full);
-      padding: 9px 18px;
-      font-size: 14px; font-weight: 600;
-      color: var(--forest);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-    .ics-btn:hover { background: rgba(255,255,255,0.90); }
-
-    /* RSVP form card */
-    .rsvp-card {
       background: var(--glass-bg);
       border: 1.5px solid var(--glass-border);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-radius: var(--radius-xl);
       box-shadow: var(--glass-shadow);
-      padding: 36px 32px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
     }
-    .rsvp-card h3 { font-size: 22px; margin-bottom: 6px; }
-    .rsvp-card .rsvp-sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 24px; }
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 52px rgba(60,40,20,0.13);
+    }
+    @media (max-width: 700px) {
+      .event-card { grid-template-columns: 1fr; }
+    }
 
-    .rsvp-success {
-      display: none;
-      text-align: center;
-      padding: 28px 0;
+    .event-card-img {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      object-fit: cover;
+      display: block;
     }
-    .rsvp-success .success-icon { font-size: 52px; display: block; margin-bottom: 14px; }
-    .rsvp-success h4 { font-size: 20px; color: var(--forest); margin-bottom: 8px; }
-    .rsvp-success p  { font-size: 15px; color: var(--text-secondary); max-width: 300px; margin: 0 auto; line-height: 1.6; }
 
-    .nursery-card {
-      background: var(--sage-pale);
-      border: 1.5px solid rgba(122,158,126,0.22);
-      border-radius: var(--radius-xl);
-      padding: 36px;
-      display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;
+    .event-card-img-fallback {
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
     }
-    .nursery-icons { font-size: 44px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
-    .nursery-info h3 { font-size: 22px; color: var(--forest); margin-bottom: 8px; }
-    .nursery-info p  { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
-    .nursery-animals { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+    .event-card-body {
+      padding: 28px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .event-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+    .status-upcoming {
+      background: rgba(61,107,82,0.12);
+      color: var(--forest);
+      border: 1px solid rgba(61,107,82,0.20);
+    }
+    .status-past {
+      background: rgba(0,0,0,0.05);
+      color: var(--text-tertiary);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .event-card-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .event-card-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+    }
+
+    .event-card-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .event-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-top: 4px;
+    }
+
+    /* Past events */
+    .past-card {
+      opacity: 0.50;
+      filter: grayscale(0.4);
+      transition: opacity 0.2s, filter 0.2s;
+    }
+    .past-card:hover {
+      opacity: 0.75;
+      filter: grayscale(0);
+    }
+
+    .past-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0 28px;
+    }
+    .past-divider span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .past-divider::before,
+    .past-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body>
@@ -117,313 +166,70 @@
   </nav>
 
   <div class="page-hero">
-    <div class="section-label">Mark Your Calendar</div>
+    <div class="section-label">McGee Family</div>
     <h1>Events</h1>
-    <p>Baby shower coming July 25 — RSVP below and we'll send you the details.</p>
+    <p>Celebrations, milestones, and moments worth gathering for.</p>
   </div>
 
-  <!-- BABY SHOWER EVENT -->
   <div class="section">
-    <div class="section-label">Upcoming Event</div>
-    <h2 class="section-title">Baby McGee Shower 🌿</h2>
-    <div class="event-layout">
 
-      <!-- Left: event info -->
-      <div class="event-card">
-        <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg" alt="Baby McGee" style="width:100%; max-height:280px; object-fit:cover; border-radius:var(--radius-lg); margin-bottom:20px; display:block; box-shadow:0 8px 32px rgba(60,40,20,0.12);"/>
-        <div class="event-title">Baby McGee Shower</div>
-        <div class="event-subtitle">The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!</div>
+    <!-- UPCOMING -->
+    <div class="section-label">Upcoming</div>
+    <h2 class="section-title" style="margin-bottom:28px;">On the Calendar</h2>
 
-        <div class="event-details">
-          <div class="event-detail">
-            <div class="detail-icon">📅</div>
-            <div><strong>Date</strong>Saturday, July 25, 2026</div>
-          </div>
-          <div class="event-detail">
-            <div class="detail-icon">⏰</div>
-            <div><strong>Time</strong>1:30 PM MST</div>
-          </div>
-          <div class="event-detail">
-            <div class="detail-icon">📍</div>
-            <div><strong>Location</strong>McGee Home · Queen Creek, Arizona<br/><span style="font-size:13px; color:var(--text-tertiary);">Address shared after RSVP</span></div>
-          </div>
-          <div class="event-detail">
-            <div class="detail-icon">🦊</div>
-            <div><strong>Theme</strong>Woodland Animals 🦔 🐻 🦉</div>
-          </div>
-          <div class="event-detail">
-            <div class="detail-icon">👶</div>
-            <div><strong>Due Date</strong>September 4, 2026</div>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <a href="baby-shower.ics" download class="ics-btn">📆 Add to Apple Calendar</a>
-          <span style="font-size:13px; color:var(--text-tertiary);">Downloads a .ics calendar file</span>
-        </div>
+    <!-- Baby Shower -->
+    <a href="baby-shower.html" class="event-card">
+      <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
+           alt="Baby McGee Shower" class="event-card-img"/>
+      <div class="event-card-body">
+        <span class="event-status status-upcoming">⏰ Upcoming</span>
+        <div class="event-card-title">Baby McGee Shower 🌿</div>
+        <div class="event-card-date">Saturday, July 25, 2026 · 1:30 PM MST · Queen Creek, AZ</div>
+        <p class="event-card-desc">The best kind of surprise — boy or girl, Baby McGee is already so loved. Join us to celebrate before the big arrival on September 4th. RSVP, registry, and gender poll inside.</p>
+        <span class="event-card-cta">View Details & RSVP →</span>
       </div>
+    </a>
 
-      <!-- Right: RSVP form -->
-      <div class="rsvp-card" id="rsvp-card">
-        <h3>RSVP 🎉</h3>
-        <p class="rsvp-sub">Let us know if you can make it — the address will be shown after you submit.</p>
-
-        <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
-          <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
-          <input type="hidden" name="_next" value=""/>
-
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" placeholder="First & Last Name" required/>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required/>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number (optional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="(480) 555-0100"/>
-          </div>
-
-          <div class="form-group">
-            <label for="attending">Will you attend? *</label>
-            <select id="attending" name="attending" required>
-              <option value="" disabled selected>Select your response</option>
-              <option value="Yes — can't wait!">✅ Yes — can't wait!</option>
-              <option value="Maybe — I'll try!">🤞 Maybe — I'll try!</option>
-              <option value="No — unable to attend">❌ No — unable to attend</option>
-            </select>
-          </div>
-
-          <div style="background:rgba(122,158,126,0.08); border:1px solid rgba(122,158,126,0.20); border-radius:var(--radius-md); padding:16px 18px; margin-bottom:18px;">
-            <div style="font-size:13px; font-weight:700; color:var(--forest); margin-bottom:14px; letter-spacing:0.02em;">👥 Guest Headcount</div>
-
-            <div class="form-group" style="margin-bottom:12px;">
-              <label for="adults">Adults (18+)</label>
-              <select id="adults" name="adults">
-                <option value="" disabled selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6+">6+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:12px;">
-              <label for="children-school">School Age Children (5–12)</label>
-              <select id="children-school" name="children_school_age">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:12px;">
-              <label for="children-toddler">Toddlers (2–4)</label>
-              <select id="children-toddler" name="children_toddler">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:0;">
-              <label for="children-infant">Infants (Under 2)</label>
-              <select id="children-infant" name="children_infant">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3+">3+</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Note for Ben & Brittney (optional)</label>
-            <textarea id="message" name="message" placeholder="Dietary needs, questions, or just a kind note…"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-terra" style="width:100%; justify-content:center;">
-            Send RSVP →
-          </button>
-
-          <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center; line-height:1.5;">
-            After submitting, Ben & Brittney will personally send you the address via email or text. 💌
-          </p>
-        </form>
-
-        <!-- Success state -->
-        <div class="rsvp-success" id="rsvp-success">
-          <span class="success-icon">🎉</span>
-          <h4>You're on the list!</h4>
-          <p>Thank you for responding! Here are the details:<br/><br/><strong>📍 22888 E Nightingale Rd, Queen Creek, AZ 85142</strong><br/><strong>📅 Saturday, July 25, 2026 at 1:30 PM MST</strong><br/><br/>Can't wait to celebrate Baby McGee with you! 🌿</p>
-        </div>
+    <!-- Baby McGee Arrival — placeholder -->
+    <div class="event-card" style="cursor:default;">
+      <div class="event-card-img-fallback" style="background:linear-gradient(135deg,var(--sage-pale),var(--cream));">👶</div>
+      <div class="event-card-body">
+        <span class="event-status status-upcoming">⏰ Coming Soon</span>
+        <div class="event-card-title">Baby McGee Arrives</div>
+        <div class="event-card-date">Due September 4, 2026</div>
+        <p class="event-card-desc">The big day is coming. More details to follow once Baby McGee makes their grand entrance!</p>
       </div>
     </div>
-  </div>
 
-  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+    <!-- PAST EVENTS -->
+    <div class="past-divider"><span>Past Events</span></div>
 
-  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
-
-  <!-- REGISTRY -->
-  <div class="section" id="registry">
-    <div class="section-label">Baby Shower Registry</div>
-    <h2 class="section-title">Baby Shower Registry</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start;" class="registry-layout">
-
-      <!-- Registry card -->
-      <div style="background:linear-gradient(135deg,var(--sage-pale),var(--cream)); border:1.5px solid rgba(122,158,126,0.25); border-radius:var(--radius-xl); padding:36px 32px;">
-        <div style="font-size:48px; margin-bottom:16px;">🎀</div>
-        <h3 style="font-size:22px; color:var(--forest); margin-bottom:10px;">Elfster Registry</h3>
-        <p style="font-size:15px; color:var(--text-secondary); line-height:1.65; margin-bottom:24px;">
-          Brittney's registry is hosted on Elfster — you can view the full registry and add gifts from any website. 
-          Click below to browse and claim what you'd like to gift Baby McGee.
-        </p>
-        <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
-           target="_blank" rel="noopener"
-           class="btn btn-primary" style="display:inline-flex;">
-          View the Registry →
-        </a>
+    <!-- Wedding -->
+    <a href="gallery.html#wedding" class="event-card past-card">
+      <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg"
+           alt="Ben & Brittney Wedding" class="event-card-img"/>
+      <div class="event-card-body">
+        <span class="event-status status-past">✓ Past Event</span>
+        <div class="event-card-title">Ben & Brittney's Wedding 💍</div>
+        <div class="event-card-date">Saturday, November 1, 2025 · Greer, Arizona</div>
+        <p class="event-card-desc">Ben and Brittney were married in the mountains of Greer, Arizona — surrounded by the people they love most. A perfect day followed by two weeks in Thailand.</p>
+        <span class="event-card-cta">View Wedding Photos →</span>
       </div>
+    </a>
 
-      <!-- Important note card -->
-      <div style="background:var(--terra-pale); border:2px solid rgba(196,113,74,0.25); border-radius:var(--radius-xl); padding:36px 32px;">
-        <div style="font-size:48px; margin-bottom:16px;">⚠️</div>
-        <h3 style="font-size:20px; color:var(--terracotta); margin-bottom:12px;">Please Mark as Purchased!</h3>
-        <p style="font-size:15px; color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">
-          If you purchase something from the registry, <strong>please mark it as purchased on Elfster</strong> so others don't buy the same gift. This keeps everything coordinated and avoids duplicates — it takes just one click!
-        </p>
-        <div style="background:rgba(255,255,255,0.60); border-radius:var(--radius-md); padding:16px 18px; font-size:14px; color:var(--text-secondary); line-height:1.6;">
-          <strong style="display:block; margin-bottom:6px; color:var(--text-primary);">How to mark as purchased:</strong>
-          1. Open the registry<br/>
-          2. Find the item you bought<br/>
-          3. Click <strong>"Mark as Purchased"</strong><br/>
-          4. Done — everyone will see it's taken! ✅
-        </div>
+    <!-- Levi 7th Birthday -->
+    <a href="gallery.html#levi-birthday" class="event-card past-card">
+      <img src="photos/levi-birthday/IMG_5581.jpeg"
+           alt="Levi's 7th Birthday" class="event-card-img"/>
+      <div class="event-card-body">
+        <span class="event-status status-past">✓ Past Event</span>
+        <div class="event-card-title">Levi's 7th Golden Birthday 🎂</div>
+        <div class="event-card-date">Monday, April 7, 2026 · Turning 7 on the 7th!</div>
+        <p class="event-card-desc">Levi turned 7 on the 7th — his golden birthday! A special milestone for a very special kid.</p>
+        <span class="event-card-cta">View Birthday Photos →</span>
       </div>
+    </a>
 
-    </div>
-
-    <!-- Mailing address note -->
-    <div style="margin-top:20px; background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:var(--radius-lg); padding:22px 26px; display:flex; align-items:center; gap:14px; box-shadow:var(--glass-shadow);">
-      <span style="font-size:28px; flex-shrink:0;">📦</span>
-      <div>
-        <div style="font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Sending a gift by mail?</div>
-        <div style="font-size:14px; color:var(--text-secondary); line-height:1.6;">
-          The mailing address will be provided to everyone who RSVPs — yes, no, or maybe. 
-          Just fill out the RSVP form above and Ben &amp; Brittney will send it to you directly.
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
-
-  <!-- GENDER POLL -->
-  <div class="section" id="poll">
-    <div class="section-label">Cast Your Vote</div>
-    <h2 class="section-title">Boy or Girl? 💙🩷</h2>
-    <p class="section-body" style="margin-bottom:32px;">Ben and Brittney have no idea — but you might have a hunch. Cast your vote and see what everyone thinks Baby McGee is!</p>
-
-    <div style="max-width:560px; margin:0 auto;">
-      <div style="background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-radius:var(--radius-xl); padding:36px 32px; box-shadow:var(--glass-shadow);">
-
-        <!-- Vote buttons -->
-        <div id="poll-vote" style="display:block;">
-          <p style="font-size:16px; color:var(--text-secondary); text-align:center; margin-bottom:28px; line-height:1.6;">
-            What's your gut feeling? Vote below — results update live! 👇
-          </p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px;">
-            <button onclick="castVote('boy')" id="btn-boy"
-              style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #93C5FD;
-                     background:linear-gradient(135deg,#DBEAFE,#BFDBFE); color:#1D4ED8;
-                     font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
-                     display:flex; flex-direction:column; align-items:center; gap:8px;">
-              <span style="font-size:36px;">💙</span>
-              It's a Boy!
-            </button>
-            <button onclick="castVote('girl')" id="btn-girl"
-              style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #F9A8D4;
-                     background:linear-gradient(135deg,#FCE7F3,#FBCFE8); color:#BE185D;
-                     font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
-                     display:flex; flex-direction:column; align-items:center; gap:8px;">
-              <span style="font-size:36px;">🩷</span>
-              It's a Girl!
-            </button>
-          </div>
-          <p style="font-size:12px; color:var(--text-tertiary); text-align:center;">One vote per device. Results are live and shared with everyone.</p>
-        </div>
-
-        <!-- Results (shown after voting) -->
-        <div id="poll-results" style="display:none;">
-          <p style="font-size:15px; font-weight:600; color:var(--text-primary); text-align:center; margin-bottom:20px;">
-            Thanks for voting! Here's where everyone stands 👇
-          </p>
-
-          <!-- Boy bar -->
-          <div style="margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
-              <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
-            </div>
-            <div style="background:#DBEAFE; border-radius:999px; height:14px; overflow:hidden;">
-              <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
-            </div>
-            <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="boy-count">0</span> votes</div>
-          </div>
-
-          <!-- Girl bar -->
-          <div style="margin-bottom:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
-              <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
-            </div>
-            <div style="background:#FCE7F3; border-radius:999px; height:14px; overflow:hidden;">
-              <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
-            </div>
-            <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="girl-count">0</span> votes</div>
-          </div>
-
-          <div style="text-align:center;">
-            <span id="total-votes" style="font-size:13px; color:var(--text-tertiary);"></span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- NURSERY THEME -->
-  <div class="section">
-    <div class="section-label">Nursery</div>
-    <h2 class="section-title">The Theme: Woodland Animals 🌲</h2>
-    <div class="nursery-card">
-      <div class="nursery-icons"><span>🦊</span><span>🐻</span><span>🦔</span></div>
-      <div class="nursery-info">
-        <h3>Into the Woods</h3>
-        <p>Baby McGee's nursery is all about the beauty of the forest — warm earthy tones, cozy textures, and woodland creatures. Think foxes, bears, owls, hedgehogs, and deer. The room is coming together beautifully for whoever this little one turns out to be.</p>
-        <div class="nursery-animals">
-          <span class="tag tag-sage">🦊 Fox</span>
-          <span class="tag tag-sage">🐻 Bear</span>
-          <span class="tag tag-sage">🦔 Hedgehog</span>
-          <span class="tag tag-sage">🦉 Owl</span>
-          <span class="tag tag-sage">🦌 Deer</span>
-          <span class="tag tag-sage">🍄 Mushroom</span>
-          <span class="tag tag-sage">🌿 Fern</span>
-          <span class="tag tag-sage">🌲 Pine</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <footer class="footer">
@@ -440,82 +246,12 @@
     <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
   </footer>
 
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys to navigate &nbsp;·&nbsp; esc or click outside to close</div>
+  </div>
+
   <script src="js/main.js"></script>
-  <script>
-    // ── Gender Poll — uses localStorage for votes, JSONBin for live shared results ──
-    const BIN_URL = 'https://api.jsonbin.io/v3/b/6840000000000000000000'; // placeholder — see setup note
-    const VOTED_KEY = 'mcgee_baby_voted';
-
-    function castVote(choice) {
-      // Save locally so they can't vote again
-      localStorage.setItem(VOTED_KEY, choice);
-
-      // Get current counts from localStorage (shared via JSONBin in production)
-      let boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
-      let girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
-
-      if (choice === 'boy')  boys++;
-      else                   girls++;
-
-      localStorage.setItem('mcgee_boy_votes',  boys);
-      localStorage.setItem('mcgee_girl_votes', girls);
-
-      showResults(boys, girls);
-    }
-
-    function showResults(boys, girls) {
-      const total = boys + girls;
-      const boyPct  = total ? Math.round((boys  / total) * 100) : 50;
-      const girlPct = total ? Math.round((girls / total) * 100) : 50;
-
-      document.getElementById('poll-vote').style.display    = 'none';
-      document.getElementById('poll-results').style.display = 'block';
-
-      document.getElementById('boy-count').textContent  = boys;
-      document.getElementById('girl-count').textContent = girls;
-      document.getElementById('boy-pct').textContent    = boyPct  + '%';
-      document.getElementById('girl-pct').textContent   = girlPct + '%';
-      document.getElementById('total-votes').textContent = `${total} total vote${total !== 1 ? 's' : ''}`;
-
-      setTimeout(() => {
-        document.getElementById('boy-bar').style.width  = boyPct  + '%';
-        document.getElementById('girl-bar').style.width = girlPct + '%';
-      }, 100);
-    }
-
-    // On load — check if already voted
-    window.addEventListener('DOMContentLoaded', () => {
-      const voted = localStorage.getItem(VOTED_KEY);
-      if (voted) {
-        const boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
-        const girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
-        showResults(boys, girls);
-      }
-    });
-  </script>
-
-  <script>
-    // Intercept Formspree submission for inline success state
-    const form = document.getElementById('rsvp-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('rsvp-success').style.display = 'block';
-        } else {
-          alert('Something went wrong. Please try again or email benjmcgee@yahoo.com directly.');
-        }
-      } catch {
-        alert('Something went wrong. Please try again or email benjmcgee@yahoo.com directly.');
-      }
-    });
-  </script>
 </body>
 </html>
