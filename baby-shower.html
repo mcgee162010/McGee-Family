@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Baby McGee Shower — July 25, 2026. RSVP, registry, and details."/>
   <title>Baby McGee Shower · McGee Family</title>
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:url"         content="https://mcgee162010.github.io/McGee-Family/baby-shower.html"/>
+  <meta property="og:title"       content="Baby McGee Shower · July 25, 2026"/>
+  <meta property="og:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! Boy or girl — we have no idea. RSVP, registry, and gender poll inside."/>
+  <meta property="og:image"       content="https://mcgee162010.github.io/McGee-Family/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
+  <meta property="og:image:width" content="1400"/>
+  <meta property="og:image:alt"   content="Baby McGee Shower · July 25, 2026"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Baby McGee Shower · July 25, 2026"/>
+  <meta name="twitter:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! Boy or girl — we have no idea. RSVP, registry, and gender poll inside."/>
+  <meta name="twitter:image"       content="https://mcgee162010.github.io/McGee-Family/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
+  <meta name="theme-color"         content="#7A9E7E"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgee162010.github.io/McGee-Family/baby-shower.html"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
 
@@ -258,6 +274,9 @@
   </style>
 </head>
 <body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
 
   <nav class="nav">
     <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
@@ -269,11 +288,11 @@
       <li><a href="updates.html">Updates</a></li>
       <li><a href="bentley.html">In Memory</a></li>
     </ul>
-    <button class="nav-mobile-toggle">☰</button>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
 
   <!-- ── HERO — photo left, info right ──────────────────────────────────── -->
-  <div class="hero-split">
+  <div class="hero-split" id="main-content">
     <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
          alt="Baby McGee" class="hero-split-photo"/>
     <div class="hero-split-info">
@@ -296,7 +315,7 @@
   </div>
 
   <!-- ── MAIN CONTENT ────────────────────────────────────────────────────── -->
-  <div class="section">
+  <div class="section" id="main-content">
     <div class="two-col">
 
       <!-- LEFT: Event details + Registry -->
@@ -647,17 +666,36 @@
       }
     });
 
-    // ── POLL ──────────────────────────────────────────────────────────────────
-    const VOTED_KEY = 'mcgee_baby_voted';
+    // ── POLL — shared live votes via JSONBin ─────────────────────────────────
+    const POLL_KEY  = 'mcgee_baby_voted';
+    const POLL_URL  = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-    function castVote(choice) {
-      localStorage.setItem(VOTED_KEY, choice);
-      let boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
-      let girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
-      if (choice === 'boy') boys++; else girls++;
-      localStorage.setItem('mcgee_boy_votes',  boys);
-      localStorage.setItem('mcgee_girl_votes', girls);
-      showResults(boys, girls);
+    async function castVote(choice) {
+      if (localStorage.getItem(POLL_KEY)) return; // already voted
+      localStorage.setItem(POLL_KEY, choice);
+
+      try {
+        const res  = await fetch(`${POLL_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const json = await res.json();
+        const data = json.record || { rsvps: [], poll: { boy: 0, girl: 0 } };
+        if (!data.poll) data.poll = { boy: 0, girl: 0 };
+        data.poll[choice] = (data.poll[choice] || 0) + 1;
+        await fetch(POLL_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify(data) });
+        showResults(data.poll.boy || 0, data.poll.girl || 0);
+      } catch(e) {
+        showResults(0, 0);
+      }
+    }
+
+    async function loadPoll() {
+      try {
+        const res  = await fetch(`${POLL_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const json = await res.json();
+        const poll = json.record?.poll || { boy: 0, girl: 0 };
+        if (localStorage.getItem(POLL_KEY)) {
+          showResults(poll.boy || 0, poll.girl || 0);
+        }
+      } catch(e) {}
     }
 
     function showResults(boys, girls) {
@@ -670,20 +708,15 @@
       document.getElementById('girl-count').textContent = girls;
       document.getElementById('boy-pct').textContent    = boyPct  + '%';
       document.getElementById('girl-pct').textContent   = girlPct + '%';
-      document.getElementById('total-votes').textContent = `${total} total vote${total !== 1 ? 's' : ''} on this device`;
+      document.getElementById('total-votes').textContent = `${total} vote${total !== 1 ? 's' : ''} cast`;
       setTimeout(() => {
         document.getElementById('boy-bar').style.width  = boyPct  + '%';
         document.getElementById('girl-bar').style.width = girlPct + '%';
       }, 100);
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem(VOTED_KEY)) {
-        const boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
-        const girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
-        showResults(boys, girls);
-      }
-    });
+    window.addEventListener('DOMContentLoaded', loadPoll);
+    setInterval(loadPoll, 30000);
 
     // ── GUEST LIST ────────────────────────────────────────────────────────────
     function headcount(r) {

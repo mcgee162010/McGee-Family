@@ -516,3 +516,38 @@ a:hover { color: var(--terracotta); }
   .photo-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .photo-grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── FOCUS STYLES (Accessibility) ──────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 3px;
+}
+
+.nav-links a:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 2px;
+  background: var(--brown-pale);
+  color: var(--brown);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--forest);
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 9999;
+  border-radius: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
