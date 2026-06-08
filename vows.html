@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="The wedding vows of Ben and Brittney McGee — November 1, 2025 · Greer, Arizona."/>
+  <title>Our Vows · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/vows.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Our Vows · McGee Family"/>
+  <meta property="og:description" content="The words Ben and Brittney spoke to each other on November 1, 2025 in Greer, Arizona."/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#6B4F3A"/>
+  <style>
+    /* Quiet, intimate background */
+    body { background: #F5EFE6; }
+
+    /* Hero */
+    .vows-hero {
+      text-align: center;
+      padding: 80px 24px 56px;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 30%, rgba(222,198,172,0.40) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 70%, rgba(178,205,181,0.25) 0%, transparent 60%),
+        linear-gradient(175deg, #F5EFE6 0%, #EDE0D0 60%, #F0EAE0 100%);
+    }
+    .vows-hero .occasion {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 16px;
+    }
+    .vows-hero h1 {
+      font-size: clamp(40px, 8vw, 76px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--brown);
+      line-height: 1.0;
+      margin-bottom: 14px;
+    }
+    .vows-hero .date {
+      font-size: 16px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+    .vows-hero .sub {
+      font-size: 17px;
+      color: var(--text-secondary);
+      font-style: italic;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* Divider ornament */
+    .ornament {
+      text-align: center;
+      font-size: 20px;
+      letter-spacing: 10px;
+      color: var(--brown-light);
+      opacity: 0.45;
+      margin: 48px 0;
+    }
+
+    /* Vow section — two column on desktop */
+    .vow-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .vow-layout { grid-template-columns: 1fr; }
+    }
+
+    .vow-panel {
+      padding: 56px 52px 64px;
+    }
+    .vow-panel.ben   { background: #F5EFE6; border-right: 1px solid rgba(107,79,58,0.10); }
+    .vow-panel.britt { background: #FAF6EF; }
+    @media (max-width: 860px) {
+      .vow-panel { padding: 44px 28px 52px; }
+      .vow-panel.ben { border-right: none; border-bottom: 1px solid rgba(107,79,58,0.10); }
+    }
+
+    /* Vow header */
+    .vow-to {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 6px;
+    }
+    .vow-name {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--brown);
+      margin-bottom: 4px;
+    }
+    .vow-from {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 32px;
+    }
+
+    /* Vow text */
+    .vow-text p {
+      font-size: 16px;
+      line-height: 1.90;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+    .vow-text p:last-child { margin-bottom: 0; }
+
+    /* Vow promises — indented with left bar */
+    .vow-promises {
+      margin: 24px 0;
+      padding-left: 20px;
+      border-left: 2px solid rgba(107,79,58,0.18);
+    }
+    .vow-promises p {
+      font-size: 15px;
+      line-height: 1.80;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .vow-promises p:last-child { margin-bottom: 0; }
+
+    /* Signature */
+    .vow-signature {
+      margin-top: 32px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* Notebook photos */
+    .notebook-section {
+      background: #EDE0D0;
+      padding: 56px 24px;
+    }
+    .notebook-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .notebook-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 8px;
+    }
+    .notebook-title {
+      text-align: center;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--brown);
+      margin-bottom: 32px;
+    }
+
+    /* Notebook grid — slightly rotated like real photos */
+    .notebook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .notebook-grid img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(60,40,20,0.18), 0 2px 8px rgba(60,40,20,0.10);
+      cursor: zoom-in;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: block;
+    }
+    .notebook-grid img:nth-child(odd)  { transform: rotate(-0.5deg); }
+    .notebook-grid img:nth-child(even) { transform: rotate(0.5deg);  }
+    .notebook-grid img:hover {
+      transform: rotate(0deg) scale(1.03) !important;
+      box-shadow: 0 16px 48px rgba(60,40,20,0.28);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Closing */
+    .vows-closing {
+      text-align: center;
+      padding: 64px 24px 80px;
+      background: #F5EFE6;
+    }
+    .vows-closing blockquote {
+      font-size: clamp(18px, 3vw, 24px);
+      font-style: italic;
+      color: var(--brown);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+    .vows-closing cite {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-style: normal;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--brown);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav" style="background:rgba(245,239,230,0.88);">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="vows-hero" id="main-content">
+    <div class="occasion">November 1, 2025 · Greer, Arizona</div>
+    <h1>Our Vows</h1>
+    <div class="date">Ben & Brittney McGee · Christian Ceremony</div>
+    <p class="sub">The words we spoke before God and everyone we love. Written by hand. Meant for a lifetime.</p>
+  </div>
+
+  <!-- VOWS — side by side -->
+  <div class="vow-layout">
+
+    <!-- BEN'S VOWS -->
+    <div class="vow-panel ben">
+      <div class="vow-to">To My Wife</div>
+      <div class="vow-name">Brittney</div>
+      <div class="vow-from">Written by Ben · November 1st, 2025</div>
+
+      <div class="vow-text">
+        <p>From the moment our eyes met, I knew my life had changed. In that instant, I felt an unexplainable peace, something so rare and so deep it touched a place in my heart I didn't even know existed. You have taught me what true love really means.</p>
+
+        <p>You have shown me grace, strength, and what it looks like to love without conditions. The way you encourage me when I chase my dreams, and the way you love Levi and me with your whole heart, humbles me every day.</p>
+
+        <p>Watching the two of you together has been one of the greatest blessings of my life, and I will spend the rest of my days honoring that love and protecting the family we have built.</p>
+
+        <p>Before God and those who love us, I make this vow to you.</p>
+
+        <div class="vow-promises">
+          <p>I will love you as Christ loves the church, with a heart that chooses sacrifice over pride, service over comfort, and grace over anger.</p>
+          <p>I will be quick to forgive, slow to anger, and devoted in my devotion.</p>
+          <p>I will lead our home not by power, but by prayer. Not by authority, but by example.</p>
+          <p>I will honor you as my equal and my partner in every season of life.</p>
+          <p>Today, I vow to keep choosing you. Through every adventure, every change, and every moment that feels both new and familiar.</p>
+          <p>I vow to keep growing with you, to laugh with you when life feels light, and to hold you close when life feels heavy.</p>
+          <p>I vow to be your teammate in everything — from raising our family, to chasing the life we have always talked about, to building that life brick by brick, hand in hand.</p>
+          <p>I will guard our marriage with faithfulness, cherish our covenant with joy, and nurture our love so that it reflects the love of Christ to the world.</p>
+          <p>I will be the one who prays with you, laughs with you, and stands with you through every season.</p>
+          <p>I will cherish you as my wife, my best friend, and my greatest blessing.</p>
+        </div>
+
+        <p>You are my home, Brittney. And standing here in front of everyone we love, I vow to spend the rest of my life making sure you never forget how loved, how seen, and how cherished you are.</p>
+
+        <div class="vow-signature">I love you, Britt.</div>
+      </div>
+    </div>
+
+    <!-- BRITTNEY'S VOWS -->
+    <div class="vow-panel britt">
+      <div class="vow-to">To My Husband</div>
+      <div class="vow-name">Benjamin</div>
+      <div class="vow-from">Written by Brittney · November 1st, 2025</div>
+
+      <div class="vow-text">
+        <p>Babe, we made it!</p>
+
+        <p>Who would have thought that running into each other 3 years ago at Buffalo Chip would turn into falling madly in love and getting married in front of all our loved ones. God is so good!!!</p>
+
+        <p>You are my best friend, and you have shown me a love so unconditional and so selfless. You've taken the parts of me that I thought were unlovable and still needing healing and turned those things into something beautiful and cherished. You have grown flowers in the darkest parts of me.</p>
+
+        <p>You have far exceeded what I thought love was supposed to be like. The way your family loved me with no hesitation and arms wide open speaks to the love that you so effortlessly give — and that I can't wait to start a lifetime with.</p>
+
+        <p>I am forever in love with your soul. With your "good morning beautiful," the way we can be complete goofballs together, how you're always down for a rap battle and a late-night snack. I love how you bring life into every room you enter — and how from the beginning you loved my son as if he were your own. I can't imagine a life without your random serenades and sweet kisses. I can't wait to grow old together, to continue to grow deeper in our faith together.</p>
+
+        <p>To hear all the random songs you and Levi will make up together, and for you to lead our house. I can't forget popcorn and M&Ms for the rest of our life together.</p>
+
+        <div class="vow-promises">
+          <p>I vow to never go to bed angry, to always look to God for how I can better serve you in our marriage.</p>
+          <p>I vow to honor you and let you lead our family, to always be bone of my bone, flesh of my flesh, and work together as equals.</p>
+          <p>I vow to be gospel-centered parents and tender-hearted.</p>
+          <p>To be quick to forgive, to have God's grace — to where I turn to "win the relationship, not the argument."</p>
+          <p>I vow to lift you and encourage you always, and to never stop fighting for us until our last breath.</p>
+        </div>
+
+        <div class="vow-signature">I love you, Wife.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORNAMENT -->
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <!-- NOTEBOOK PHOTOS — Ben -->
+  <div class="notebook-section">
+    <div class="notebook-inner">
+      <div class="notebook-label">In Ben's handwriting</div>
+      <div class="notebook-title">Ben's Vow Notebook</div>
+      <div class="notebook-grid">
+        <img src="photos/vows/ben/IMG_2088.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2089.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2090.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2091.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2092.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2093.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2094.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2095.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/ben/IMG_2096.jpg" alt="Ben's vows — handwritten" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK PHOTOS — Brittney -->
+  <div class="notebook-section" style="background:#F5EFE6;">
+    <div class="notebook-inner">
+      <div class="notebook-label">In Brittney's handwriting</div>
+      <div class="notebook-title">Brittney's Vow Notebook</div>
+      <div class="notebook-grid">
+        <img src="photos/vows/britt/IMG_2081.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2082.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2083.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2084.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2085.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2086.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+        <img src="photos/vows/britt/IMG_2087.jpg" alt="Brittney's vows — handwritten" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING SCRIPTURE -->
+  <div class="vows-closing">
+    <blockquote>"Therefore what God has joined together, let no one separate."</blockquote>
+    <cite>Mark 10:9 &nbsp;·&nbsp; Greer, Arizona &nbsp;·&nbsp; November 1, 2025</cite>
+    <div style="margin-top:36px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <a href="our-story.html" class="btn btn-secondary">Our Story →</a>
+      <a href="gallery.html#wedding" class="btn btn-secondary">Wedding Photos →</a>
+    </div>
+  </div>
+
+  <footer class="footer" style="background:#6B4F3A;">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
