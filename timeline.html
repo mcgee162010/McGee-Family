@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="The McGee family timeline — every chapter of our story from the beginning to now."/>
+  <title>Family Timeline · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/timeline.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Family Timeline · McGee Family"/>
+  <meta property="og:description" content="Every chapter of the McGee family story — from the Buffalo Chip Saloon to Baby McGee."/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    .timeline-hero {
+      background:
+        radial-gradient(ellipse 65% 55% at 20% 25%, rgba(178,205,181,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 80% 75%, rgba(237,224,212,0.45) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--brown-pale) 100%);
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .timeline-hero h1 { font-size: clamp(40px, 8vw, 80px); margin-bottom: 12px; }
+    .timeline-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.65; }
+
+    /* ── MAIN TIMELINE ── */
+    .timeline-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+      position: relative;
+    }
+
+    /* Vertical line */
+    .timeline-wrap::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        var(--sage-light) 8%,
+        var(--sage) 30%,
+        var(--terracotta) 60%,
+        var(--brown-light) 85%,
+        transparent 100%
+      );
+    }
+    @media (max-width: 640px) {
+      .timeline-wrap::before { left: 20px; transform: none; }
+    }
+
+    /* ── TIMELINE ITEM ── */
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      margin-bottom: 0;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    /* alternating sides */
+    .tl-item:nth-child(odd)  .tl-card { grid-column: 1; text-align: right; padding-right: 32px; }
+    .tl-item:nth-child(odd)  .tl-empty { grid-column: 3; }
+    .tl-item:nth-child(even) .tl-card { grid-column: 3; text-align: left; padding-left: 32px; }
+    .tl-item:nth-child(even) .tl-empty { grid-column: 1; }
+    .tl-item .tl-dot { grid-column: 2; display: flex; align-items: flex-start; justify-content: center; padding-top: 28px; }
+
+    @media (max-width: 640px) {
+      .tl-item { grid-template-columns: 48px 1fr; }
+      .tl-item:nth-child(odd)  .tl-card,
+      .tl-item:nth-child(even) .tl-card  { grid-column: 2; text-align: left; padding-left: 20px; padding-right: 0; }
+      .tl-item:nth-child(odd)  .tl-empty,
+      .tl-item:nth-child(even) .tl-empty { display: none; }
+      .tl-item .tl-dot { grid-column: 1; }
+    }
+
+    /* Dot */
+    .tl-dot-inner {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--sage-light), 0 4px 16px rgba(60,40,20,0.12);
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s ease;
+    }
+    .tl-dot-inner:hover { transform: scale(1.1); }
+
+    /* Card */
+    .tl-card {
+      padding-top: 20px;
+      padding-bottom: 36px;
+    }
+
+    .tl-year-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .tl-event-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .tl-event-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .tl-photo {
+      margin-top: 12px;
+      width: 100%;
+      max-width: 240px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      cursor: zoom-in;
+      box-shadow: 0 4px 20px rgba(60,40,20,0.12);
+      transition: transform 0.22s ease;
+    }
+    .tl-photo:hover { transform: scale(1.03); }
+
+    /* Right-aligned photos */
+    .tl-item:nth-child(odd) .tl-photo { margin-left: auto; }
+
+    /* ── YEAR MARKER ── */
+    .tl-year-marker {
+      text-align: center;
+      margin: 12px 0 24px;
+      position: relative;
+      z-index: 3;
+    }
+    .tl-year-chip {
+      display: inline-block;
+      background: var(--brown);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 6px 20px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 16px rgba(60,40,20,0.18);
+    }
+
+    /* ── FUTURE ── */
+    .tl-future .tl-dot-inner {
+      background: rgba(255,255,255,0.60);
+      border-color: var(--sage-light);
+      box-shadow: 0 0 0 2px rgba(122,158,126,0.30);
+    }
+    .tl-future .tl-event-title { color: var(--text-tertiary); }
+    .tl-future .tl-event-desc  { color: var(--text-tertiary); opacity: 0.75; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+      <li><a href="journal.html">📓 Journal</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <div class="timeline-hero" id="main-content">
+    <div class="section-label">The McGee Family</div>
+    <h1>Our Timeline</h1>
+    <p>Every chapter — from a country bar in Cave Creek to a family of five in Queen Creek. This is how we got here.</p>
+  </div>
+
+  <div class="timeline-wrap">
+
+    <!-- ── 2015 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2015</span></div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--brown-light);">~2015</div>
+        <div class="tl-event-title">Bentley comes home 🐾</div>
+        <p class="tl-event-desc">Brittney's golden retriever puppy arrives and immediately claims the whole couch — and her whole heart. Her service animal, shadow, and best friend for 10½ years.</p>
+        <img src="photos/bentley/IMG_0039.jpeg" alt="Bentley" class="tl-photo"/>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#FEF3C7,#FCD34D);">🐾</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <!-- ── 2019 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2019</span></div>
+
+    <div class="tl-item">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#FEF9C3,#FDE68A);">🧒</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:#92400E;">April 7, 2019</div>
+        <div class="tl-event-title">Levi is born</div>
+        <p class="tl-event-desc">The world's most energetic, curious, and joyful little boy arrives. Future big brother. Future 2nd grader. Already the heart of his family.</p>
+      </div>
+    </div>
+
+    <!-- ── 2022 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2022</span></div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--terracotta);">October 21, 2022</div>
+        <div class="tl-event-title">The Buffalo Chip Saloon 🤠</div>
+        <p class="tl-event-desc">After nearly a year of missed connections on Bumble, Ben and Brittney both unknowingly end up at the same place on the same night. She said "BEN!" He said "BRITTNEY… YOU ARE SO CUTE!" The rest is history.</p>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,var(--terra-pale),#E8C9B0);">🤠</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#DBEAFE,#BAE6FD);">🎄</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--forest);">November 20, 2022</div>
+        <div class="tl-event-title">Ben meets Levi</div>
+        <p class="tl-event-desc">Sick, nervous, and 15 minutes away — Ben took an espresso shot, drove to the Enchanted Christmas Event in Scottsdale, and met a three-year-old who ended up on his shoulders by the end of the night.</p>
+      </div>
+    </div>
+
+    <!-- ── 2024 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2024</span></div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--terracotta);">October 30, 2024</div>
+        <div class="tl-event-title">The proposal — and Bentley 💍🐾</div>
+        <p class="tl-event-desc">Riverview Park. 5:30 PM sunset. Ring in pocket. Bentley leapt into the lake. Ben pulled a dripping golden retriever out of the water with one hand and held an engagement ring with the other. She said yes.</p>
+        <img src="photos/engagement/IMG_8651.jpeg" alt="Engagement" class="tl-photo"/>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,var(--terra-pale),#E8C9B0);">💍</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <!-- ── 2025 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2025</span></div>
+
+    <div class="tl-item">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#FCE7F3,#F9A8D4);">💒</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--terracotta);">November 1, 2025</div>
+        <div class="tl-event-title">Married in Greer, Arizona</div>
+        <p class="tl-event-desc">In the mountains of Greer, surrounded by everyone they love — Ben and Brittney became the McGees. Christian ceremony. Mountain air. The beginning of everything official.</p>
+        <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg" alt="Wedding" class="tl-photo"/>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--forest);">November 2025</div>
+        <div class="tl-event-title">Thailand honeymoon 🌏</div>
+        <p class="tl-event-desc">Two weeks exploring Thailand as husband and wife — temples, beaches, night markets, elephants, and the best food of their lives.</p>
+        <img src="photos/honeymoon/ACD631C7-06F7-4983-84C3-13FFE7F6C5D3.JPG" alt="Thailand" class="tl-photo"/>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,var(--sage-pale),#B2CDB5);">🌏</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,var(--sage-pale),#B2CDB5);">🌿</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--forest);">Late December 2025</div>
+        <div class="tl-event-title">Baby McGee is coming</div>
+        <p class="tl-event-desc">Newlyweds and already expecting. The best possible gift just weeks after returning from their honeymoon. Due September 4, 2026. Gender — a beautiful surprise.</p>
+      </div>
+    </div>
+
+    <!-- ── 2026 ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip">2026</span></div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:#92400E;">April 7, 2026</div>
+        <div class="tl-event-title">Levi's 7th Golden Birthday 🎂</div>
+        <p class="tl-event-desc">Turning 7 on the 7th — Levi's golden birthday. A milestone year for a remarkable kid who's about to become a big brother.</p>
+        <img src="photos/levi-birthday/IMG_5581.jpeg" alt="Levi Birthday" class="tl-photo"/>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#FEF9C3,#FDE68A);">🎂</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,#FEF9EC,#FDF3E3);">🐾</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:#92400E;">April 9, 2026</div>
+        <div class="tl-event-title">Bentley passes peacefully</div>
+        <p class="tl-event-desc">10½ years. Brittney's service animal, shadow, and best friend. He was at the wedding. He crashed the proposal. He left loved. <a href="bentley.html" style="color:var(--forest); font-weight:600;">His memorial →</a></p>
+        <img src="photos/bentley/IMG_8919.jpeg" alt="Bentley" class="tl-photo"/>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--forest);">June 2026</div>
+        <div class="tl-event-title">Family photoshoot — Baby McGee announcement</div>
+        <p class="tl-event-desc">The McGees in front of the camera for the first time as a complete (almost) family. 19 photos. Every single one a keeper.</p>
+        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg" alt="McGee Family" class="tl-photo"/>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:linear-gradient(135deg,var(--sage-pale),#B2CDB5);">📸</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <!-- ── UPCOMING ── -->
+    <div class="tl-year-marker"><span class="tl-year-chip" style="background:var(--sage); opacity:0.75;">Coming Up</span></div>
+
+    <div class="tl-item tl-future">
+      <div class="tl-empty"></div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:var(--sage-pale); font-size:18px;">🎉</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--text-tertiary);">July 25, 2026</div>
+        <div class="tl-event-title">Baby Shower</div>
+        <p class="tl-event-desc">Queen Creek, AZ · 1:30 PM MST · <a href="baby-shower.html" style="color:var(--forest); font-weight:600;">RSVP here →</a></p>
+      </div>
+    </div>
+
+    <div class="tl-item tl-future">
+      <div class="tl-card">
+        <div class="tl-year-label" style="color:var(--text-tertiary);">September 4, 2026</div>
+        <div class="tl-event-title">Baby McGee arrives ⏳</div>
+        <p class="tl-event-desc">The next chapter. The story keeps going.</p>
+      </div>
+      <div class="tl-dot">
+        <div class="tl-dot-inner" style="background:var(--sage-pale); font-size:18px;">👶</div>
+      </div>
+      <div class="tl-empty"></div>
+    </div>
+
+    <!-- End mark -->
+    <div style="text-align:center; margin-top:24px;">
+      <div style="display:inline-flex; align-items:center; gap:10px; font-size:14px; color:var(--text-tertiary); font-style:italic;">
+        <span>Still being written</span>
+        <span style="font-size:20px;">🌲</span>
+        <span>Faith. Family. Forever.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+      <li><a href="journal.html">📓 Journal</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
