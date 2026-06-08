@@ -582,6 +582,36 @@
     .lightbox-close { position: absolute; top: 18px; right: 22px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.20); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
     .lightbox-close:hover { background: rgba(255,255,255,0.22); }
     .lightbox-hint { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Lato', sans-serif; }
+
+    /* ── HERO split layout ── */
+    .hero { display:grid; grid-template-columns:1fr 1fr; min-height:70svh; min-height:70vh; }
+    @media (max-width:800px) {
+      .hero { grid-template-columns:1fr; }
+      .hero-photo-side { min-height:52svh; min-height:52vh; }
+    }
+    .hero-photo-side { position:relative; overflow:hidden; }
+    .hero-photo-side img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .hero-photo-side::after {
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(to right, transparent 60%, var(--ivory) 100%);
+      pointer-events:none;
+    }
+    @media (max-width:800px) {
+      .hero-photo-side::after { background: linear-gradient(to bottom, transparent 65%, var(--ivory) 100%); }
+    }
+    .hero-info-side {
+      display:flex; flex-direction:column; justify-content:center;
+      padding:48px 44px; background:var(--ivory); gap:16px;
+    }
+    @media (max-width:800px) { .hero-info-side { padding:32px 24px 40px; gap:12px; } }
+    .hero-date-row { display:flex; align-items:stretch; gap:0; width:fit-content; }
+    .date-block { text-align:center; padding:10px 20px; background:var(--ivory-dark); border:1.5px solid rgba(107,74,42,0.16); }
+    .date-block:first-child { border-radius:10px 0 0 10px; border-right:none; }
+    .date-block:last-child  { border-radius:0 10px 10px 0; }
+    .date-month,.time-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); font-family:'Lato',sans-serif; margin-bottom:2px; }
+    .date-num,.time-num     { font-size:32px; font-weight:700; color:var(--brown-deep); line-height:1; letter-spacing:-0.03em; font-family:'Playfair Display',serif; }
+    .date-year,.time-ampm   { font-size:11px; color:var(--brown-light); font-family:'Lato',sans-serif; }
+    .date-sep { display:flex; align-items:center; padding:0 8px; color:var(--sage-pale); font-size:18px; }
   </style>
 
   <script type="application/ld+json">
@@ -619,45 +649,34 @@
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
 
-  <!-- ══ HERO ══════════════════════════════════════════════════════ -->
+  <!-- ══ HERO — photo left, info right ═══════════════════════════ -->
   <div class="hero" id="main-content">
 
-    <!-- Top botanical strip -->
-    <div class="hero-botanical">🌿 🌸 🍃 🌾 🍂 🌿 🌸 🍃 🌾 🍂 🌿</div>
+    <!-- LEFT: Baby McGee photo -->
+    <div class="hero-photo-side">
+      <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
+           alt="Baby McGee announcement photo" loading="eager"/>
+    </div>
 
-    <div class="hero-inner">
+    <!-- RIGHT: Event info -->
+    <div class="hero-info-side">
 
-      <div class="hero-eyebrow">Join Us For A</div>
+      <div class="hero-kicker">Join Us For A</div>
 
-      <!-- Script headline -->
-      <div style="margin-bottom:8px;">
-        <span style="font-family:'Playfair Display',serif; font-size:clamp(18px,3vw,24px); color:var(--sage-dark); display:block; margin-bottom:4px;">Oh</span>
-        <div class="hero-oh-deer">deer,</div>
-        <div style="font-family:'Playfair Display',serif; font-size:clamp(16px,2.5vw,22px); color:var(--sage-dark); margin-bottom:4px; font-style:italic;">The Baby's On</div>
-        <div style="font-family:'Dancing Script',cursive; font-size:clamp(32px,6vw,52px); font-weight:700; color:var(--brown-mid);">the way here!</div>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:clamp(14px,2vw,18px); color:var(--sage-dark); font-style:italic;">Oh</div>
+        <div style="font-family:'Dancing Script',cursive; font-size:clamp(44px,6vw,72px); font-weight:700; color:var(--brown-deep); line-height:0.9;">deer,</div>
+        <div style="font-family:'Playfair Display',serif; font-size:clamp(13px,1.8vw,17px); color:var(--sage-dark); font-style:italic; margin-top:4px;">The Baby's On the Way Here!</div>
       </div>
 
-      <!-- Botanical flourish -->
-      <div style="font-size:18px; letter-spacing:8px; color:var(--sage-light); opacity:0.60; margin:12px 0;">🌿 ♥ 🌿</div>
+      <div style="font-size:16px; letter-spacing:8px; color:var(--sage-light); opacity:0.55;">🌿 ♥ 🌿</div>
 
-      <!-- Baby shower banner -->
-      <div style="background:var(--ivory-dark); border:2px solid rgba(107,74,42,0.15); border-radius:50px; display:inline-block; padding:10px 32px; margin-bottom:20px;">
-        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); margin-bottom:2px;">Join Us For A</div>
-        <div style="font-family:'Dancing Script',cursive; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--brown-deep); line-height:1.1;">Baby Shower</div>
+      <div>
+        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown-light); margin-bottom:2px;">Celebrating</div>
+        <div style="font-family:'Dancing Script',cursive; font-size:clamp(28px,4vw,46px); font-weight:700; color:var(--brown-deep); line-height:1.1;">Baby McGee,</div>
+        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin:4px 0 2px;">Arriving Soon · with</div>
+        <div style="font-family:'Dancing Script',cursive; font-size:clamp(20px,3vw,30px); font-weight:600; color:var(--sage-dark);">Brittney and Ben</div>
       </div>
-
-      <!-- Photo arch -->
-      <div class="hero-arch">
-        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
-             alt="The McGee Family — Ben, Brittney and Levi" loading="eager"/>
-      </div>
-
-      <!-- Celebrating -->
-      <div class="hero-celebrating">Celebrating</div>
-      <div class="hero-baby-name">Baby McGee,</div>
-      <div class="hero-arriving">Arriving Soon</div>
-      <div style="font-size:18px; letter-spacing:6px; color:var(--sage-light); opacity:0.55; margin:4px 0;">♥ with ♥</div>
-      <div class="hero-names">Brittney and Ben</div>
 
       <!-- Date / Time -->
       <div class="hero-date-row">
@@ -674,20 +693,18 @@
         </div>
       </div>
 
-      <!-- Location plank -->
-      <div class="hero-location">
-        <div class="loc-label">📍 Location</div>
-        <div class="loc-address">Queen Creek, Arizona<br/><span style="font-size:13px; opacity:0.80;">Address shown after RSVP</span></div>
+      <!-- Location -->
+      <div>
+        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin-bottom:3px;">📍 Location</div>
+        <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep);">Queen Creek, Arizona</div>
+        <div style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); margin-top:2px;">Address shown after RSVP</div>
       </div>
 
-      <!-- CTA buttons -->
-      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:24px;">
+      <!-- CTAs -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <a href="#rsvp" class="btn-woodland btn-sage" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'}); return false;">RSVP Now 🌿</a>
-        <a href="baby-shower.ics" download class="btn-woodland btn-outline">📆 Add to Calendar</a>
+        <a href="baby-shower.ics" download class="btn-woodland btn-outline">📆 Calendar</a>
       </div>
-
-      <!-- Animals -->
-      <div class="animals-strip">🦌 🐰 🐿️ 🦔 🦉</div>
 
     </div>
   </div>
