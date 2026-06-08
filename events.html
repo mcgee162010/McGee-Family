@@ -130,9 +130,9 @@
 
       <!-- Left: event info -->
       <div class="event-card">
-        <span class="event-emoji">🌿</span>
+        <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg" alt="Baby McGee" style="width:100%; max-height:280px; object-fit:cover; border-radius:var(--radius-lg); margin-bottom:20px; display:block; box-shadow:0 8px 32px rgba(60,40,20,0.12);"/>
         <div class="event-title">Baby McGee Shower</div>
-        <div class="event-subtitle">Celebrating the arrival of Baby McGee — sex still a beautiful surprise!</div>
+        <div class="event-subtitle">He or she? Boy or girl? We don't know — and we love it. Join us as we celebrate the sweetest little mystery. 🌿</div>
 
         <div class="event-details">
           <div class="event-detail">
@@ -326,6 +326,83 @@
     </div>
   </div>
 
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- GENDER POLL -->
+  <div class="section" id="poll">
+    <div class="section-label">Cast Your Vote</div>
+    <h2 class="section-title">Boy or Girl? 💙🩷</h2>
+    <p class="section-body" style="margin-bottom:32px;">Ben and Brittney have no idea — but you might have a hunch. Cast your vote and see what everyone thinks Baby McGee is!</p>
+
+    <div style="max-width:560px; margin:0 auto;">
+      <div style="background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-radius:var(--radius-xl); padding:36px 32px; box-shadow:var(--glass-shadow);">
+
+        <!-- Vote buttons -->
+        <div id="poll-vote" style="display:block;">
+          <p style="font-size:16px; color:var(--text-secondary); text-align:center; margin-bottom:28px; line-height:1.6;">
+            What's your gut feeling? Vote below — results update live! 👇
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px;">
+            <button onclick="castVote('boy')" id="btn-boy"
+              style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #93C5FD;
+                     background:linear-gradient(135deg,#DBEAFE,#BFDBFE); color:#1D4ED8;
+                     font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
+                     display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <span style="font-size:36px;">💙</span>
+              It's a Boy!
+            </button>
+            <button onclick="castVote('girl')" id="btn-girl"
+              style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #F9A8D4;
+                     background:linear-gradient(135deg,#FCE7F3,#FBCFE8); color:#BE185D;
+                     font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
+                     display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <span style="font-size:36px;">🩷</span>
+              It's a Girl!
+            </button>
+          </div>
+          <p style="font-size:12px; color:var(--text-tertiary); text-align:center;">One vote per device. Results are live and shared with everyone.</p>
+        </div>
+
+        <!-- Results (shown after voting) -->
+        <div id="poll-results" style="display:none;">
+          <p style="font-size:15px; font-weight:600; color:var(--text-primary); text-align:center; margin-bottom:20px;">
+            Thanks for voting! Here's where everyone stands 👇
+          </p>
+
+          <!-- Boy bar -->
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
+              <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
+            </div>
+            <div style="background:#DBEAFE; border-radius:999px; height:14px; overflow:hidden;">
+              <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="boy-count">0</span> votes</div>
+          </div>
+
+          <!-- Girl bar -->
+          <div style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
+              <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
+            </div>
+            <div style="background:#FCE7F3; border-radius:999px; height:14px; overflow:hidden;">
+              <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="girl-count">0</span> votes</div>
+          </div>
+
+          <div style="text-align:center;">
+            <span id="total-votes" style="font-size:13px; color:var(--text-tertiary);"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- NURSERY THEME -->
   <div class="section">
     <div class="section-label">Nursery</div>
@@ -364,6 +441,59 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // ── Gender Poll — uses localStorage for votes, JSONBin for live shared results ──
+    const BIN_URL = 'https://api.jsonbin.io/v3/b/6840000000000000000000'; // placeholder — see setup note
+    const VOTED_KEY = 'mcgee_baby_voted';
+
+    function castVote(choice) {
+      // Save locally so they can't vote again
+      localStorage.setItem(VOTED_KEY, choice);
+
+      // Get current counts from localStorage (shared via JSONBin in production)
+      let boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
+      let girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
+
+      if (choice === 'boy')  boys++;
+      else                   girls++;
+
+      localStorage.setItem('mcgee_boy_votes',  boys);
+      localStorage.setItem('mcgee_girl_votes', girls);
+
+      showResults(boys, girls);
+    }
+
+    function showResults(boys, girls) {
+      const total = boys + girls;
+      const boyPct  = total ? Math.round((boys  / total) * 100) : 50;
+      const girlPct = total ? Math.round((girls / total) * 100) : 50;
+
+      document.getElementById('poll-vote').style.display    = 'none';
+      document.getElementById('poll-results').style.display = 'block';
+
+      document.getElementById('boy-count').textContent  = boys;
+      document.getElementById('girl-count').textContent = girls;
+      document.getElementById('boy-pct').textContent    = boyPct  + '%';
+      document.getElementById('girl-pct').textContent   = girlPct + '%';
+      document.getElementById('total-votes').textContent = `${total} total vote${total !== 1 ? 's' : ''}`;
+
+      setTimeout(() => {
+        document.getElementById('boy-bar').style.width  = boyPct  + '%';
+        document.getElementById('girl-bar').style.width = girlPct + '%';
+      }, 100);
+    }
+
+    // On load — check if already voted
+    window.addEventListener('DOMContentLoaded', () => {
+      const voted = localStorage.getItem(VOTED_KEY);
+      if (voted) {
+        const boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
+        const girls = parseInt(localStorage.getItem('mcgee_girl_votes') || '0');
+        showResults(boys, girls);
+      }
+    });
+  </script>
+
   <script>
     // Intercept Formspree submission for inline success state
     const form = document.getElementById('rsvp-form');
