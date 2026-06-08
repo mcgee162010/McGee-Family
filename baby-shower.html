@@ -326,6 +326,36 @@
 
   <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
 
+  <!-- GUEST LIST -->
+  <div class="section" id="guests">
+    <div class="section-label">Who's Coming</div>
+    <h2 class="section-title">Guest List</h2>
+    <p class="section-body" style="margin-bottom:28px;">Updated in real time as guests RSVP.</p>
+
+    <!-- Summary pills -->
+    <div id="guest-summary" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;">
+      <div style="background:rgba(52,199,89,0.10); border:1.5px solid rgba(52,199,89,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#1a7a36;">
+        ✅ Attending: <span id="count-yes">–</span>
+      </div>
+      <div style="background:rgba(255,149,0,0.10); border:1.5px solid rgba(255,149,0,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#a05c00;">
+        🤞 Maybe: <span id="count-maybe">–</span>
+      </div>
+      <div style="background:rgba(255,59,48,0.10); border:1.5px solid rgba(255,59,48,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#a01000;">
+        ❌ Can't Make It: <span id="count-no">–</span>
+      </div>
+      <div style="background:var(--sage-pale); border:1.5px solid rgba(122,158,126,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:var(--forest);">
+        👥 Total Guests: <span id="count-total">–</span>
+      </div>
+    </div>
+
+    <!-- Guest cards -->
+    <div id="guest-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:14px;">
+      <div style="font-size:15px; color:var(--text-tertiary); padding:20px;">Loading guest list…</div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
   <!-- GENDER POLL -->
   <div class="section" id="poll">
     <div class="section-label">Cast Your Vote</div>
@@ -411,23 +441,60 @@
 
   <script src="js/main.js"></script>
   <script>
-    // RSVP form
+    const BIN_ID  = '6a26fbd7f5f4af5e29ccb6e2';
+    const BIN_KEY = '$2a$10$PatHmZ34dAnyHqg67lDyXol7/BfYExe';
+    const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+    const HEADERS = { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY };
+
+    // ── RSVP form ─────────────────────────────────────────────────────────────
     const form = document.getElementById('rsvp-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const data = new FormData(form);
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+
+      const fd = new FormData(form);
+      const entry = {
+        name:     fd.get('name'),
+        status:   fd.get('attending'),
+        adults:   fd.get('adults')          || '0',
+        school:   fd.get('children_school_age') || '0',
+        toddler:  fd.get('children_toddler')    || '0',
+        infant:   fd.get('children_infant')     || '0',
+        note:     fd.get('message') || '',
+        ts:       new Date().toISOString()
+      };
+
       try {
-        const res = await fetch(form.action, {
-          method: 'POST', body: data,
+        // 1. Send to Formspree for email notification
+        await fetch(form.action, {
+          method: 'POST', body: fd,
           headers: { 'Accept': 'application/json' }
         });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('rsvp-success').style.display = 'block';
-        } else {
-          alert('Something went wrong. Please email benjmcgee@yahoo.com directly.');
-        }
-      } catch {
+
+        // 2. Read current bin, append, write back
+        const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const readJson = await readRes.json();
+        const current  = readJson.record?.rsvps || [];
+        current.push(entry);
+
+        await fetch(BIN_URL, {
+          method: 'PUT',
+          headers: HEADERS,
+          body: JSON.stringify({ rsvps: current })
+        });
+
+        // 3. Show success
+        form.style.display = 'none';
+        document.getElementById('rsvp-success').style.display = 'block';
+
+        // 4. Refresh guest list
+        loadGuestList();
+
+      } catch(err) {
+        btn.textContent = 'Send RSVP →';
+        btn.disabled = false;
         alert('Something went wrong. Please email benjmcgee@yahoo.com directly.');
       }
     });
@@ -466,6 +533,94 @@
         showResults(boys, girls);
       }
     });
+    // ── GUEST LIST ────────────────────────────────────────────────────────────
+    function headcount(r) {
+      const a = parseInt(r.adults  || 0);
+      const s = parseInt(r.school  || 0);
+      const t = parseInt(r.toddler || 0);
+      const i = parseInt(r.infant  || 0);
+      return a + s + t + i;
+    }
+
+    function statusIcon(s) {
+      if (s.startsWith('Yes'))   return '✅';
+      if (s.startsWith('Maybe')) return '🤞';
+      return '❌';
+    }
+
+    function statusColor(s) {
+      if (s.startsWith('Yes'))   return 'rgba(52,199,89,0.10)';
+      if (s.startsWith('Maybe')) return 'rgba(255,149,0,0.10)';
+      return 'rgba(255,59,48,0.08)';
+    }
+
+    function statusBorder(s) {
+      if (s.startsWith('Yes'))   return 'rgba(52,199,89,0.25)';
+      if (s.startsWith('Maybe')) return 'rgba(255,149,0,0.25)';
+      return 'rgba(255,59,48,0.20)';
+    }
+
+    function buildHeadcountLine(r) {
+      const parts = [];
+      if (parseInt(r.adults  || 0) > 0) parts.push(`${r.adults} adult${r.adults>1?'s':''}`);
+      if (parseInt(r.school  || 0) > 0) parts.push(`${r.school} school age`);
+      if (parseInt(r.toddler || 0) > 0) parts.push(`${r.toddler} toddler${r.toddler>1?'s':''}`);
+      if (parseInt(r.infant  || 0) > 0) parts.push(`${r.infant} infant${r.infant>1?'s':''}`);
+      return parts.length ? parts.join(', ') : 'Just me';
+    }
+
+    async function loadGuestList() {
+      try {
+        const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const json = await res.json();
+        const rsvps = json.record?.rsvps || [];
+
+        const listEl = document.getElementById('guest-list');
+
+        if (!rsvps.length) {
+          listEl.innerHTML = '<div style="font-size:15px; color:var(--text-tertiary); padding:20px;">No RSVPs yet — be the first! 🌿</div>';
+          ['count-yes','count-maybe','count-no','count-total'].forEach(id => {
+            document.getElementById(id).textContent = '0';
+          });
+          return;
+        }
+
+        let yes=0, maybe=0, no=0, total=0;
+        rsvps.forEach(r => {
+          const hc = headcount(r);
+          if (r.status.startsWith('Yes'))        { yes++;   total += hc; }
+          else if (r.status.startsWith('Maybe')) { maybe++; total += hc; }
+          else                                    { no++; }
+        });
+
+        document.getElementById('count-yes').textContent   = yes;
+        document.getElementById('count-maybe').textContent = maybe;
+        document.getElementById('count-no').textContent    = no;
+        document.getElementById('count-total').textContent = total;
+
+        listEl.innerHTML = rsvps.map(r => `
+          <div style="background:${statusColor(r.status)}; border:1.5px solid ${statusBorder(r.status)};
+                      border-radius:var(--radius-lg); padding:18px 20px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="font-size:18px;">${statusIcon(r.status)}</span>
+              <span style="font-size:16px; font-weight:700; color:var(--text-primary);">${r.name}</span>
+            </div>
+            <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">
+              👥 ${buildHeadcountLine(r)}
+            </div>
+            ${r.note ? `<div style="font-size:12px; color:var(--text-tertiary); margin-top:6px; font-style:italic;">"${r.note}"</div>` : ''}
+          </div>
+        `).join('');
+
+      } catch(e) {
+        document.getElementById('guest-list').innerHTML =
+          '<div style="font-size:15px; color:var(--text-tertiary); padding:20px;">Unable to load guest list right now.</div>';
+      }
+    }
+
+    // Load on page open, refresh every 30 seconds
+    loadGuestList();
+    setInterval(loadGuestList, 30000);
   </script>
 </body>
 </html>
