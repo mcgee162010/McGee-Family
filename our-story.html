@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Who the McGees are, what they believe, and what they're building — Faith. Family. Forever."/>
+  <title>Our Story · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgee162010.github.io/McGee-Family/our-story.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:url"         content="https://mcgee162010.github.io/McGee-Family/our-story.html"/>
+  <meta property="og:title"       content="Our Story · McGee Family"/>
+  <meta property="og:description" content="Who the McGees are, what they believe, and what they're building — Faith. Family. Forever."/>
+  <meta property="og:image"       content="https://mcgee162010.github.io/McGee-Family/photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    /* Hero */
+    .story-hero {
+      min-height: 60svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 64px;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(178,205,181,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 80% 70%, rgba(237,224,212,0.45) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--terra-pale) 100%);
+    }
+    .story-hero h1 {
+      font-size: clamp(44px, 9vw, 86px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .story-hero .tagline {
+      font-size: clamp(18px, 3vw, 24px);
+      color: var(--text-secondary);
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    /* Mission block */
+    .mission-block {
+      background: var(--brown);
+      color: rgba(255,255,255,0.88);
+      border-radius: var(--radius-xl);
+      padding: 52px 48px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .mission-block .mission-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+    }
+    .mission-block .mission-statement {
+      font-size: clamp(20px, 3.5vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      color: #fff;
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+    .mission-block .mission-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Timeline */
+    .timeline-full {
+      position: relative;
+      padding-left: 36px;
+    }
+    .timeline-full::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--sage), var(--terracotta), var(--brown-light), transparent);
+    }
+    .tl-full-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .tl-full-item::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--forest);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--sage-light);
+    }
+    .tl-full-year {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--forest);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .tl-full-event {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .tl-full-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 580px;
+    }
+
+    /* Values */
+    .values-full {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .value-full-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius-xl);
+      padding: 28px 26px;
+      box-shadow: var(--glass-shadow);
+    }
+    .value-full-icon { font-size: 36px; display: block; margin-bottom: 14px; }
+    .value-full-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .value-full-desc  { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* Photo row */
+    .photo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 40px 0;
+    }
+    .photo-row img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      cursor: zoom-in;
+      transition: transform 0.22s ease;
+    }
+    .photo-row img:hover { transform: scale(1.02); }
+
+    @media (max-width: 640px) {
+      .photo-row { grid-template-columns: 1fr 1fr; }
+      .mission-block { padding: 36px 24px; }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The McGee Family Story",
+  "description": "How Ben and Brittney met at the Buffalo Chip Saloon, Ben meeting Levi, the proposal, and everything that followed.",
+  "author": { "@type": "Person", "name": "Benjamin McGee" },
+  "publisher": { "@type": "Organization", "name": "The McGee Family" },
+  "datePublished": "2026-06-01"
+}
+</script>
+</head>
+<body>
+
+  <!-- Skip nav -->
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="story-hero" id="main-content">
+    <div class="section-label">The McGee Family</div>
+    <h1>Our Story</h1>
+    <p class="tagline">Faith. Family. Forever.</p>
+  </div>
+
+  <!-- MISSION -->
+  <div class="section">
+    <div class="mission-block">
+      <div class="mission-label">Family Mission Statement</div>
+      <div class="mission-statement">
+        "To build a home rooted in faith, filled with love, and worthy of passing down."
+      </div>
+      <p class="mission-sub">
+        We are Ben, Brittney, Levi, and Baby McGee — a blended family held together by God, growing together in Queen Creek, Arizona. We don't do things perfectly. We do them on purpose.
+      </p>
+    </div>
+
+    <!-- VALUES -->
+    <div class="section-label">What We Stand On</div>
+    <h2 class="section-title" style="margin-bottom:28px;">Our Values</h2>
+
+    <div class="values-full">
+      <div class="value-full-card">
+        <span class="value-full-icon">✝️</span>
+        <div class="value-full-title">Faith First</div>
+        <p class="value-full-desc">We are non-denominational Christians who attend <a href="https://tempe.redemptionaz.com/" target="_blank" rel="noopener" style="color:var(--forest); font-weight:600;">Redemption Tempe</a>. We believe in Jesus Christ as Lord and Savior, and that salvation is through faith alone — not by works, but by grace. <em>All of life is all for Jesus.</em></p>
+      </div>
+      <div class="value-full-card">
+        <span class="value-full-icon">👨‍👩‍👦</span>
+        <div class="value-full-title">Family Always</div>
+        <p class="value-full-desc">Our family didn't look like most from the start — and that's exactly what makes it ours. Ben chose Levi. Brittney chose Ben. And together we're building something that belongs to all of us. No one gets left behind.</p>
+      </div>
+      <div class="value-full-card">
+        <span class="value-full-icon">🏗️</span>
+        <div class="value-full-title">Build Intentionally</div>
+        <p class="value-full-desc">Every decision — financial, professional, personal — is made with purpose and a long view. We save with intention. We invest in each other. We don't drift. We build.</p>
+      </div>
+      <div class="value-full-card">
+        <span class="value-full-icon">💪</span>
+        <div class="value-full-title">Stay Strong</div>
+        <p class="value-full-desc">Physical fitness and structured nutrition aren't hobbies — they're how we show up fully for each other. A strong family starts with strong individuals.</p>
+      </div>
+      <div class="value-full-card">
+        <span class="value-full-icon">🌱</span>
+        <div class="value-full-title">Keep Growing</div>
+        <p class="value-full-desc">Ben is completing his BA at ASU. Levi starts 2nd grade in the fall. Baby McGee is due in September. Growth isn't optional in the McGee house — it's the culture.</p>
+      </div>
+      <div class="value-full-card">
+        <span class="value-full-icon">🔥</span>
+        <div class="value-full-title">Enjoy the Journey</div>
+        <p class="value-full-desc">Camping, pickleball, cooking together, game nights, walks with Phoenix — we don't wait for life to start. We're living it right now. Every ordinary Tuesday counts.</p>
+      </div>
+    </div>
+
+    <!-- PHOTO ROW -->
+    <div class="photo-row">
+      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy"/>
+      <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy"/>
+      <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy"/>
+    </div>
+
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- FULL TIMELINE -->
+  <div class="section">
+    <div class="section-label">How We Got Here</div>
+    <h2 class="section-title" style="margin-bottom:36px;">The McGee Timeline</h2>
+
+    <div class="timeline-full">
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">Early 2022</div>
+        <div class="tl-full-event">A Bumble match, a lot of patience 🤠</div>
+        <p class="tl-full-desc">Brittney makes the first move on Bumble. Ben suggests dinner. No response. A double date. She backs out. A hot air balloon ride. Silence. Ben waits. <em>"If it's meant to happen, it will."</em></p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">October 21, 2022</div>
+        <div class="tl-full-event">The Buffalo Chip Saloon — fate steps in 🍺</div>
+        <p class="tl-full-desc">Neither planned it. Both ended up at the Buffalo Chip Saloon in Cave Creek, Arizona — the same night, at the same time. Ben saw her walking toward him. It clicked. She said <em>"BEN!"</em> He blurted <em>"BRITTNEY… YOU ARE SO CUTE!"</em> The rest writes itself.</p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">November 20, 2022</div>
+        <div class="tl-full-event">Ben meets Levi 🎄</div>
+        <p class="tl-full-desc">Home sick, 15 minutes away, Ben took an espresso shot and drove to the Enchanted Christmas Event in Scottsdale to meet a three-year-old. By the end of the night Levi was on his shoulders. Ben drove home knowing exactly where he was supposed to be.</p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">October 30, 2024</div>
+        <div class="tl-full-event">The proposal — and Bentley 💍🐾</div>
+        <p class="tl-full-desc">Riverview Park. 5:30 PM. Ring in pocket. Matthias in all black with a camera. Brittney venting about work, completely unaware. Bentley spotted the lake and leapt in. Ben yanked a dripping golden retriever out of the water, got down on one knee, and asked. She said <em>"REALLY… REALLY? YES… YES!!"</em></p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">November 1, 2025</div>
+        <div class="tl-full-event">Married in Greer, Arizona 💒</div>
+        <p class="tl-full-desc">In the mountains of Greer, surrounded by the people they love most, Ben and Brittney became the McGees. Christian ceremony. Mountain air. The beginning of everything.</p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">November 2025</div>
+        <div class="tl-full-event">Two weeks in Thailand 🌏</div>
+        <p class="tl-full-desc">Temples, beaches, night markets, and the best food of their lives. The McGees' first adventure as husband and wife.</p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">Late December 2025</div>
+        <div class="tl-full-event">Baby McGee is coming 🌿</div>
+        <p class="tl-full-desc">Newlyweds and already expecting. The best gift. Due September 4, 2026. Gender is a beautiful surprise.</p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">April 9, 2026</div>
+        <div class="tl-full-event">Bentley passes 🐾</div>
+        <p class="tl-full-desc">Brittney's golden retriever and service animal for 10½ years left peacefully. He was there from the beginning — through every season, every hard day, the proposal, all of it. <a href="bentley.html" style="color:var(--forest); font-weight:600;">His memorial →</a></p>
+      </div>
+
+      <div class="tl-full-item">
+        <div class="tl-full-year">September 4, 2026</div>
+        <div class="tl-full-event">Baby McGee arrives ⏳</div>
+        <p class="tl-full-desc">The next chapter. Boy or girl — we have no idea. Either way, this family just keeps getting bigger and better.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- LINKS OUT -->
+  <div class="section" style="text-align:center; padding-bottom:80px;">
+    <div class="section-label">Explore More</div>
+    <h2 class="section-title" style="margin-bottom:32px;">There's More to the Story</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+      <a href="family.html"    class="btn btn-primary">Meet the Family →</a>
+      <a href="updates.html"   class="btn btn-secondary">Read the Updates →</a>
+      <a href="gallery.html"   class="btn btn-secondary">View the Gallery →</a>
+      <a href="bentley.html"   class="btn btn-secondary">Bentley's Memorial 🐾</a>
+      <a href="baby-shower.html" class="btn btn-terra">Baby Shower RSVP 🌿</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

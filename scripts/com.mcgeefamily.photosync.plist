@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- McGee Family Website — Weekly iCloud Photo Sync
+       Runs every Sunday at 9:00 PM
+       To install: cp com.mcgeefamily.photosync.plist ~/Library/LaunchAgents/
+                   launchctl load ~/Library/LaunchAgents/com.mcgeefamily.photosync.plist
+       To unload:  launchctl unload ~/Library/LaunchAgents/com.mcgeefamily.photosync.plist
+       Logs at:    /tmp/mcgee-sync.log
+  -->
+  <key>Label</key>
+  <string>com.mcgeefamily.photosync</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/benjamin_mcgee/Documents/Enchanté/Conversations/4A2C3E4D-5130-4C0E-ACB6-B12ED50E5737/mcgee-family/scripts/sync_photos.py</string>
+  </array>
+
+  <!-- Run every Sunday at 9:00 PM -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>0</integer>
+    <key>Hour</key>
+    <integer>21</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/mcgee-sync.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/mcgee-sync-error.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
