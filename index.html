@@ -239,6 +239,38 @@
     <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 60%, rgba(234,242,235,0.85) 100%);"></div>
   </div>
 
+
+  <!-- OUR STORY STRIP -->
+  <div style="background:var(--cream-dark); border-top:1px solid rgba(107,79,58,0.08); border-bottom:1px solid rgba(107,79,58,0.08); padding:52px 24px;">
+    <div style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:40px; text-align:center;">
+
+      <div>
+        <div style="font-size:36px; margin-bottom:12px;">✝️</div>
+        <div style="font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest); margin-bottom:8px;">Our Faith</div>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.7; margin:0;">
+          Non-denominational Christians rooted at <a href="https://tempe.redemptionaz.com/" target="_blank" rel="noopener" style="color:var(--forest); font-weight:600;">Redemption Tempe</a>. We believe salvation is through faith alone, and that all of life is all for Jesus.
+        </p>
+      </div>
+
+      <div style="border-left:1px solid rgba(107,79,58,0.10); border-right:1px solid rgba(107,79,58,0.10); padding:0 40px;">
+        <div style="font-size:36px; margin-bottom:12px;">👨‍👩‍👦</div>
+        <div style="font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest); margin-bottom:8px;">Our Family</div>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.7; margin:0;">
+          Ben and Brittney married November 1, 2025 in Greer, Arizona. Together we're raising Levi, loving Phoenix, and counting down the days until Baby McGee arrives September 4th.
+        </p>
+      </div>
+
+      <div>
+        <div style="font-size:36px; margin-bottom:12px;">🌱</div>
+        <div style="font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest); margin-bottom:8px;">Our Story</div>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.7; margin:0;">
+          Queen Creek, Arizona is home. We spend our days camping, playing pickleball, cooking together, and building a life worth passing down. This is our family's story — still being written.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
   <!-- BABY COUNTDOWN -->
   <div style="background: var(--sage-pale); padding: 56px 24px;">
     <div class="section" style="padding: 0; max-width: 860px;">
@@ -300,18 +332,26 @@
     </div>
   </div>
 
-  <!-- FAMILY PHOTO STRIP -->
-  <div style="padding: 0 24px 72px;">
-    <div style="max-width:1100px; margin:0 auto;">
-      <div class="photo-grid photo-grid-4" style="grid-template-columns: repeat(4,1fr);">
-        <img src="photos/family/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg" alt="The McGee Family" loading="lazy"/>
-        <img src="photos/family/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg" alt="The McGee Family" loading="lazy"/>
-        <img src="photos/family/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"  alt="The McGee Family" loading="lazy"/>
-        <img src="photos/family/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"  alt="The McGee Family" loading="lazy"/>
+  <!-- FAMILY PHOTO STRIP — horizontal cinematic scroll -->
+  <div style="padding:0 0 72px;">
+    <div style="max-width:1100px; margin:0 auto; padding:0 24px 20px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="section-label">Family Photoshoot · June 2026</div>
+          <h2 style="font-size:clamp(22px,4vw,32px); font-weight:700; letter-spacing:-0.02em; margin:0;">The McGees</h2>
+        </div>
+        <a href="gallery.html" class="btn btn-secondary" style="flex-shrink:0;">View Full Gallery →</a>
       </div>
-      <div style="text-align:center; margin-top:18px;">
-        <a href="gallery.html" class="btn btn-secondary">View Full Gallery →</a>
-      </div>
+    </div>
+    <div style="overflow-x:auto; display:flex; gap:12px; padding:0 24px; scrollbar-width:none; -ms-overflow-style:none;">
+      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/8E1E4CBB-1D7B-4630-A427-88A2070089E3.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/B6D793DF-827A-4AB4-AE24-3EDFA6888BFD.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
+      <img src="photos/family/954E4CEC-282B-4BF7-8A18-80C8D2D995FE.jpeg"  alt="McGee Family" loading="lazy" style="height:320px; width:auto; flex-shrink:0; border-radius:var(--radius-lg); object-fit:cover; cursor:zoom-in;"/>
     </div>
   </div>
 
