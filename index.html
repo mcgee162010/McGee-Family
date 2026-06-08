@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <meta name="description" content="Welcome to the McGee Family website — Ben, Brittney, Levi, and Baby McGee. Based in Queen Creek, AZ."/>
   <title>The McGee Family · Faith. Family. Forever.</title>
   <!-- Open Graph / Social Sharing -->
@@ -19,8 +19,14 @@
   <meta name="twitter:description" content="Ben, Brittney, Levi, Phoenix, and Baby McGee — a family rooted in faith, love, and adventure. Based in Queen Creek, AZ. Faith. Family. Forever."/>
   <meta name="twitter:image"       content="https://mcgeefamily2025.com/photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"/>
   <meta name="theme-color"         content="#7A9E7E"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="McGee Family"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="canonical" href="https://mcgeefamily2025.com/"/>
+  <link rel="preload" as="image" href="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg" fetchpriority="high"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     /* ── PAGE-SPECIFIC ── */
@@ -347,7 +353,7 @@
     <div class="hero-photo-panel">
       <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
            alt="The McGee Family — Ben, Brittney, Levi and Phoenix in Queen Creek, AZ"
-           loading="eager"/>
+           width="1200" height="1600" loading="eager" fetchpriority="high"/>
     </div>
 
     <!-- RIGHT: Text -->

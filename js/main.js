@@ -138,3 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 });
+
+  // ── SERVICE WORKER REGISTRATION ──────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .catch(() => {}); // Silent fail — SW is an enhancement
+    });
+  }

@@ -1,0 +1,29 @@
+{
+  "name": "The McGee Family",
+  "short_name": "McGees",
+  "description": "Ben, Brittney, Levi, Phoenix & Baby McGee — Faith. Family. Forever. Queen Creek, AZ.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EF",
+  "theme_color": "#3D6B52",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg",
+      "sizes": "1080x1350",
+      "type": "image/jpeg",
+      "label": "McGee Family Home"
+    }
+  ],
+  "categories": ["family", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
