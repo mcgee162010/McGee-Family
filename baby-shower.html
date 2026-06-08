@@ -5,103 +5,343 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Baby McGee Shower — July 25, 2026. RSVP, registry, and details."/>
   <title>Baby McGee Shower · McGee Family</title>
-  <!-- Open Graph / Social Sharing -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/baby-shower.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <!-- Open Graph -->
   <meta property="og:type"        content="website"/>
   <meta property="og:site_name"   content="The McGee Family"/>
   <meta property="og:url"         content="https://mcgeefamily2025.com/baby-shower.html"/>
   <meta property="og:title"       content="Baby McGee Shower · July 25, 2026"/>
-  <meta property="og:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! Boy or girl — we have no idea. RSVP, registry, and gender poll inside."/>
+  <meta property="og:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! RSVP, registry, and gender poll inside."/>
   <meta property="og:image"       content="https://mcgeefamily2025.com/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
-  <meta property="og:image:width" content="1400"/>
-  <meta property="og:image:alt"   content="Baby McGee Shower · July 25, 2026"/>
-  <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:title"       content="Baby McGee Shower · July 25, 2026"/>
-  <meta name="twitter:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! Boy or girl — we have no idea. RSVP, registry, and gender poll inside."/>
-  <meta name="twitter:image"       content="https://mcgeefamily2025.com/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
-  <meta name="theme-color"         content="#7A9E7E"/>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-  <link rel="canonical" href="https://mcgeefamily2025.com/baby-shower.html"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#8A9E7A"/>
+
   <style>
-
-    /* ── HERO — split layout, no overlap ─────────────────────────────── */
-    .hero-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 520px;
+    /* ── ROOT — Woodland Palette ─────────────────────────────────── */
+    :root {
+      --ivory:        #F8F3E6;
+      --ivory-dark:   #EFE8D5;
+      --ivory-deeper: #E5D9C0;
+      --brown-deep:   #3D2B1A;
+      --brown-mid:    #6B4A2A;
+      --brown-light:  #9B7A52;
+      --sage-dark:    #4A5C3E;
+      --sage:         #6B7A5A;
+      --sage-light:   #8A9E7A;
+      --sage-pale:    #D4DEC8;
+      --cream:        #FAF7F0;
     }
-    @media (max-width: 800px) {
-      .hero-split { grid-template-columns: 1fr; }
-      .hero-split-photo { max-height: 300px; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--ivory);
+      color: var(--brown-deep);
+      overflow-x: hidden;
+      animation: pageFadeIn 0.4s ease both;
     }
 
-    .hero-split-photo {
+    /* ── DECORATIVE BOTANICAL BORDER ─────────────────────────────── */
+    .botanical-top {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 6px;
+      color: var(--sage-light);
+      padding: 12px 0 0;
+      opacity: 0.80;
+      line-height: 1;
     }
 
-    .hero-split-info {
-      background:
-        radial-gradient(ellipse 80% 70% at 20% 20%, rgba(178,205,181,0.50) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(237,224,212,0.50) 0%, transparent 60%),
-        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--terra-pale) 100%);
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 52px 48px;
-      gap: 16px;
-    }
-    @media (max-width: 800px) {
-      .hero-split-info { padding: 40px 28px; }
-    }
-
-    .hero-split-info .section-label { margin-bottom: 0; }
-
-    .hero-split-info h1 {
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    .hero-split-info .tagline {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 400px;
-      margin: 0;
-    }
-
-    /* Detail pills */
-    .detail-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .pill {
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.72);
-      border: 1.5px solid rgba(107,79,58,0.14);
-      border-radius: var(--radius-full);
-      padding: 7px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-      box-shadow: 0 2px 8px rgba(60,40,20,0.07);
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 60px;
+      background: rgba(248,243,230,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(107,74,42,0.12);
     }
-
-    .hero-cta {
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--brown-mid);
+      text-decoration: none;
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 4px;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+    }
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--brown-mid);
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; background: rgba(248,243,230,0.98); padding: 16px 20px 24px; border-bottom: 1px solid rgba(107,74,42,0.10); gap: 4px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 14px; font-size: 14px; }
+      .nav-mobile-toggle { display: block; }
     }
 
-    /* ── TWO-COL CONTENT ──────────────────────────────────────────────── */
+    /* ── HERO ─────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--ivory);
+      padding: 0 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top botanical SVG strip */
+    .hero-botanical {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to bottom, var(--ivory-dark) 0%, var(--ivory) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      letter-spacing: 14px;
+      color: var(--sage-light);
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 6px;
+    }
+
+    .hero-oh-deer {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(56px, 12vw, 100px);
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 400;
+      color: var(--sage-dark);
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    /* Photo arch */
+    .hero-arch {
+      width: min(340px, 85vw);
+      margin: 0 auto 28px;
+      position: relative;
+    }
+    .hero-arch::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 3px solid var(--sage-light);
+      border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
+      opacity: 0.45;
+    }
+    .hero-arch img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
+      display: block;
+      box-shadow: 0 12px 40px rgba(61,43,26,0.20);
+    }
+
+    /* Celebrating banner */
+    .hero-celebrating {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 6px;
+    }
+    .hero-baby-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(40px, 8vw, 68px);
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .hero-arriving {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 4px;
+    }
+    .hero-with {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 2px;
+    }
+    .hero-names {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 600;
+      color: var(--sage-dark);
+      margin-bottom: 32px;
+    }
+
+    /* Date / Time pills */
+    .hero-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 24px;
+      font-family: 'Playfair Display', serif;
+    }
+    .date-block {
+      text-align: center;
+      padding: 16px 32px;
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.15);
+    }
+    .date-block:first-child { border-radius: 12px 0 0 12px; border-right: none; }
+    .date-block:last-child  { border-radius: 0 12px 12px 0; }
+    .date-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); font-family: 'Lato', sans-serif; }
+    .date-num   { font-size: 44px; font-weight: 700; color: var(--brown-deep); line-height: 1; letter-spacing: -0.03em; }
+    .date-year  { font-size: 12px; color: var(--brown-light); font-family: 'Lato', sans-serif; }
+    .date-sep   { font-size: 28px; color: var(--sage-pale); padding: 0 4px; }
+    .time-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); font-family: 'Lato', sans-serif; }
+    .time-num   { font-size: 44px; font-weight: 700; color: var(--brown-deep); line-height: 1; letter-spacing: -0.03em; }
+    .time-ampm  { font-size: 12px; color: var(--brown-light); font-family: 'Lato', sans-serif; }
+
+    /* Location wood plank */
+    .hero-location {
+      background: linear-gradient(135deg, #C4A882 0%, #B8976A 50%, #C4A882 100%);
+      border-radius: 8px;
+      padding: 14px 28px;
+      display: inline-block;
+      margin-bottom: 8px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.20), 0 4px 16px rgba(61,43,26,0.20);
+    }
+    .hero-location .loc-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 4px;
+    }
+    .hero-location .loc-address {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    /* Woodland animals strip */
+    .animals-strip {
+      text-align: center;
+      font-size: 40px;
+      letter-spacing: 12px;
+      margin: 20px 0 0;
+      opacity: 0.75;
+    }
+
+    /* ── BOTANICAL DIVIDER ────────────────────────────────────────── */
+    .botanical-divider {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 22px;
+      letter-spacing: 10px;
+      color: var(--sage-light);
+      opacity: 0.55;
+    }
+
+    /* ── SECTION WRAPPER ─────────────────────────────────────────── */
+    .ws { max-width: 1100px; margin: 0 auto; padding: 56px 24px; }
+    .ws-narrow { max-width: 760px; margin: 0 auto; padding: 56px 24px; }
+
+    /* Woodland section label */
+    .w-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 6px;
+    }
+    .w-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--brown-deep);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .w-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      color: var(--sage-dark);
+    }
+
+    /* ── TWO-COL ─────────────────────────────────────────────────── */
     .two-col {
       display: grid;
       grid-template-columns: 1fr 400px;
@@ -110,148 +350,198 @@
     }
     @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
-    /* ── RSVP CARD ────────────────────────────────────────────────────── */
-    .rsvp-card {
-      background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(20px) saturate(1.4);
-      -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--glass-shadow);
-      padding: 32px 28px;
-      position: sticky;
-      top: 76px;
-    }
-    .rsvp-card h3 { font-size: 20px; margin-bottom: 4px; }
-    .rsvp-sub { font-size: 13px; color: var(--text-tertiary); margin-bottom: 20px; line-height: 1.5; }
-
-    .rsvp-success { display: none; text-align: center; padding: 8px 0; }
-    .rsvp-success .success-icon { font-size: 48px; display: block; margin-bottom: 12px; }
-    .rsvp-success h4 { font-size: 19px; color: var(--forest); margin-bottom: 12px; }
-    .address-reveal {
-      background: var(--sage-pale);
-      border: 1.5px solid rgba(122,158,126,0.25);
-      border-radius: var(--radius-lg);
-      padding: 16px 18px;
-      margin: 10px 0;
-      text-align: left;
-    }
-    .address-reveal strong {
-      display: block;
-      font-size: 11px;
-      color: var(--forest);
-      margin-bottom: 5px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .address-reveal p { font-size: 15px; color: var(--text-primary); font-weight: 600; margin: 0; line-height: 1.5; }
-    .rsvp-success .note { font-size: 13px; color: var(--text-tertiary); line-height: 1.6; margin-top: 10px; }
-
-    /* ── DETAILS LEFT COL ─────────────────────────────────────────────── */
-    .info-block {
-      background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: var(--radius-xl);
+    /* ── INFO CARD ───────────────────────────────────────────────── */
+    .info-card {
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 18px;
       padding: 28px;
-      box-shadow: var(--glass-shadow);
       margin-bottom: 20px;
     }
-
-    .info-block-title {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--forest);
-      margin-bottom: 16px;
-    }
-
     .info-row {
       display: flex;
       align-items: flex-start;
       gap: 14px;
       padding: 12px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(107,74,42,0.08);
     }
     .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-row:first-of-type { padding-top: 0; }
-
+    .info-row:first-child { padding-top: 0; }
     .info-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
-      background: rgba(122,158,126,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: var(--sage-pale);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
     }
-    .info-row-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 2px; }
-    .info-row-value { font-size: 15px; color: var(--text-primary); font-weight: 600; line-height: 1.4; }
+    .info-row-label { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage); margin-bottom: 2px; font-family: 'Lato', sans-serif; }
+    .info-row-value { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--brown-deep); line-height: 1.4; }
 
-    /* ── REGISTRY ─────────────────────────────────────────────────────── */
-    .registry-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* ── RSVP CARD ───────────────────────────────────────────────── */
+    .rsvp-card {
+      background: var(--cream);
+      border: 2px solid rgba(107,74,42,0.16);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: sticky;
+      top: 76px;
+      box-shadow: 0 8px 32px rgba(61,43,26,0.10);
     }
-    @media (max-width: 640px) { .registry-grid { grid-template-columns: 1fr; } }
+    .rsvp-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--brown-deep);
+      margin-bottom: 4px;
+    }
+    .rsvp-sub { font-size: 13px; color: var(--brown-light); margin-bottom: 22px; font-family: 'Lato', sans-serif; line-height: 1.5; }
 
-    .reg-card {
-      border-radius: var(--radius-xl);
-      padding: 24px 20px;
+    /* Form elements — woodland style */
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+    .form-group label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-dark); font-family: 'Lato', sans-serif; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: 'Lato', sans-serif;
+      color: var(--brown-deep);
+      background: var(--ivory);
+      border: 1.5px solid rgba(107,74,42,0.20);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      -webkit-appearance: none;
     }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(107,122,90,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
 
-    /* ── GUEST LIST ───────────────────────────────────────────────────── */
-    .summary-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
+    /* Headcount box */
+    .headcount-box {
+      background: rgba(138,158,122,0.10);
+      border: 1px solid rgba(107,122,90,0.22);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
     }
-    .summary-pill {
+    .headcount-label { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage-dark); margin-bottom: 12px; font-family: 'Lato', sans-serif; }
+
+    /* Buttons — woodland */
+    .btn-woodland {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+    .btn-woodland:hover { transform: translateY(-2px); }
+
+    .btn-sage {
+      background: var(--sage-dark);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(74,92,62,0.30);
+    }
+    .btn-sage:hover { background: #3a4a30; box-shadow: 0 8px 24px rgba(74,92,62,0.38); color: #fff; }
+
+    .btn-brown {
+      background: var(--brown-mid);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(107,74,42,0.28);
+    }
+    .btn-brown:hover { background: #543a20; color: #fff; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--sage-dark);
+      border: 2px solid var(--sage);
+    }
+    .btn-outline:hover { background: var(--sage-pale); }
+
+    /* RSVP success */
+    .rsvp-success { display: none; text-align: center; padding: 16px 0; }
+    .rsvp-success .s-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+    .rsvp-success h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sage-dark); margin-bottom: 10px; }
+    .rsvp-success p  { font-size: 14px; color: var(--brown-light); line-height: 1.65; font-family: 'Lato', sans-serif; }
+    .addr-card {
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      text-align: left;
+    }
+    .addr-card .ak { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage); margin-bottom: 4px; font-family: 'Lato', sans-serif; }
+    .addr-card .av { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--brown-deep); margin: 0; line-height: 1.5; }
+
+    /* ── REGISTRY ─────────────────────────────────────────────────── */
+    .registry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 600px) { .registry-grid { grid-template-columns: 1fr; } }
+
+    .reg-card {
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 16px;
+      padding: 24px 20px;
+    }
+    .reg-icon  { font-size: 32px; margin-bottom: 10px; display: block; }
+    .reg-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--brown-deep); margin-bottom: 6px; }
+    .reg-body  { font-size: 13px; color: var(--brown-light); line-height: 1.6; margin-bottom: 14px; font-family: 'Lato', sans-serif; }
+
+    /* ── GUEST LIST ───────────────────────────────────────────────── */
+    .summary-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .summary-pill {
+      display: inline-flex; align-items: center; gap: 6px;
       padding: 8px 16px;
-      border-radius: var(--radius-full);
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 999px;
+      font-size: 13px; font-weight: 700;
+      font-family: 'Lato', sans-serif;
     }
+    .pill-yes    { background: rgba(107,122,90,0.12); color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
+    .pill-maybe  { background: rgba(155,122,82,0.12); color: var(--brown-mid);  border: 1.5px solid rgba(155,122,82,0.25); }
+    .pill-no     { background: rgba(180,80,60,0.08);  color: #8B3A28;           border: 1.5px solid rgba(180,80,60,0.18); }
+    .pill-total  { background: var(--sage-pale);       color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
 
-    .guest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
-
+    .guest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
     .guest-card {
-      border-radius: var(--radius-lg);
+      border-radius: 14px;
       padding: 16px 18px;
       border: 1.5px solid transparent;
+      font-family: 'Lato', sans-serif;
     }
+    .gc-yes   { background: rgba(107,122,90,0.08); border-color: rgba(107,122,90,0.22); }
+    .gc-maybe { background: rgba(155,122,82,0.08); border-color: rgba(155,122,82,0.22); }
+    .gc-no    { background: rgba(180,80,60,0.06);  border-color: rgba(180,80,60,0.18); }
+    .gc-name  { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--brown-deep); }
+    .gc-head  { font-size: 12px; color: var(--brown-light); margin-top: 4px; }
+    .gc-note  { font-size: 12px; color: var(--brown-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(107,74,42,0.08); }
+    .gc-time  { font-size: 11px; color: var(--sage); margin-left: auto; }
 
-    /* ── POLL ─────────────────────────────────────────────────────────── */
+    /* ── POLL ─────────────────────────────────────────────────────── */
     .poll-card {
-      background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--glass-shadow);
+      background: var(--ivory-dark);
+      border: 2px solid rgba(107,74,42,0.14);
+      border-radius: 20px;
       padding: 36px 32px;
-      max-width: 540px;
+      max-width: 520px;
       margin: 0 auto;
+      box-shadow: 0 6px 24px rgba(61,43,26,0.08);
     }
-
     .vote-btn {
       padding: 20px 16px;
-      border-radius: var(--radius-lg);
-      font-size: 17px;
+      border-radius: 14px;
+      font-size: 16px;
       font-weight: 700;
+      font-family: 'Lato', sans-serif;
       cursor: pointer;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
       display: flex;
@@ -260,52 +550,65 @@
       gap: 8px;
       border: 2px solid transparent;
     }
-    .vote-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .vote-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(61,43,26,0.14); }
+    .vote-boy  { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); color: #1D4ED8; border-color: #93C5FD; }
+    .vote-girl { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); color: #BE185D; border-color: #F9A8D4; }
+    .progress-bar { height: 12px; border-radius: 999px; overflow: hidden; margin: 5px 0 3px; }
 
-    .vote-boy  { background: linear-gradient(135deg,#DBEAFE,#BFDBFE); color: #1D4ED8; border-color: #93C5FD; }
-    .vote-girl { background: linear-gradient(135deg,#FCE7F3,#FBCFE8); color: #BE185D; border-color: #F9A8D4; }
+    /* ── STRIPED BACKGROUND SECTIONS ─────────────────────────────── */
+    .bg-ivory-dark { background: var(--ivory-dark); }
+    .bg-ivory      { background: var(--ivory); }
+    .bg-sage-pale  { background: rgba(138,158,122,0.12); }
 
-    .progress-bar {
-      height: 12px;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 6px 0 4px;
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    .footer {
+      background: var(--brown-deep);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 48px 24px 60px;
     }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .footer-tag  { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 4px; font-family: 'Lato', sans-serif; }
+    .footer-italic { font-style: italic; font-size: 13px; color: rgba(255,255,255,0.40); margin-bottom: 22px; font-family: 'Playfair Display', serif; }
+    .footer-nav  { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin-bottom: 24px; }
+    .footer-nav a { font-size: 13px; color: rgba(255,255,255,0.60); text-decoration: none; font-family: 'Lato', sans-serif; transition: color 0.15s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.30); font-family: 'Lato', sans-serif; }
+
+    /* Lightbox */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(20,10,5,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 24px; flex-direction: column; gap: 16px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: min(92vw, 1100px); max-height: 82svh; border-radius: 12px; box-shadow: 0 32px 100px rgba(0,0,0,0.70); object-fit: contain; cursor: zoom-out; }
+    .lightbox-close { position: absolute; top: 18px; right: 22px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.20); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+    .lightbox-hint { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Lato', sans-serif; }
   </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Baby McGee Shower",
-  "startDate": "2026-07-25T13:30:00-07:00",
-  "endDate": "2026-07-25T16:30:00-07:00",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "McGee Home",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "22888 E Nightingale Rd",
-      "addressLocality": "Queen Creek",
-      "addressRegion": "AZ",
-      "postalCode": "85142",
-      "addressCountry": "US"
-    }
-  },
-  "organizer": { "@type": "Person", "name": "Benjamin McGee" },
-  "description": "Baby shower celebrating the arrival of Baby McGee — due September 4, 2026. Gender is a surprise!"
-}
-</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Baby McGee Shower",
+    "startDate": "2026-07-25T13:30:00-07:00",
+    "endDate": "2026-07-25T16:30:00-07:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "McGee Home",
+      "address": { "@type": "PostalAddress", "streetAddress": "22888 E Nightingale Rd", "addressLocality": "Queen Creek", "addressRegion": "AZ", "postalCode": "85142", "addressCountry": "US" }
+    },
+    "organizer": { "@type": "Person", "name": "Benjamin McGee" },
+    "description": "Baby shower celebrating the arrival of Baby McGee — due September 4, 2026."
+  }
+  </script>
 </head>
 <body>
-  <!-- Skip Navigation -->
-  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
 
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--sage-dark);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;transition:top 0.2s;font-family:'Lato',sans-serif;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
 
   <nav class="nav">
-    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
-            <ul class="nav-links">
+    <a href="index.html" class="nav-logo"><span style="font-size:18px;">🌲</span> McGee Family</a>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
       <li><a href="gallery.html">Gallery</a></li>
@@ -316,329 +619,323 @@
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
 
-  <!-- ── HERO — photo left, info right ──────────────────────────────────── -->
-  <div class="hero-split" id="main-content">
-    <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
-         alt="Baby McGee" class="hero-split-photo"/>
-    <div class="hero-split-info">
-      <div class="section-label">Baby Shower · July 25, 2026</div>
-      <h1>Baby McGee<br>is Coming! 🌿</h1>
-      <p class="tagline">The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!</p>
-      <div class="detail-pills">
-        <span class="pill">📅 Saturday, July 25</span>
-        <span class="pill">⏰ 1:30 PM MST</span>
-        <span class="pill">📍 Queen Creek, AZ</span>
-        <span class="pill">👶 Due Sep 4, 2026</span>
+  <!-- ══ HERO ══════════════════════════════════════════════════════ -->
+  <div class="hero" id="main-content">
+
+    <!-- Top botanical strip -->
+    <div class="hero-botanical">🌿 🌸 🍃 🌾 🍂 🌿 🌸 🍃 🌾 🍂 🌿</div>
+
+    <div class="hero-inner">
+
+      <div class="hero-eyebrow">Join Us For A</div>
+
+      <!-- Script headline -->
+      <div style="margin-bottom:8px;">
+        <span style="font-family:'Playfair Display',serif; font-size:clamp(18px,3vw,24px); color:var(--sage-dark); display:block; margin-bottom:4px;">Oh</span>
+        <div class="hero-oh-deer">deer,</div>
+        <div style="font-family:'Playfair Display',serif; font-size:clamp(16px,2.5vw,22px); color:var(--sage-dark); margin-bottom:4px; font-style:italic;">The Baby's On</div>
+        <div style="font-family:'Dancing Script',cursive; font-size:clamp(32px,6vw,52px); font-weight:700; color:var(--brown-mid);">the way here!</div>
       </div>
-      <div class="hero-cta">
-        <a href="#rsvp" class="btn btn-primary" onclick="document.querySelector('.rsvp-card').scrollIntoView({behavior:'smooth'}); return false;">
-          RSVP Now →
-        </a>
-        <a href="baby-shower.ics" download class="btn btn-secondary">📆 Add to Calendar</a>
+
+      <!-- Botanical flourish -->
+      <div style="font-size:18px; letter-spacing:8px; color:var(--sage-light); opacity:0.60; margin:12px 0;">🌿 ♥ 🌿</div>
+
+      <!-- Baby shower banner -->
+      <div style="background:var(--ivory-dark); border:2px solid rgba(107,74,42,0.15); border-radius:50px; display:inline-block; padding:10px 32px; margin-bottom:20px;">
+        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); margin-bottom:2px;">Join Us For A</div>
+        <div style="font-family:'Dancing Script',cursive; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--brown-deep); line-height:1.1;">Baby Shower</div>
       </div>
+
+      <!-- Photo arch -->
+      <div class="hero-arch">
+        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
+             alt="The McGee Family — Ben, Brittney and Levi" loading="eager"/>
+      </div>
+
+      <!-- Celebrating -->
+      <div class="hero-celebrating">Celebrating</div>
+      <div class="hero-baby-name">Baby McGee,</div>
+      <div class="hero-arriving">Arriving Soon</div>
+      <div style="font-size:18px; letter-spacing:6px; color:var(--sage-light); opacity:0.55; margin:4px 0;">♥ with ♥</div>
+      <div class="hero-names">Brittney and Ben</div>
+
+      <!-- Date / Time -->
+      <div class="hero-date-row">
+        <div class="date-block">
+          <div class="date-month">July</div>
+          <div class="date-num">25</div>
+          <div class="date-year">2026</div>
+        </div>
+        <div class="date-sep">·</div>
+        <div class="date-block">
+          <div class="time-label">At</div>
+          <div class="time-num">1:30</div>
+          <div class="time-ampm">PM MST</div>
+        </div>
+      </div>
+
+      <!-- Location plank -->
+      <div class="hero-location">
+        <div class="loc-label">📍 Location</div>
+        <div class="loc-address">Queen Creek, Arizona<br/><span style="font-size:13px; opacity:0.80;">Address shown after RSVP</span></div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:24px;">
+        <a href="#rsvp" class="btn-woodland btn-sage" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'}); return false;">RSVP Now 🌿</a>
+        <a href="baby-shower.ics" download class="btn-woodland btn-outline">📆 Add to Calendar</a>
+      </div>
+
+      <!-- Animals -->
+      <div class="animals-strip">🦌 🐰 🐿️ 🦔 🦉</div>
+
     </div>
   </div>
 
-  <!-- ── MAIN CONTENT ────────────────────────────────────────────────────── -->
-  <div class="section" id="main-content">
-    <div class="two-col">
+  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
 
-      <!-- LEFT: Event details + Registry -->
-      <div>
+  <!-- ══ EVENT DETAILS + RSVP ══════════════════════════════════════ -->
+  <div class="bg-ivory-dark">
+    <div class="ws">
+      <div class="two-col">
 
-        <!-- Event details -->
-        <div class="info-block">
-          <div class="info-block-title">Event Details</div>
+        <!-- LEFT -->
+        <div>
+          <div class="w-label">Event Details</div>
+          <div class="w-title">You're Invited 🌾</div>
 
-          <div class="info-row">
-            <div class="info-icon">📅</div>
-            <div>
-              <div class="info-row-label">Date</div>
-              <div class="info-row-value">Saturday, July 25, 2026</div>
+          <div class="info-card">
+            <div class="info-row">
+              <div class="info-icon">📅</div>
+              <div><div class="info-row-label">Date</div><div class="info-row-value">Saturday, July 25, 2026</div></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">⏰</div>
+              <div><div class="info-row-label">Time</div><div class="info-row-value">1:30 PM MST</div></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">📍</div>
+              <div><div class="info-row-label">Location</div><div class="info-row-value">McGee Home · Queen Creek, AZ<br/><span style="font-size:13px; font-weight:400; color:var(--brown-light); font-family:'Lato',sans-serif;">Address shown after RSVP</span></div></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">👶</div>
+              <div><div class="info-row-label">Baby McGee Due</div><div class="info-row-value">September 4, 2026</div></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">🎁</div>
+              <div><div class="info-row-label">Gender</div><div class="info-row-value">It's a surprise — we have no idea! 🎉</div></div>
             </div>
           </div>
 
-          <div class="info-row">
-            <div class="info-icon">⏰</div>
-            <div>
-              <div class="info-row-label">Time</div>
-              <div class="info-row-value">1:30 PM MST</div>
-            </div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-icon">📍</div>
-            <div>
-              <div class="info-row-label">Location</div>
-              <div class="info-row-value">Queen Creek, AZ<br/><span style="font-size:13px; font-weight:400; color:var(--text-tertiary);">Address shown after RSVP</span></div>
-            </div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-icon">👶</div>
-            <div>
-              <div class="info-row-label">Baby McGee Due</div>
-              <div class="info-row-value">September 4, 2026</div>
-            </div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-icon">🎁</div>
-            <div>
-              <div class="info-row-label">Gender</div>
-              <div class="info-row-value">It's a surprise — we have no idea! 🎉</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- About -->
-        <div class="info-block">
-          <div class="info-block-title">You're Invited</div>
-          <p style="font-size:15px; color:var(--text-secondary); line-height:1.75; margin:0;">
-            Join us at our home in Queen Creek to celebrate the arrival of Baby McGee! 
-            We're keeping the gender a surprise — so come ready to cast your vote. 
-            Light refreshments, good people, and a whole lot of love. We can't wait to see you.
+          <p style="font-family:'Playfair Display',serif; font-size:16px; color:var(--brown-mid); line-height:1.80; font-style:italic; margin-bottom:28px;">
+            "The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!"
           </p>
-        </div>
 
-        <!-- Registry -->
-        <div class="info-block-title" style="padding:0 0 12px; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--forest);">Baby Shower Registry</div>
-        <div class="registry-grid" style="margin-bottom:20px;">
+          <!-- Registry -->
+          <div class="w-label" style="margin-top:8px;">Baby Shower Registry</div>
+          <div class="w-title" style="margin-bottom:20px;">Registry 🎀</div>
 
-          <div class="reg-card" style="background:linear-gradient(135deg,var(--sage-pale),var(--cream)); border:1.5px solid rgba(122,158,126,0.25);">
-            <div style="font-size:32px; margin-bottom:10px;">🎀</div>
-            <div style="font-size:16px; font-weight:700; color:var(--forest); margin-bottom:6px;">Elfster Registry</div>
-            <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">Browse and claim gifts from any website.</p>
-            <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
-               target="_blank" rel="noopener" class="btn btn-primary" style="font-size:13px; padding:9px 16px;">
-              View Registry →
-            </a>
+          <div class="registry-grid">
+            <div class="reg-card">
+              <span class="reg-icon">🎀</span>
+              <div class="reg-title">Elfster Registry</div>
+              <p class="reg-body">Browse and claim gifts from any website.</p>
+              <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
+                 target="_blank" rel="noopener" class="btn-woodland btn-sage" style="font-size:12px; padding:9px 18px;">
+                View Registry →
+              </a>
+            </div>
+            <div class="reg-card" style="background:rgba(155,122,82,0.08); border-color:rgba(155,122,82,0.20);">
+              <span class="reg-icon">☑️</span>
+              <div class="reg-title" style="color:var(--brown-mid);">Mark as Purchased</div>
+              <p class="reg-body">Bought something? Mark it so no one duplicates your gift.</p>
+              <div style="background:rgba(255,255,255,0.55); border-radius:8px; padding:10px 12px; font-size:12px; color:var(--brown-light); font-family:'Lato',sans-serif; line-height:1.6;">
+                Open registry → find item → <strong>"Mark as Purchased"</strong> ✅
+              </div>
+            </div>
           </div>
 
-          <div class="reg-card" style="background:var(--terra-pale); border:1.5px solid rgba(196,113,74,0.22);">
-            <div style="font-size:32px; margin-bottom:10px;">☑️</div>
-            <div style="font-size:16px; font-weight:700; color:var(--terracotta); margin-bottom:6px;">Mark as Purchased</div>
-            <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px;">Bought something? Please mark it so no one buys a duplicate.</p>
-            <div style="background:rgba(255,255,255,0.55); border-radius:var(--radius-md); padding:10px 12px; font-size:12px; color:var(--text-secondary); line-height:1.6;">
-              Open registry → find item → <strong>"Mark as Purchased"</strong> ✅
+          <div style="background:var(--ivory); border:1.5px solid rgba(107,74,42,0.14); border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:12px; margin-top:18px;">
+            <span style="font-size:24px; flex-shrink:0;">📦</span>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:var(--brown-deep); margin-bottom:2px; font-family:'Playfair Display',serif;">Sending a gift by mail?</div>
+              <div style="font-size:13px; color:var(--brown-light); line-height:1.5; font-family:'Lato',sans-serif;">RSVP below and the mailing address will be shown right away.</div>
             </div>
           </div>
         </div>
 
-        <!-- Mailing address note -->
-        <div style="background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:var(--radius-lg); padding:18px 22px; display:flex; align-items:center; gap:12px; box-shadow:var(--glass-shadow);">
-          <span style="font-size:24px; flex-shrink:0;">📦</span>
-          <div>
-            <div style="font-size:14px; font-weight:700; color:var(--text-primary); margin-bottom:2px;">Sending a gift by mail?</div>
-            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;">RSVP below and the mailing address will be shown immediately.</div>
+        <!-- RIGHT — RSVP form -->
+        <div class="rsvp-card" id="rsvp">
+          <h3>RSVP 🌿</h3>
+          <p class="rsvp-sub">Let us know if you can make it — the address is shown the moment you submit.</p>
+
+          <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
+            <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
+
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="First & Last Name" required/>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email <span style="font-weight:400; color:var(--brown-light); text-transform:none; letter-spacing:0;">(optional)</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com"/>
+            </div>
+
+            <div class="form-group">
+              <label for="attending">Will you attend? *</label>
+              <select id="attending" name="attending" required>
+                <option value="" disabled selected>Select your response</option>
+                <option value="Yes — can't wait!">✅ Yes — can't wait!</option>
+                <option value="Maybe — I'll try!">🤞 Maybe — I'll try!</option>
+                <option value="No — unable to attend">❌ No — unable to attend</option>
+              </select>
+            </div>
+
+            <div class="headcount-box">
+              <div class="headcount-label">👥 Guest Headcount</div>
+              <div class="form-group" style="margin-bottom:10px;">
+                <label for="adults">Adults (18+)</label>
+                <select id="adults" name="adults">
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6+">6+</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:10px;">
+                <label for="children-school">School Age (5–12)</label>
+                <select id="children-school" name="children_school_age">
+                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:10px;">
+                <label for="children-toddler">Toddlers (2–4)</label>
+                <select id="children-toddler" name="children_toddler">
+                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label for="children-infant">Infants (Under 2)</label>
+                <select id="children-infant" name="children_infant">
+                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Note <span style="font-weight:400; color:var(--brown-light); text-transform:none; letter-spacing:0;">(optional)</span></label>
+              <textarea id="message" name="message" placeholder="Dietary needs, questions, or a kind note…"></textarea>
+            </div>
+
+            <button type="submit" class="btn-woodland btn-brown" style="width:100%;">
+              Send RSVP 🌿
+            </button>
+          </form>
+
+          <div class="rsvp-success" id="rsvp-success">
+            <span class="s-icon">🎉</span>
+            <h4>You're on the list!</h4>
+            <div class="addr-card">
+              <div class="ak">📅 Date & Time</div>
+              <p class="av">Saturday, July 25, 2026 · 1:30 PM MST</p>
+            </div>
+            <div class="addr-card">
+              <div class="ak">📍 Address</div>
+              <p class="av">22888 E Nightingale Rd<br/>Queen Creek, AZ 85142</p>
+            </div>
+            <p style="font-size:13px; color:var(--brown-light); margin-top:12px; font-family:'Lato',sans-serif;">Can't wait to celebrate with you! 🌿</p>
           </div>
         </div>
 
       </div>
-
-      <!-- RIGHT: RSVP form -->
-      <div class="rsvp-card" id="rsvp">
-        <h3>RSVP 🎉</h3>
-        <p class="rsvp-sub">Let us know if you can make it!</p>
-
-        <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
-          <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
-
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" placeholder="First & Last Name" required/>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email <span style="font-weight:400; color:var(--text-tertiary);">(optional)</span></label>
-            <input type="email" id="email" name="email" placeholder="you@example.com"/>
-          </div>
-
-          <div class="form-group">
-            <label for="attending">Will you attend? *</label>
-            <select id="attending" name="attending" required>
-              <option value="" disabled selected>Select your response</option>
-              <option value="Yes — can't wait!">✅ Yes — can't wait!</option>
-              <option value="Maybe — I'll try!">🤞 Maybe — I'll try!</option>
-              <option value="No — unable to attend">❌ No — unable to attend</option>
-            </select>
-          </div>
-
-          <div style="background:rgba(122,158,126,0.08); border:1px solid rgba(122,158,126,0.20); border-radius:var(--radius-md); padding:14px 16px; margin-bottom:16px;">
-            <div style="font-size:12px; font-weight:700; color:var(--forest); margin-bottom:12px; letter-spacing:0.04em; text-transform:uppercase;">👥 Guest Headcount</div>
-
-            <div class="form-group" style="margin-bottom:10px;">
-              <label for="adults">Adults (18+)</label>
-              <select id="adults" name="adults">
-                <option value="" disabled selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6+">6+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:10px;">
-              <label for="children-school">School Age (5–12)</label>
-              <select id="children-school" name="children_school_age">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:10px;">
-              <label for="children-toddler">Toddlers (2–4)</label>
-              <select id="children-toddler" name="children_toddler">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:0;">
-              <label for="children-infant">Infants (Under 2)</label>
-              <select id="children-infant" name="children_infant">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3+">3+</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Note <span style="font-weight:400; color:var(--text-tertiary);">(optional)</span></label>
-            <textarea id="message" name="message" placeholder="Dietary needs, questions, or a kind note…" style="min-height:80px;"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-terra" style="width:100%; justify-content:center; font-size:15px;">
-            Send RSVP →
-          </button>
-        </form>
-
-        <!-- Success -->
-        <div class="rsvp-success" id="rsvp-success">
-          <span class="success-icon">🎉</span>
-          <h4>You're on the list!</h4>
-          <div class="address-reveal">
-            <strong>📅 We'll See You There!</strong>
-            <p>Saturday, July 25, 2026 · 1:30 PM MST<br/>22888 E Nightingale Rd, Queen Creek, AZ 85142</p>
-          </div>
-          <p class="note">Can't wait to celebrate with you! Use the "Add to Calendar" button at the top to save the date. 🌿</p>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
 
-  <!-- ── GUEST LIST ──────────────────────────────────────────────────────── -->
-  <div class="section" id="guests">
-    <div class="section-label">Who's Coming</div>
-    <h2 class="section-title">Guest List</h2>
-    <p class="section-body" style="margin-bottom:24px;">Updated in real time as guests RSVP. Refreshes every 30 seconds.</p>
+  <!-- ══ GUEST LIST ═════════════════════════════════════════════════ -->
+  <div class="bg-ivory">
+    <div class="ws">
+      <div class="w-label">Who's Coming</div>
+      <div class="w-title">Guest List 🦔</div>
+      <p style="font-family:'Lato',sans-serif; font-size:15px; color:var(--brown-light); margin-bottom:24px;">Updated in real time as guests RSVP.</p>
 
-    <div class="summary-pills">
-      <div class="summary-pill" style="background:rgba(52,199,89,0.10); border:1.5px solid rgba(52,199,89,0.25); color:#1a7a36;">
-        ✅ Attending: <span id="count-yes" style="margin-left:4px;">–</span>
+      <div class="summary-row">
+        <div class="summary-pill pill-yes">✅ Attending: <span id="count-yes">–</span></div>
+        <div class="summary-pill pill-maybe">🤞 Maybe: <span id="count-maybe">–</span></div>
+        <div class="summary-pill pill-no">❌ Can't Make It: <span id="count-no">–</span></div>
+        <div class="summary-pill pill-total">👥 Total Guests: <span id="count-total">–</span></div>
       </div>
-      <div class="summary-pill" style="background:rgba(255,149,0,0.10); border:1.5px solid rgba(255,149,0,0.25); color:#a05c00;">
-        🤞 Maybe: <span id="count-maybe" style="margin-left:4px;">–</span>
-      </div>
-      <div class="summary-pill" style="background:rgba(255,59,48,0.08); border:1.5px solid rgba(255,59,48,0.18); color:#a01000;">
-        ❌ Can't Make It: <span id="count-no" style="margin-left:4px;">–</span>
-      </div>
-      <div class="summary-pill" style="background:var(--sage-pale); border:1.5px solid rgba(122,158,126,0.25); color:var(--forest);">
-        👥 Total Guests: <span id="count-total" style="margin-left:4px;">–</span>
-      </div>
-    </div>
 
-    <div class="guest-grid" id="guest-list">
-      <div style="font-size:15px; color:var(--text-tertiary); padding:16px;">Loading guest list…</div>
+      <div class="guest-grid" id="guest-list">
+        <div style="font-size:14px; color:var(--brown-light); padding:16px; font-family:'Lato',sans-serif; font-style:italic;">Loading guest list…</div>
+      </div>
     </div>
   </div>
 
-  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
 
-  <!-- ── GENDER POLL ─────────────────────────────────────────────────────── -->
-  <div class="section" id="poll">
-    <div class="section-label">Cast Your Vote</div>
-    <h2 class="section-title">Boy or Girl? 💙🩷</h2>
-    <p class="section-body" style="margin-bottom:32px;">Ben and Brittney have no idea — but you might have a hunch. What's your gut say?</p>
-
-    <div class="poll-card">
-      <div id="poll-vote">
-        <p style="font-size:15px; color:var(--text-secondary); text-align:center; margin-bottom:24px; line-height:1.6;">
-          One vote per device. Results show after you vote. 👇
-        </p>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
-          <button onclick="castVote('boy')" class="vote-btn vote-boy">
-            <span style="font-size:40px;">💙</span>
-            It's a Boy!
-          </button>
-          <button onclick="castVote('girl')" class="vote-btn vote-girl">
-            <span style="font-size:40px;">🩷</span>
-            It's a Girl!
-          </button>
-        </div>
+  <!-- ══ GENDER POLL ════════════════════════════════════════════════ -->
+  <div class="bg-ivory-dark">
+    <div class="ws-narrow">
+      <div style="text-align:center; margin-bottom:32px;">
+        <div class="w-label" style="text-align:center;">Cast Your Vote</div>
+        <div class="w-script">Boy or Girl? 💙🩷</div>
+        <p style="font-family:'Playfair Display',serif; font-size:16px; font-style:italic; color:var(--brown-mid); margin-top:10px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.65;">Ben and Brittney have no idea — but you might have a hunch.</p>
       </div>
 
-      <div id="poll-results" style="display:none;">
-        <p style="font-size:15px; font-weight:600; color:var(--text-primary); text-align:center; margin-bottom:20px;">
-          Here's where everyone stands 👇
-        </p>
-        <div style="margin-bottom:16px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-            <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
-            <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
+      <div class="poll-card">
+        <div id="poll-vote">
+          <p style="font-size:14px; color:var(--brown-light); text-align:center; margin-bottom:24px; line-height:1.6; font-family:'Lato',sans-serif;">What's your gut feeling? One vote per device. 👇</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+            <button onclick="castVote('boy')" class="vote-btn vote-boy"><span style="font-size:40px;">💙</span>It's a Boy!</button>
+            <button onclick="castVote('girl')" class="vote-btn vote-girl"><span style="font-size:40px;">🩷</span>It's a Girl!</button>
           </div>
-          <div class="progress-bar" style="background:#DBEAFE;">
-            <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
-          </div>
-          <div style="font-size:12px; color:var(--text-tertiary); margin-top:3px;"><span id="boy-count">0</span> votes</div>
         </div>
-        <div style="margin-bottom:20px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-            <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
-            <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
+        <div id="poll-results" style="display:none;">
+          <p style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep); text-align:center; margin-bottom:20px;">Here's where everyone stands 👇</p>
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-family:'Lato',sans-serif;">
+              <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
+              <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
+            </div>
+            <div class="progress-bar" style="background:#DBEAFE;">
+              <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--brown-light); margin-top:3px; font-family:'Lato',sans-serif;"><span id="boy-count">0</span> votes</div>
           </div>
-          <div class="progress-bar" style="background:#FCE7F3;">
-            <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-family:'Lato',sans-serif;">
+              <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
+              <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
+            </div>
+            <div class="progress-bar" style="background:#FCE7F3;">
+              <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--brown-light); margin-top:3px; font-family:'Lato',sans-serif;"><span id="girl-count">0</span> votes</div>
           </div>
-          <div style="font-size:12px; color:var(--text-tertiary); margin-top:3px;"><span id="girl-count">0</span> votes</div>
-        </div>
-        <div style="text-align:center; font-size:13px; color:var(--text-tertiary);">
-          <span id="total-votes"></span>
-          <div style="margin-top:6px; font-size:11px; opacity:0.7;">Votes are stored per device and may vary by browser.</div>
+          <div style="text-align:center; font-size:13px; color:var(--brown-light); font-family:'Lato',sans-serif;">
+            <span id="total-votes"></span>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Bottom botanical -->
+  <div style="background:var(--ivory); text-align:center; padding:24px; font-size:28px; letter-spacing:8px; color:var(--sage-light); opacity:0.60;">
+    🦌 🌿 🐰 🌸 🐿️ 🍃 🦔 🌾 🦉
   </div>
 
   <footer class="footer">
     <div class="footer-logo">🌲 The McGee Family</div>
-    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
-    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <div class="footer-tag">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-italic">Faith. Family. Forever.</div>
     <ul class="footer-nav">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
-      <li><a href="our-story.html">Our Story</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="our-story.html">Our Story</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="year-in-review.html">Year in Review</a></li>
-      <li><a href="contact.html">Contact</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="bentley.html">In Memory</a></li>
     </ul>
@@ -648,7 +945,7 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightbox-close">✕</button>
     <img id="lightbox-img" src="" alt=""/>
-    <div class="lightbox-hint">← → arrow keys to navigate &nbsp;·&nbsp; esc or click outside to close</div>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
   </div>
 
   <script src="js/main.js"></script>
@@ -658,185 +955,147 @@
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     const HEADERS = { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY };
 
-    // ── RSVP ──────────────────────────────────────────────────────────────────
+    // RSVP
     const form = document.getElementById('rsvp-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Submitting…';
+      btn.textContent = 'Sending… 🌿';
       btn.disabled = true;
-
       const fd = new FormData(form);
       const entry = {
-        name:    fd.get('name'),
-        status:  fd.get('attending'),
-        adults:  fd.get('adults')              || '0',
-        school:  fd.get('children_school_age') || '0',
-        toddler: fd.get('children_toddler')    || '0',
-        infant:  fd.get('children_infant')     || '0',
-        note:    fd.get('message') || '',
-        ts:      new Date().toISOString()
+        name: fd.get('name'), status: fd.get('attending'),
+        adults: fd.get('adults') || '0', school: fd.get('children_school_age') || '0',
+        toddler: fd.get('children_toddler') || '0', infant: fd.get('children_infant') || '0',
+        note: fd.get('message') || '', ts: new Date().toISOString()
       };
-
       try {
         await fetch(form.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-
         const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const readJson = await readRes.json();
         const current  = readJson.record?.rsvps || [];
         current.push(entry);
-
-        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify({ rsvps: current }) });
-
+        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify({ rsvps: current, poll: readJson.record?.poll || { boy: 0, girl: 0 } }) });
         form.style.display = 'none';
         document.getElementById('rsvp-success').style.display = 'block';
         loadGuestList();
-
       } catch(err) {
-        btn.textContent = 'Send RSVP →';
+        btn.textContent = 'Send RSVP 🌿';
         btn.disabled = false;
         alert('Something went wrong. Please email benjmcgee@yahoo.com directly.');
       }
     });
 
-    // ── POLL — shared live votes via JSONBin ─────────────────────────────────
-    const POLL_KEY  = 'mcgee_baby_voted';
-    const POLL_URL  = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-
+    // Poll
+    const POLL_KEY = 'mcgee_baby_voted';
     async function castVote(choice) {
-      if (localStorage.getItem(POLL_KEY)) return; // already voted
+      if (localStorage.getItem(POLL_KEY)) return;
       localStorage.setItem(POLL_KEY, choice);
-
       try {
-        const res  = await fetch(`${POLL_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const json = await res.json();
         const data = json.record || { rsvps: [], poll: { boy: 0, girl: 0 } };
         if (!data.poll) data.poll = { boy: 0, girl: 0 };
         data.poll[choice] = (data.poll[choice] || 0) + 1;
-        await fetch(POLL_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify(data) });
+        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify(data) });
         showResults(data.poll.boy || 0, data.poll.girl || 0);
-      } catch(e) {
-        showResults(0, 0);
-      }
+      } catch(e) { showResults(0, 0); }
     }
-
     async function loadPoll() {
       try {
-        const res  = await fetch(`${POLL_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const json = await res.json();
         const poll = json.record?.poll || { boy: 0, girl: 0 };
-        if (localStorage.getItem(POLL_KEY)) {
-          showResults(poll.boy || 0, poll.girl || 0);
-        }
+        if (localStorage.getItem(POLL_KEY)) showResults(poll.boy || 0, poll.girl || 0);
       } catch(e) {}
     }
-
     function showResults(boys, girls) {
-      const total   = boys + girls;
-      const boyPct  = total ? Math.round((boys  / total) * 100) : 50;
-      const girlPct = total ? Math.round((girls / total) * 100) : 50;
+      const total = boys + girls;
+      const bp = total ? Math.round((boys / total) * 100) : 50;
+      const gp = total ? Math.round((girls / total) * 100) : 50;
       document.getElementById('poll-vote').style.display    = 'none';
       document.getElementById('poll-results').style.display = 'block';
       document.getElementById('boy-count').textContent  = boys;
       document.getElementById('girl-count').textContent = girls;
-      document.getElementById('boy-pct').textContent    = boyPct  + '%';
-      document.getElementById('girl-pct').textContent   = girlPct + '%';
+      document.getElementById('boy-pct').textContent    = bp + '%';
+      document.getElementById('girl-pct').textContent   = gp + '%';
       document.getElementById('total-votes').textContent = `${total} vote${total !== 1 ? 's' : ''} cast`;
       setTimeout(() => {
-        document.getElementById('boy-bar').style.width  = boyPct  + '%';
-        document.getElementById('girl-bar').style.width = girlPct + '%';
+        document.getElementById('boy-bar').style.width  = bp + '%';
+        document.getElementById('girl-bar').style.width = gp + '%';
       }, 100);
     }
-
     window.addEventListener('DOMContentLoaded', loadPoll);
     setInterval(loadPoll, 30000);
 
-    // ── GUEST LIST ────────────────────────────────────────────────────────────
-    function headcount(r) {
-      return [r.adults, r.school, r.toddler, r.infant]
-        .map(v => parseInt(v || 0)).reduce((a, b) => a + b, 0);
+    // Guest List
+    function headcount(r) { return ['adults','school','toddler','infant'].map(k => parseInt(r[k]||0)).reduce((a,b)=>a+b,0); }
+    function statusStyles(s) {
+      if (s.startsWith('Yes'))   return 'gc-yes';
+      if (s.startsWith('Maybe')) return 'gc-maybe';
+      return 'gc-no';
     }
-
     function statusIcon(s) {
       if (s.startsWith('Yes'))   return '✅';
       if (s.startsWith('Maybe')) return '🤞';
       return '❌';
     }
-
-    function statusStyles(s) {
-      if (s.startsWith('Yes'))   return 'background:rgba(52,199,89,0.08); border-color:rgba(52,199,89,0.22);';
-      if (s.startsWith('Maybe')) return 'background:rgba(255,149,0,0.08); border-color:rgba(255,149,0,0.22);';
-      return 'background:rgba(255,59,48,0.06); border-color:rgba(255,59,48,0.18);';
+    function buildHC(r) {
+      const p = [];
+      if (parseInt(r.adults||0)>0)  p.push(`${r.adults} adult${parseInt(r.adults)>1?'s':''}`);
+      if (parseInt(r.school||0)>0)  p.push(`${r.school} school age`);
+      if (parseInt(r.toddler||0)>0) p.push(`${r.toddler} toddler${parseInt(r.toddler)>1?'s':''}`);
+      if (parseInt(r.infant||0)>0)  p.push(`${r.infant} infant${parseInt(r.infant)>1?'s':''}`);
+      return p.length ? p.join(' · ') : 'Just me';
     }
-
-    function buildHeadcountLine(r) {
-      const parts = [];
-      if (parseInt(r.adults  || 0) > 0) parts.push(`${r.adults} adult${parseInt(r.adults)>1?'s':''}`);
-      if (parseInt(r.school  || 0) > 0) parts.push(`${r.school} school age`);
-      if (parseInt(r.toddler || 0) > 0) parts.push(`${r.toddler} toddler${parseInt(r.toddler)>1?'s':''}`);
-      if (parseInt(r.infant  || 0) > 0) parts.push(`${r.infant} infant${parseInt(r.infant)>1?'s':''}`);
-      return parts.length ? parts.join(' · ') : 'Just me';
-    }
-
     function timeAgo(ts) {
       if (!ts) return '';
       const diff = Math.floor((Date.now() - new Date(ts)) / 60000);
       if (diff < 1)  return 'Just now';
       if (diff < 60) return `${diff}m ago`;
       const h = Math.floor(diff / 60);
-      if (h < 24)   return `${h}h ago`;
-      const d = Math.floor(h / 24);
-      return `${d}d ago`;
+      if (h < 24) return `${h}h ago`;
+      return `${Math.floor(h/24)}d ago`;
     }
-
     async function loadGuestList() {
       try {
         const res   = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const json  = await res.json();
         const rsvps = json.record?.rsvps || [];
         const listEl = document.getElementById('guest-list');
-
         if (!rsvps.length) {
-          listEl.innerHTML = '<div style="font-size:15px; color:var(--text-tertiary); padding:16px; grid-column:1/-1;">No RSVPs yet — be the first! 🌿</div>';
-          ['count-yes','count-maybe','count-no','count-total'].forEach(id =>
-            document.getElementById(id).textContent = '0'
-          );
+          listEl.innerHTML = '<div style="font-size:14px;color:var(--brown-light);padding:16px;font-family:\'Lato\',sans-serif;font-style:italic;">No RSVPs yet — be the first! 🌿</div>';
+          ['count-yes','count-maybe','count-no','count-total'].forEach(id => document.getElementById(id).textContent = '0');
           return;
         }
-
-        let yes = 0, maybe = 0, no = 0, total = 0;
+        let yes=0,maybe=0,no=0,total=0;
         rsvps.forEach(r => {
           const hc = headcount(r);
-          if      (r.status.startsWith('Yes'))   { yes++;   total += hc; }
-          else if (r.status.startsWith('Maybe')) { maybe++; total += hc; }
+          if      (r.status.startsWith('Yes'))   { yes++;   total+=hc; }
+          else if (r.status.startsWith('Maybe')) { maybe++; total+=hc; }
           else                                    { no++; }
         });
-
         document.getElementById('count-yes').textContent   = yes;
         document.getElementById('count-maybe').textContent = maybe;
         document.getElementById('count-no').textContent    = no;
         document.getElementById('count-total').textContent = total;
-
         listEl.innerHTML = [...rsvps].reverse().map(r => `
-          <div class="guest-card" style="${statusStyles(r.status)}">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-              <div style="display:flex; align-items:center; gap:7px;">
-                <span style="font-size:16px;">${statusIcon(r.status)}</span>
-                <span style="font-size:15px; font-weight:700; color:var(--text-primary);">${r.name}</span>
+          <div class="guest-card ${statusStyles(r.status)}">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:15px;">${statusIcon(r.status)}</span>
+                <span class="gc-name">${r.name}</span>
               </div>
-              <span style="font-size:11px; color:var(--text-tertiary);">${timeAgo(r.ts)}</span>
+              <span class="gc-time">${timeAgo(r.ts)}</span>
             </div>
-            <div style="font-size:12px; color:var(--text-secondary);">👥 ${buildHeadcountLine(r)}</div>
-            ${r.note ? `<div style="font-size:12px; color:var(--text-tertiary); margin-top:6px; font-style:italic; border-top:1px solid rgba(0,0,0,0.06); padding-top:6px;">"${r.note}"</div>` : ''}
+            <div class="gc-head">👥 ${buildHC(r)}</div>
+            ${r.note ? `<div class="gc-note">"${r.note}"</div>` : ''}
           </div>
         `).join('');
-
       } catch(e) {
-        document.getElementById('guest-list').innerHTML =
-          '<div style="font-size:14px; color:var(--text-tertiary); padding:16px;">Unable to load guest list right now.</div>';
+        document.getElementById('guest-list').innerHTML = '<div style="font-size:14px;color:var(--brown-light);padding:16px;font-family:\'Lato\',sans-serif;">Unable to load guest list right now.</div>';
       }
     }
-
     loadGuestList();
     setInterval(loadGuestList, 30000);
   </script>
