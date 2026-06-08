@@ -4,13 +4,13 @@ PRODID:-//McGee Family//Baby Shower//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-DTSTART;TZID=America/Phoenix:20260725T120000
-DTEND;TZID=America/Phoenix:20260725T150000
+DTSTART;TZID=America/Phoenix:20260725T133000
+DTEND;TZID=America/Phoenix:20260725T163000
 SUMMARY:Baby McGee Shower 🌿
-DESCRIPTION:Join us to celebrate the upcoming arrival of Baby McGee! Woodland animal theme. Address will be shared after RSVP — visit https://mcgee162010.github.io/McGee-Family/events.html to RSVP.\n\nContact: benjmcgee@yahoo.com
-LOCATION:Queen Creek, Arizona (Address shared after RSVP)
+DESCRIPTION:Join us to celebrate the arrival of Baby McGee! Woodland animal theme.\n\nAddress: 22888 E Nightingale Rd, Queen Creek, AZ 85142\nTime: 1:30 PM MST\n\nRSVP at: https://mcgee162010.github.io/McGee-Family/events.html\nContact: benjmcgee@yahoo.com
+LOCATION:22888 E Nightingale Rd, Queen Creek, AZ 85142
 STATUS:CONFIRMED
-SEQUENCE:0
+SEQUENCE:1
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
