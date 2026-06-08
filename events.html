@@ -197,16 +197,53 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <select id="guests" name="guests">
-              <option value="" disabled selected>Select headcount</option>
-              <option value="1">Just me</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5+">5 or more</option>
-            </select>
+          <div style="background:rgba(122,158,126,0.08); border:1px solid rgba(122,158,126,0.20); border-radius:var(--radius-md); padding:16px 18px; margin-bottom:18px;">
+            <div style="font-size:13px; font-weight:700; color:var(--forest); margin-bottom:14px; letter-spacing:0.02em;">👥 Guest Headcount</div>
+
+            <div class="form-group" style="margin-bottom:12px;">
+              <label for="adults">Adults (18+)</label>
+              <select id="adults" name="adults">
+                <option value="" disabled selected>Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6+">6+</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom:12px;">
+              <label for="children-school">School Age Children (5–12)</label>
+              <select id="children-school" name="children_school_age">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom:12px;">
+              <label for="children-toddler">Toddlers (2–4)</label>
+              <select id="children-toddler" name="children_toddler">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="children-infant">Infants (Under 2)</label>
+              <select id="children-infant" name="children_infant">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3+">3+</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
