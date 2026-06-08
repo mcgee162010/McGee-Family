@@ -166,7 +166,7 @@
       <!-- Right: RSVP form -->
       <div class="rsvp-card" id="rsvp-card">
         <h3>RSVP 🎉</h3>
-        <p class="rsvp-sub">Let us know you're coming — we'll send the address to your email.</p>
+        <p class="rsvp-sub">Let us know if you can make it — we'll send the address to everyone who responds.</p>
 
         <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
           <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
@@ -188,8 +188,18 @@
           </div>
 
           <div class="form-group">
-            <label for="guests">Number of Guests *</label>
-            <select id="guests" name="guests" required>
+            <label for="attending">Will you attend? *</label>
+            <select id="attending" name="attending" required>
+              <option value="" disabled selected>Select your response</option>
+              <option value="Yes — can't wait!">✅ Yes — can't wait!</option>
+              <option value="Maybe — I'll try!">🤞 Maybe — I'll try!</option>
+              <option value="No — unable to attend">❌ No — unable to attend</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests">
               <option value="" disabled selected>Select headcount</option>
               <option value="1">Just me</option>
               <option value="2">2 people</option>
@@ -217,13 +227,67 @@
         <div class="rsvp-success" id="rsvp-success">
           <span class="success-icon">🎉</span>
           <h4>You're on the list!</h4>
-          <p>Ben & Brittney will send you the address and final details via email or text. Can't wait to celebrate together!</p>
+          <p>Ben & Brittney will send you the address regardless of your response — so you have it either way. Can't wait to celebrate!</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- REGISTRY -->
+  <div class="section" id="registry">
+    <div class="section-label">Baby Shower Registry</div>
+    <h2 class="section-title">Brittney's Wishlist 🎁</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start;" class="registry-layout">
+
+      <!-- Registry card -->
+      <div style="background:linear-gradient(135deg,var(--sage-pale),var(--cream)); border:1.5px solid rgba(122,158,126,0.25); border-radius:var(--radius-xl); padding:36px 32px;">
+        <div style="font-size:48px; margin-bottom:16px;">🎀</div>
+        <h3 style="font-size:22px; color:var(--forest); margin-bottom:10px;">Elfster Wishlist</h3>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.65; margin-bottom:24px;">
+          Brittney's registry is hosted on Elfster — you can view the full wishlist and add gifts from any website. 
+          Click below to browse and claim what you'd like to gift Baby McGee.
+        </p>
+        <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
+           target="_blank" rel="noopener"
+           class="btn btn-primary" style="display:inline-flex;">
+          View Brittney's Wishlist →
+        </a>
+      </div>
+
+      <!-- Important note card -->
+      <div style="background:var(--terra-pale); border:2px solid rgba(196,113,74,0.25); border-radius:var(--radius-xl); padding:36px 32px;">
+        <div style="font-size:48px; margin-bottom:16px;">⚠️</div>
+        <h3 style="font-size:20px; color:var(--terracotta); margin-bottom:12px;">Please Mark as Purchased!</h3>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">
+          If you purchase something from the wishlist, <strong>please mark it as purchased on Elfster</strong> so others don't buy the same gift. This keeps everything coordinated and avoids duplicates — it takes just one click!
+        </p>
+        <div style="background:rgba(255,255,255,0.60); border-radius:var(--radius-md); padding:16px 18px; font-size:14px; color:var(--text-secondary); line-height:1.6;">
+          <strong style="display:block; margin-bottom:6px; color:var(--text-primary);">How to mark as purchased:</strong>
+          1. Open the wishlist<br/>
+          2. Find the item you bought<br/>
+          3. Click <strong>"Mark as Purchased"</strong><br/>
+          4. Done — everyone will see it's taken! ✅
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mailing address note -->
+    <div style="margin-top:20px; background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:var(--radius-lg); padding:22px 26px; display:flex; align-items:center; gap:14px; box-shadow:var(--glass-shadow);">
+      <span style="font-size:28px; flex-shrink:0;">📦</span>
+      <div>
+        <div style="font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Sending a gift by mail?</div>
+        <div style="font-size:14px; color:var(--text-secondary); line-height:1.6;">
+          The mailing address will be provided to everyone who RSVPs — yes, no, or maybe. 
+          Just fill out the RSVP form above and Ben &amp; Brittney will send it to you directly.
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- NURSERY THEME -->
   <div class="section">
