@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="The McGee Family Year in Review — annual chapters of our family story."/>
+  <title>Year in Review · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/year-in-review.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Year in Review · McGee Family"/>
+  <meta property="og:description" content="Every year, one chapter. The McGee family annual review — faith, family, milestones, and memories."/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    .page-hero {
+      background:
+        radial-gradient(ellipse 65% 55% at 15% 25%, rgba(178,205,181,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 85% 75%, rgba(237,224,212,0.45) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--brown-pale) 100%);
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(40px, 8vw, 76px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+    /* Year selector */
+    .year-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .year-tab {
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      border: 1.5px solid rgba(107,79,58,0.14);
+      cursor: pointer;
+      background: var(--glass-bg);
+      color: var(--text-secondary);
+      transition: all 0.18s;
+      letter-spacing: -0.01em;
+    }
+    .year-tab.active, .year-tab:hover {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
+
+    .year-section { display: none; }
+    .year-section.visible { display: block; }
+
+    /* Chapter header */
+    .chapter-header {
+      background: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .chapter-year {
+      font-size: clamp(60px, 10vw, 100px);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .chapter-info { flex: 1; min-width: 200px; }
+    .chapter-title { font-size: clamp(22px, 4vw, 36px); font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .chapter-sub   { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      padding: 20px 18px;
+      text-align: center;
+      box-shadow: var(--glass-shadow);
+    }
+    .stat-card .stat-icon  { font-size: 28px; display: block; margin-bottom: 8px; }
+    .stat-card .stat-num   { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--text-primary); display: block; }
+    .stat-card .stat-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; margin-top: 3px; }
+
+    /* Highlight cards */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .highlight-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius-xl);
+      padding: 26px 24px;
+      box-shadow: var(--glass-shadow);
+    }
+    .highlight-category {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .highlight-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .highlight-body  { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* Photo strip */
+    .year-photos {
+      overflow-x: auto;
+      display: flex;
+      gap: 12px;
+      padding-bottom: 8px;
+      margin-bottom: 32px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .year-photos img {
+      height: 260px;
+      width: auto;
+      flex-shrink: 0;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .year-photos img:hover { transform: scale(1.02); }
+
+    /* Letter */
+    .year-letter {
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      border: 1.5px solid rgba(107,79,58,0.12);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      margin-bottom: 32px;
+    }
+    .year-letter .letter-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest); margin-bottom: 14px; }
+    .year-letter h3 { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .year-letter p  { font-size: 16px; color: var(--text-secondary); line-height: 1.80; margin-bottom: 14px; font-style: italic; }
+    .year-letter .sig { font-size: 15px; font-weight: 700; color: var(--text-primary); font-style: normal; margin-top: 20px; }
+
+    /* Coming soon */
+    .coming-soon {
+      background: var(--sage-pale);
+      border: 1.5px dashed rgba(122,158,126,0.35);
+      border-radius: var(--radius-xl);
+      padding: 52px 36px;
+      text-align: center;
+    }
+    .coming-soon .cs-icon { font-size: 48px; display: block; margin-bottom: 16px; }
+    .coming-soon h3 { font-size: 22px; color: var(--forest); margin-bottom: 10px; }
+    .coming-soon p  { font-size: 15px; color: var(--text-secondary); max-width: 400px; margin: 0 auto; line-height: 1.65; }
+
+    @media (max-width: 640px) {
+      .chapter-header { padding: 32px 24px; flex-direction: column; gap: 16px; }
+      .year-letter { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <div class="page-hero" id="main-content">
+    <div class="section-label">Annual Chapter</div>
+    <h1>Year in Review</h1>
+    <p>Every year, one chapter. A living record of the McGee family — who we are, what we built, and what we're grateful for.</p>
+  </div>
+
+  <div class="section">
+
+    <!-- Year tabs -->
+    <div class="year-tabs">
+      <button class="year-tab active" onclick="showYear('2026', this)">2026</button>
+      <!-- Add new years here each December: <button class="year-tab" onclick="showYear('2027', this)">2027</button> -->
+    </div>
+
+    <!-- ── 2026 ── -->
+    <div class="year-section visible" id="year-2026">
+
+      <div class="chapter-header">
+        <div class="chapter-year">2026</div>
+        <div class="chapter-info">
+          <div class="chapter-title">The Year Everything Changed</div>
+          <p class="chapter-sub">A wedding in the mountains. A honeymoon in Thailand. A baby on the way. The loss of Bentley. A new home chapter in Queen Creek. 2026 was the year the McGee family became official — and grew in every direction.</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-icon">💍</span>
+          <span class="stat-num">1</span>
+          <div class="stat-label">Wedding</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🌏</span>
+          <span class="stat-num">14</span>
+          <div class="stat-label">Days in Thailand</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">👶</span>
+          <span class="stat-num">1</span>
+          <div class="stat-label">Baby Coming</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🧒</span>
+          <span class="stat-num">7</span>
+          <div class="stat-label">Levi's Age</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🌲</span>
+          <span class="stat-num">1</span>
+          <div class="stat-label">Website Launched</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🐾</span>
+          <span class="stat-num">10.5</span>
+          <div class="stat-label">Years of Bentley</div>
+        </div>
+      </div>
+
+      <!-- Photos -->
+      <div class="section-label">Moments from 2026</div>
+      <div class="year-photos">
+        <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family 2026" loading="lazy"/>
+        <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family 2026" loading="lazy"/>
+        <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg"   alt="Wedding 2025" loading="lazy"/>
+        <img src="photos/honeymoon/ACD631C7-06F7-4983-84C3-13FFE7F6C5D3.jpg" alt="Thailand Honeymoon" loading="lazy"/>
+        <img src="photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"  alt="McGee Family 2026" loading="lazy"/>
+        <img src="photos/levi-birthday/IMG_5581.jpeg"                          alt="Levi's 7th Birthday" loading="lazy"/>
+        <img src="photos/bentley/IMG_8919.jpeg"                                alt="Bentley" loading="lazy"/>
+      </div>
+
+      <!-- Highlights -->
+      <div class="section-label" style="margin-top:8px;">Chapter Highlights</div>
+      <h2 class="section-title" style="margin-bottom:24px;">The Big Moments</h2>
+
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:var(--terracotta);">💍 Marriage</div>
+          <div class="highlight-title">November 1, 2025 — Ben & Brittney wed in Greer, AZ</div>
+          <p class="highlight-body">In the mountains of Greer, surrounded by everyone they love, Ben and Brittney became the McGees. A Christian ceremony, mountain air, and the beginning of everything official.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:var(--forest);">🌿 Baby McGee</div>
+          <div class="highlight-title">Coming September 4, 2026 — gender unknown</div>
+          <p class="highlight-body">Found out in late December 2025, weeks after returning from Thailand. The best possible wedding gift. The nursery is ready. The family is ready. The name is TBD.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:#92400E;">🧒 Levi</div>
+          <div class="highlight-title">Golden Birthday — turned 7 on April 7th</div>
+          <p class="highlight-body">Levi's golden birthday. Finishing 1st grade. About to start 2nd. About to become a big brother. A year of firsts for a kid who handles everything with more grace than most adults.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:#92400E;">🐾 Bentley</div>
+          <div class="highlight-title">April 9, 2026 — the goodest boy passed peacefully</div>
+          <p class="highlight-body">10½ years. Brittney's service animal, shadow, and best friend. He was at the wedding. He crashed the proposal. He left loved. The house is quieter. The hearts are fuller for having had him.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:var(--forest);">🌲 mcgeefamily2025.com</div>
+          <div class="highlight-title">The McGee family website launches</div>
+          <p class="highlight-body">A baby shower invite that became a full family legacy website. Gallery, timeline, our story, letters to the kids, and a custom domain. Something for future generations to find.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-category" style="color:var(--terracotta);">✝️ Faith</div>
+          <div class="highlight-title">Rooted at Redemption Tempe</div>
+          <p class="highlight-body">All of life is all for Jesus. The McGees are Christians — not perfectly, not quietly, but genuinely. Faith first. Family always. Forever.</p>
+        </div>
+      </div>
+
+      <!-- Letter -->
+      <div class="year-letter">
+        <div class="letter-label">Annual Letter · December 2026</div>
+        <h3>To Everyone Who's Been Part of This Year</h3>
+        <p>2026 was the year we became official. Ben and Brittney got married on a mountain in Greer, flew to Thailand, came home newlyweds, and found out a baby was on the way — all in the span of about six weeks. If you had told us a year ago where we'd be standing, we might not have believed you.</p>
+        <p>We lost Bentley in April. That one still hurts in ways we don't always have words for. He was there from the beginning of Brittney's story — long before Ben, long before Levi. He was at the wedding. He jumped in the lake during the proposal. He was the goodest boy until the very end.</p>
+        <p>But grief and gratitude can coexist. And this year had both in abundance. Levi turned seven on the seventh. Baby McGee is coming. The family is bigger and louder and more full of love than it's ever been.</p>
+        <p>Thank you for being part of it. For the RSVPs, the prayers, the messages, the presence. Faith. Family. Forever — we mean it.</p>
+        <div class="sig">— Ben, Brittney, Levi & Baby McGee 🌿<br/><span style="font-weight:400; font-size:14px; opacity:0.65;">Queen Creek, Arizona · 2026</span></div>
+      </div>
+
+      <!-- Looking ahead -->
+      <div style="background:var(--sage-pale); border:1.5px solid rgba(122,158,126,0.22); border-radius:var(--radius-xl); padding:36px 32px; text-align:center;">
+        <div style="font-size:36px; margin-bottom:14px;">👀</div>
+        <h3 style="font-size:22px; color:var(--forest); margin-bottom:10px;">Looking Ahead to 2027</h3>
+        <p style="font-size:15px; color:var(--text-secondary); max-width:480px; margin:0 auto 20px; line-height:1.65;">Baby McGee will be walking by then. Levi will be in 3rd grade. Ben will have his BA. And the McGee story will have a whole new chapter to tell.</p>
+        <a href="updates.html" class="btn btn-primary">Follow Along →</a>
+      </div>
+
+    </div>
+
+    <!-- ── FUTURE YEARS TEMPLATE ── -->
+    <!-- Copy this block each December and update the year, stats, photos, and letter -->
+    <!--
+    <div class="year-section" id="year-2027">
+      <div class="chapter-header">
+        <div class="chapter-year">2027</div>
+        <div class="chapter-info">
+          <div class="chapter-title">[Year Title]</div>
+          <p class="chapter-sub">[Year summary — 2-3 sentences]</p>
+        </div>
+      </div>
+      ... stats, photos, highlights, letter ...
+    </div>
+    -->
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function showYear(id, btn) {
+      document.querySelectorAll('.year-section').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('year-' + id).classList.add('visible');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
