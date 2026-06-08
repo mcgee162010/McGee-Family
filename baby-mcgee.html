@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Baby McGee has arrived! Meet the newest member of the McGee family."/>
+  <title>Baby McGee is Here! · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/baby-mcgee.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Baby McGee is Here! 🌿"/>
+  <meta property="og:description" content="The McGees are officially a family of five. Meet the newest member — and find out if it's a boy or a girl!"/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    /* ── HERO ── */
+    .arrival-hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(178,205,181,0.50) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 80% 70%, rgba(237,224,212,0.50) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(252,211,77,0.20) 0%, transparent 55%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--terra-pale) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confetti-emoji {
+      position: absolute;
+      font-size: 32px;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      50%      { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+    }
+
+    .arrival-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(60,40,20,0.08);
+    }
+    .arrival-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #34C759;
+      box-shadow: 0 0 0 3px rgba(52,199,89,0.25);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    .arrival-hero h1 {
+      font-size: clamp(48px, 10vw, 100px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 20px;
+    }
+    .arrival-hero h1 .reveal {
+      display: block;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 50%, var(--terracotta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .arrival-hero .sub {
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .stat-pill {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: 0 2px 10px rgba(60,40,20,0.07);
+    }
+
+    /* ── PHOTO GRID ── */
+    .arrival-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 48px 0;
+    }
+    .arrival-photos img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      cursor: zoom-in;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .arrival-photos img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 36px rgba(60,40,20,0.16);
+    }
+    .arrival-photos .featured {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    /* ── LETTER PREVIEW ── */
+    .welcome-letter {
+      background: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      color: rgba(255,255,255,0.88);
+      margin: 48px 0;
+    }
+    .welcome-letter .letter-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 14px;
+    }
+    .welcome-letter h3 { font-size: 28px; color: #fff; margin-bottom: 18px; }
+    .welcome-letter p  { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.80; margin-bottom: 16px; }
+    .welcome-letter p:last-of-type { margin-bottom: 0; }
+    .welcome-letter .sig { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.85); margin-top: 20px; }
+
+    /* ── POLL REVEAL ── */
+    .poll-reveal {
+      background: linear-gradient(135deg, var(--sage-pale), var(--terra-pale));
+      border: 1.5px solid rgba(122,158,126,0.25);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      text-align: center;
+      margin: 0 0 48px;
+    }
+    .poll-reveal h3 { font-size: 26px; margin-bottom: 8px; }
+    .poll-reveal .reveal-answer {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 16px 0;
+      /* Color will be set by JS based on gender */
+    }
+    .poll-reveal .poll-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .poll-stat { font-size: 15px; color: var(--text-secondary); }
+    .poll-stat strong { display: block; font-size: 24px; font-weight: 700; color: var(--text-primary); }
+
+    @media (max-width: 640px) {
+      .arrival-photos { grid-template-columns: 1fr 1fr; }
+      .arrival-photos .featured { grid-column: span 2; aspect-ratio: 4/3; }
+      .welcome-letter { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="arrival-hero" id="main-content">
+    <!-- Floating confetti -->
+    <span class="confetti-emoji" style="top:10%; left:8%; animation-delay:0s;">🌿</span>
+    <span class="confetti-emoji" style="top:15%; right:10%; animation-delay:1s;">✨</span>
+    <span class="confetti-emoji" style="top:70%; left:5%; animation-delay:2s;">🎉</span>
+    <span class="confetti-emoji" style="top:65%; right:7%; animation-delay:0.5s;">💛</span>
+    <span class="confetti-emoji" style="top:85%; left:20%; animation-delay:1.5s;">🌸</span>
+    <span class="confetti-emoji" style="top:80%; right:22%; animation-delay:2.5s;">⭐</span>
+
+    <div class="arrival-badge"><span class="dot"></span> Just Announced</div>
+    <h1>
+      Baby McGee<br/>
+      <span class="reveal" id="hero-reveal">is Here! 🌿</span>
+    </h1>
+    <p class="sub" id="hero-sub">
+      The McGees are officially a family of five. After nine months of anticipation, the sweetest little surprise has arrived — and the wait was absolutely worth it.
+    </p>
+
+    <!-- Stats pills — fill in after birth -->
+    <div class="stats-strip">
+      <span class="stat-pill" id="pill-date">📅 Born: [Date]</span>
+      <span class="stat-pill" id="pill-time">⏰ Time: [Time]</span>
+      <span class="stat-pill" id="pill-weight">⚖️ Weight: [lbs oz]</span>
+      <span class="stat-pill" id="pill-length">📏 Length: [inches]</span>
+      <span class="stat-pill" id="pill-name">🌿 Name: [Baby's Name]</span>
+    </div>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <a href="gallery.html" class="btn btn-primary">See the Photos →</a>
+      <a href="#welcome" class="btn btn-secondary">Read the Welcome Letter ↓</a>
+    </div>
+  </div>
+
+  <!-- ── PHOTO GALLERY ── -->
+  <div class="section">
+    <div class="section-label">First Photos</div>
+    <h2 class="section-title" style="margin-bottom:28px;">Welcome to the World</h2>
+
+    <!-- Photo grid — add real birth photos here when ready -->
+    <div class="arrival-photos">
+      <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
+           alt="Baby McGee" class="featured" loading="eager"/>
+      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"
+           alt="McGee Family" loading="lazy"/>
+      <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"
+           alt="McGee Family" loading="lazy"/>
+    </div>
+
+    <p style="font-size:14px; color:var(--text-tertiary); text-align:center; margin-top:-24px; margin-bottom:48px;">
+      📸 More photos coming soon — check the <a href="gallery.html" style="color:var(--forest); font-weight:600;">Gallery</a> for the full collection.
+    </p>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- ── POLL REVEAL ── -->
+  <div class="section">
+    <div class="poll-reveal">
+      <div class="section-label" style="color:var(--forest);">The Big Reveal</div>
+      <h3>What did everyone guess?</h3>
+      <p style="font-size:16px; color:var(--text-secondary); margin-bottom:8px;">The poll is closed — here's how it all played out.</p>
+      <div class="reveal-answer" id="reveal-answer" style="color:var(--forest);">It's a [Boy/Girl]! 🌿</div>
+      <div class="poll-stats" id="poll-stats">
+        <div class="poll-stat"><strong id="boy-votes">–</strong>💙 Voted Boy</div>
+        <div class="poll-stat"><strong id="girl-votes">–</strong>🩷 Voted Girl</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- ── WELCOME LETTER ── -->
+  <div class="section" id="welcome">
+    <div class="welcome-letter">
+      <div class="letter-label">A Welcome Letter</div>
+      <h3>To Baby McGee — on the day you arrived</h3>
+      <p>We didn't know your name yet. We didn't know what you'd look like. We didn't know if you'd have your dad's stubbornness or your mom's warmth — though something tells us both. We didn't know anything about you, except that we already loved you completely.</p>
+      <p>And then you arrived. And everything we didn't know became everything we can't imagine living without.</p>
+      <p>Your brother Levi has been waiting for you. Phoenix will probably steal your blanket. This family was already full of love — and somehow, you made it fuller.</p>
+      <p>Welcome home, little one. You were made on purpose, for this family, at this exact moment. That's not nothing. That's everything.</p>
+      <p>We will spend the rest of our lives making sure you know how wanted you are.</p>
+      <div class="sig">— Mom & Dad 🌿<br/><span style="font-weight:400; font-size:14px; opacity:0.65;">Faith. Family. Forever.</span></div>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
+
+  <!-- ── FAMILY NOW ── -->
+  <div class="section" style="text-align:center; padding-bottom:80px;">
+    <div class="section-label">The McGee Family · 2026</div>
+    <h2 class="section-title" style="margin-bottom:12px;">Five. 🌲</h2>
+    <p style="font-size:18px; color:var(--text-secondary); max-width:480px; margin:0 auto 32px; line-height:1.65;">
+      Ben · Brittney · Levi · Baby McGee · Phoenix<br/>
+      <em style="font-size:16px; opacity:0.65;">Queen Creek, Arizona</em>
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+      <a href="family.html"  class="btn btn-primary">Meet the Family →</a>
+      <a href="gallery.html" class="btn btn-secondary">View Gallery →</a>
+      <a href="letters.html" class="btn btn-secondary">Read the Letters →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Baby McGee · Phoenix · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Load live poll results from JSONBin
+    const BIN_ID  = '6a26fbd7f5f4af5e29ccb6e2';
+    const BIN_KEY = '$2a$10$PatHmZ34dAnyHqg67lDyXol7/BfYExe';
+
+    async function loadPollResults() {
+      try {
+        const res  = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+          headers: { 'X-Master-Key': BIN_KEY }
+        });
+        const json = await res.json();
+        const poll = json.record?.poll || { boy: 0, girl: 0 };
+        document.getElementById('boy-votes').textContent  = poll.boy  || 0;
+        document.getElementById('girl-votes').textContent = poll.girl || 0;
+      } catch(e) {}
+    }
+    loadPollResults();
+  </script>
+</body>
+</html>
