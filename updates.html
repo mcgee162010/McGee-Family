@@ -101,6 +101,26 @@
     }
     .milestone-list .mi { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
     .milestone-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    /* ── CATEGORY FILTER ── */
+    .filter-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1.5px solid rgba(107,79,58,0.14);
+      cursor: pointer;
+      background: var(--glass-bg);
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
+    .post { transition: opacity 0.2s ease, transform 0.2s ease; }
+    .post.hidden { display: none; }
   </style>
 </head>
 <body>
@@ -134,7 +154,7 @@
       <div>
 
         <!-- Post 1 -->
-        <article class="post post-milestone">
+        <article class="post post-milestone" data-category="baby-mcgee">
           <div class="post-header">
             <div class="post-icon" style="background:var(--sage-pale); border-left:4px solid var(--forest); border-radius:0 var(--radius-md) var(--radius-md) 0;">🌿</div>
             <div class="post-meta">
@@ -150,7 +170,7 @@
           </div>
         </article>
 
-        <article class="post">
+        <article class="post" data-category="family">
           <div class="post-header">
             <div class="post-icon" style="background:var(--terra-pale); border-left:4px solid var(--terracotta); border-radius:0 var(--radius-md) var(--radius-md) 0;">📸</div>
             <div class="post-meta">
@@ -165,7 +185,7 @@
           </div>
         </article>
 
-        <article class="post">
+        <article class="post" data-category="levi">
           <div class="post-header">
             <div class="post-icon" style="background:#FEF9C3; border-left:4px solid #D97706; border-radius:0 var(--radius-md) var(--radius-md) 0;">📚</div>
             <div class="post-meta">
@@ -179,7 +199,7 @@
           </div>
         </article>
 
-        <article class="post post-milestone">
+        <article class="post post-milestone" data-category="baby-mcgee">
           <div class="post-header">
             <div class="post-icon" style="background:var(--sage-pale); border-left:4px solid var(--forest); border-radius:0 var(--radius-md) var(--radius-md) 0;">🎁</div>
             <div class="post-meta">
@@ -194,7 +214,7 @@
           </div>
         </article>
 
-        <article class="post post-milestone">
+        <article class="post post-milestone" data-category="how-we-met milestone">
           <div class="post-header">
             <div class="post-icon" style="background:var(--terra-pale); border-left:4px solid var(--terracotta); border-radius:0 var(--radius-md) var(--radius-md) 0;">💍</div>
             <div class="post-meta">
@@ -211,7 +231,7 @@
         </article>
 
         <!-- Post 6 — The Proposal -->
-        <article class="post post-milestone">
+        <article class="post post-milestone" data-category="how-we-met milestone">
           <div class="post-header">
             <div class="post-icon" style="background:var(--terra-pale); border-left:4px solid var(--terracotta); border-radius:0 var(--radius-md) var(--radius-md) 0;">💍</div>
             <div class="post-meta">
@@ -229,7 +249,7 @@
         </article>
 
         <!-- Post 7 — Ben Meets Levi -->
-        <article class="post">
+        <article class="post" data-category="levi how-we-met">
           <div class="post-header">
             <div class="post-icon" style="background:#FEF9C3; border-left:4px solid #D97706; border-radius:0 var(--radius-md) var(--radius-md) 0;">🎄</div>
             <div class="post-meta">
@@ -247,7 +267,7 @@
         </article>
 
         <!-- Post 8 — How We Met -->
-        <article class="post">
+        <article class="post" data-category="how-we-met milestone">
           <div class="post-header">
             <div class="post-icon" style="background:var(--terra-pale); border-left:4px solid var(--terracotta); border-radius:0 var(--radius-md) var(--radius-md) 0;">🤠</div>
             <div class="post-meta">
@@ -336,6 +356,21 @@
     <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js">
+    // ── CATEGORY FILTER ──────────────────────────────────────────────
+    function filterPosts(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('article.post').forEach(post => {
+        if (category === 'all') {
+          post.classList.remove('hidden');
+        } else {
+          const cats = (post.dataset.category || '').split(' ');
+          post.classList.toggle('hidden', !cats.includes(category));
+        }
+      });
+    }
+</script>
 </body>
 </html>

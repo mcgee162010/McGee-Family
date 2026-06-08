@@ -204,17 +204,32 @@
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
 
-  <!-- HERO -->
-  <div class="memorial-hero" id="main-content">
-    <span class="paw-float">🐾</span>
-    <h1>Bentley</h1>
-    <div class="dates">2015 &nbsp;·&nbsp; April 9, 2026</div>
-    <p class="tagline">Brittney's service animal, her shadow, and her best friend — from long before the rest of us, to the very end.</p>
+  <!-- HERO — photo split -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; min-height:65svh;" id="main-content">
+    <div style="overflow:hidden; position:relative;">
+      <img src="photos/bentley/IMG_1751.jpeg" alt="Bentley"
+           style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" loading="eager"/>
+      <div style="position:absolute; inset:0; background:linear-gradient(to right, transparent 70%, #F8F4EE);"></div>
+    </div>
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:64px 52px; background:#F8F4EE; gap:16px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:var(--brown-light);">In Loving Memory</div>
+      <h1 style="font-size:clamp(48px,8vw,80px); font-weight:700; letter-spacing:-0.04em; color:var(--brown); line-height:1.0; margin:0;">Bentley</h1>
+      <div style="font-size:14px; color:var(--text-tertiary); font-weight:500; letter-spacing:0.06em; text-transform:uppercase;">2015 &nbsp;·&nbsp; April 9, 2026</div>
+      <p style="font-size:17px; color:var(--text-secondary); font-style:italic; line-height:1.65; max-width:380px; margin:0;">Brittney's service animal, her shadow, and her best friend — from long before the rest of us, to the very end.</p>
+    </div>
   </div>
+  <style>
+    @media (max-width:700px) {
+      #main-content { grid-template-columns:1fr !important; }
+      #main-content > div:first-child { min-height:55svh; }
+      #main-content > div:last-child  { padding:40px 24px; }
+    }
+  </style>
 
   <!-- BODY -->
   <div class="memorial-body">
 
+    <div class="pull-quote" style="margin:32px 0;"><p>"He was her constant. Her comfort. Her best friend."</p></div>
     <p class="memorial-prose">
       Bentley was a golden retriever in every sense of the word — golden in color, golden in spirit, and golden in the way he made Brittney feel like the most important person in every room he walked into. He was her constant. Her comfort. Her best friend. He served as Brittney's service animal — a role he was born for and carried with quiet, unwavering devotion.
     </p>

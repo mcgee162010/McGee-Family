@@ -706,3 +706,33 @@ body {
 
 /* ── GALLERY TAB — active count stays visible ───────────────────── */
 .tab.active .count { opacity: 0.75; }
+
+/* ── ENHANCED MICRO-INTERACTIONS ────────────────────────────────── */
+
+/* Button press effect */
+.btn:active { transform: scale(0.97); }
+
+/* Card lift on hover — unified */
+.card:hover,
+.card-glass:hover { transform: translateY(-3px); box-shadow: 0 16px 52px rgba(60,40,20,0.13); }
+
+/* Nav logo hover */
+.nav-logo:hover { opacity: 0.75; transition: opacity 0.15s; }
+
+/* Gallery image hover — slightly stronger */
+.masonry img:hover { transform: scale(1.03); box-shadow: 0 12px 40px rgba(60,40,20,0.20); }
+
+/* Timeline dot hover */
+.tl-dot-inner:hover { transform: scale(1.15); box-shadow: 0 0 0 4px rgba(122,158,126,0.30); }
+
+/* Smooth scrolling for anchor links */
+html { scroll-behavior: smooth; }
+
+/* Tab hover feedback */
+.tab:active { transform: scale(0.96); }
+
+/* Footer nav hover */
+.footer-nav a:hover { color: rgba(255,255,255,0.90); transform: translateX(2px); display: inline-block; transition: all 0.15s; }
+
+/* Photo hover cursor */
+.masonry img, .bently-grid img, .photo-row img { cursor: zoom-in; }
