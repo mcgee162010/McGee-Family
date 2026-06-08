@@ -44,12 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
       lbImg.alt = alt || '';
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
+      lbClose && lbClose.focus();    // move focus into lightbox immediately
     };
 
     const closeLightbox = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-      setTimeout(() => { lbImg.src = ''; }, 300);
+      // Only clear src after fade-out — guard prevents clearing on rapid reopen
+      setTimeout(() => {
+        if (!lightbox.classList.contains('open')) { lbImg.src = ''; }
+      }, 250);
     };
 
     // Attach to ALL images — photo-grid, masonry, member-photo, bentley-grid, etc.

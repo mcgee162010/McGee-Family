@@ -401,8 +401,26 @@ a:hover { color: var(--terracotta); }
 }
 
 /* ── LIGHTBOX ───────────────────────────────────────────── */
+/*
+ * LIGHTBOX — iOS Safari fix
+ *
+ * Root cause of black screen: iOS Safari has a compositor bug where
+ * backdrop-filter on a position:fixed element that switches from
+ * display:none → display:flex renders the blur layer solid black,
+ * obscuring the image behind it.
+ *
+ * Fix strategy:
+ *   1. Keep display:flex always — hide via opacity + visibility instead.
+ *      This keeps the element in the GPU layer stack at all times,
+ *      preventing the black-compositor bug.
+ *   2. Remove backdrop-filter on mobile (≤768px) — not needed on small
+ *      screens, and it's the primary iOS black-screen trigger.
+ *   3. Use will-change:opacity to hint the GPU to promote this element
+ *      to its own compositing layer before it's needed.
+ */
 .lightbox {
-  display: none;
+  /* Always flex — visibility controls show/hide */
+  display: flex;
   position: fixed;
   inset: 0;
   z-index: 999;
@@ -414,8 +432,28 @@ a:hover { color: var(--terracotta); }
   padding: 24px;
   flex-direction: column;
   gap: 16px;
+  /* Hidden by default via opacity + pointer-events, NOT display:none */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  will-change: opacity;
 }
-.lightbox.open { display: flex; }
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* iOS Safari: strip backdrop-filter on mobile — it's the black screen culprit */
+@media (max-width: 768px) {
+  .lightbox {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    /* Slightly lighter bg without blur to compensate */
+    background: rgba(10,5,2,0.97);
+  }
+}
 
 .lightbox img {
   max-width: min(92vw, 1100px);
