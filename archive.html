@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="The McGee Family Archive — every page, every year, every chapter. A digital legacy built for the next generation."/>
+  <title>Family Archive · McGee Family</title>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="McGee Family"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/archive.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Family Archive · McGee Family"/>
+  <meta property="og:description" content="Every chapter. Every year. Every person. The McGee Family Archive — built for the next generation."/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/baby-mcgee/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    /* ── HERO ── */
+    .archive-hero {
+      background:
+        radial-gradient(ellipse 65% 55% at 15% 25%, rgba(61,107,82,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 75%, rgba(107,79,58,0.14) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 50%, var(--brown-pale) 100%);
+      padding: 88px 24px 72px;
+      text-align: center;
+      position: relative;
+    }
+    .archive-hero h1 {
+      font-size: clamp(44px, 8vw, 80px);
+      font-weight: 700; letter-spacing: -0.04em; line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .archive-hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-secondary); max-width: 560px;
+      margin: 0 auto 32px; line-height: 1.65;
+    }
+    .archive-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass-bg); border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-full);
+      padding: 8px 20px; font-size: 13px; font-weight: 500;
+      color: var(--text-secondary); box-shadow: 0 2px 12px rgba(60,40,20,0.07);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .arc-section {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px 64px;
+    }
+    .arc-eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--forest); margin-bottom: 6px;
+    }
+    .arc-title {
+      font-size: clamp(26px, 4vw, 40px); font-weight: 700;
+      letter-spacing: -0.03em; color: var(--text-primary);
+      margin-bottom: 32px; line-height: 1.1;
+    }
+
+    /* ── TIMELINE ROW ── */
+    .arc-timeline {
+      display: flex; flex-direction: column; gap: 0;
+      position: relative;
+    }
+    .arc-timeline::before {
+      content: ""; position: absolute;
+      left: 20px; top: 8px; bottom: 8px; width: 2px;
+      background: linear-gradient(to bottom,
+        var(--sage-light), var(--sage), var(--terracotta),
+        var(--brown-light), var(--sage-light));
+    }
+    .arc-year-row {
+      display: flex; align-items: flex-start;
+      gap: 20px; padding: 0 0 40px 52px;
+      position: relative;
+    }
+    .arc-year-dot {
+      position: absolute; left: 10px; top: 4px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--cream); border: 3px solid var(--sage);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+    }
+    .arc-year-label {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--forest); min-width: 40px;
+      padding-top: 2px;
+    }
+    .arc-year-events {
+      flex: 1; display: flex; flex-direction: column; gap: 8px;
+    }
+    .arc-event {
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .arc-event-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0; margin-top: 7px;
+    }
+    .arc-event-text {
+      font-size: 15px; color: var(--text-secondary); line-height: 1.55;
+    }
+    .arc-event-text strong { color: var(--text-primary); font-weight: 600; }
+    .arc-event-text a { color: var(--forest); font-weight: 600; }
+
+    /* ── CHAPTER CARDS GRID ── */
+    .arc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .arc-card {
+      display: flex; flex-direction: column;
+      text-decoration: none;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .arc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(60,40,20,0.14);
+    }
+    .arc-card-thumb {
+      width: 100%; height: 180px;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .arc-card-thumb-placeholder {
+      width: 100%; height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+      background: linear-gradient(135deg, var(--sage-pale), var(--cream));
+    }
+    .arc-card-body { padding: 22px 24px 26px; flex: 1; }
+    .arc-card-tag {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--forest); margin-bottom: 6px;
+    }
+    .arc-card-title {
+      font-size: 18px; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--text-primary);
+      margin-bottom: 8px; line-height: 1.25;
+    }
+    .arc-card-desc {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.60; margin-bottom: 14px;
+    }
+    .arc-card-arrow {
+      font-size: 13px; font-weight: 600;
+      color: var(--forest); margin-top: auto;
+    }
+
+    /* ── PEOPLE STRIP ── */
+    .arc-people {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .arc-person {
+      background: var(--cream-dark);
+      border: 1.5px solid rgba(107,79,58,0.12);
+      border-radius: var(--radius-xl);
+      padding: 24px 18px;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .arc-person:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(60,40,20,0.10); }
+    .arc-person-avatar { font-size: 40px; display: block; margin-bottom: 10px; }
+    .arc-person-name { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+    .arc-person-role { font-size: 12px; color: var(--text-tertiary); }
+
+    /* ── LEGACY BLOCK ── */
+    .legacy-block {
+      background: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0;
+    }
+    @media (max-width: 600px) { .legacy-block { padding: 40px 28px; } }
+    .legacy-block .lg-icon { font-size: 52px; display: block; margin-bottom: 20px; }
+    .legacy-block h2 {
+      font-size: clamp(24px, 4vw, 38px); font-weight: 700;
+      color: #fff; letter-spacing: -0.02em;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .legacy-block p {
+      font-size: 17px; color: rgba(255,255,255,0.68);
+      line-height: 1.75; max-width: 580px;
+      margin: 0 auto 28px;
+    }
+    .legacy-block .lg-verse {
+      font-size: 14px; font-style: italic;
+      color: rgba(255,255,255,0.45);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top: 20px; margin-top: 8px;
+    }
+
+    /* ── STATS BAR ── */
+    .arc-stats {
+      display: flex; flex-wrap: wrap; gap: 0;
+      background: var(--sage-pale);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1.5px solid rgba(122,158,126,0.22);
+      margin-bottom: 56px;
+    }
+    .arc-stat {
+      flex: 1; min-width: 120px;
+      padding: 24px 20px; text-align: center;
+      border-right: 1px solid rgba(122,158,126,0.18);
+    }
+    .arc-stat:last-child { border-right: none; }
+    .arc-stat-num {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--forest); letter-spacing: -0.03em;
+      line-height: 1; display: block; margin-bottom: 4px;
+    }
+    .arc-stat-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+    @media (max-width: 600px) {
+      .arc-stat { min-width: 50%; border-bottom: 1px solid rgba(122,158,126,0.18); }
+      .arc-stat:nth-last-child(-n+2) { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="archive.html" role="menuitem">Family Archive</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="archive-hero" id="main-content">
+    <div class="section-label">A Living Family Record</div>
+    <h1>The McGee<br/>Family Archive</h1>
+    <p>Every page. Every year. Every person. Built so this family's story can be found — not just remembered — by the generations that come after.</p>
+    <div class="archive-note">🌲 Started June 2026 · Queen Creek, Arizona</div>
+  </div>
+
+  <!-- ── BY THE NUMBERS ── -->
+  <div style="max-width:1100px; margin:0 auto; padding:48px 24px 0;">
+    <div class="arc-stats">
+      <div class="arc-stat">
+        <span class="arc-stat-num">2</span>
+        <span class="arc-stat-label">Years Documented</span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-num">14</span>
+        <span class="arc-stat-label">Pages</span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-num">276</span>
+        <span class="arc-stat-label">Photos</span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-num">2</span>
+        <span class="arc-stat-label">Letters Written</span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-num">5</span>
+        <span class="arc-stat-label">Family Members</span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-num">∞</span>
+        <span class="arc-stat-label">More to Come</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FAMILY TIMELINE (full chronological record) ── -->
+  <div class="arc-section" style="padding-top:16px;">
+    <div class="arc-eyebrow">How We Got Here</div>
+    <div class="arc-title">The Full Timeline</div>
+
+    <div class="arc-timeline" role="list">
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">🐾</div>
+        <div class="arc-year-label">2015</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>Bentley comes home</strong> — Brittney's golden retriever arrives as a puppy and becomes her service animal, shadow, and best friend for 10½ years.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">🧒</div>
+        <div class="arc-year-label">2019</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>April 7 — Levi is born.</strong> The world's most energetic, curious kid arrives. Future big brother. Already the heart of his family.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">🤠</div>
+        <div class="arc-year-label">2022</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>October 21 — The Buffalo Chip Saloon, Cave Creek AZ.</strong> Ben and Brittney end up at the same bar on the same night after nearly a year of missed connections on Bumble. He said <em>"BRITTNEY… YOU ARE SO CUTE!"</em></div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>November 20 — Ben meets Levi</strong> at the Enchanted Christmas Event in Scottsdale. Home sick, 45 minutes away, drove anyway. Levi was on his shoulders by the end of the night.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">💍</div>
+        <div class="arc-year-label">2024</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>October 30 — The proposal.</strong> Riverview Park, 5:30 PM. Bentley jumped in the lake mid-proposal. Ben pulled a dripping golden retriever out with one hand and held the ring with the other. She said yes. <a href="our-story.html">Read the full story →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">💒</div>
+        <div class="arc-year-label">2025</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>November 1 — Married in Greer, Arizona.</strong> Mountain air. Christian ceremony. The beginning of everything official. <a href="vows.html">Read their vows →</a></div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>November — Two weeks in Thailand</strong> for their honeymoon. Temples, beaches, night markets, the best food of their lives.</div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>Late December — Baby McGee.</strong> Newlyweds. Expecting. The most unexpected and most perfect way to end the year.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-year-row" role="listitem">
+        <div class="arc-year-dot">🌿</div>
+        <div class="arc-year-label">2026</div>
+        <div class="arc-year-events">
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>April 7 — Levi turns 7.</strong> Golden birthday. A party, a cake, and the countdown to big brotherhood begins.</div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>April 9 — Bentley passes peacefully</strong> at 10½ years old. He was at the wedding. He crashed the proposal. He was there for all of it. <a href="bentley.html">His memorial →</a></div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot"></div>
+            <div class="arc-event-text"><strong>June — Family photoshoot.</strong> First professional photos of the McGees as a family, weeks before Baby McGee arrives. <a href="gallery.html">View gallery →</a></div>
+          </div>
+          <div class="arc-event">
+            <div class="arc-event-dot" style="background:var(--terracotta);"></div>
+            <div class="arc-event-text"><strong>September 4 — Baby McGee arrives.</strong> ⏳ The next chapter. Boy or girl — still a beautiful surprise.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:8px;">
+      <a href="timeline.html" class="btn btn-primary">Full Visual Timeline →</a>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto 56px;"></div>
+
+  <!-- ── PEOPLE ── -->
+  <div class="arc-section" style="padding-top:0;">
+    <div class="arc-eyebrow">Who We Are</div>
+    <div class="arc-title">The People</div>
+    <div class="arc-people">
+      <a href="family.html" class="arc-person">
+        <span class="arc-person-avatar">👨</span>
+        <div class="arc-person-name">Ben</div>
+        <div class="arc-person-role">Dad · Husband · Apple · ASU '27</div>
+      </a>
+      <a href="family.html" class="arc-person">
+        <span class="arc-person-avatar">👩</span>
+        <div class="arc-person-name">Brittney</div>
+        <div class="arc-person-role">Mom · Wife · Heart of the Home</div>
+      </a>
+      <a href="family.html" class="arc-person">
+        <span class="arc-person-avatar">🧒</span>
+        <div class="arc-person-name">Levi</div>
+        <div class="arc-person-role">Born April 7, 2019 · Big Brother</div>
+      </a>
+      <a href="baby-mcgee.html" class="arc-person">
+        <span class="arc-person-avatar">🌿</span>
+        <div class="arc-person-name">Baby McGee</div>
+        <div class="arc-person-role">Due September 4, 2026</div>
+      </a>
+      <a href="family.html" class="arc-person">
+        <span class="arc-person-avatar">🐕</span>
+        <div class="arc-person-name">Phoenix</div>
+        <div class="arc-person-role">GSP · Born Nov 28, 2021</div>
+      </a>
+      <a href="bentley.html" class="arc-person" style="opacity:0.75;">
+        <span class="arc-person-avatar">🐾</span>
+        <div class="arc-person-name">Bentley</div>
+        <div class="arc-person-role">2015 – April 9, 2026 · Forever loved</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto 56px;"></div>
+
+  <!-- ── EVERY PAGE ── -->
+  <div class="arc-section" style="padding-top:0;">
+    <div class="arc-eyebrow">Every Chapter</div>
+    <div class="arc-title">All Pages</div>
+    <div class="arc-grid">
+
+      <a href="our-story.html" class="arc-card">
+        <img src="photos/baby-mcgee/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg" alt="Our Story" class="arc-card-thumb" loading="lazy" decoding="async"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Story</div>
+          <div class="arc-card-title">Our Story</div>
+          <p class="arc-card-desc">How we met at a country bar in Cave Creek. The proposal Bentley crashed. The wedding in the mountains. Everything that led here.</p>
+          <div class="arc-card-arrow">Read the story →</div>
+        </div>
+      </a>
+
+      <a href="vows.html" class="arc-card">
+        <img src="photos/wedding/7DD5E8DD-7A51-4109-87DF-B45FF9146695.jpg" alt="Our Vows" class="arc-card-thumb" loading="lazy" decoding="async"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Wedding · November 1, 2025</div>
+          <div class="arc-card-title">Our Vows</div>
+          <p class="arc-card-desc">The words Ben and Brittney wrote by hand and spoke before God, in the mountains of Greer, Arizona. Written for each other. Meant for a lifetime.</p>
+          <div class="arc-card-arrow">Read the vows →</div>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="arc-card">
+        <img src="photos/baby-mcgee/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg" alt="Gallery" class="arc-card-thumb" loading="lazy" decoding="async"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Photos · 276 Images · 9 Albums</div>
+          <div class="arc-card-title">Gallery</div>
+          <p class="arc-card-desc">Family, wedding, engagement, Thailand, Levi, Levi's 7th birthday, Phoenix, Baby McGee, and Bentley. Every chapter in photos.</p>
+          <div class="arc-card-arrow">View gallery →</div>
+        </div>
+      </a>
+
+      <a href="year-in-review.html" class="arc-card">
+        <img src="photos/wedding/CD335F3E-6D63-49AF-8D05-AF557AE62650.jpg" alt="Year in Review" class="arc-card-thumb" loading="lazy" decoding="async"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Annual Chapters · 2025 · 2026</div>
+          <div class="arc-card-title">Year in Review</div>
+          <p class="arc-card-desc">2025: The Year We Said Yes. 2026: The Year Everything Changed. One chapter per year — forever.</p>
+          <div class="arc-card-arrow">Read the chapters →</div>
+        </div>
+      </a>
+
+      <a href="letters.html" class="arc-card">
+        <div class="arc-card-thumb-placeholder">✉️</div>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Letters · 2 Published</div>
+          <div class="arc-card-title">Letters</div>
+          <p class="arc-card-desc">Ben to Levi. Ben to Brittney. More coming — to Baby McGee, on faith, and a space held for Levi when he's ready to write his own.</p>
+          <div class="arc-card-arrow">Read the letters →</div>
+        </div>
+      </a>
+
+      <a href="timeline.html" class="arc-card">
+        <div class="arc-card-thumb-placeholder">📅</div>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Timeline · 2015 – Present</div>
+          <div class="arc-card-title">Full Family Timeline</div>
+          <p class="arc-card-desc">Every milestone from Bentley's first day to Baby McGee's expected arrival. Visually. Chronologically. With photos.</p>
+          <div class="arc-card-arrow">See the timeline →</div>
+        </div>
+      </a>
+
+      <a href="updates.html" class="arc-card">
+        <div class="arc-card-thumb-placeholder">📰</div>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">Life Updates · Ongoing</div>
+          <div class="arc-card-title">Life Updates</div>
+          <p class="arc-card-desc">Pregnancy milestones, Levi growing up, family moments, and everything happening in Queen Creek — as it happens.</p>
+          <div class="arc-card-arrow">Read updates →</div>
+        </div>
+      </a>
+
+      <a href="bentley.html" class="arc-card">
+        <img src="photos/bentley/IMG_1751.jpeg" alt="In Memory of Bentley" class="arc-card-thumb" loading="lazy" decoding="async" style="filter:brightness(0.92);"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">In Loving Memory · 2015 – 2026</div>
+          <div class="arc-card-title">Bentley</div>
+          <p class="arc-card-desc">Brittney's golden retriever, service animal, and best friend for 10½ years. He was at the wedding. He crashed the proposal. He was there for all of it.</p>
+          <div class="arc-card-arrow">Read his memorial →</div>
+        </div>
+      </a>
+
+      <a href="family.html" class="arc-card">
+        <img src="photos/baby-mcgee/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg" alt="Our Family" class="arc-card-thumb" loading="lazy" decoding="async"/>
+        <div class="arc-card-body">
+          <div class="arc-card-tag">People</div>
+          <div class="arc-card-title">Our Family</div>
+          <p class="arc-card-desc">Meet Ben, Brittney, Levi, Phoenix, and Baby McGee — and the faith and values that hold the McGee family together.</p>
+          <div class="arc-card-arrow">Meet the family →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1100px; margin:0 auto 56px;"></div>
+
+  <!-- ── LEGACY BLOCK ── -->
+  <div class="arc-section" style="padding-top:0;">
+    <div class="legacy-block">
+      <span class="lg-icon">🌲</span>
+      <h2>This site is a gift<br/>to the next generation.</h2>
+      <p>
+        If you're reading this years from now — welcome. This is where the McGee family story begins to be written down intentionally, so it doesn't get lost. You come from people who loved each other deeply, built their home on faith, and showed up for each other every single day. That is your inheritance.
+      </p>
+      <p>
+        Ben and Brittney started this in 2026, before Baby McGee was even born. They wanted you to know them — not just as parents or grandparents or ancestors — but as people. Read the vows. Read the letters. Look at the photos. This is who they were when they were young.
+      </p>
+      <div class="lg-verse">
+        "As for me and my house, we will serve the Lord." — Joshua 24:15 · Faith. Family. Forever.
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="year-in-review.html">Year in Review</a></li>
+      <li><a href="vows.html">Vows</a></li>
+      <li><a href="letters.html">Letters</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory of Bentley</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

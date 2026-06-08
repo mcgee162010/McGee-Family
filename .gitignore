@@ -1,1 +1,7 @@
 photos/misc/
+
+# Video files — too large for GitHub Pages (use YouTube/Vimeo/iCloud instead)
+*.mov
+*.MOV
+*.mp4
+*.MP4
