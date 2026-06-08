@@ -10,10 +10,15 @@ Run on schedule via macOS Shortcut or launchd (see README)
 What it does:
   1. Reads each subfolder in iCloud Drive/McGee Website/Website Photos/
   2. Compares against photos/  in the site repo
-  3. Copies new photos in, removes deleted ones
-  4. Converts HEIC to JPEG if needed
+  3. Copies new photos in (shutil.copy2 only — NO sips, NO compression)
+  4. Removes photos deleted from iCloud
   5. Rebuilds gallery.html with correct tabs and photo lists
   6. Commits and pushes to GitHub automatically
+
+RULES:
+  - Never use sips — it corrupts photos to black. Raw copy only.
+  - All photo extensions must be lowercase (.jpg / .jpeg) — GitHub Pages is case-sensitive.
+  - HEIC files are skipped (export from Photos as JPEG before adding to iCloud folder).
 """
 
 import os
@@ -30,22 +35,25 @@ ICLOUD_SRC = Path("/Users/benjamin_mcgee/Library/Mobile Documents/com~apple~Clou
 SITE_ROOT  = Path("/Users/benjamin_mcgee/Documents/Enchanté/Conversations/4A2C3E4D-5130-4C0E-ACB6-B12ED50E5737/mcgee-family")
 PHOTOS_DIR = SITE_ROOT / "photos"
 
-# Maps iCloud folder name → site subfolder name → gallery tab label
+# Maps iCloud folder name → (site subfolder, gallery tab label)
+# NOTE: "Family Photoshoot_Baby McGee Annoucement June - 2026" maps to baby-mcgee,
+#       NOT to family. The real family photos live in the "Family" iCloud folder.
 FOLDER_MAP = {
-    "Family Photoshoot_Baby McGee Annoucement June - 2026": ("family",        "👨‍👩‍👦 Family"),
+    "Family":                                               ("family",        "👨‍👩‍👦 Family"),
     "Weddding Photo's":                                     ("wedding",        "💍 Wedding"),
     "Engagement":                                           ("engagement",     "💍 Engagement"),
     "Honeymoon":                                            ("honeymoon",      "🌏 Honeymoon"),
     "Levi":                                                 ("levi",           "🧒 Levi"),
     "Levi 7th Golden Birthday":                             ("levi-birthday",  "🎂 Levi's 7th"),
-    "Brittney":                                             ("brittney",       "👩 Brittney"),
-    "Ben":                                                  ("ben",            "👨 Ben"),
     "Phoenix":                                              ("phoenix",        "🐕 Phoenix"),
     "Bentley":                                              ("bentley",        "🐾 Bentley"),
-    "Baby McGee":                                           ("baby-mcgee",     "🌿 Baby McGee"),
+    # Both of these iCloud folders feed into baby-mcgee/
+    "Baby McGee":                                           ("baby-mcgee",    "🌿 Baby McGee"),
+    "Family Photoshoot_Baby McGee Annoucement June - 2026": ("baby-mcgee",    "🌿 Baby McGee"),
 }
 
-PHOTO_EXTS = {".jpg", ".jpeg", ".png", ".heic", ".JPG", ".JPEG", ".PNG", ".HEIC"}
+# Only copy still-image formats. Skip MOV, MP4, HEIC.
+PHOTO_EXTS = {".jpg", ".jpeg", ".png"}
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────
 
@@ -60,42 +68,31 @@ def run(cmd, cwd=None):
     return result.stdout.strip()
 
 def is_photo(path: Path) -> bool:
-    return path.suffix in PHOTO_EXTS and not path.name.startswith(".")
-
-def convert_heic(src: Path, dst_dir: Path) -> Path:
-    """Convert HEIC to JPEG using sips (built into macOS). Returns new path."""
-    dst = dst_dir / (src.stem + ".jpeg")
-    result = subprocess.run(
-        ["sips", "-s", "format", "jpeg", str(src), "--out", str(dst)],
-        capture_output=True
-    )
-    if result.returncode == 0 and dst.exists():
-        compress_photo(dst)
-        return dst
-    return None
-
-def compress_photo(path: Path):
-    """Compress a JPEG in-place to max 1400px wide at quality 72. Safe for web."""
-    size_before = path.stat().st_size
-    if size_before < 512_000:
-        return  # Already small enough
-    subprocess.run(
-        ["sips", "-Z", "1400", "-s", "format", "jpeg", "-s", "formatOptions", "72",
-         str(path), "--out", str(path)],
-        capture_output=True
-    )
-    size_after = path.stat().st_size
-    saved = (size_before - size_after) // 1024
-    if saved > 0:
-        log(f"  🗜 Compressed {path.name}: {size_before//1024}KB → {size_after//1024}KB (saved {saved}KB)")
+    return path.suffix.lower() in PHOTO_EXTS and not path.name.startswith(".")
 
 # ── STEP 1: SYNC PHOTOS ───────────────────────────────────────────────────────
 
 def sync_photos():
     added   = []
     removed = []
-    skipped = []
     changes = False
+
+    # Track which site folders have been seeded so we don't double-remove
+    # when two iCloud folders map to the same dest (e.g. baby-mcgee).
+    # Build a unified src set per dest folder first.
+    dest_to_src: dict[str, set] = {}
+    for icloud_folder, (site_folder, _) in FOLDER_MAP.items():
+        src_dir = ICLOUD_SRC / icloud_folder
+        if not src_dir.exists():
+            continue
+        if site_folder not in dest_to_src:
+            dest_to_src[site_folder] = set()
+        for f in src_dir.iterdir():
+            if is_photo(f):
+                # Normalize to lowercase extension
+                dest_to_src[site_folder].add(f.stem + f.suffix.lower())
+
+    processed_dest = set()
 
     for icloud_folder, (site_folder, label) in FOLDER_MAP.items():
         src_dir  = ICLOUD_SRC / icloud_folder
@@ -107,45 +104,31 @@ def sync_photos():
 
         dest_dir.mkdir(parents=True, exist_ok=True)
 
-        # Photos currently in iCloud folder
-        src_photos = {}
-        for f in src_dir.iterdir():
-            if is_photo(f):
-                # Normalize HEIC name for comparison
-                key = f.stem + (".jpeg" if f.suffix.lower() == ".heic" else f.suffix)
-                src_photos[key] = f
-
-        # Photos currently in site folder
-        dest_photos = {f.name for f in dest_dir.iterdir() if is_photo(f)}
-
-        # --- ADD new photos ---
-        for name, src_path in src_photos.items():
-            if name not in dest_photos:
-                if src_path.suffix.lower() == ".heic":
-                    converted = convert_heic(src_path, dest_dir)
-                    if converted:
-                        added.append(f"{site_folder}/{converted.name}")
-                        changes = True
-                    else:
-                        log(f"  ❌ HEIC conversion failed: {src_path.name}")
-                else:
-                    dest_path = dest_dir / name
-                    shutil.copy2(src_path, dest_path)
-                    compress_photo(dest_path)
-                    added.append(f"{site_folder}/{name}")
-                    changes = True
-
-        # --- REMOVE deleted photos ---
-        for dest_name in list(dest_photos):
-            if dest_name not in src_photos:
-                (dest_dir / dest_name).unlink()
-                removed.append(f"{site_folder}/{dest_name}")
+        # Photos in this specific iCloud source folder
+        for f in sorted(src_dir.iterdir()):
+            if not is_photo(f):
+                continue
+            new_name  = f.stem + f.suffix.lower()   # enforce lowercase ext
+            dest_path = dest_dir / new_name
+            if not dest_path.exists():
+                shutil.copy2(f, dest_path)           # raw copy — NO sips
+                added.append(f"{site_folder}/{new_name}")
                 changes = True
 
+        # Remove orphaned files — only once per dest folder
+        if site_folder not in processed_dest:
+            processed_dest.add(site_folder)
+            unified_src = dest_to_src.get(site_folder, set())
+            for dest_file in list(dest_dir.iterdir()):
+                if is_photo(dest_file) and dest_file.name not in unified_src:
+                    dest_file.unlink()
+                    removed.append(f"{site_folder}/{dest_file.name}")
+                    changes = True
+
     if added:
-        log(f"➕ Added   {len(added)} photo(s): {', '.join(added[:5])}{'...' if len(added)>5 else ''}")
+        log(f"➕ Added   {len(added)} photo(s): {', '.join(added[:5])}{'...' if len(added) > 5 else ''}")
     if removed:
-        log(f"➖ Removed {len(removed)} photo(s): {', '.join(removed[:5])}{'...' if len(removed)>5 else ''}")
+        log(f"➖ Removed {len(removed)} photo(s): {', '.join(removed[:5])}{'...' if len(removed) > 5 else ''}")
     if not added and not removed:
         log("✅ Photos already in sync — no changes needed")
 
@@ -169,17 +152,16 @@ def rebuild_gallery():
     with open(gallery_path, "r") as f:
         html = f.read()
 
-    # Rebuild each gallery section
     section_map = {
-        "gallery-family":       ("McGee Family",  "family"),
-        "gallery-wedding":      ("Wedding",        "wedding"),
-        "gallery-engagement":   ("Engagement",     "engagement"),
-        "gallery-honeymoon":    ("Thailand",       "honeymoon"),
-        "gallery-levi":         ("Levi",           "levi"),
-        "gallery-levi-birthday":("Levi Birthday",  "levi-birthday"),
-        "gallery-brittney":     ("Brittney",       "brittney"),
-        "gallery-phoenix":      ("Phoenix",        "phoenix"),
-        "gallery-bentley":      ("Bentley",        "bentley"),
+        "gallery-family":        ("McGee Family",  "family"),
+        "gallery-wedding":       ("Wedding",        "wedding"),
+        "gallery-engagement":    ("Engagement",     "engagement"),
+        "gallery-honeymoon":     ("Thailand",       "honeymoon"),
+        "gallery-levi":          ("Levi",           "levi"),
+        "gallery-levi-birthday": ("Levi Birthday",  "levi-birthday"),
+        "gallery-phoenix":       ("Phoenix",        "phoenix"),
+        "gallery-bentley":       ("Bentley",        "bentley"),
+        "gallery-baby-mcgee":    ("Baby McGee",     "baby-mcgee"),
     }
 
     for section_id, (alt, subdir) in section_map.items():
@@ -212,7 +194,7 @@ def git_sync():
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     run(f'git commit -m "Auto-sync photos from iCloud Drive — {timestamp}"')
     log("🚀 Pushing to GitHub...")
-    result = run("git push")
+    run("git push")
     log("✅ Pushed — site will update in ~60 seconds")
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -223,17 +205,14 @@ def main():
     log(f"   Site root:     {SITE_ROOT}")
     print()
 
-    # Step 1 — Sync photos
     log("Step 1/3 — Syncing photos from iCloud Drive...")
     changes = sync_photos()
     print()
 
-    # Step 2 — Rebuild gallery (always, to catch any drift)
     log("Step 2/3 — Rebuilding gallery.html...")
     rebuild_gallery()
     print()
 
-    # Step 3 — Commit and push
     log("Step 3/3 — Committing and pushing to GitHub...")
     git_sync()
     print()
