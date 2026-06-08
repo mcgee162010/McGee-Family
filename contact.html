@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Get in touch with the McGee family — questions, baby shower, or just to say hi."/>
+  <title>Contact · McGee Family</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/contact.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:title"       content="Contact · McGee Family"/>
+  <meta property="og:description" content="Get in touch with the McGee family — questions, baby shower, or just to say hi."/>
+  <meta property="og:image"       content="https://mcgeefamily2025.com/photos/family/BFA96B0B-6C4C-49AA-A809-85EB95C52526.jpeg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <style>
+    .page-hero {
+      background: linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--brown-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 36px;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    /* Contact form card */
+    .contact-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      padding: 36px 32px;
+    }
+    .contact-card h3 { font-size: 22px; margin-bottom: 6px; }
+    .contact-sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 24px; line-height: 1.5; }
+
+    .contact-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .contact-success .success-icon { font-size: 52px; display: block; margin-bottom: 14px; }
+    .contact-success h4 { font-size: 20px; color: var(--forest); margin-bottom: 8px; }
+    .contact-success p  { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Info cards left col */
+    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-info-card {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow);
+      padding: 24px 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .contact-info-body  { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--forest);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-size:14px;font-weight:600;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <div class="page-hero" id="main-content">
+    <div class="section-label">Say Hello</div>
+    <h1>Contact Us</h1>
+    <p>Questions about the baby shower, the registry, or just want to reach out? We'd love to hear from you.</p>
+  </div>
+
+  <div class="section">
+    <div class="contact-layout">
+
+      <!-- LEFT — info cards -->
+      <div class="info-cards">
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon" style="background:var(--sage-pale);">🎉</div>
+          <div>
+            <div class="contact-info-title">Baby Shower Questions</div>
+            <p class="contact-info-body">Date, time, registry, address — all the details are on the <a href="baby-shower.html" style="color:var(--forest); font-weight:600;">baby shower page</a>. RSVP there and the address will be shown immediately.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon" style="background:var(--terra-pale);">🎁</div>
+          <div>
+            <div class="contact-info-title">Sending a Gift by Mail?</div>
+            <p class="contact-info-body">RSVP on the <a href="baby-shower.html" style="color:var(--forest); font-weight:600;">baby shower page</a> and the mailing address will be shown right away. No need to message us separately.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon" style="background:var(--brown-pale);">📖</div>
+          <div>
+            <div class="contact-info-title">Want to Know Our Story?</div>
+            <p class="contact-info-body">From the Buffalo Chip Saloon to Baby McGee — it's all on our <a href="our-story.html" style="color:var(--forest); font-weight:600;">Our Story page</a>.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon" style="background:var(--sage-pale);">🌲</div>
+          <div>
+            <div class="contact-info-title">Just Saying Hi</div>
+            <p class="contact-info-body">We love hearing from friends and family. Send us a message using the form and we'll get back to you. Faith. Family. Forever.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — contact form -->
+      <div class="contact-card">
+        <h3>Send a Message 💌</h3>
+        <p class="contact-sub">Use the form below — your message goes straight to Ben & Brittney. Your email address stays private.</p>
+
+        <form id="contact-form" action="https://formspree.io/f/xpwzagna" method="POST">
+          <input type="hidden" name="_subject" value="Message via McGee Family Website"/>
+
+          <div class="form-group">
+            <label for="contact-name">Your Name *</label>
+            <input type="text" id="contact-name" name="name" placeholder="First & Last Name" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Your Email <span style="font-weight:400; color:var(--text-tertiary);">(optional — only if you'd like a reply)</span></label>
+            <input type="email" id="contact-email" name="email" placeholder="you@example.com"/>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-topic">What's this about?</label>
+            <select id="contact-topic" name="topic">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="Baby Shower">🎉 Baby Shower</option>
+              <option value="Registry / Gift">🎁 Registry / Gift</option>
+              <option value="Just saying hi">👋 Just saying hi</option>
+              <option value="Something else">💬 Something else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Your Message *</label>
+            <textarea id="contact-message" name="message" placeholder="What's on your mind?" style="min-height:120px;" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+            Send Message →
+          </button>
+
+          <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center; line-height:1.5;">
+            Your message goes directly to Ben & Brittney. Your email is never shared or displayed publicly.
+          </p>
+        </form>
+
+        <!-- Success state -->
+        <div class="contact-success" id="contact-success">
+          <span class="success-icon">🌲</span>
+          <h4>Message received!</h4>
+          <p>Ben & Brittney will get back to you soon. Thanks for reaching out — it means a lot.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">🌲 The McGee Family</div>
+    <div class="footer-tagline">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
+    <div class="footer-tagline" style="font-style:italic; margin-top:4px; opacity:0.65; font-size:13px;">Faith. Family. Forever.</div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="bentley.html">In Memory</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('contact-success').style.display = 'block';
+        } else {
+          btn.textContent = 'Send Message →';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
