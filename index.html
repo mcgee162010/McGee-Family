@@ -335,13 +335,24 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
-            <ul class="nav-links">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
     </ul>
     <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
   </nav>
@@ -448,11 +459,11 @@
       </a>
       <a href="baby-shower.html" class="card ql-card">
         <span class="ql-icon">🎉</span>
-        <div class="ql-title">Events</div>
+        <div class="ql-title">Baby Shower</div>
         <p class="ql-desc">Baby shower on July 25 — RSVP and get details here.</p>
       </a>
       <a href="updates.html" class="card ql-card">
-        <span class="ql-icon">📖</span>
+        <span class="ql-icon">📰</span>
         <div class="ql-title">Life Updates</div>
         <p class="ql-desc">What we're up to — pregnancy milestones, Levi's adventures, and more.</p>
       </a>
@@ -554,7 +565,7 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
     <img id="lightbox-img" src="" alt=""/>
     <div class="lightbox-hint">← → arrow keys to navigate &nbsp;·&nbsp; esc or click outside to close</div>
   </div>

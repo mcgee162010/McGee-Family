@@ -161,13 +161,24 @@
 
   <nav class="nav">
     <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
-            <ul class="nav-links">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
     </ul>
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
@@ -191,7 +202,7 @@
         <div class="member-info">
           <div class="member-name">Ben</div>
           <div class="member-role">Dad · Husband</div>
-          <p class="member-bio">Ben is a Program Manager at Apple and a man who builds things — systems at work, a life at home. He's detail-driven, progress-motivated, and at his best when the people he loves are thriving. Currently completing his BA at ASU while raising a family and counting down the days until Baby McGee arrives.</p>
+          <p class="member-bio">Ben is a husband, a dad, and someone who shows up. He manages hardware lifecycle programs at Apple by day and takes college classes at night — working toward his BA at ASU while raising a family. He's happiest when the people around him are doing well, the house projects are finished, and there's something good cooking. He's the kind of person who does things on purpose — and the kind of dad Levi can look up to.</p>
           <div class="member-tags">
             <span class="tag">🍎 Apple</span>
             <span class="tag">💪 Fitness</span>
@@ -224,7 +235,7 @@
         <div class="member-info">
           <div class="member-name">Levi</div>
           <div class="member-role">Big Brother · 2nd Grade this Fall</div>
-          <p class="member-bio">Levi is 7 years old, endlessly curious, and the kind of kid who lights up every room he walks into. This fall he starts 2nd grade, and soon he'll take on one of his biggest adventures yet — becoming a big brother.</p>
+          <p class="member-bio">Levi is 7 years old, endlessly curious, and the kind of kid who lights up every room he walks into. He loves superheroes, making up songs, and asking questions nobody has answers to. This fall he starts 2nd grade. Soon he'll become a big brother — a role he was made for. <em style="color:var(--forest); font-style:italic;">Ask Levi what he wants to be when he grows up and he'll give you a different answer every time. We can't wait to find out which one he picks.</em></p>
           <div class="member-tags">
             <span class="tag">⚡ Energetic</span>
             <span class="tag">🎉 Joyful</span>
@@ -380,7 +391,7 @@
   </footer>
 
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
     <img id="lightbox-img" src="" alt=""/>
     <div class="lightbox-hint">← → arrow keys to navigate &nbsp;·&nbsp; esc or click outside to close</div>
   </div>

@@ -197,13 +197,24 @@
 
   <nav class="nav">
     <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
-            <ul class="nav-links">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
     </ul>
     <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
   </nav>
@@ -266,9 +277,9 @@
 
     <!-- PHOTO ROW -->
     <div class="photo-row">
-      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy"/>
-      <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy"/>
-      <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy"/>
+      <img src="photos/family/5E66EA05-9500-401F-BDC1-C846EEFDE67C.jpeg"  alt="McGee Family" loading="lazy" decoding="async"/>
+      <img src="photos/family/695BBE4B-5AC0-4F9D-B623-34EB2E5AD5F8.jpeg"  alt="McGee Family" loading="lazy" decoding="async"/>
+      <img src="photos/family/F0E7D27B-9AED-4168-9F5A-3A43C9196191.jpeg"  alt="McGee Family" loading="lazy" decoding="async"/>
     </div>
 
   </div>
@@ -406,7 +417,7 @@
   </footer>
 
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
     <img id="lightbox-img" src="" alt=""/>
     <div class="lightbox-hint">← → arrow keys · esc to close</div>
   </div>

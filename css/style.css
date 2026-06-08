@@ -903,3 +903,66 @@ body { max-width: 2560px; margin-left: auto; margin-right: auto; }
   .btn:hover,
   .tab:hover { transform: none !important; box-shadow: none !important; }
 }
+
+/* ── NAV MORE DROPDOWN ────────────────────────────────────────────────────── */
+.nav-more { position: relative; list-style: none; }
+
+.nav-more-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 13px; font-size: 14px; font-weight: 500;
+  color: var(--text-secondary); background: none; border: none;
+  border-radius: var(--radius-full); cursor: pointer;
+  transition: background 0.15s, color 0.15s; font-family: inherit;
+}
+.nav-more-btn:hover,
+.nav-more.open .nav-more-btn {
+  background: var(--brown-pale); color: var(--brown);
+}
+
+.nav-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  min-width: 210px; list-style: none;
+  background: rgba(250,246,239,0.97);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1.5px solid rgba(107,79,58,0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(60,40,20,0.14);
+  padding: 8px 0; z-index: 200;
+  animation: dropIn 0.18s ease both;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-more.open .nav-dropdown { display: block; }
+
+.nav-dropdown li { list-style: none; }
+.nav-dropdown a {
+  display: block; padding: 10px 18px;
+  font-size: 14px; font-weight: 500; color: var(--text-secondary);
+  text-decoration: none; transition: background 0.12s, color 0.12s;
+  border-radius: 0;
+}
+.nav-dropdown a:hover { background: var(--brown-pale); color: var(--brown); }
+
+/* Mobile: show dropdown items inline in open menu */
+@media (max-width: 768px) {
+  .nav-more-btn { display: none; }
+  .nav-more .nav-dropdown {
+    display: block; position: static;
+    box-shadow: none; border: none; border-radius: 0;
+    background: transparent; backdrop-filter: none;
+    padding: 0; animation: none;
+    border-top: 1px solid rgba(107,79,58,0.08);
+    margin-top: 4px;
+  }
+  .nav-dropdown a {
+    padding: 10px 14px; font-size: 15px;
+    color: var(--text-tertiary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-dropdown { animation: none !important; }
+}

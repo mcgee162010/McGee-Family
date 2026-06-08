@@ -75,6 +75,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+
+    // ── FOCUS TRAP ──────────────────────────────────────────────────────────
+    lightbox.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key !== 'Tab') return;
+      const focusable = [...lightbox.querySelectorAll('button, img[tabindex="0"]')];
+      const first = focusable[0]; const last = focusable[focusable.length - 1];
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last && last.focus(); } }
+      else            { if (document.activeElement === last)  { e.preventDefault(); first && first.focus(); } }
+    });
+    // Return focus to trigger on close
+    let _lbTrigger = null;
+    document.addEventListener('click', e => {
+      if (e.target.matches('.masonry img, .photo-grid img, .bentley-grid img, .member-photo')) {
+        _lbTrigger = e.target;
+      }
+    });
+    const _origClose = closeLightbox;
+    lightbox.addEventListener('transitionend', () => {
+      if (!lightbox.classList.contains('open') && _lbTrigger) {
+        _lbTrigger.focus(); _lbTrigger = null;
+      }
+    });
+    lbImg.setAttribute('tabindex', '0');
+    // ── END FOCUS TRAP ──────────────────────────────────────────────────────
+
     // Close controls
     if (lbClose) lbClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => {
@@ -139,6 +165,29 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 });
+
+  // ── NAV MORE DROPDOWN ──────────────────────────────────────────────────────
+  const moreBtn = document.querySelector('.nav-more-btn');
+  const moreItem = document.querySelector('.nav-more');
+  if (moreBtn && moreItem) {
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = moreItem.classList.toggle('open');
+      moreBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close on outside click
+    document.addEventListener('click', () => {
+      moreItem.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        moreItem.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // ── SERVICE WORKER REGISTRATION ──────────────────────────────────
   if ('serviceWorker' in navigator) {
