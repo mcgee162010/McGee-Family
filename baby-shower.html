@@ -7,77 +7,94 @@
   <title>Baby McGee Shower · McGee Family</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    .page-hero {
-      background:
-        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(178,205,181,0.40) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 50% at 80% 70%, rgba(237,224,212,0.45) 0%, transparent 60%),
-        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 55%, var(--terra-pale) 100%);
-      padding: 0;
-      position: relative;
-      overflow: hidden;
+
+    /* ── HERO — split layout, no overlap ─────────────────────────────── */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+    }
+    @media (max-width: 800px) {
+      .hero-split { grid-template-columns: 1fr; }
+      .hero-split-photo { max-height: 300px; }
     }
 
-    .hero-photo {
+    .hero-split-photo {
       width: 100%;
-      max-height: 480px;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
       display: block;
     }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(234,242,235,0.95) 100%);
+    .hero-split-info {
+      background:
+        radial-gradient(ellipse 80% 70% at 20% 20%, rgba(178,205,181,0.50) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(237,224,212,0.50) 0%, transparent 60%),
+        linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--terra-pale) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 52px 48px;
+      gap: 16px;
+    }
+    @media (max-width: 800px) {
+      .hero-split-info { padding: 40px 28px; }
     }
 
-    .hero-text {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px 48px;
-      text-align: center;
+    .hero-split-info .section-label { margin-bottom: 0; }
+
+    .hero-split-info h1 {
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.1;
+      margin: 0;
     }
 
-    .hero-text .section-label { margin-bottom: 8px; }
-    .hero-text h1 { font-size: clamp(32px, 6vw, 60px); margin-bottom: 8px; }
-    .hero-text p  { font-size: 18px; color: var(--text-secondary); max-width: 520px; margin: 0 auto; }
+    .hero-split-info .tagline {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 400px;
+      margin: 0;
+    }
 
     /* Detail pills */
     .detail-pills {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 28px 0 0;
+      gap: 8px;
+      margin-top: 4px;
     }
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      gap: 6px;
+      background: rgba(255,255,255,0.72);
+      border: 1.5px solid rgba(107,79,58,0.14);
       border-radius: var(--radius-full);
-      padding: 8px 16px;
-      font-size: 14px;
+      padding: 7px 14px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--text-primary);
-      box-shadow: 0 2px 10px rgba(60,40,20,0.08);
+      box-shadow: 0 2px 8px rgba(60,40,20,0.07);
     }
 
-    /* Two-col layout */
+    .hero-cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    /* ── TWO-COL CONTENT ──────────────────────────────────────────────── */
     .two-col {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
+      grid-template-columns: 1fr 400px;
+      gap: 32px;
       align-items: start;
     }
     @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
-    /* RSVP card */
+    /* ── RSVP CARD ────────────────────────────────────────────────────── */
     .rsvp-card {
       background: var(--glass-bg);
       border: 1.5px solid var(--glass-border);
@@ -85,41 +102,123 @@
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-radius: var(--radius-xl);
       box-shadow: var(--glass-shadow);
-      padding: 36px 32px;
+      padding: 32px 28px;
       position: sticky;
       top: 76px;
     }
-    .rsvp-card h3 { font-size: 22px; margin-bottom: 6px; }
-    .rsvp-sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 24px; }
+    .rsvp-card h3 { font-size: 20px; margin-bottom: 4px; }
+    .rsvp-sub { font-size: 13px; color: var(--text-tertiary); margin-bottom: 20px; line-height: 1.5; }
 
-    .rsvp-success {
-      display: none;
-      text-align: center;
-      padding: 12px 0;
-    }
-    .rsvp-success .success-icon { font-size: 52px; display: block; margin-bottom: 14px; }
-    .rsvp-success h4 { font-size: 20px; color: var(--forest); margin-bottom: 10px; }
-    .rsvp-success .address-reveal {
+    .rsvp-success { display: none; text-align: center; padding: 8px 0; }
+    .rsvp-success .success-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+    .rsvp-success h4 { font-size: 19px; color: var(--forest); margin-bottom: 12px; }
+    .address-reveal {
       background: var(--sage-pale);
       border: 1.5px solid rgba(122,158,126,0.25);
       border-radius: var(--radius-lg);
-      padding: 18px 20px;
-      margin: 14px 0;
+      padding: 16px 18px;
+      margin: 10px 0;
       text-align: left;
     }
-    .rsvp-success .address-reveal strong { display: block; font-size: 13px; color: var(--forest); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
-    .rsvp-success .address-reveal p { font-size: 15px; color: var(--text-primary); font-weight: 600; margin: 0; line-height: 1.5; }
-    .rsvp-success .note { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; margin-top: 12px; }
+    .address-reveal strong {
+      display: block;
+      font-size: 11px;
+      color: var(--forest);
+      margin-bottom: 5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .address-reveal p { font-size: 15px; color: var(--text-primary); font-weight: 600; margin: 0; line-height: 1.5; }
+    .rsvp-success .note { font-size: 13px; color: var(--text-tertiary); line-height: 1.6; margin-top: 10px; }
 
-    /* Registry */
+    /* ── DETAILS LEFT COL ─────────────────────────────────────────────── */
+    .info-block {
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--glass-shadow);
+      margin-bottom: 20px;
+    }
+
+    .info-block-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row:first-of-type { padding-top: 0; }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(122,158,126,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .info-row-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 2px; }
+    .info-row-value { font-size: 15px; color: var(--text-primary); font-weight: 600; line-height: 1.4; }
+
+    /* ── REGISTRY ─────────────────────────────────────────────────────── */
     .registry-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 16px;
     }
     @media (max-width: 640px) { .registry-grid { grid-template-columns: 1fr; } }
 
-    /* Poll */
+    .reg-card {
+      border-radius: var(--radius-xl);
+      padding: 24px 20px;
+    }
+
+    /* ── GUEST LIST ───────────────────────────────────────────────────── */
+    .summary-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .summary-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .guest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .guest-card {
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      border: 1.5px solid transparent;
+    }
+
+    /* ── POLL ─────────────────────────────────────────────────────────── */
     .poll-card {
       background: var(--glass-bg);
       border: 1.5px solid var(--glass-border);
@@ -128,8 +227,33 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--glass-shadow);
       padding: 36px 32px;
-      max-width: 560px;
+      max-width: 540px;
       margin: 0 auto;
+    }
+
+    .vote-btn {
+      padding: 20px 16px;
+      border-radius: var(--radius-lg);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid transparent;
+    }
+    .vote-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+    .vote-boy  { background: linear-gradient(135deg,#DBEAFE,#BFDBFE); color: #1D4ED8; border-color: #93C5FD; }
+    .vote-girl { background: linear-gradient(135deg,#FCE7F3,#FBCFE8); color: #BE185D; border-color: #F9A8D4; }
+
+    .progress-bar {
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 6px 0 4px;
     }
   </style>
 </head>
@@ -148,81 +272,132 @@
     <button class="nav-mobile-toggle">☰</button>
   </nav>
 
-  <!-- HERO -->
-  <div class="page-hero">
+  <!-- ── HERO — photo left, info right ──────────────────────────────────── -->
+  <div class="hero-split">
     <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
-         alt="Baby McGee" class="hero-photo"/>
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <div class="section-label">July 25, 2026 · Queen Creek, AZ</div>
-      <h1>Baby McGee Shower 🌿</h1>
-      <p>The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!</p>
+         alt="Baby McGee" class="hero-split-photo"/>
+    <div class="hero-split-info">
+      <div class="section-label">Baby Shower · July 25, 2026</div>
+      <h1>Baby McGee<br>is Coming! 🌿</h1>
+      <p class="tagline">The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!</p>
       <div class="detail-pills">
-        <span class="pill">📅 Saturday, July 25, 2026</span>
+        <span class="pill">📅 Saturday, July 25</span>
         <span class="pill">⏰ 1:30 PM MST</span>
         <span class="pill">📍 Queen Creek, AZ</span>
-        <span class="pill">👶 Due September 4, 2026</span>
+        <span class="pill">👶 Due Sep 4, 2026</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#rsvp" class="btn btn-primary" onclick="document.querySelector('.rsvp-card').scrollIntoView({behavior:'smooth'}); return false;">
+          RSVP Now →
+        </a>
+        <a href="baby-shower.ics" download class="btn btn-secondary">📆 Add to Calendar</a>
       </div>
     </div>
   </div>
 
-  <!-- RSVP + DETAILS -->
+  <!-- ── MAIN CONTENT ────────────────────────────────────────────────────── -->
   <div class="section">
     <div class="two-col">
 
-      <!-- Left: details -->
+      <!-- LEFT: Event details + Registry -->
       <div>
-        <div class="section-label">Event Details</div>
-        <h2 class="section-title" style="margin-bottom:20px;">You're Invited</h2>
 
-        <p style="font-size:16px; color:var(--text-secondary); line-height:1.75; margin-bottom:32px;">
-          Join us at our home in Queen Creek to celebrate the arrival of Baby McGee! 
-          We're keeping the gender a surprise — so come ready to cast your vote on whether 
-          it's a boy or a girl. Light refreshments, good people, and a whole lot of love.
-        </p>
+        <!-- Event details -->
+        <div class="info-block">
+          <div class="info-block-title">Event Details</div>
 
-        <!-- .ics download -->
-        <a href="baby-shower.ics" download class="btn btn-secondary" style="margin-bottom:32px; display:inline-flex;">
-          📆 Add to Apple Calendar
-        </a>
-
-        <!-- Registry -->
-        <div class="section-label" style="margin-top:8px;">Registry</div>
-        <h3 style="font-size:24px; margin-bottom:16px;">Baby Shower Registry 🎁</h3>
-        <div class="registry-grid">
-          <div style="background:linear-gradient(135deg,var(--sage-pale),var(--cream)); border:1.5px solid rgba(122,158,126,0.25); border-radius:var(--radius-xl); padding:28px 24px;">
-            <div style="font-size:36px; margin-bottom:12px;">🎀</div>
-            <h4 style="font-size:17px; color:var(--forest); margin-bottom:8px;">Elfster Registry</h4>
-            <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:18px;">Browse the registry and add gifts from any website.</p>
-            <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
-               target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px; padding:10px 18px;">
-              View the Registry →
-            </a>
+          <div class="info-row">
+            <div class="info-icon">📅</div>
+            <div>
+              <div class="info-row-label">Date</div>
+              <div class="info-row-value">Saturday, July 25, 2026</div>
+            </div>
           </div>
-          <div style="background:var(--terra-pale); border:2px solid rgba(196,113,74,0.25); border-radius:var(--radius-xl); padding:28px 24px;">
-            <div style="font-size:36px; margin-bottom:12px;">✅</div>
-            <h4 style="font-size:17px; color:var(--terracotta); margin-bottom:8px;">Please Mark as Purchased!</h4>
-            <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px;">If you buy something, mark it on Elfster so others don't duplicate it.</p>
-            <div style="background:rgba(255,255,255,0.60); border-radius:var(--radius-md); padding:12px 14px; font-size:13px; color:var(--text-secondary); line-height:1.6;">
-              Open registry → find item → click <strong>"Mark as Purchased"</strong> ✅
+
+          <div class="info-row">
+            <div class="info-icon">⏰</div>
+            <div>
+              <div class="info-row-label">Time</div>
+              <div class="info-row-value">1:30 PM MST</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-row-label">Location</div>
+              <div class="info-row-value">McGee Home · Queen Creek, AZ<br/>
+                <span style="font-size:13px; font-weight:400; color:var(--text-tertiary);">Address shown after RSVP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">👶</div>
+            <div>
+              <div class="info-row-label">Baby McGee Due</div>
+              <div class="info-row-value">September 4, 2026</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">🎁</div>
+            <div>
+              <div class="info-row-label">Gender</div>
+              <div class="info-row-value">It's a surprise — we have no idea! 🎉</div>
             </div>
           </div>
         </div>
 
-        <!-- Mailing note -->
-        <div style="margin-top:20px; background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:var(--radius-lg); padding:20px 24px; display:flex; align-items:center; gap:14px; box-shadow:var(--glass-shadow);">
-          <span style="font-size:26px; flex-shrink:0;">📦</span>
-          <div>
-            <div style="font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:3px;">Sending a gift by mail?</div>
-            <div style="font-size:14px; color:var(--text-secondary); line-height:1.6;">The mailing address is shown after you RSVP on the right. →</div>
+        <!-- About -->
+        <div class="info-block">
+          <div class="info-block-title">You're Invited</div>
+          <p style="font-size:15px; color:var(--text-secondary); line-height:1.75; margin:0;">
+            Join us at our home in Queen Creek to celebrate the arrival of Baby McGee! 
+            We're keeping the gender a surprise — so come ready to cast your vote. 
+            Light refreshments, good people, and a whole lot of love. We can't wait to see you.
+          </p>
+        </div>
+
+        <!-- Registry -->
+        <div class="info-block-title" style="padding:0 0 12px; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--forest);">Baby Shower Registry</div>
+        <div class="registry-grid" style="margin-bottom:20px;">
+
+          <div class="reg-card" style="background:linear-gradient(135deg,var(--sage-pale),var(--cream)); border:1.5px solid rgba(122,158,126,0.25);">
+            <div style="font-size:32px; margin-bottom:10px;">🎀</div>
+            <div style="font-size:16px; font-weight:700; color:var(--forest); margin-bottom:6px;">Elfster Registry</div>
+            <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">Browse and claim gifts from any website.</p>
+            <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
+               target="_blank" rel="noopener" class="btn btn-primary" style="font-size:13px; padding:9px 16px;">
+              View Registry →
+            </a>
+          </div>
+
+          <div class="reg-card" style="background:var(--terra-pale); border:1.5px solid rgba(196,113,74,0.22);">
+            <div style="font-size:32px; margin-bottom:10px;">☑️</div>
+            <div style="font-size:16px; font-weight:700; color:var(--terracotta); margin-bottom:6px;">Mark as Purchased</div>
+            <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px;">Bought something? Please mark it so no one buys a duplicate.</p>
+            <div style="background:rgba(255,255,255,0.55); border-radius:var(--radius-md); padding:10px 12px; font-size:12px; color:var(--text-secondary); line-height:1.6;">
+              Open registry → find item → <strong>"Mark as Purchased"</strong> ✅
+            </div>
           </div>
         </div>
+
+        <!-- Mailing address note -->
+        <div style="background:var(--glass-bg); border:1.5px solid var(--glass-border); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:var(--radius-lg); padding:18px 22px; display:flex; align-items:center; gap:12px; box-shadow:var(--glass-shadow);">
+          <span style="font-size:24px; flex-shrink:0;">📦</span>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--text-primary); margin-bottom:2px;">Sending a gift by mail?</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;">The mailing address is revealed immediately after you RSVP. →</div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Right: RSVP -->
-      <div class="rsvp-card">
+      <!-- RIGHT: RSVP form -->
+      <div class="rsvp-card" id="rsvp">
         <h3>RSVP 🎉</h3>
-        <p class="rsvp-sub">The address will be shown here immediately after you submit.</p>
+        <p class="rsvp-sub">The address is shown here the moment you submit — no waiting.</p>
 
         <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
           <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
@@ -233,8 +408,8 @@
           </div>
 
           <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+            <label for="email">Email <span style="font-weight:400; color:var(--text-tertiary);">(optional)</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com"/>
           </div>
 
           <div class="form-group">
@@ -247,10 +422,10 @@
             </select>
           </div>
 
-          <div style="background:rgba(122,158,126,0.08); border:1px solid rgba(122,158,126,0.20); border-radius:var(--radius-md); padding:16px 18px; margin-bottom:18px;">
-            <div style="font-size:13px; font-weight:700; color:var(--forest); margin-bottom:14px; letter-spacing:0.02em;">👥 Guest Headcount</div>
+          <div style="background:rgba(122,158,126,0.08); border:1px solid rgba(122,158,126,0.20); border-radius:var(--radius-md); padding:14px 16px; margin-bottom:16px;">
+            <div style="font-size:12px; font-weight:700; color:var(--forest); margin-bottom:12px; letter-spacing:0.04em; text-transform:uppercase;">👥 Guest Headcount</div>
 
-            <div class="form-group" style="margin-bottom:12px;">
+            <div class="form-group" style="margin-bottom:10px;">
               <label for="adults">Adults (18+)</label>
               <select id="adults" name="adults">
                 <option value="" disabled selected>Select</option>
@@ -263,7 +438,7 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-bottom:12px;">
+            <div class="form-group" style="margin-bottom:10px;">
               <label for="children-school">School Age (5–12)</label>
               <select id="children-school" name="children_school_age">
                 <option value="0" selected>0</option>
@@ -274,7 +449,7 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-bottom:12px;">
+            <div class="form-group" style="margin-bottom:10px;">
               <label for="children-toddler">Toddlers (2–4)</label>
               <select id="children-toddler" name="children_toddler">
                 <option value="0" selected>0</option>
@@ -297,16 +472,16 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Note (optional)</label>
-            <textarea id="message" name="message" placeholder="Dietary needs, questions, or a kind note…"></textarea>
+            <label for="message">Note <span style="font-weight:400; color:var(--text-tertiary);">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="Dietary needs, questions, or a kind note…" style="min-height:80px;"></textarea>
           </div>
 
-          <button type="submit" class="btn btn-terra" style="width:100%; justify-content:center;">
+          <button type="submit" class="btn btn-terra" style="width:100%; justify-content:center; font-size:15px;">
             Send RSVP →
           </button>
         </form>
 
-        <!-- Success state -->
+        <!-- Success -->
         <div class="rsvp-success" id="rsvp-success">
           <span class="success-icon">🎉</span>
           <h4>You're on the list!</h4>
@@ -316,104 +491,95 @@
           </div>
           <div class="address-reveal">
             <strong>📅 Date & Time</strong>
-            <p>Saturday, July 25, 2026 at 1:30 PM MST</p>
+            <p>Saturday, July 25, 2026 · 1:30 PM MST</p>
           </div>
-          <p class="note">Can't wait to celebrate Baby McGee with you! Add the event to your calendar using the button on the left. 🌿</p>
+          <p class="note">Can't wait to celebrate with you! Use the "Add to Calendar" button above to save the date. 🌿</p>
         </div>
       </div>
+
     </div>
   </div>
 
   <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
 
-  <!-- GUEST LIST -->
+  <!-- ── GUEST LIST ──────────────────────────────────────────────────────── -->
   <div class="section" id="guests">
     <div class="section-label">Who's Coming</div>
     <h2 class="section-title">Guest List</h2>
-    <p class="section-body" style="margin-bottom:28px;">Updated in real time as guests RSVP.</p>
+    <p class="section-body" style="margin-bottom:24px;">Updated in real time as guests RSVP. Refreshes every 30 seconds.</p>
 
-    <!-- Summary pills -->
-    <div id="guest-summary" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;">
-      <div style="background:rgba(52,199,89,0.10); border:1.5px solid rgba(52,199,89,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#1a7a36;">
-        ✅ Attending: <span id="count-yes">–</span>
+    <div class="summary-pills">
+      <div class="summary-pill" style="background:rgba(52,199,89,0.10); border:1.5px solid rgba(52,199,89,0.25); color:#1a7a36;">
+        ✅ Attending: <span id="count-yes" style="margin-left:4px;">–</span>
       </div>
-      <div style="background:rgba(255,149,0,0.10); border:1.5px solid rgba(255,149,0,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#a05c00;">
-        🤞 Maybe: <span id="count-maybe">–</span>
+      <div class="summary-pill" style="background:rgba(255,149,0,0.10); border:1.5px solid rgba(255,149,0,0.25); color:#a05c00;">
+        🤞 Maybe: <span id="count-maybe" style="margin-left:4px;">–</span>
       </div>
-      <div style="background:rgba(255,59,48,0.10); border:1.5px solid rgba(255,59,48,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:#a01000;">
-        ❌ Can't Make It: <span id="count-no">–</span>
+      <div class="summary-pill" style="background:rgba(255,59,48,0.08); border:1.5px solid rgba(255,59,48,0.18); color:#a01000;">
+        ❌ Can't Make It: <span id="count-no" style="margin-left:4px;">–</span>
       </div>
-      <div style="background:var(--sage-pale); border:1.5px solid rgba(122,158,126,0.25); border-radius:var(--radius-full); padding:8px 18px; font-size:14px; font-weight:600; color:var(--forest);">
-        👥 Total Guests: <span id="count-total">–</span>
+      <div class="summary-pill" style="background:var(--sage-pale); border:1.5px solid rgba(122,158,126,0.25); color:var(--forest);">
+        👥 Total Guests: <span id="count-total" style="margin-left:4px;">–</span>
       </div>
     </div>
 
-    <!-- Guest cards -->
-    <div id="guest-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:14px;">
-      <div style="font-size:15px; color:var(--text-tertiary); padding:20px;">Loading guest list…</div>
+    <div class="guest-grid" id="guest-list">
+      <div style="font-size:15px; color:var(--text-tertiary); padding:16px;">Loading guest list…</div>
     </div>
   </div>
 
   <div class="divider" style="max-width:1100px; margin:0 auto;"></div>
 
-  <!-- GENDER POLL -->
+  <!-- ── GENDER POLL ─────────────────────────────────────────────────────── -->
   <div class="section" id="poll">
     <div class="section-label">Cast Your Vote</div>
     <h2 class="section-title">Boy or Girl? 💙🩷</h2>
-    <p class="section-body" style="margin-bottom:32px;">Ben and Brittney have no idea — but you might have a hunch. Cast your vote and see what everyone thinks!</p>
+    <p class="section-body" style="margin-bottom:32px;">Ben and Brittney have no idea — but you might have a hunch. What's your gut say?</p>
 
     <div class="poll-card">
-      <div id="poll-vote" style="display:block;">
-        <p style="font-size:16px; color:var(--text-secondary); text-align:center; margin-bottom:28px; line-height:1.6;">
-          What's your gut feeling? Vote below — results update live! 👇
+      <div id="poll-vote">
+        <p style="font-size:15px; color:var(--text-secondary); text-align:center; margin-bottom:24px; line-height:1.6;">
+          One vote per device. Results show after you vote. 👇
         </p>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px;">
-          <button onclick="castVote('boy')"
-            style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #93C5FD;
-                   background:linear-gradient(135deg,#DBEAFE,#BFDBFE); color:#1D4ED8;
-                   font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
-                   display:flex; flex-direction:column; align-items:center; gap:8px;">
-            <span style="font-size:36px;">💙</span>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+          <button onclick="castVote('boy')" class="vote-btn vote-boy">
+            <span style="font-size:40px;">💙</span>
             It's a Boy!
           </button>
-          <button onclick="castVote('girl')"
-            style="padding:20px 16px; border-radius:var(--radius-lg); border:2px solid #F9A8D4;
-                   background:linear-gradient(135deg,#FCE7F3,#FBCFE8); color:#BE185D;
-                   font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s;
-                   display:flex; flex-direction:column; align-items:center; gap:8px;">
-            <span style="font-size:36px;">🩷</span>
+          <button onclick="castVote('girl')" class="vote-btn vote-girl">
+            <span style="font-size:40px;">🩷</span>
             It's a Girl!
           </button>
         </div>
-        <p style="font-size:12px; color:var(--text-tertiary); text-align:center;">One vote per device.</p>
       </div>
 
       <div id="poll-results" style="display:none;">
         <p style="font-size:15px; font-weight:600; color:var(--text-primary); text-align:center; margin-bottom:20px;">
-          Thanks for voting! Here's where everyone stands 👇
+          Here's where everyone stands 👇
         </p>
         <div style="margin-bottom:16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
             <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
             <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
           </div>
-          <div style="background:#DBEAFE; border-radius:999px; height:14px; overflow:hidden;">
+          <div class="progress-bar" style="background:#DBEAFE;">
             <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
           </div>
-          <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="boy-count">0</span> votes</div>
+          <div style="font-size:12px; color:var(--text-tertiary); margin-top:3px;"><span id="boy-count">0</span> votes</div>
         </div>
-        <div style="margin-bottom:24px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <div style="margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
             <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
             <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
           </div>
-          <div style="background:#FCE7F3; border-radius:999px; height:14px; overflow:hidden;">
+          <div class="progress-bar" style="background:#FCE7F3;">
             <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
           </div>
-          <div style="font-size:12px; color:var(--text-tertiary); margin-top:4px;"><span id="girl-count">0</span> votes</div>
+          <div style="font-size:12px; color:var(--text-tertiary); margin-top:3px;"><span id="girl-count">0</span> votes</div>
         </div>
-        <div style="text-align:center;">
-          <span id="total-votes" style="font-size:13px; color:var(--text-tertiary);"></span>
+        <div style="text-align:center; font-size:13px; color:var(--text-tertiary);">
+          <span id="total-votes"></span>
+          <div style="margin-top:6px; font-size:11px; opacity:0.7;">Votes are stored per device and may vary by browser.</div>
         </div>
       </div>
     </div>
@@ -446,7 +612,7 @@
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     const HEADERS = { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY };
 
-    // ── RSVP form ─────────────────────────────────────────────────────────────
+    // ── RSVP ──────────────────────────────────────────────────────────────────
     const form = document.getElementById('rsvp-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -456,40 +622,28 @@
 
       const fd = new FormData(form);
       const entry = {
-        name:     fd.get('name'),
-        status:   fd.get('attending'),
-        adults:   fd.get('adults')          || '0',
-        school:   fd.get('children_school_age') || '0',
-        toddler:  fd.get('children_toddler')    || '0',
-        infant:   fd.get('children_infant')     || '0',
-        note:     fd.get('message') || '',
-        ts:       new Date().toISOString()
+        name:    fd.get('name'),
+        status:  fd.get('attending'),
+        adults:  fd.get('adults')              || '0',
+        school:  fd.get('children_school_age') || '0',
+        toddler: fd.get('children_toddler')    || '0',
+        infant:  fd.get('children_infant')     || '0',
+        note:    fd.get('message') || '',
+        ts:      new Date().toISOString()
       };
 
       try {
-        // 1. Send to Formspree for email notification
-        await fetch(form.action, {
-          method: 'POST', body: fd,
-          headers: { 'Accept': 'application/json' }
-        });
+        await fetch(form.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
 
-        // 2. Read current bin, append, write back
         const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const readJson = await readRes.json();
         const current  = readJson.record?.rsvps || [];
         current.push(entry);
 
-        await fetch(BIN_URL, {
-          method: 'PUT',
-          headers: HEADERS,
-          body: JSON.stringify({ rsvps: current })
-        });
+        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify({ rsvps: current }) });
 
-        // 3. Show success
         form.style.display = 'none';
         document.getElementById('rsvp-success').style.display = 'block';
-
-        // 4. Refresh guest list
         loadGuestList();
 
       } catch(err) {
@@ -499,8 +653,9 @@
       }
     });
 
-    // Gender poll
+    // ── POLL ──────────────────────────────────────────────────────────────────
     const VOTED_KEY = 'mcgee_baby_voted';
+
     function castVote(choice) {
       localStorage.setItem(VOTED_KEY, choice);
       let boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
@@ -510,6 +665,7 @@
       localStorage.setItem('mcgee_girl_votes', girls);
       showResults(boys, girls);
     }
+
     function showResults(boys, girls) {
       const total   = boys + girls;
       const boyPct  = total ? Math.round((boys  / total) * 100) : 50;
@@ -520,12 +676,13 @@
       document.getElementById('girl-count').textContent = girls;
       document.getElementById('boy-pct').textContent    = boyPct  + '%';
       document.getElementById('girl-pct').textContent   = girlPct + '%';
-      document.getElementById('total-votes').textContent = `${total} total vote${total !== 1 ? 's' : ''}`;
+      document.getElementById('total-votes').textContent = `${total} total vote${total !== 1 ? 's' : ''} on this device`;
       setTimeout(() => {
         document.getElementById('boy-bar').style.width  = boyPct  + '%';
         document.getElementById('girl-bar').style.width = girlPct + '%';
       }, 100);
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem(VOTED_KEY)) {
         const boys  = parseInt(localStorage.getItem('mcgee_boy_votes')  || '0');
@@ -533,13 +690,11 @@
         showResults(boys, girls);
       }
     });
+
     // ── GUEST LIST ────────────────────────────────────────────────────────────
     function headcount(r) {
-      const a = parseInt(r.adults  || 0);
-      const s = parseInt(r.school  || 0);
-      const t = parseInt(r.toddler || 0);
-      const i = parseInt(r.infant  || 0);
-      return a + s + t + i;
+      return [r.adults, r.school, r.toddler, r.infant]
+        .map(v => parseInt(v || 0)).reduce((a, b) => a + b, 0);
     }
 
     function statusIcon(s) {
@@ -548,47 +703,51 @@
       return '❌';
     }
 
-    function statusColor(s) {
-      if (s.startsWith('Yes'))   return 'rgba(52,199,89,0.10)';
-      if (s.startsWith('Maybe')) return 'rgba(255,149,0,0.10)';
-      return 'rgba(255,59,48,0.08)';
-    }
-
-    function statusBorder(s) {
-      if (s.startsWith('Yes'))   return 'rgba(52,199,89,0.25)';
-      if (s.startsWith('Maybe')) return 'rgba(255,149,0,0.25)';
-      return 'rgba(255,59,48,0.20)';
+    function statusStyles(s) {
+      if (s.startsWith('Yes'))   return 'background:rgba(52,199,89,0.08); border-color:rgba(52,199,89,0.22);';
+      if (s.startsWith('Maybe')) return 'background:rgba(255,149,0,0.08); border-color:rgba(255,149,0,0.22);';
+      return 'background:rgba(255,59,48,0.06); border-color:rgba(255,59,48,0.18);';
     }
 
     function buildHeadcountLine(r) {
       const parts = [];
-      if (parseInt(r.adults  || 0) > 0) parts.push(`${r.adults} adult${r.adults>1?'s':''}`);
+      if (parseInt(r.adults  || 0) > 0) parts.push(`${r.adults} adult${parseInt(r.adults)>1?'s':''}`);
       if (parseInt(r.school  || 0) > 0) parts.push(`${r.school} school age`);
-      if (parseInt(r.toddler || 0) > 0) parts.push(`${r.toddler} toddler${r.toddler>1?'s':''}`);
-      if (parseInt(r.infant  || 0) > 0) parts.push(`${r.infant} infant${r.infant>1?'s':''}`);
-      return parts.length ? parts.join(', ') : 'Just me';
+      if (parseInt(r.toddler || 0) > 0) parts.push(`${r.toddler} toddler${parseInt(r.toddler)>1?'s':''}`);
+      if (parseInt(r.infant  || 0) > 0) parts.push(`${r.infant} infant${parseInt(r.infant)>1?'s':''}`);
+      return parts.length ? parts.join(' · ') : 'Just me';
+    }
+
+    function timeAgo(ts) {
+      if (!ts) return '';
+      const diff = Math.floor((Date.now() - new Date(ts)) / 60000);
+      if (diff < 1)  return 'Just now';
+      if (diff < 60) return `${diff}m ago`;
+      const h = Math.floor(diff / 60);
+      if (h < 24)   return `${h}h ago`;
+      const d = Math.floor(h / 24);
+      return `${d}d ago`;
     }
 
     async function loadGuestList() {
       try {
-        const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
-        const json = await res.json();
+        const res   = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        const json  = await res.json();
         const rsvps = json.record?.rsvps || [];
-
         const listEl = document.getElementById('guest-list');
 
         if (!rsvps.length) {
-          listEl.innerHTML = '<div style="font-size:15px; color:var(--text-tertiary); padding:20px;">No RSVPs yet — be the first! 🌿</div>';
-          ['count-yes','count-maybe','count-no','count-total'].forEach(id => {
-            document.getElementById(id).textContent = '0';
-          });
+          listEl.innerHTML = '<div style="font-size:15px; color:var(--text-tertiary); padding:16px; grid-column:1/-1;">No RSVPs yet — be the first! 🌿</div>';
+          ['count-yes','count-maybe','count-no','count-total'].forEach(id =>
+            document.getElementById(id).textContent = '0'
+          );
           return;
         }
 
-        let yes=0, maybe=0, no=0, total=0;
+        let yes = 0, maybe = 0, no = 0, total = 0;
         rsvps.forEach(r => {
           const hc = headcount(r);
-          if (r.status.startsWith('Yes'))        { yes++;   total += hc; }
+          if      (r.status.startsWith('Yes'))   { yes++;   total += hc; }
           else if (r.status.startsWith('Maybe')) { maybe++; total += hc; }
           else                                    { no++; }
         });
@@ -598,27 +757,26 @@
         document.getElementById('count-no').textContent    = no;
         document.getElementById('count-total').textContent = total;
 
-        listEl.innerHTML = rsvps.map(r => `
-          <div style="background:${statusColor(r.status)}; border:1.5px solid ${statusBorder(r.status)};
-                      border-radius:var(--radius-lg); padding:18px 20px;">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="font-size:18px;">${statusIcon(r.status)}</span>
-              <span style="font-size:16px; font-weight:700; color:var(--text-primary);">${r.name}</span>
+        listEl.innerHTML = [...rsvps].reverse().map(r => `
+          <div class="guest-card" style="${statusStyles(r.status)}">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <div style="display:flex; align-items:center; gap:7px;">
+                <span style="font-size:16px;">${statusIcon(r.status)}</span>
+                <span style="font-size:15px; font-weight:700; color:var(--text-primary);">${r.name}</span>
+              </div>
+              <span style="font-size:11px; color:var(--text-tertiary);">${timeAgo(r.ts)}</span>
             </div>
-            <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">
-              👥 ${buildHeadcountLine(r)}
-            </div>
-            ${r.note ? `<div style="font-size:12px; color:var(--text-tertiary); margin-top:6px; font-style:italic;">"${r.note}"</div>` : ''}
+            <div style="font-size:12px; color:var(--text-secondary);">👥 ${buildHeadcountLine(r)}</div>
+            ${r.note ? `<div style="font-size:12px; color:var(--text-tertiary); margin-top:6px; font-style:italic; border-top:1px solid rgba(0,0,0,0.06); padding-top:6px;">"${r.note}"</div>` : ''}
           </div>
         `).join('');
 
       } catch(e) {
         document.getElementById('guest-list').innerHTML =
-          '<div style="font-size:15px; color:var(--text-tertiary); padding:20px;">Unable to load guest list right now.</div>';
+          '<div style="font-size:14px; color:var(--text-tertiary); padding:16px;">Unable to load guest list right now.</div>';
       }
     }
 
-    // Load on page open, refresh every 30 seconds
     loadGuestList();
     setInterval(loadGuestList, 30000);
   </script>
