@@ -32,6 +32,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── NAV MORE DROPDOWN ─────────────────────────────────────
+  const moreBtn  = document.querySelector('.nav-more-btn');
+  const moreItem = document.querySelector('.nav-more');
+
+  if (moreBtn && moreItem) {
+    // Toggle on button click
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = moreItem.classList.toggle('open');
+      moreBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close when clicking anywhere outside
+    document.addEventListener('click', (e) => {
+      if (!moreItem.contains(e.target)) {
+        moreItem.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        moreItem.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // ── LIGHTBOX ─────────────────────────────────────────────
   const lightbox = document.getElementById('lightbox');
   const lbImg    = document.getElementById('lightbox-img');
@@ -44,13 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
       lbImg.alt = alt || '';
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
-      lbClose && lbClose.focus();    // move focus into lightbox immediately
+      lbClose && lbClose.focus();
     };
 
     const closeLightbox = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-      // Only clear src after fade-out — guard prevents clearing on rapid reopen
       setTimeout(() => {
         if (!lightbox.classList.contains('open')) { lbImg.src = ''; }
       }, 250);
@@ -69,18 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
 
-    // Initial attach
     attachLightbox();
 
-    // Re-attach after gallery tab switches (tabs reveal hidden images)
+    // Re-attach after gallery tab switches
     document.querySelectorAll('.tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        setTimeout(attachLightbox, 50);
-      });
+      btn.addEventListener('click', () => { setTimeout(attachLightbox, 50); });
     });
 
-
-    // ── FOCUS TRAP ──────────────────────────────────────────────────────────
+    // ── FOCUS TRAP ────────────────────────────────────────────
     lightbox.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key !== 'Tab') return;
@@ -89,21 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last && last.focus(); } }
       else            { if (document.activeElement === last)  { e.preventDefault(); first && first.focus(); } }
     });
-    // Return focus to trigger on close
+
     let _lbTrigger = null;
     document.addEventListener('click', e => {
       if (e.target.matches('.masonry img, .photo-grid img, .bentley-grid img, .member-photo')) {
         _lbTrigger = e.target;
       }
     });
-    const _origClose = closeLightbox;
     lightbox.addEventListener('transitionend', () => {
       if (!lightbox.classList.contains('open') && _lbTrigger) {
         _lbTrigger.focus(); _lbTrigger = null;
       }
     });
     lbImg.setAttribute('tabindex', '0');
-    // ── END FOCUS TRAP ──────────────────────────────────────────────────────
 
     // Close controls
     if (lbClose) lbClose.addEventListener('click', closeLightbox);
@@ -114,19 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Arrow key / swipe navigation
+    // Arrow key navigation
     let currentSrcs = [];
     let currentIdx  = 0;
 
-    lightbox.addEventListener('click', e => {
-      if (e.target !== lightbox && e.target !== lbClose && e.target !== lbImg) return;
-    });
-
-    lbImg.addEventListener('click', e => {
-      // Clicking the image itself navigates to next
+    lbImg.addEventListener('click', () => {
       const allImgs = [...document.querySelectorAll(
         '.masonry img:not([style*="display:none"]), .photo-grid img, .bentley-grid img'
-      )].filter(img => img.offsetParent !== null); // only visible
+      )].filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
       if (currentIdx < currentSrcs.length - 1) {
@@ -142,15 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
       )].filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
-
       if (e.key === 'ArrowRight' && currentIdx < currentSrcs.length - 1) {
-        currentIdx++;
-        lbImg.src = currentSrcs[currentIdx].src;
-        lbImg.alt = currentSrcs[currentIdx].alt;
+        currentIdx++; lbImg.src = currentSrcs[currentIdx].src; lbImg.alt = currentSrcs[currentIdx].alt;
       } else if (e.key === 'ArrowLeft' && currentIdx > 0) {
-        currentIdx--;
-        lbImg.src = currentSrcs[currentIdx].src;
-        lbImg.alt = currentSrcs[currentIdx].alt;
+        currentIdx--; lbImg.src = currentSrcs[currentIdx].src; lbImg.alt = currentSrcs[currentIdx].alt;
       }
     });
   }
@@ -168,35 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
-});
+}); // end DOMContentLoaded
 
-  // ── NAV MORE DROPDOWN ──────────────────────────────────────────────────────
-  const moreBtn = document.querySelector('.nav-more-btn');
-  const moreItem = document.querySelector('.nav-more');
-  if (moreBtn && moreItem) {
-    moreBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = moreItem.classList.toggle('open');
-      moreBtn.setAttribute('aria-expanded', String(isOpen));
-    });
-    // Close on outside click
-    document.addEventListener('click', () => {
-      moreItem.classList.remove('open');
-      moreBtn.setAttribute('aria-expanded', 'false');
-    });
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        moreItem.classList.remove('open');
-        moreBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // ── SERVICE WORKER REGISTRATION ──────────────────────────────────
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js', { scope: '/' })
-        .catch(() => {}); // Silent fail — SW is an enhancement
-    });
-  }
+// ── SERVICE WORKER ────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      .catch(() => {}); // Silent fail — SW is an enhancement
+  });
+}
