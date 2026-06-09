@@ -812,6 +812,7 @@
 
           <form id="rsvp-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="7f3339df-90c3-4fce-bd71-9cb63afe16b0"/>
+            <input type="hidden" name="to" value="benjmcgee@yahoo.com"/>
             <input type="hidden" name="subject" value="Baby Shower RSVP — McGee Family"/>
             <input type="hidden" name="from_name" value="McGee Baby Shower"/>
             <input type="hidden" name="redirect" value="false"/>
@@ -1033,10 +1034,17 @@
 
         // Step 2: Write RSVP entry to JSONBin guest list
         const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
+        if (!readRes.ok) throw new Error(`Guest list read failed (${readRes.status})`);
         const readJson = await readRes.json();
         const current  = readJson.record?.rsvps || [];
         current.push(entry);
-        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify({ rsvps: current, poll: readJson.record?.poll || { boy: 0, girl: 0 } }) });
+        const writeRes = await fetch(BIN_URL, {
+          method: 'PUT',
+          headers: HEADERS,
+          body: JSON.stringify({ rsvps: current, poll: readJson.record?.poll || { boy: 0, girl: 0 } })
+        });
+        if (!writeRes.ok) throw new Error(`Guest list update failed (${writeRes.status})`);
+        console.log('✅ JSONBin updated — guest count:', current.length);
 
         // Step 3: Show success
         form.style.display = 'none';
