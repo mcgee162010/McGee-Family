@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-  <meta name="description" content="Baby McGee Shower — July 25, 2026. RSVP, registry, and details."/>
-  <title>Baby McGee Shower · McGee Family</title>
+  <meta name="description" content="Baby McGee Shower — July 25, 2026. Join us to celebrate the arrival of Baby McGee with Ben & Brittney. RSVP, registry, and details inside."/>
+  <title>Baby McGee Shower · July 25, 2026</title>
   <link rel="manifest" href="manifest.json"/>
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -14,11 +14,9 @@
   <link rel="canonical" href="https://mcgeefamily2025.com/baby-shower.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap"/>
-  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap"/>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap"/></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap"/>
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap"/></noscript>
   <link rel="stylesheet" href="css/style.css"/>
 
   <!-- Open Graph -->
@@ -26,64 +24,104 @@
   <meta property="og:site_name"   content="The McGee Family"/>
   <meta property="og:url"         content="https://mcgeefamily2025.com/baby-shower.html"/>
   <meta property="og:title"       content="Baby McGee Shower · July 25, 2026"/>
-  <meta property="og:description" content="Join us July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee! RSVP, registry, and gender poll inside."/>
+  <meta property="og:description" content="A little miracle is on the way. Join Ben & Brittney on July 25, 2026 in Queen Creek, AZ to celebrate Baby McGee."/>
   <meta property="og:image"       content="https://mcgeefamily2025.com/photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"/>
   <meta property="og:image:width"  content="1400"/>
   <meta property="og:image:height" content="1867"/>
   <meta name="twitter:card"       content="summary_large_image"/>
-  <meta name="theme-color"        content="#8A9E7A"/>
+  <meta name="theme-color"        content="#4A5C3E"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Baby McGee Shower",
+    "startDate": "2026-07-25T13:30:00-07:00",
+    "endDate": "2026-07-25T16:30:00-07:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "McGee Home",
+      "address": { "@type": "PostalAddress", "streetAddress": "22888 E Nightingale Rd", "addressLocality": "Queen Creek", "addressRegion": "AZ", "postalCode": "85142", "addressCountry": "US" }
+    },
+    "organizer": { "@type": "Person", "name": "Benjamin McGee" },
+    "description": "Baby shower celebrating the arrival of Baby McGee — due September 4, 2026. Woodland theme."
+  }
+  </script>
 
   <style>
-    /* ── ROOT — Woodland Palette ─────────────────────────────────── */
+    /* ════════════════════════════════════════════════════════════════
+       BABY SHOWER PAGE — Woodland Redesign
+       Palette: Ivory · Sage · Deep Brown · Warm Cream
+       Fonts: Dancing Script · Playfair Display · Lato
+    ════════════════════════════════════════════════════════════════ */
+
     :root {
-      --ivory:        #F8F3E6;
-      --ivory-dark:   #EFE8D5;
-      --ivory-deeper: #E5D9C0;
-      --brown-deep:   #3D2B1A;
-      --brown-mid:    #6B4A2A;
-      --brown-light:  #9B7A52;
-      --sage-dark:    #4A5C3E;
-      --sage:         #6B7A5A;
-      --sage-light:   #8A9E7A;
-      --sage-pale:    #D4DEC8;
-      --cream:        #FAF7F0;
+      --ivory:         #F8F3E6;
+      --ivory-dark:    #EFE8D5;
+      --ivory-deeper:  #E5D9C0;
+      --brown-deep:    #3D2B1A;
+      --brown-mid:     #6B4A2A;
+      --brown-light:   #9B7A52;
+      --brown-pale:    #C4A882;
+      --sage-dark:     #4A5C3E;
+      --sage:          #6B7A5A;
+      --sage-light:    #8A9E7A;
+      --sage-pale:     #D4DEC8;
+      --sage-faint:    #EAF0E4;
+      --cream:         #FAF7F0;
+      --gold:          #C9A84C;
+      --gold-light:    #E8D5A0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
       font-family: 'Lato', sans-serif;
       background: var(--ivory);
       color: var(--brown-deep);
       overflow-x: hidden;
-      animation: pageFadeIn 0.4s ease both;
     }
 
-    /* ── DECORATIVE BOTANICAL BORDER ─────────────────────────────── */
-    .botanical-top {
-      width: 100%;
-      text-align: center;
-      font-size: 28px;
-      letter-spacing: 6px;
-      color: var(--sage-light);
-      padding: 12px 0 0;
-      opacity: 0.80;
-      line-height: 1;
+    /* ── SKIP LINK ───────────────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 9999;
+      background: var(--sage-dark); color: #fff; padding: 8px 16px;
+      border-radius: 8px; font-size: 14px; text-decoration: none;
+      transition: top 0.15s;
     }
+    .skip-link:focus { top: 8px; }
 
-    /* ── NAV ─────────────────────────────────────────────────────── */
+    /* ── SCROLL REVEAL ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
     .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 32px;
       height: 60px;
-      background: rgba(248,243,230,0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(248,243,230,0.93);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
       border-bottom: 1px solid rgba(107,74,42,0.12);
     }
     .nav-logo {
@@ -96,7 +134,7 @@
       align-items: center;
       gap: 8px;
     }
-    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
     .nav-links a {
       font-family: 'Lato', sans-serif;
       font-size: 13px;
@@ -120,349 +158,336 @@
       font-size: 22px;
       cursor: pointer;
       color: var(--brown-mid);
+      padding: 6px;
     }
+    /* More dropdown */
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background 0.15s;
+    }
+    .nav-more-btn:hover { background: var(--sage-pale); color: var(--sage-dark); }
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--cream);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 14px;
+      padding: 8px;
+      list-style: none;
+      min-width: 200px;
+      box-shadow: 0 12px 40px rgba(61,43,26,0.14);
+      z-index: 300;
+    }
+    .nav-more:hover .nav-dropdown,
+    .nav-more-btn[aria-expanded="true"] + .nav-dropdown { display: block; }
+    .nav-dropdown a {
+      display: block;
+      padding: 9px 14px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--brown-mid);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.12s;
+    }
+    .nav-dropdown a:hover { background: var(--sage-faint); color: var(--sage-dark); }
+
     @media (max-width: 768px) {
       .nav { padding: 0 20px; }
-      .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; background: rgba(248,243,230,0.98); padding: 16px 20px 24px; border-bottom: 1px solid rgba(107,74,42,0.10); gap: 4px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(248,243,230,0.98);
+        padding: 16px 20px 28px;
+        border-bottom: 1px solid rgba(107,74,42,0.10);
+        gap: 4px;
+        max-height: calc(100svh - 60px);
+        overflow-y: auto;
+      }
       .nav-links.open { display: flex; }
-      .nav-links a { padding: 10px 14px; font-size: 14px; }
+      .nav-links a { padding: 11px 14px; font-size: 14px; border-radius: 10px; }
       .nav-mobile-toggle { display: block; }
+      .nav-more { width: 100%; }
+      .nav-more-btn { width: 100%; text-align: left; padding: 11px 14px; font-size: 14px; border-radius: 10px; }
+      .nav-dropdown { position: static; border: none; box-shadow: none; border-radius: 0; padding: 0 0 0 16px; display: block; background: transparent; }
+      .nav-dropdown a { font-size: 13px; padding: 8px 12px; }
     }
 
-    /* ── HERO ─────────────────────────────────────────────────────── */
+    /* ══ HERO ════════════════════════════════════════════════════ */
     .hero {
-      background: var(--ivory);
-      padding: 0 0 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 92svh;
+      position: relative;
+    }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+    }
+
+    /* Photo panel */
+    .hero-photo-side {
       position: relative;
       overflow: hidden;
     }
-
-    /* Top botanical SVG strip */
-    .hero-botanical {
+    .hero-photo-side img {
       width: 100%;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--ivory-dark) 0%, var(--ivory) 100%);
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    /* Soft edge fade into right panel */
+    .hero-photo-side::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--ivory) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 800px) {
+      .hero-photo-side { min-height: 56svh; }
+      .hero-photo-side::after {
+        background: linear-gradient(to bottom, transparent 60%, var(--ivory) 100%);
+      }
+    }
+
+    /* Woodland SVG watermark behind photo (decorative corner leaves) */
+    .hero-leaf-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Info panel */
+    .hero-info-side {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      font-size: 36px;
-      letter-spacing: 14px;
-      color: var(--sage-light);
-      opacity: 0.7;
-      margin-bottom: 8px;
+      padding: 56px 52px 56px 44px;
+      background: var(--ivory);
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 1000px) {
+      .hero-info-side { padding: 44px 36px; }
+    }
+    @media (max-width: 800px) {
+      .hero-info-side { padding: 36px 24px 48px; gap: 0; }
     }
 
-    .hero-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px;
-      text-align: center;
+    /* Decorative SVG leaf cluster — top right corner of info side */
+    .hero-info-side::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at top right, rgba(138,158,122,0.12) 0%, transparent 70%);
+      pointer-events: none;
     }
 
+    /* Tag above main headline */
     .hero-eyebrow {
       font-family: 'Lato', sans-serif;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
       color: var(--sage);
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--sage-light);
     }
 
-    .hero-oh-deer {
+    /* "Oh deer" headline group */
+    .hero-headline-group { margin-bottom: 20px; }
+    .hero-oh {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 2.2vw, 20px);
+      font-style: italic;
+      color: var(--sage-dark);
+      line-height: 1;
+      margin-bottom: 0;
+    }
+    .hero-deer {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(42px, 8vw, 72px);
+      font-size: clamp(52px, 7.5vw, 88px);
       font-weight: 700;
       color: var(--brown-deep);
-      line-height: 0.9;
-      margin-bottom: 4px;
+      line-height: 0.88;
+      display: block;
     }
-
     .hero-tagline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(16px, 3vw, 22px);
-      font-weight: 400;
+      font-size: clamp(13px, 1.8vw, 17px);
+      font-style: italic;
       color: var(--sage-dark);
-      letter-spacing: 0.02em;
-      margin-bottom: 24px;
+      margin-top: 6px;
+      line-height: 1.5;
     }
 
-    /* Photo arch */
-    .hero-arch {
-      width: min(260px, 70vw);
-      margin: 0 auto 28px;
-      position: relative;
+    /* Leaf rule */
+    .hero-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+      color: var(--sage-light);
+      font-size: 18px;
+      letter-spacing: 6px;
+      opacity: 0.65;
     }
-    .hero-arch::before {
+    .hero-rule::before,
+    .hero-rule::after {
       content: "";
-      position: absolute;
-      inset: -8px;
-      border: 3px solid var(--sage-light);
-      border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
-      opacity: 0.45;
-    }
-    .hero-arch img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
-      display: block;
-      box-shadow: 0 12px 40px rgba(61,43,26,0.20);
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--sage-pale), transparent);
     }
 
-    /* Celebrating banner */
-    .hero-celebrating {
+    /* Celebrating block */
+    .hero-celebrating-block { margin-bottom: 18px; }
+    .hero-celebrating-label {
       font-family: 'Lato', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--brown-light);
       margin-bottom: 3px;
     }
     .hero-baby-name {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(28px, 5vw, 46px);
+      font-size: clamp(30px, 4.5vw, 52px);
       font-weight: 700;
       color: var(--brown-deep);
-      line-height: 1.1;
-      margin-bottom: 2px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 4px;
     }
-    .hero-arriving {
+    .hero-parents-label {
       font-family: 'Lato', sans-serif;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--sage);
-      margin-bottom: 4px;
-    }
-    .hero-with {
-      font-family: 'Lato', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--brown-light);
       margin-bottom: 2px;
     }
-    .hero-names {
+    .hero-parents-name {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(22px, 4vw, 34px);
+      font-size: clamp(20px, 3vw, 32px);
       font-weight: 600;
       color: var(--sage-dark);
-      margin-bottom: 20px;
     }
 
-    /* Date / Time pills */
+    /* Date/time row */
     .hero-date-row {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: stretch;
       gap: 0;
-      margin-bottom: 24px;
-      font-family: 'Playfair Display', serif;
+      margin-bottom: 18px;
+      width: fit-content;
     }
     .date-block {
       text-align: center;
-      padding: 16px 32px;
+      padding: 10px 22px;
       background: var(--ivory-dark);
-      border: 1.5px solid rgba(107,74,42,0.15);
+      border: 1.5px solid rgba(107,74,42,0.16);
     }
-    .date-block:first-child { border-radius: 12px 0 0 12px; border-right: none; }
-    .date-block:last-child  { border-radius: 0 12px 12px 0; }
-    .date-month { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); font-family: 'Lato', sans-serif; }
-    .date-num   { font-size: 44px; font-weight: 700; color: var(--brown-deep); line-height: 1; letter-spacing: -0.03em; }
-    .date-year  { font-size: 12px; color: var(--brown-light); font-family: 'Lato', sans-serif; }
-    .date-sep   { font-size: 28px; color: var(--sage-pale); padding: 0 4px; }
-    .time-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); font-family: 'Lato', sans-serif; }
-    .time-num   { font-size: 44px; font-weight: 700; color: var(--brown-deep); line-height: 1; letter-spacing: -0.03em; }
-    .time-ampm  { font-size: 12px; color: var(--brown-light); font-family: 'Lato', sans-serif; }
+    .date-block:first-child { border-radius: 10px 0 0 10px; border-right: none; }
+    .date-block:last-child  { border-radius: 0 10px 10px 0; }
+    .date-sep { display: flex; align-items: center; padding: 0 8px; color: var(--sage-pale); font-size: 18px; }
+    .date-month, .time-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage); font-family: 'Lato', sans-serif; margin-bottom: 2px;
+    }
+    .date-num, .time-num {
+      font-size: 30px; font-weight: 700; color: var(--brown-deep);
+      line-height: 1; letter-spacing: -0.03em; font-family: 'Playfair Display', serif;
+    }
+    .date-year, .time-ampm {
+      font-size: 11px; color: var(--brown-light); font-family: 'Lato', sans-serif;
+    }
 
-    /* Location wood plank */
-    .hero-location {
-      background: linear-gradient(135deg, #C4A882 0%, #B8976A 50%, #C4A882 100%);
-      border-radius: 8px;
-      padding: 14px 28px;
-      display: inline-block;
-      margin-bottom: 8px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.20), 0 4px 16px rgba(61,43,26,0.20);
-    }
-    .hero-location .loc-label {
+    /* Location line */
+    .hero-location-line {
       font-family: 'Lato', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.80);
-      margin-bottom: 4px;
-    }
-    .hero-location .loc-address {
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.5;
-    }
-
-    /* Woodland animals strip */
-    .animals-strip {
-      text-align: center;
-      font-size: 30px;
-      letter-spacing: 10px;
-      margin: 12px 0 0;
-      opacity: 0.75;
-    }
-
-    /* ── BOTANICAL DIVIDER ────────────────────────────────────────── */
-    .botanical-divider {
-      text-align: center;
-      padding: 10px 0;
-      font-size: 22px;
-      letter-spacing: 10px;
-      color: var(--sage-light);
-      opacity: 0.55;
-    }
-
-    /* ── SECTION WRAPPER ─────────────────────────────────────────── */
-    .ws { max-width: 1100px; margin: 0 auto; padding: 36px 24px; }
-    .ws-narrow { max-width: 760px; margin: 0 auto; padding: 36px 24px; }
-
-    /* Woodland section label */
-    .w-label {
-      font-family: 'Lato', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 6px;
-    }
-    .w-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      color: var(--brown-deep);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .w-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 700;
-      color: var(--sage-dark);
-    }
-
-    /* ── TWO-COL ─────────────────────────────────────────────────── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 32px;
-      align-items: start;
-    }
-    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
-
-    /* ── INFO CARD ───────────────────────────────────────────────── */
-    .info-card {
-      background: var(--ivory-dark);
-      border: 1.5px solid rgba(107,74,42,0.14);
-      border-radius: 18px;
-      padding: 28px;
-      margin-bottom: 20px;
-    }
-    .info-row {
+      font-size: 13px;
+      color: var(--brown-light);
+      margin-bottom: 24px;
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(107,74,42,0.08);
+      align-items: center;
+      gap: 6px;
     }
-    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-row:first-child { padding-top: 0; }
-    .info-icon {
-      width: 38px; height: 38px;
-      background: var(--sage-pale);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 17px; flex-shrink: 0;
-    }
-    .info-row-label { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage); margin-bottom: 2px; font-family: 'Lato', sans-serif; }
-    .info-row-value { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--brown-deep); line-height: 1.4; }
-
-    /* ── RSVP CARD ───────────────────────────────────────────────── */
-    .rsvp-card {
-      background: var(--cream);
-      border: 2px solid rgba(107,74,42,0.16);
-      border-radius: 20px;
-      padding: 32px 28px;
-      position: sticky;
-      top: 76px;
-      box-shadow: 0 8px 32px rgba(61,43,26,0.10);
-    }
-    .rsvp-card h3 {
+    .hero-location-line strong {
+      color: var(--brown-mid);
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--brown-deep);
-      margin-bottom: 4px;
+      font-weight: 600;
+      font-size: 14px;
     }
-    .rsvp-sub { font-size: 13px; color: var(--brown-light); margin-bottom: 22px; font-family: 'Lato', sans-serif; line-height: 1.5; }
 
-    /* Form elements — woodland style */
-    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
-    .form-group label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-dark); font-family: 'Lato', sans-serif; }
-    .form-group input, .form-group select, .form-group textarea {
-      padding: 11px 14px;
-      font-size: 16px;
-      font-family: 'Lato', sans-serif;
-      color: var(--brown-deep);
-      background: var(--ivory);
-      border: 1.5px solid rgba(107,74,42,0.20);
-      border-radius: 10px;
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--sage);
-      box-shadow: 0 0 0 3px rgba(107,122,90,0.15);
-    }
-    .form-group textarea { resize: vertical; min-height: 80px; }
+    /* CTA buttons */
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
-    /* Headcount box */
-    .headcount-box {
-      background: rgba(138,158,122,0.10);
-      border: 1px solid rgba(107,122,90,0.22);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 16px;
-    }
-    .headcount-label { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage-dark); margin-bottom: 12px; font-family: 'Lato', sans-serif; }
-
-    /* Buttons — woodland */
-    .btn-woodland {
+    /* ══ BUTTONS ═════════════════════════════════════════════════ */
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 24px;
+      padding: 13px 26px;
+      font-family: 'Lato', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
       border-radius: 999px;
       border: none;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+      transition: transform 0.20s ease, box-shadow 0.20s ease, background 0.20s ease;
+      -webkit-tap-highlight-color: transparent;
     }
-    .btn-woodland:hover { transform: translateY(-2px); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
 
     .btn-sage {
       background: var(--sage-dark);
       color: #fff;
-      box-shadow: 0 4px 16px rgba(74,92,62,0.30);
+      box-shadow: 0 4px 18px rgba(74,92,62,0.32);
     }
-    .btn-sage:hover { background: #3a4a30; box-shadow: 0 8px 24px rgba(74,92,62,0.38); color: #fff; }
+    .btn-sage:hover { background: #3a4a30; box-shadow: 0 8px 28px rgba(74,92,62,0.40); color: #fff; }
 
     .btn-brown {
       background: var(--brown-mid);
@@ -478,78 +503,608 @@
     }
     .btn-outline:hover { background: var(--sage-pale); }
 
-    /* RSVP success */
-    .rsvp-success { display: none; text-align: center; padding: 16px 0; }
-    .rsvp-success .s-icon { font-size: 48px; display: block; margin-bottom: 12px; }
-    .rsvp-success h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sage-dark); margin-bottom: 10px; }
-    .rsvp-success p  { font-size: 14px; color: var(--brown-light); line-height: 1.65; font-family: 'Lato', sans-serif; }
-    .addr-card {
-      background: var(--ivory-dark);
-      border: 1.5px solid rgba(107,74,42,0.14);
-      border-radius: 12px;
-      padding: 14px 18px;
-      margin: 12px 0;
-      text-align: left;
+    .btn-ghost {
+      background: transparent;
+      color: var(--brown-light);
+      border: 1.5px solid rgba(107,74,42,0.22);
     }
-    .addr-card .ak { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--sage); margin-bottom: 4px; font-family: 'Lato', sans-serif; }
-    .addr-card .av { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--brown-deep); margin: 0; line-height: 1.5; }
+    .btn-ghost:hover { background: var(--ivory-dark); color: var(--brown-mid); }
 
-    /* ── REGISTRY ─────────────────────────────────────────────────── */
-    .registry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    @media (max-width: 600px) { .registry-grid { grid-template-columns: 1fr; } }
-
-    .reg-card {
-      background: var(--ivory-dark);
-      border: 1.5px solid rgba(107,74,42,0.14);
-      border-radius: 16px;
-      padding: 24px 20px;
+    /* ══ BOTANICAL DIVIDERS ══════════════════════════════════════ */
+    .botanical-divider {
+      text-align: center;
+      padding: 8px 0;
+      font-size: 20px;
+      letter-spacing: 12px;
+      color: var(--sage-light);
+      opacity: 0.50;
+      user-select: none;
     }
-    .reg-icon  { font-size: 32px; margin-bottom: 10px; display: block; }
-    .reg-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--brown-deep); margin-bottom: 6px; }
-    .reg-body  { font-size: 13px; color: var(--brown-light); line-height: 1.6; margin-bottom: 14px; font-family: 'Lato', sans-serif; }
+    .botanical-divider-lg {
+      text-align: center;
+      padding: 16px 0 8px;
+      font-size: 26px;
+      letter-spacing: 10px;
+      color: var(--sage-light);
+      opacity: 0.55;
+      user-select: none;
+    }
 
-    /* ── GUEST LIST ───────────────────────────────────────────────── */
-    .summary-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-    .summary-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 13px; font-weight: 700;
+    /* ══ SECTION WRAPPER ═════════════════════════════════════════ */
+    .ws       { max-width: 1100px; margin: 0 auto; padding: 52px 24px; }
+    .ws-narrow { max-width: 760px; margin: 0 auto; padding: 52px 24px; }
+    .ws-wide  { max-width: 1280px; margin: 0 auto; padding: 52px 24px; }
+
+    /* Section label + title system */
+    .section-eyebrow {
       font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .pill-yes    { background: rgba(107,122,90,0.12); color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
-    .pill-maybe  { background: rgba(155,122,82,0.12); color: var(--brown-mid);  border: 1.5px solid rgba(155,122,82,0.25); }
-    .pill-no     { background: rgba(180,80,60,0.08);  color: #8B3A28;           border: 1.5px solid rgba(180,80,60,0.18); }
-    .pill-total  { background: var(--sage-pale);       color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
+    .section-eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--sage-light);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--brown-deep);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .section-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 700;
+      color: var(--sage-dark);
+      line-height: 1.1;
+    }
+    .section-body {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--brown-mid);
+      line-height: 1.80;
+    }
 
-    .guest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
-    .guest-card {
-      border-radius: 14px;
-      padding: 16px 18px;
-      border: 1.5px solid transparent;
+    /* Background alternates */
+    .bg-ivory      { background: var(--ivory); }
+    .bg-ivory-dark { background: var(--ivory-dark); }
+    .bg-cream      { background: var(--cream); }
+    .bg-sage-faint { background: var(--sage-faint); }
+    .bg-forest {
+      background: var(--sage-dark);
+      color: #fff;
+    }
+    .bg-deep {
+      background: var(--brown-deep);
+      color: #fff;
+    }
+
+    /* ══ COUNTDOWN ═══════════════════════════════════════════════ */
+    .countdown-band {
+      background: var(--sage-dark);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .countdown-label {
       font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 14px;
     }
-    .gc-yes   { background: rgba(107,122,90,0.08); border-color: rgba(107,122,90,0.22); }
-    .gc-maybe { background: rgba(155,122,82,0.08); border-color: rgba(155,122,82,0.22); }
-    .gc-no    { background: rgba(180,80,60,0.06);  border-color: rgba(180,80,60,0.18); }
-    .gc-name  { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--brown-deep); }
-    .gc-head  { font-size: 12px; color: var(--brown-light); margin-top: 4px; }
-    .gc-note  { font-size: 12px; color: var(--brown-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(107,74,42,0.08); }
-    .gc-time  { font-size: 11px; color: var(--sage); margin-left: auto; }
+    .countdown-tiles {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+    }
+    .countdown-tile {
+      text-align: center;
+      padding: 14px 22px;
+    }
+    .countdown-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    .countdown-unit {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-pale);
+      margin-top: 4px;
+      display: block;
+    }
+    .countdown-sep {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      color: rgba(255,255,255,0.20);
+      padding: 10px 0;
+      line-height: 1;
+      align-self: flex-start;
+    }
+    .countdown-past {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 4vw, 36px);
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+    }
+    @media (max-width: 480px) {
+      .countdown-tile { padding: 10px 12px; }
+      .countdown-sep  { font-size: 28px; }
+    }
 
-    /* ── POLL ─────────────────────────────────────────────────────── */
-    .poll-card {
-      background: var(--ivory-dark);
-      border: 2px solid rgba(107,74,42,0.14);
+    /* ══ STORY SECTION ════════════════════════════════════════════ */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .story-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    .story-photo-wrap {
+      position: relative;
+    }
+    .story-photo-wrap img {
+      width: 100%;
       border-radius: 20px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(61,43,26,0.20);
+    }
+    /* Decorative border offset */
+    .story-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -10px 10px 10px -10px;
+      border: 2px solid var(--sage-light);
+      border-radius: 22px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    /* Badge on photo */
+    .story-photo-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--ivory);
+      border: 1.5px solid rgba(107,74,42,0.18);
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 24px rgba(61,43,26,0.14);
+      text-align: center;
+    }
+    .story-photo-badge .badge-val {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--sage-dark);
+      line-height: 1;
+    }
+    .story-photo-badge .badge-lbl {
+      font-family: 'Lato', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-top: 2px;
+    }
+    @media (max-width: 480px) {
+      .story-photo-badge { bottom: -10px; right: 10px; }
+    }
+
+    /* Story paragraph styling */
+    .story-body { margin-bottom: 28px; }
+    .story-body p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--brown-mid);
+      line-height: 1.82;
+      margin-bottom: 18px;
+    }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-body strong { color: var(--brown-deep); font-weight: 700; }
+    .story-pull {
+      border-left: 3px solid var(--sage-light);
+      padding-left: 20px;
+      margin: 28px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 2.4vw, 20px);
+      font-style: italic;
+      color: var(--sage-dark);
+      line-height: 1.65;
+    }
+
+    /* ══ EVENT DETAILS ════════════════════════════════════════════ */
+    .details-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 36px;
+      align-items: start;
+    }
+    @media (max-width: 960px) { .details-layout { grid-template-columns: 1fr; } }
+
+    /* Info card */
+    .info-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(107,74,42,0.13);
+      border-radius: 20px;
+      padding: 8px 4px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(107,74,42,0.07);
+      transition: background 0.12s;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row:hover { background: rgba(138,158,122,0.06); }
+    .info-icon {
+      width: 42px; height: 42px;
+      background: var(--sage-faint);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+      border: 1px solid rgba(107,122,90,0.15);
+    }
+    .info-content { flex: 1; min-width: 0; }
+    .info-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 3px;
+    }
+    .info-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 600; color: var(--brown-deep); line-height: 1.45;
+    }
+    .info-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px; color: var(--brown-light); margin-top: 2px; line-height: 1.5;
+    }
+
+    /* Directions card */
+    .directions-card {
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.13);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .directions-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brown-deep);
+      margin-bottom: 12px;
+    }
+    .directions-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .directions-card li {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--brown-mid);
+      line-height: 1.55;
+      display: flex;
+      gap: 8px;
+    }
+    .directions-card li::before {
+      content: "→";
+      color: var(--sage);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 9px 18px;
+      background: var(--sage-dark);
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .map-btn:hover { background: #3a4a30; transform: translateY(-1px); color: #fff; }
+
+    /* What to know card */
+    .know-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 580px) { .know-grid { grid-template-columns: 1fr; } }
+    .know-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(107,74,42,0.12);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+    .know-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+    .know-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brown-deep);
+      margin-bottom: 5px;
+    }
+    .know-body {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--brown-light);
+      line-height: 1.60;
+    }
+
+    /* ══ RSVP CARD ════════════════════════════════════════════════ */
+    .rsvp-card {
+      background: var(--cream);
+      border: 2px solid rgba(107,74,42,0.16);
+      border-radius: 22px;
+      padding: 32px 28px;
+      position: sticky;
+      top: 76px;
+      box-shadow: 0 12px 40px rgba(61,43,26,0.10);
+    }
+    @media (max-width: 960px) { .rsvp-card { position: static; } }
+    .rsvp-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brown-deep);
+      margin-bottom: 4px;
+    }
+    .rsvp-card-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--brown-light);
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* Apple Invites button */
+    .apple-invites-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #1C1C1E, #2C2C2E);
+      border-radius: 16px;
+      padding: 20px 22px;
+      text-decoration: none;
+      margin-bottom: 16px;
+      transition: transform 0.20s, box-shadow 0.20s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+    .apple-invites-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.30);
+    }
+    .apple-invites-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4CAF77, #2E7D4F);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .apple-invites-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 2px;
+    }
+    .apple-invites-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px; color: rgba(255,255,255,0.50); letter-spacing: 0.02em;
+    }
+    .apple-invites-arrow {
+      color: rgba(255,255,255,0.35);
+      font-size: 20px;
+      margin-left: auto;
+    }
+
+    /* RSVP benefits list */
+    .rsvp-benefits {
+      background: var(--ivory);
+      border: 1.5px solid rgba(107,74,42,0.13);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .rsvp-benefits-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; font-weight: 600; color: var(--brown-deep); margin-bottom: 12px;
+    }
+    .rsvp-benefit {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--brown-mid);
+      margin-bottom: 9px;
+    }
+    .rsvp-benefit:last-child { margin-bottom: 0; }
+    .rsvp-benefit-icon { font-size: 15px; flex-shrink: 0; }
+    .rsvp-note {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: var(--brown-light);
+      text-align: center;
+      line-height: 1.65;
+    }
+    .rsvp-note a { color: var(--sage-dark); text-decoration: underline; }
+
+    /* ══ PHOTO GALLERY ════════════════════════════════════════════ */
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) {
+      .photo-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+    }
+    @media (max-width: 440px) {
+      .photo-mosaic {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 240px);
+      }
+    }
+    .mosaic-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: zoom-in;
+    }
+    .mosaic-item.span-row { grid-row: 1 / 3; }
+    .mosaic-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .mosaic-item:hover img { transform: scale(1.04); }
+    .mosaic-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(61,43,26,0.20) 0%, transparent 50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .mosaic-item:hover::after { opacity: 1; }
+
+    /* Gallery intro */
+    .gallery-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 700px) {
+      .gallery-intro { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    /* ══ REGISTRY SECTION ═════════════════════════════════════════ */
+    .registry-intro {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .registry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    @media (max-width: 580px) { .registry-grid { grid-template-columns: 1fr; } }
+    .reg-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.20s, box-shadow 0.20s;
+    }
+    .reg-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(61,43,26,0.12); }
+    .reg-icon  { font-size: 34px; margin-bottom: 12px; display: block; }
+    .reg-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700; color: var(--brown-deep); margin-bottom: 8px;
+    }
+    .reg-body {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px; color: var(--brown-light); line-height: 1.65; margin-bottom: 18px; flex: 1;
+    }
+    .registry-note {
+      text-align: center;
+      margin-top: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--brown-light);
+    }
+    .mail-card {
+      max-width: 420px;
+      margin: 20px auto 0;
+      background: var(--ivory-dark);
+      border: 1.5px solid rgba(107,74,42,0.14);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mail-card-icon { font-size: 26px; flex-shrink: 0; }
+    .mail-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; font-weight: 700; color: var(--brown-deep); margin-bottom: 3px;
+    }
+    .mail-card-addr {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px; color: var(--brown-light); line-height: 1.5;
+    }
+
+    /* ══ GENDER POLL ══════════════════════════════════════════════ */
+    .poll-card {
+      background: var(--cream);
+      border: 2px solid rgba(107,74,42,0.14);
+      border-radius: 22px;
       padding: 36px 32px;
       max-width: 520px;
       margin: 0 auto;
-      box-shadow: 0 6px 24px rgba(61,43,26,0.08);
+      box-shadow: 0 8px 32px rgba(61,43,26,0.08);
+    }
+    @media (max-width: 480px) {
+      .poll-card { padding: 28px 20px; }
     }
     .vote-btn {
-      padding: 20px 16px;
-      border-radius: 14px;
+      padding: 22px 16px;
+      border-radius: 16px;
       font-size: 16px;
       font-weight: 700;
       font-family: 'Lato', sans-serif;
@@ -560,97 +1115,117 @@
       align-items: center;
       gap: 8px;
       border: 2px solid transparent;
+      min-height: 110px;
+      justify-content: center;
     }
-    .vote-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(61,43,26,0.14); }
+    .vote-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(61,43,26,0.16); }
     .vote-boy  { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); color: #1D4ED8; border-color: #93C5FD; }
     .vote-girl { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); color: #BE185D; border-color: #F9A8D4; }
-    .progress-bar { height: 12px; border-radius: 999px; overflow: hidden; margin: 5px 0 3px; }
+    .progress-bar { height: 10px; border-radius: 999px; overflow: hidden; margin: 5px 0 3px; background: rgba(0,0,0,0.06); }
 
-    /* ── STRIPED BACKGROUND SECTIONS ─────────────────────────────── */
-    .bg-ivory-dark { background: var(--ivory-dark); }
-    .bg-ivory      { background: var(--ivory); }
-    .bg-sage-pale  { background: rgba(138,158,122,0.12); }
+    /* ══ GUEST LIST ═══════════════════════════════════════════════ */
+    .guest-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .summary-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px; font-weight: 700; font-family: 'Lato', sans-serif;
+    }
+    .pill-yes    { background: rgba(107,122,90,0.12); color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
+    .pill-maybe  { background: rgba(155,122,82,0.12); color: var(--brown-mid);  border: 1.5px solid rgba(155,122,82,0.25); }
+    .pill-no     { background: rgba(180,80,60,0.08);  color: #8B3A28;           border: 1.5px solid rgba(180,80,60,0.18); }
+    .pill-total  { background: var(--sage-pale);       color: var(--sage-dark); border: 1.5px solid rgba(107,122,90,0.25); }
 
-    /* ── FOOTER ──────────────────────────────────────────────────── */
+    .guest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 12px; }
+    .guest-card {
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1.5px solid transparent;
+      font-family: 'Lato', sans-serif;
+      transition: transform 0.15s;
+    }
+    .guest-card:hover { transform: translateY(-2px); }
+    .gc-yes   { background: rgba(107,122,90,0.08); border-color: rgba(107,122,90,0.22); }
+    .gc-maybe { background: rgba(155,122,82,0.08); border-color: rgba(155,122,82,0.22); }
+    .gc-no    { background: rgba(180,80,60,0.06);  border-color: rgba(180,80,60,0.18); }
+    .gc-name  { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--brown-deep); }
+    .gc-head  { font-size: 12px; color: var(--brown-light); margin-top: 4px; }
+    .gc-note  { font-size: 12px; color: var(--brown-light); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(107,74,42,0.08); }
+
+    /* ══ FOOTER ══════════════════════════════════════════════════ */
     .footer {
       background: var(--brown-deep);
       color: rgba(255,255,255,0.75);
       text-align: center;
-      padding: 48px 24px 60px;
+      padding: 56px 24px 72px;
     }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .footer-tag  { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 4px; font-family: 'Lato', sans-serif; }
-    .footer-italic { font-style: italic; font-size: 13px; color: rgba(255,255,255,0.40); margin-bottom: 22px; font-family: 'Playfair Display', serif; }
-    .footer-nav  { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin-bottom: 24px; }
-    .footer-nav a { font-size: 13px; color: rgba(255,255,255,0.60); text-decoration: none; font-family: 'Lato', sans-serif; transition: color 0.15s; }
-    .footer-nav a:hover { color: #fff; }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.30); font-family: 'Lato', sans-serif; }
+    .footer-leaf { font-size: 26px; margin-bottom: 12px; display: block; opacity: 0.55; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px;
+    }
+    .footer-tagline {
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px; font-weight: 600;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 6px;
+    }
+    .footer-tag  { font-size: 13px; color: rgba(255,255,255,0.40); margin-bottom: 28px; font-family: 'Lato', sans-serif; }
+    .footer-nav  { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 12px; list-style: none; margin-bottom: 28px; }
+    .footer-nav a { font-size: 12px; color: rgba(255,255,255,0.50); text-decoration: none; font-family: 'Lato', sans-serif; transition: color 0.15s; padding: 2px 0; }
+    .footer-nav a:hover { color: rgba(255,255,255,0.88); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); font-family: 'Lato', sans-serif; }
 
-    /* Lightbox */
-    .lightbox { display: flex; position: fixed; inset: 0; z-index: 999; background: rgba(20,10,5,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 24px; flex-direction: column; gap: 16px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
+    /* ══ LIGHTBOX ═════════════════════════════════════════════════ */
+    .lightbox {
+      display: flex; position: fixed; inset: 0; z-index: 999;
+      background: rgba(20,10,5,0.95); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      align-items: center; justify-content: center; padding: 24px;
+      flex-direction: column; gap: 16px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+    }
     .lightbox.open { opacity: 1; visibility: visible; pointer-events: auto; }
-    @media (max-width: 768px) { .lightbox { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(12,5,2,0.97); } }
-    .lightbox img { max-width: min(92vw, 1100px); max-height: 82svh; border-radius: 12px; box-shadow: 0 32px 100px rgba(0,0,0,0.70); object-fit: contain; cursor: zoom-out; }
-    .lightbox-close { position: absolute; top: 18px; right: 22px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.20); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
-    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
-    .lightbox-hint { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Lato', sans-serif; }
+    @media (max-width: 768px) {
+      .lightbox { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(12,5,2,0.98); }
+    }
+    .lightbox img {
+      max-width: min(92vw, 1100px); max-height: 82svh;
+      border-radius: 14px; box-shadow: 0 40px 120px rgba(0,0,0,0.75);
+      object-fit: contain; cursor: zoom-out;
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.20);
+      color: #fff; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.24); }
+    .lightbox-hint { font-size: 11px; color: rgba(255,255,255,0.40); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Lato', sans-serif; }
 
-    /* ── HERO split layout ── */
-    .hero { display:grid; grid-template-columns:1fr 1fr; min-height:70svh; min-height:70vh; }
-    @media (max-width:800px) {
-      .hero { grid-template-columns:1fr; }
-      .hero-photo-side { min-height:52svh; min-height:52vh; }
-    }
-    .hero-photo-side { position:relative; overflow:hidden; }
-    .hero-photo-side img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
-    .hero-photo-side::after {
-      content:""; position:absolute; inset:0;
-      background: linear-gradient(to right, transparent 60%, var(--ivory) 100%);
-      pointer-events:none;
-    }
-    @media (max-width:800px) {
-      .hero-photo-side::after { background: linear-gradient(to bottom, transparent 65%, var(--ivory) 100%); }
-    }
-    .hero-info-side {
-      display:flex; flex-direction:column; justify-content:center;
-      padding:48px 44px; background:var(--ivory); gap:16px;
-    }
-    @media (max-width:800px) { .hero-info-side { padding:32px 24px 40px; gap:12px; } }
-    .hero-date-row { display:flex; align-items:stretch; gap:0; width:fit-content; }
-    .date-block { text-align:center; padding:10px 20px; background:var(--ivory-dark); border:1.5px solid rgba(107,74,42,0.16); }
-    .date-block:first-child { border-radius:10px 0 0 10px; border-right:none; }
-    .date-block:last-child  { border-radius:0 10px 10px 0; }
-    .date-month,.time-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); font-family:'Lato',sans-serif; margin-bottom:2px; }
-    .date-num,.time-num     { font-size:32px; font-weight:700; color:var(--brown-deep); line-height:1; letter-spacing:-0.03em; font-family:'Playfair Display',serif; }
-    .date-year,.time-ampm   { font-size:11px; color:var(--brown-light); font-family:'Lato',sans-serif; }
-    .date-sep { display:flex; align-items:center; padding:0 8px; color:var(--sage-pale); font-size:18px; }
+    /* ══ MISC ═════════════════════════════════════════════════════ */
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageFadeIn 0.35s ease both; }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "Baby McGee Shower",
-    "startDate": "2026-07-25T13:30:00-07:00",
-    "endDate": "2026-07-25T16:30:00-07:00",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {
-      "@type": "Place",
-      "name": "McGee Home",
-      "address": { "@type": "PostalAddress", "streetAddress": "22888 E Nightingale Rd", "addressLocality": "Queen Creek", "addressRegion": "AZ", "postalCode": "85142", "addressCountry": "US" }
-    },
-    "organizer": { "@type": "Person", "name": "Benjamin McGee" },
-    "description": "Baby shower celebrating the arrival of Baby McGee — due September 4, 2026."
-  }
-  </script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <nav class="nav">
-    <a href="index.html" class="nav-logo"><span style="font-size:18px;">🌲</span> McGee Family</a>
-        <ul class="nav-links">
+  <!-- ══ NAV ════════════════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="Site navigation">
+    <a href="index.html" class="nav-logo">
+      <span style="font-size:20px;" aria-hidden="true">🌲</span>
+      McGee Family
+    </a>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
       <li><a href="our-story.html">Our Story</a></li>
@@ -660,56 +1235,58 @@
       <li class="nav-more">
         <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
         <ul class="nav-dropdown" role="menu">
-          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
-          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="vows.html"           role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html"       role="menuitem">Timeline</a></li>
           <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
-          <li><a href="letters.html" role="menuitem">Letters</a></li>
-          <li><a href="archive.html" role="menuitem">Family Archive</a></li>
-          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
-          <li><a href="contact.html" role="menuitem">Contact</a></li>
+          <li><a href="letters.html"        role="menuitem">Letters</a></li>
+          <li><a href="archive.html"        role="menuitem">Family Archive</a></li>
+          <li><a href="bentley.html"        role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html"        role="menuitem">Contact</a></li>
         </ul>
       </li>
     </ul>
-    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
   </nav>
 
-  <!-- ══ HERO — photo left, info right ═══════════════════════════ -->
-  <div class="hero" id="main-content">
+  <!-- ══ HERO ═════════════════════════════════════════════════════ -->
+  <main id="main-content">
+  <section class="hero" aria-label="Baby shower hero">
 
-    <!-- LEFT: Baby McGee photo -->
+    <!-- LEFT: Photo -->
     <div class="hero-photo-side">
       <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
-           alt="Baby McGee announcement photo" loading="eager"/>
+           alt="Baby McGee announcement — Ben and Brittney expecting"
+           loading="eager"
+           fetchpriority="high"/>
     </div>
 
-    <!-- RIGHT: Event info -->
+    <!-- RIGHT: Info -->
     <div class="hero-info-side">
 
-      
+      <div class="hero-eyebrow" aria-hidden="true">A Baby Shower</div>
 
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:clamp(14px,2vw,18px); color:var(--sage-dark); font-style:italic;">Oh</div>
-        <div style="font-family:'Dancing Script',cursive; font-size:clamp(44px,6vw,72px); font-weight:700; color:var(--brown-deep); line-height:0.9;">deer,</div>
-        <div style="font-family:'Playfair Display',serif; font-size:clamp(13px,1.8vw,17px); color:var(--sage-dark); font-style:italic; margin-top:4px;">The Baby's On the Way Here!</div>
+      <div class="hero-headline-group">
+        <span class="hero-oh">Oh</span>
+        <span class="hero-deer">deer,</span>
+        <p class="hero-tagline">The Baby's On the Way Here!</p>
       </div>
 
-      <div style="font-size:16px; letter-spacing:8px; color:var(--sage-light); opacity:0.55;">🌿 ♥ 🌿</div>
+      <div class="hero-rule" aria-hidden="true">🌿 ♥ 🌿</div>
 
-      <div>
-        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown-light); margin-bottom:2px;">Celebrating</div>
-        <div style="font-family:'Dancing Script',cursive; font-size:clamp(28px,4vw,46px); font-weight:700; color:var(--brown-deep); line-height:1.1;">Baby McGee,</div>
-        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin:4px 0 2px;">Arriving Soon · with</div>
-        <div style="font-family:'Dancing Script',cursive; font-size:clamp(20px,3vw,30px); font-weight:600; color:var(--sage-dark);">Brittney and Ben</div>
+      <div class="hero-celebrating-block">
+        <div class="hero-celebrating-label">Celebrating</div>
+        <span class="hero-baby-name">Baby McGee</span>
+        <div class="hero-parents-label">Arriving Soon · with</div>
+        <div class="hero-parents-name">Brittney &amp; Ben</div>
       </div>
 
-      <!-- Date / Time -->
-      <div class="hero-date-row">
+      <div class="hero-date-row" aria-label="Event date and time">
         <div class="date-block">
           <div class="date-month">July</div>
           <div class="date-num">25</div>
           <div class="date-year">2026</div>
         </div>
-        <div class="date-sep">·</div>
+        <div class="date-sep" aria-hidden="true">·</div>
         <div class="date-block">
           <div class="time-label">At</div>
           <div class="time-num">1:30</div>
@@ -717,199 +1294,447 @@
         </div>
       </div>
 
-      <!-- Location -->
-      <div>
-        <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin-bottom:3px;">📍 Location</div>
-        <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep);">Queen Creek, Arizona</div>
-        <div style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); margin-top:2px;">22888 E Nightingale Rd · Queen Creek, AZ 85142</div>
-      </div>
+      <p class="hero-location-line">
+        <span aria-hidden="true">📍</span>
+        <strong>Queen Creek, Arizona</strong>
+        &nbsp;·&nbsp; Address revealed after RSVP
+      </p>
 
-      <!-- CTAs -->
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg" target="_blank" rel="noopener" class="btn-woodland btn-sage">RSVP via Apple Invites 🌿</a>
-        <a href="baby-shower.ics" download class="btn-woodland btn-outline">📆 Calendar</a>
+      <div class="hero-ctas">
+        <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg"
+           target="_blank" rel="noopener"
+           class="btn btn-sage"
+           aria-label="RSVP via Apple Invites">
+          🌿 RSVP Now
+        </a>
+        <a href="baby-shower.ics" download class="btn btn-outline" aria-label="Add to calendar">
+          📆 Add to Calendar
+        </a>
       </div>
 
     </div>
+  </section>
+
+  <!-- ══ COUNTDOWN BAND ════════════════════════════════════════════ -->
+  <div class="countdown-band" role="timer" aria-live="polite" aria-label="Countdown to Baby McGee Shower">
+    <div class="countdown-label">Time Until the Celebration</div>
+    <div class="countdown-tiles" id="countdown-tiles">
+      <div class="countdown-tile">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-unit">Days</span>
+      </div>
+      <div class="countdown-sep" aria-hidden="true">:</div>
+      <div class="countdown-tile">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-unit">Hours</span>
+      </div>
+      <div class="countdown-sep" aria-hidden="true">:</div>
+      <div class="countdown-tile">
+        <span class="countdown-num" id="cd-mins">--</span>
+        <span class="countdown-unit">Minutes</span>
+      </div>
+      <div class="countdown-sep" aria-hidden="true">:</div>
+      <div class="countdown-tile">
+        <span class="countdown-num" id="cd-secs">--</span>
+        <span class="countdown-unit">Seconds</span>
+      </div>
+    </div>
   </div>
 
-  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
+  <!-- ══ STORY SECTION ═════════════════════════════════════════════ -->
+  <div class="bg-ivory">
+    <div class="ws">
 
-  <!-- ══ EVENT DETAILS + RSVP ══════════════════════════════════════ -->
+      <div class="story-grid">
+
+        <!-- Photo -->
+        <div class="story-photo-wrap reveal">
+          <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741.jpeg"
+               alt="Ben and Brittney — expecting parents"
+               loading="lazy"/>
+          <div class="story-photo-badge">
+            <div class="badge-val">Sept 4</div>
+            <div class="badge-lbl">Due Date</div>
+          </div>
+        </div>
+
+        <!-- Story text -->
+        <div class="reveal reveal-delay-1">
+          <div class="section-eyebrow">Our Story</div>
+          <h2 class="section-title">A Little Miracle<br/>On the Way</h2>
+
+          <div class="story-body">
+            <p>
+              Ben and Brittney met on <strong>October 21, 2022</strong> at the Buffalo Chip Saloon in Cave Creek, Arizona — and from that night forward, life moved in the most beautiful direction. A proposal at Riverview Park in October 2024 (Bentley famously jumped in the lake to celebrate 🐾), a Christian wedding in <strong>Greer, Arizona</strong> on November 1, 2025, and two weeks honeymooning in Thailand — life has been one extraordinary chapter after another.
+            </p>
+            <p>
+              Then came the best surprise of all: by late December 2025, they discovered a new McGee was on the way. Due <strong>September 4, 2026</strong> — and they have absolutely no idea if it's a boy or girl.
+            </p>
+
+            <blockquote class="story-pull">
+              "A little miracle is on the way — and we'd love to celebrate this season with the people who mean the most to us."
+            </blockquote>
+
+            <p>
+              This baby is already surrounded by so much love — big brother Levi, their German Shorthair Pointer Phoenix, and a whole family of people who can't wait to meet them. Come be a part of this story.
+            </p>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+            <a href="our-story.html" class="btn btn-outline" style="font-size:12px; padding:10px 20px;">
+              Read Our Full Story →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="botanical-divider" aria-hidden="true">🍃 ✦ 🌿 ✦ 🍃</div>
+
+  <!-- ══ PHOTO GALLERY ══════════════════════════════════════════════ -->
   <div class="bg-ivory-dark">
     <div class="ws">
-      <div class="two-col">
 
-        <!-- LEFT -->
+      <div class="gallery-intro">
+        <div class="reveal">
+          <div class="section-eyebrow">Photos</div>
+          <h2 class="section-title">A Family Growing<br/>in Love</h2>
+          <p class="section-body" style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.75; margin-top:10px;">
+            From the moment we found out, every day has felt like a gift. These are some of the moments that have made this journey so special.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-1" style="text-align:right;">
+          <div class="section-script">Baby<br/>McGee</div>
+        </div>
+      </div>
+
+      <div class="photo-mosaic reveal">
+        <div class="mosaic-item span-row">
+          <img src="photos/baby-mcgee/F3F407BA-5449-4FD4-925D-EDBE66834741_1_105_c.jpeg"
+               alt="Baby McGee announcement photo" loading="lazy"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="photos/baby-mcgee/324AD6DE-2E69-49D3-91B9-9604B0857484.jpeg"
+               alt="Baby McGee photo" loading="lazy"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="photos/baby-mcgee/434A0DD2-FA2A-4A51-B3A2-430981608A57.jpeg"
+               alt="Baby McGee photo" loading="lazy"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="photos/baby-mcgee/468CD4D5-BBD3-4139-8E12-CF2238ECCC85.jpeg"
+               alt="Baby McGee photo" loading="lazy"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="photos/baby-mcgee/4D58505F-6926-4F20-8946-2E1FEAED0F35.jpeg"
+               alt="Baby McGee photo" loading="lazy"/>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:24px;">
+        <a href="gallery.html" class="btn btn-ghost" style="font-size:12px; padding:10px 22px;">
+          View Full Gallery →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="botanical-divider" aria-hidden="true">🌾 ✦ 🍃 ✦ 🌾</div>
+
+  <!-- ══ EVENT DETAILS + RSVP ══════════════════════════════════════ -->
+  <div class="bg-ivory" id="details">
+    <div class="ws">
+
+      <div class="details-layout">
+
+        <!-- LEFT: Details -->
         <div>
-          <div class="w-label">Event Details</div>
-          <div class="w-title">You're Invited 🌾</div>
-
-          <div class="info-card">
-            <div class="info-row">
-              <div class="info-icon">📅</div>
-              <div><div class="info-row-label">Date</div><div class="info-row-value">Saturday, July 25, 2026</div></div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">⏰</div>
-              <div><div class="info-row-label">Time</div><div class="info-row-value">1:30 PM MST</div></div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">📍</div>
-              <div><div class="info-row-label">Location</div><div class="info-row-value">McGee Home · Queen Creek, AZ<br/><span style="font-size:13px; font-weight:400; color:var(--brown-light); font-family:'Lato',sans-serif;">22888 E Nightingale Rd, Queen Creek, AZ 85142</span></div></div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">👶</div>
-              <div><div class="info-row-label">Baby McGee Due</div><div class="info-row-value">September 4, 2026</div></div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">🎁</div>
-              <div><div class="info-row-label">Gender</div><div class="info-row-value">It's a surprise — we have no idea! 🎉</div></div>
-            </div>
-          </div>
-
-          <p style="font-family:'Playfair Display',serif; font-size:16px; color:var(--brown-mid); line-height:1.80; font-style:italic; margin-bottom:28px;">
-            "The best kind of surprise — boy or girl, Baby McGee is already so loved. Come celebrate with us!"
+          <div class="section-eyebrow reveal">Event Details</div>
+          <h2 class="section-title reveal reveal-delay-1">You're Invited 🌾</h2>
+          <p class="section-body reveal reveal-delay-2" style="font-family:'Lato',sans-serif; font-size:14px; color:var(--brown-light); line-height:1.75; margin-bottom:28px;">
+            Everything you need to know to join us for the celebration.
           </p>
 
-          <!-- Registry -->
-          <div class="w-label" style="margin-top:8px;">Baby Shower Registry</div>
-          <div class="w-title" style="margin-bottom:20px;">Registry 🎀</div>
-
-          <div class="registry-grid">
-            <div class="reg-card">
-              <span class="reg-icon">🎀</span>
-              <div class="reg-title">Elfster Registry</div>
-              <p class="reg-body">Browse and claim gifts from any website.</p>
-              <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
-                 target="_blank" rel="noopener" class="btn-woodland btn-sage" style="font-size:12px; padding:9px 18px;">
-                View Registry →
-              </a>
+          <!-- Info rows -->
+          <div class="info-card reveal reveal-delay-2" role="list" aria-label="Event details">
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">📅</div>
+              <div class="info-content">
+                <div class="info-label">Date</div>
+                <div class="info-value">Saturday, July 25, 2026</div>
+              </div>
             </div>
-            <div class="reg-card" style="background:rgba(155,122,82,0.08); border-color:rgba(155,122,82,0.20);">
-              <span class="reg-icon">☑️</span>
-              <div class="reg-title" style="color:var(--brown-mid);">Mark as Purchased</div>
-              <p class="reg-body">Bought something? Mark it so no one duplicates your gift.</p>
-              <div style="background:rgba(255,255,255,0.55); border-radius:8px; padding:10px 12px; font-size:12px; color:var(--brown-light); font-family:'Lato',sans-serif; line-height:1.6;">
-                Open registry → find item → <strong>"Mark as Purchased"</strong> ✅
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">⏰</div>
+              <div class="info-content">
+                <div class="info-label">Time</div>
+                <div class="info-value">1:30 PM – 4:30 PM MST</div>
+              </div>
+            </div>
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">📍</div>
+              <div class="info-content">
+                <div class="info-label">Location</div>
+                <div class="info-value">McGee Home · Queen Creek, AZ</div>
+                <div class="info-sub">Full address provided after RSVP</div>
+              </div>
+            </div>
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">🅿️</div>
+              <div class="info-content">
+                <div class="info-label">Parking</div>
+                <div class="info-value">Available on-site</div>
+                <div class="info-sub">Street parking also available — no worries</div>
+              </div>
+            </div>
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">👶</div>
+              <div class="info-content">
+                <div class="info-label">Baby McGee Due</div>
+                <div class="info-value">September 4, 2026</div>
+              </div>
+            </div>
+            <div class="info-row" role="listitem">
+              <div class="info-icon" aria-hidden="true">🎉</div>
+              <div class="info-content">
+                <div class="info-label">Gender</div>
+                <div class="info-value">It's a complete surprise!</div>
+                <div class="info-sub">Ben and Brittney have no idea — but you can vote below</div>
               </div>
             </div>
           </div>
 
-          <div style="background:var(--ivory); border:1.5px solid rgba(107,74,42,0.14); border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:12px; margin-top:18px;">
-            <span style="font-size:24px; flex-shrink:0;">📦</span>
-            <div>
-              <div style="font-size:13px; font-weight:700; color:var(--brown-deep); margin-bottom:2px; font-family:'Playfair Display',serif;">Sending a gift by mail?</div>
-              <div style="font-size:13px; color:var(--brown-light); line-height:1.5; font-family:'Lato',sans-serif;">22888 E Nightingale Rd, Queen Creek, AZ 85142</div>
+          <!-- What to know -->
+          <div class="section-eyebrow reveal" style="margin-bottom:14px;">What to Know</div>
+          <div class="know-grid reveal reveal-delay-1">
+            <div class="know-card">
+              <span class="know-icon" aria-hidden="true">👗</span>
+              <div class="know-title">What to Wear</div>
+              <div class="know-body">Casual and comfortable. Woodland colors welcome — sage, ivory, earth tones.</div>
+            </div>
+            <div class="know-card">
+              <span class="know-icon" aria-hidden="true">🍽️</span>
+              <div class="know-title">Food &amp; Drinks</div>
+              <div class="know-body">Light bites and refreshments will be served. Come hungry!</div>
+            </div>
+            <div class="know-card">
+              <span class="know-icon" aria-hidden="true">👨‍👩‍👧</span>
+              <div class="know-title">Kids Welcome</div>
+              <div class="know-body">Family-friendly event. Kids are absolutely welcome to join the fun.</div>
+            </div>
+            <div class="know-card">
+              <span class="know-icon" aria-hidden="true">🌡️</span>
+              <div class="know-title">Outdoor/Indoor</div>
+              <div class="know-body">Mostly indoors — it's July in Arizona! Air conditioning guaranteed.</div>
             </div>
           </div>
+
+          <!-- Directions -->
+          <div class="directions-card reveal">
+            <h4>📍 Getting There</h4>
+            <ul>
+              <li>Located in Queen Creek — about 35 min from central Phoenix, 25 min from Gilbert or Chandler</li>
+              <li>Closest major intersection: Ellsworth &amp; Ocotillo roads</li>
+              <li>Full address and map link provided when you RSVP via Apple Invites</li>
+            </ul>
+            <a href="https://maps.apple.com/?address=22888+E+Nightingale+Rd,+Queen+Creek,+AZ+85142"
+               target="_blank" rel="noopener"
+               class="map-btn"
+               aria-label="Open in Apple Maps">
+              🗺 Open in Maps
+            </a>
+          </div>
+
         </div>
 
-        <!-- RIGHT — Apple Invites RSVP -->
-        <div class="rsvp-card" id="rsvp">
-          <h3>RSVP 🌿</h3>
-          <p class="rsvp-sub">We're using Apple Invites for RSVPs — you'll get a confirmation, calendar invite, and event updates automatically.</p>
+        <!-- RIGHT: RSVP -->
+        <div class="rsvp-card" id="rsvp" aria-label="RSVP section">
+          <h3 class="rsvp-card-title">RSVP 🌿</h3>
+          <p class="rsvp-card-sub">We're using Apple Invites — RSVP in seconds. You'll get a confirmation, calendar invite, and event updates automatically.</p>
 
-          <!-- Apple Invites CTA -->
-          <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg" target="_blank" rel="noopener"
-             style="display:flex; align-items:center; gap:16px; background:linear-gradient(135deg,#1C1C1E,#2C2C2E); border-radius:16px; padding:22px 24px; text-decoration:none; margin-bottom:20px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 24px rgba(0,0,0,0.22);"
-             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.30)'"
-             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 24px rgba(0,0,0,0.22)'">
-            <div style="width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,#FF6B6B,#FF8E53); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0;">🎉</div>
-            <div style="flex:1;">
-              <div style="font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:#fff; margin-bottom:2px;">RSVP via Apple Invites</div>
-              <div style="font-family:'Lato',sans-serif; font-size:12px; color:rgba(255,255,255,0.55); letter-spacing:0.02em;">Tap to open · RSVP · Get calendar invite</div>
+          <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg"
+             target="_blank" rel="noopener"
+             class="apple-invites-btn"
+             aria-label="RSVP via Apple Invites">
+            <div class="apple-invites-icon" aria-hidden="true">🌿</div>
+            <div style="flex:1; min-width:0;">
+              <div class="apple-invites-label">RSVP via Apple Invites</div>
+              <div class="apple-invites-sub">Tap to open · RSVP · Get calendar invite</div>
             </div>
-            <div style="color:rgba(255,255,255,0.40); font-size:18px;">›</div>
+            <div class="apple-invites-arrow" aria-hidden="true">›</div>
           </a>
 
-          <!-- What to expect -->
-          <div style="background:var(--ivory); border:1.5px solid rgba(107,74,42,0.14); border-radius:14px; padding:18px 20px; margin-bottom:16px;">
-            <div style="font-family:'Playfair Display',serif; font-size:14px; font-weight:600; color:var(--brown-deep); margin-bottom:12px;">When you RSVP you'll get:</div>
-            <div style="display:flex; flex-direction:column; gap:10px;">
-              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
-                <span style="font-size:16px;">✅</span> Confirmation email with all event details
-              </div>
-              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
-                <span style="font-size:16px;">📅</span> Calendar invite added automatically
-              </div>
-              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
-                <span style="font-size:16px;">📍</span> Address · 22888 E Nightingale Rd, Queen Creek, AZ
-              </div>
-              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
-                <span style="font-size:16px;">🔔</span> Reminder as the date gets closer
-              </div>
+          <div class="rsvp-benefits">
+            <div class="rsvp-benefits-title">When you RSVP, you'll get:</div>
+            <div class="rsvp-benefit">
+              <span class="rsvp-benefit-icon">✅</span>
+              Confirmation with full event details
+            </div>
+            <div class="rsvp-benefit">
+              <span class="rsvp-benefit-icon">📅</span>
+              Calendar invite added automatically
+            </div>
+            <div class="rsvp-benefit">
+              <span class="rsvp-benefit-icon">📍</span>
+              Full address — 22888 E Nightingale Rd, Queen Creek
+            </div>
+            <div class="rsvp-benefit">
+              <span class="rsvp-benefit-icon">🔔</span>
+              Reminder notification as the date approaches
             </div>
           </div>
 
-          <p style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); text-align:center; line-height:1.6;">
+          <p class="rsvp-note">
             Works best on iPhone · Also opens in browser on Android &amp; desktop<br/>
-            Questions? Email <a href="mailto:benjmcgee@yahoo.com" style="color:var(--sage-dark);">benjmcgee@yahoo.com</a>
+            Questions? <a href="mailto:benjmcgee@yahoo.com">Email benjmcgee@yahoo.com</a>
           </p>
+
+          <div style="margin-top:20px; padding-top:20px; border-top:1px solid rgba(107,74,42,0.10);">
+            <a href="baby-shower.ics" download
+               class="btn btn-ghost"
+               style="width:100%; font-size:12px; padding:10px;"
+               aria-label="Download calendar file">
+              📆 Add to Calendar (.ics)
+            </a>
+          </div>
         </div>
 
       </div>
     </div>
   </div>
 
-  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
+  <div class="botanical-divider" aria-hidden="true">🍃 ✦ 🌿 ✦ 🍃</div>
 
-  <!-- ══ GENDER POLL ════════════════════════════════════════════════ -->
-  <div class="bg-ivory-dark">
+  <!-- ══ REGISTRY ════════════════════════════════════════════════════ -->
+  <div class="bg-ivory-dark" id="registry">
     <div class="ws-narrow">
-      <div style="text-align:center; margin-bottom:32px;">
-        <div class="w-label" style="text-align:center;">Cast Your Vote</div>
-        <div class="w-script">Boy or Girl? 💙🩷</div>
-        <p style="font-family:'Playfair Display',serif; font-size:16px; font-style:italic; color:var(--brown-mid); margin-top:10px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.65;">Ben and Brittney have no idea — but you might have a hunch.</p>
+
+      <div class="registry-intro reveal">
+        <div class="section-eyebrow" style="justify-content:center;">Baby Registry</div>
+        <h2 class="section-title" style="text-align:center;">Gifts for Baby McGee 🎀</h2>
+        <p style="font-family:'Playfair Display',serif; font-size:15px; font-style:italic; color:var(--brown-light); line-height:1.75; text-align:center; margin-top:8px;">
+          Your presence is the greatest gift. If you'd like to bring something,<br class="desktop-only"/> here's where to find what Baby McGee needs most.
+        </p>
       </div>
 
-      <div class="poll-card">
-        <div id="poll-vote">
-          <p style="font-size:14px; color:var(--brown-light); text-align:center; margin-bottom:24px; line-height:1.6; font-family:'Lato',sans-serif;">What's your gut feeling? One vote per device. 👇</p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
-            <button onclick="castVote('boy')" class="vote-btn vote-boy"><span style="font-size:40px;">💙</span>It's a Boy!</button>
-            <button onclick="castVote('girl')" class="vote-btn vote-girl"><span style="font-size:40px;">🩷</span>It's a Girl!</button>
+      <div class="registry-grid">
+        <div class="reg-card reveal reveal-delay-1">
+          <span class="reg-icon" aria-hidden="true">🎀</span>
+          <div class="reg-title">Elfster Registry</div>
+          <p class="reg-body">Browse and claim gifts from any website. Wish lists from all the brands we love — all in one place.</p>
+          <a href="https://www.elfster.com/profile/f03fc228-b2bf-4278-ab29-90640213093a/wish-lists/bd240073-ea6f-41d2-8444-59f66147fe0d"
+             target="_blank" rel="noopener"
+             class="btn btn-sage"
+             style="font-size:12px; padding:11px 20px;"
+             aria-label="View Baby McGee Elfster Registry">
+            View Registry →
+          </a>
+        </div>
+
+        <div class="reg-card reveal reveal-delay-2" style="background:rgba(212,222,200,0.25); border-color:rgba(107,122,90,0.22);">
+          <span class="reg-icon" aria-hidden="true">☑️</span>
+          <div class="reg-title">Mark as Purchased</div>
+          <p class="reg-body">Already bought something? Mark it in the registry so no one doubles up on a gift.</p>
+          <div style="background:rgba(255,255,255,0.65); border-radius:10px; padding:12px 14px; font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); line-height:1.65; border:1px solid rgba(107,74,42,0.10);">
+            Open registry → find your item → tap <strong style="color:var(--sage-dark);">"Mark as Purchased"</strong> ✅
           </div>
         </div>
+      </div>
+
+      <div class="registry-note reveal">
+        The focus of this day is celebrating Baby McGee and this incredible family.<br/>Gifts are never expected — just your love and presence.
+      </div>
+
+      <div class="mail-card reveal">
+        <div class="mail-card-icon" aria-hidden="true">📦</div>
+        <div>
+          <div class="mail-card-title">Sending a gift by mail?</div>
+          <div class="mail-card-addr">22888 E Nightingale Rd<br/>Queen Creek, AZ 85142</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="botanical-divider" aria-hidden="true">🌾 ✦ 🍃 ✦ 🌾</div>
+
+  <!-- ══ GENDER POLL ════════════════════════════════════════════════ -->
+  <div class="bg-ivory" id="poll">
+    <div class="ws-narrow">
+
+      <div style="text-align:center; margin-bottom:36px;" class="reveal">
+        <div class="section-eyebrow" style="justify-content:center;">Cast Your Vote</div>
+        <div class="section-script">Boy or Girl? 💙🩷</div>
+        <p style="font-family:'Playfair Display',serif; font-size:16px; font-style:italic; color:var(--brown-mid); margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.70;">
+          Ben and Brittney genuinely have no idea — but you might have a hunch. One vote per device.
+        </p>
+      </div>
+
+      <div class="poll-card reveal reveal-delay-1" role="form" aria-label="Gender vote">
+        <div id="poll-vote">
+          <p style="font-size:14px; color:var(--brown-light); text-align:center; margin-bottom:24px; line-height:1.6; font-family:'Lato',sans-serif;">
+            What's your gut feeling? 👇
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+            <button onclick="castVote('boy')"  class="vote-btn vote-boy"  aria-label="Vote boy">
+              <span style="font-size:42px;" aria-hidden="true">💙</span>
+              It's a Boy!
+            </button>
+            <button onclick="castVote('girl')" class="vote-btn vote-girl" aria-label="Vote girl">
+              <span style="font-size:42px;" aria-hidden="true">🩷</span>
+              It's a Girl!
+            </button>
+          </div>
+        </div>
+
         <div id="poll-results" style="display:none;">
-          <p style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep); text-align:center; margin-bottom:20px;">Here's where everyone stands 👇</p>
+          <p style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep); text-align:center; margin-bottom:20px;">
+            Here's where everyone stands 👇
+          </p>
           <div style="margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-family:'Lato',sans-serif;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-family:'Lato',sans-serif;">
               <span style="font-size:15px; font-weight:700; color:#1D4ED8;">💙 Boy</span>
               <span id="boy-pct" style="font-size:15px; font-weight:700; color:#1D4ED8;">--%</span>
             </div>
-            <div class="progress-bar" style="background:#DBEAFE;">
-              <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            <div class="progress-bar">
+              <div id="boy-bar" style="height:100%; background:linear-gradient(90deg,#3B82F6,#60A5FA); border-radius:999px; width:0%; transition:width 0.9s ease;"></div>
             </div>
-            <div style="font-size:12px; color:var(--brown-light); margin-top:3px; font-family:'Lato',sans-serif;"><span id="boy-count">0</span> votes</div>
+            <div style="font-size:12px; color:var(--brown-light); margin-top:4px; font-family:'Lato',sans-serif;">
+              <span id="boy-count">0</span> votes
+            </div>
           </div>
           <div style="margin-bottom:20px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-family:'Lato',sans-serif;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-family:'Lato',sans-serif;">
               <span style="font-size:15px; font-weight:700; color:#BE185D;">🩷 Girl</span>
               <span id="girl-pct" style="font-size:15px; font-weight:700; color:#BE185D;">--%</span>
             </div>
-            <div class="progress-bar" style="background:#FCE7F3;">
-              <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.8s ease;"></div>
+            <div class="progress-bar">
+              <div id="girl-bar" style="height:100%; background:linear-gradient(90deg,#EC4899,#F472B6); border-radius:999px; width:0%; transition:width 0.9s ease;"></div>
             </div>
-            <div style="font-size:12px; color:var(--brown-light); margin-top:3px; font-family:'Lato',sans-serif;"><span id="girl-count">0</span> votes</div>
+            <div style="font-size:12px; color:var(--brown-light); margin-top:4px; font-family:'Lato',sans-serif;">
+              <span id="girl-count">0</span> votes
+            </div>
           </div>
-          <div style="text-align:center; font-size:13px; color:var(--brown-light); font-family:'Lato',sans-serif;">
+          <div style="text-align:center; font-size:13px; color:var(--brown-light); font-family:'Lato',sans-serif; padding-top:8px; border-top:1px solid rgba(107,74,42,0.08);">
             <span id="total-votes"></span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- Bottom botanical -->
-  <div style="background:var(--ivory); text-align:center; padding:24px; font-size:28px; letter-spacing:8px; color:var(--sage-light); opacity:0.60;">
-    🦌 🌿 🐰 🌸 🐿️ 🍃 🦔 🌾 🦉
-  </div>
+  <div class="botanical-divider" aria-hidden="true">🦌 🌿 🐰 🌸 🐿️ 🍃 🦔 🌾 🦉</div>
 
-  <footer class="footer">
-    <div class="footer-logo">🌲 The McGee Family</div>
+  <!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <span class="footer-leaf" aria-hidden="true">🌲</span>
+    <div class="footer-logo">The McGee Family</div>
+    <div class="footer-tagline">Faith. Family. Forever.</div>
     <div class="footer-tag">Ben · Brittney · Levi · Phoenix · Baby McGee · Queen Creek, AZ</div>
-    <div class="footer-italic">Faith. Family. Forever.</div>
     <ul class="footer-nav">
       <li><a href="index.html">Home</a></li>
       <li><a href="family.html">Our Family</a></li>
@@ -927,23 +1752,102 @@
     <div class="footer-copy">© 2026 The McGee Family · Made with ♥ in Queen Creek, Arizona</div>
   </footer>
 
-  <div class="lightbox" id="lightbox">
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer" aria-modal="true">
     <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
     <img id="lightbox-img" src="" alt=""/>
-    <div class="lightbox-hint">← → arrow keys · esc to close</div>
+    <div class="lightbox-hint" aria-hidden="true">Esc to close</div>
   </div>
 
   <script src="js/main.js"></script>
   <script>
+    /* ── JSONBIN KEYS ──────────────────────────────────────── */
     const BIN_ID  = '6a26fbd7f5f4af5e29ccb6e2';
     const BIN_KEY = '$2a$10$lmCxdK77IswK2m76qgEEN.PatHmZ34dAnyHqg67lDyXol7/BfYExe';
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     const HEADERS = { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY };
 
-    // Gender Poll — powered by JSONBin
+    /* ── COUNTDOWN ─────────────────────────────────────────── */
+    (function() {
+      const TARGET = new Date('2026-07-25T13:30:00-07:00').getTime();
+      const tiles  = document.getElementById('countdown-tiles');
+      const $d = document.getElementById('cd-days');
+      const $h = document.getElementById('cd-hours');
+      const $m = document.getElementById('cd-mins');
+      const $s = document.getElementById('cd-secs');
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        const now  = Date.now();
+        const diff = TARGET - now;
+        if (diff <= 0) {
+          tiles.innerHTML = '<p class="countdown-past">The celebration is here! 🎉</p>';
+          return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000)  / 60000);
+        const secs  = Math.floor((diff % 60000)    / 1000);
+        $d.textContent = days;
+        $h.textContent = pad(hours);
+        $m.textContent = pad(mins);
+        $s.textContent = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    /* ── SCROLL REVEAL ─────────────────────────────────────── */
+    (function() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+
+    /* ── PHOTO MOSAIC LIGHTBOX ─────────────────────────────── */
+    (function() {
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightbox-img');
+      const lbClose = document.getElementById('lightbox-close');
+      if (!lb || !lbImg) return;
+
+      function open(src, alt) {
+        lbImg.src = src; lbImg.alt = alt || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbClose && lbClose.focus();
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { if (!lb.classList.contains('open')) lbImg.src = ''; }, 250);
+      }
+
+      document.querySelectorAll('.mosaic-item img').forEach(img => {
+        img.addEventListener('click', () => open(img.src, img.alt));
+      });
+
+      lbClose && lbClose.addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) close(); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lb.classList.contains('open')) close();
+      });
+    })();
+
+    /* ── GENDER POLL ───────────────────────────────────────── */
     const POLL_KEY = 'mcgee_baby_voted';
+
     async function castVote(choice) {
-      if (localStorage.getItem(POLL_KEY)) return;
+      if (localStorage.getItem(POLL_KEY)) { loadPoll(); return; }
       localStorage.setItem(POLL_KEY, choice);
       try {
         const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
@@ -955,6 +1859,7 @@
         showResults(data.poll.boy || 0, data.poll.girl || 0);
       } catch(e) { showResults(0, 0); }
     }
+
     async function loadPoll() {
       try {
         const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
@@ -963,9 +1868,10 @@
         if (localStorage.getItem(POLL_KEY)) showResults(poll.boy || 0, poll.girl || 0);
       } catch(e) {}
     }
+
     function showResults(boys, girls) {
       const total = boys + girls;
-      const bp = total ? Math.round((boys / total) * 100) : 50;
+      const bp = total ? Math.round((boys  / total) * 100) : 50;
       const gp = total ? Math.round((girls / total) * 100) : 50;
       document.getElementById('poll-vote').style.display    = 'none';
       document.getElementById('poll-results').style.display = 'block';
@@ -975,13 +1881,14 @@
       document.getElementById('girl-pct').textContent   = gp + '%';
       document.getElementById('total-votes').textContent = `${total} vote${total !== 1 ? 's' : ''} cast`;
       setTimeout(() => {
-        document.getElementById('boy-bar').style.width  = bp + '%';
+        document.getElementById('boy-bar').style.width  = bp  + '%';
         document.getElementById('girl-bar').style.width = gp + '%';
       }, 100);
     }
+
     window.addEventListener('DOMContentLoaded', loadPoll);
     setInterval(loadPoll, 30000);
-
   </script>
+
 </body>
 </html>
