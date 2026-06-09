@@ -721,12 +721,12 @@
       <div>
         <div style="font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin-bottom:3px;">📍 Location</div>
         <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep);">Queen Creek, Arizona</div>
-        <div style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); margin-top:2px;">Address shown after RSVP</div>
+        <div style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); margin-top:2px;">22888 E Nightingale Rd · Queen Creek, AZ 85142</div>
       </div>
 
       <!-- CTAs -->
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="#rsvp" class="btn-woodland btn-sage" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'}); return false;">RSVP Now 🌿</a>
+        <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg" target="_blank" rel="noopener" class="btn-woodland btn-sage">RSVP via Apple Invites 🌿</a>
         <a href="baby-shower.ics" download class="btn-woodland btn-outline">📆 Calendar</a>
       </div>
 
@@ -756,7 +756,7 @@
             </div>
             <div class="info-row">
               <div class="info-icon">📍</div>
-              <div><div class="info-row-label">Location</div><div class="info-row-value">McGee Home · Queen Creek, AZ<br/><span style="font-size:13px; font-weight:400; color:var(--brown-light); font-family:'Lato',sans-serif;">Address shown after RSVP</span></div></div>
+              <div><div class="info-row-label">Location</div><div class="info-row-value">McGee Home · Queen Creek, AZ<br/><span style="font-size:13px; font-weight:400; color:var(--brown-light); font-family:'Lato',sans-serif;">22888 E Nightingale Rd, Queen Creek, AZ 85142</span></div></div>
             </div>
             <div class="info-row">
               <div class="info-icon">👶</div>
@@ -800,119 +800,54 @@
             <span style="font-size:24px; flex-shrink:0;">📦</span>
             <div>
               <div style="font-size:13px; font-weight:700; color:var(--brown-deep); margin-bottom:2px; font-family:'Playfair Display',serif;">Sending a gift by mail?</div>
-              <div style="font-size:13px; color:var(--brown-light); line-height:1.5; font-family:'Lato',sans-serif;">RSVP below and the mailing address will be shown right away.</div>
+              <div style="font-size:13px; color:var(--brown-light); line-height:1.5; font-family:'Lato',sans-serif;">22888 E Nightingale Rd, Queen Creek, AZ 85142</div>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT — RSVP form -->
+        <!-- RIGHT — Apple Invites RSVP -->
         <div class="rsvp-card" id="rsvp">
           <h3>RSVP 🌿</h3>
-          <p class="rsvp-sub">Let us know if you can make it — the address is shown the moment you submit.</p>
+          <p class="rsvp-sub">We're using Apple Invites for RSVPs — you'll get a confirmation, calendar invite, and event updates automatically.</p>
 
-          <form id="rsvp-form" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="7f3339df-90c3-4fce-bd71-9cb63afe16b0"/>
-            <input type="hidden" name="to" value="benjmcgee@yahoo.com"/>
-            <input type="hidden" name="subject" value="Baby Shower RSVP — McGee Family"/>
-            <input type="hidden" name="from_name" value="McGee Baby Shower"/>
-            <input type="hidden" name="redirect" value="false"/>
-
-            <div class="form-group">
-              <label for="name">Your Name *</label>
-              <input type="text" id="name" name="name" placeholder="First & Last Name" required/>
+          <!-- Apple Invites CTA -->
+          <a href="https://www.icloud.com/invites/031sYor5kSZ_f5rKrD5ZlmeXg" target="_blank" rel="noopener"
+             style="display:flex; align-items:center; gap:16px; background:linear-gradient(135deg,#1C1C1E,#2C2C2E); border-radius:16px; padding:22px 24px; text-decoration:none; margin-bottom:20px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 24px rgba(0,0,0,0.22);"
+             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.30)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 24px rgba(0,0,0,0.22)'">
+            <div style="width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,#FF6B6B,#FF8E53); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0;">🎉</div>
+            <div style="flex:1;">
+              <div style="font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:#fff; margin-bottom:2px;">RSVP via Apple Invites</div>
+              <div style="font-family:'Lato',sans-serif; font-size:12px; color:rgba(255,255,255,0.55); letter-spacing:0.02em;">Tap to open · RSVP · Get calendar invite</div>
             </div>
+            <div style="color:rgba(255,255,255,0.40); font-size:18px;">›</div>
+          </a>
 
-            <div class="form-group">
-              <label for="email">Email <span style="font-weight:400; color:var(--brown-light); text-transform:none; letter-spacing:0;">(optional)</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com"/>
-            </div>
-
-            <div class="form-group">
-              <label for="attending">Will you attend? *</label>
-              <select id="attending" name="attending" required>
-                <option value="" disabled selected>Select your response</option>
-                <option value="Yes — can't wait!">✅ Yes — can't wait!</option>
-                <option value="Maybe — I'll try!">🤞 Maybe — I'll try!</option>
-                <option value="No — unable to attend">❌ No — unable to attend</option>
-              </select>
-            </div>
-
-            <div class="headcount-box">
-              <div class="headcount-label">👥 Guest Headcount</div>
-              <div class="form-group" style="margin-bottom:10px;">
-                <label for="adults">Adults (18+)</label>
-                <select id="adults" name="adults">
-                  <option value="" disabled selected>Select</option>
-                  <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6+">6+</option>
-                </select>
+          <!-- What to expect -->
+          <div style="background:var(--ivory); border:1.5px solid rgba(107,74,42,0.14); border-radius:14px; padding:18px 20px; margin-bottom:16px;">
+            <div style="font-family:'Playfair Display',serif; font-size:14px; font-weight:600; color:var(--brown-deep); margin-bottom:12px;">When you RSVP you'll get:</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
+                <span style="font-size:16px;">✅</span> Confirmation email with all event details
               </div>
-              <div class="form-group" style="margin-bottom:10px;">
-                <label for="children-school">School Age (5–12)</label>
-                <select id="children-school" name="children_school_age">
-                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option>
-                </select>
+              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
+                <span style="font-size:16px;">📅</span> Calendar invite added automatically
               </div>
-              <div class="form-group" style="margin-bottom:10px;">
-                <label for="children-toddler">Toddlers (2–4)</label>
-                <select id="children-toddler" name="children_toddler">
-                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option>
-                </select>
+              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
+                <span style="font-size:16px;">📍</span> Address · 22888 E Nightingale Rd, Queen Creek, AZ
               </div>
-              <div class="form-group" style="margin-bottom:0;">
-                <label for="children-infant">Infants (Under 2)</label>
-                <select id="children-infant" name="children_infant">
-                  <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option>
-                </select>
+              <div style="display:flex; align-items:center; gap:10px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown-mid);">
+                <span style="font-size:16px;">🔔</span> Reminder as the date gets closer
               </div>
             </div>
-
-            <div class="form-group">
-              <label for="message">Note <span style="font-weight:400; color:var(--brown-light); text-transform:none; letter-spacing:0;">(optional)</span></label>
-              <textarea id="message" name="message" placeholder="Dietary needs, questions, or a kind note…"></textarea>
-            </div>
-
-            <button type="submit" class="btn-woodland btn-brown" style="width:100%;">
-              Send RSVP 🌿
-            </button>
-          </form>
-
-          <div class="rsvp-success" id="rsvp-success">
-            <span class="s-icon">🎉</span>
-            <h4>You're on the list!</h4>
-            <div class="addr-card">
-              <div class="ak">📅 Date & Time</div>
-              <p class="av">Saturday, July 25, 2026 · 1:30 PM MST</p>
-            </div>
-            <div class="addr-card">
-              <div class="ak">📍 Address</div>
-              <p class="av">22888 E Nightingale Rd<br/>Queen Creek, AZ 85142</p>
-            </div>
-            <p style="font-size:13px; color:var(--brown-light); margin-top:12px; font-family:'Lato',sans-serif;">Can't wait to celebrate with you! 🌿</p>
           </div>
+
+          <p style="font-family:'Lato',sans-serif; font-size:12px; color:var(--brown-light); text-align:center; line-height:1.6;">
+            Works best on iPhone · Also opens in browser on Android &amp; desktop<br/>
+            Questions? Email <a href="mailto:benjmcgee@yahoo.com" style="color:var(--sage-dark);">benjmcgee@yahoo.com</a>
+          </p>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <div class="botanical-divider">🍃 ✦ 🌿 ✦ 🍃</div>
-
-  <!-- ══ GUEST LIST ═════════════════════════════════════════════════ -->
-  <div class="bg-ivory">
-    <div class="ws">
-      <div class="w-label">Who's Coming</div>
-      <div class="w-title">Guest List 🦔</div>
-      <p style="font-family:'Lato',sans-serif; font-size:15px; color:var(--brown-light); margin-bottom:24px;">Updated in real time as guests RSVP.</p>
-
-      <div class="summary-row">
-        <div class="summary-pill pill-yes">✅ Attending: <span id="count-yes">–</span></div>
-        <div class="summary-pill pill-maybe">🤞 Maybe: <span id="count-maybe">–</span></div>
-        <div class="summary-pill pill-no">❌ Can't Make It: <span id="count-no">–</span></div>
-        <div class="summary-pill pill-total">👥 Total Guests: <span id="count-total">–</span></div>
-      </div>
-
-      <div class="guest-grid" id="guest-list">
-        <div style="font-size:14px; color:var(--brown-light); padding:16px; font-family:'Lato',sans-serif; font-style:italic;">Loading guest list…</div>
       </div>
     </div>
   </div>
@@ -1005,116 +940,7 @@
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     const HEADERS = { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY };
 
-    // RSVP
-    const form = document.getElementById('rsvp-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending… 🌿';
-      btn.disabled = true;
-      const fd = new FormData(form);
-      const guestName   = fd.get('name')    || '';
-      const guestEmail  = fd.get('email')   || '';
-      const attending   = fd.get('attending') || '';
-      const entry = {
-        name: guestName, status: attending,
-        adults: fd.get('adults') || '0', school: fd.get('children_school_age') || '0',
-        toddler: fd.get('children_toddler') || '0', infant: fd.get('children_infant') || '0',
-        note: fd.get('message') || '', ts: new Date().toISOString()
-      };
-      try {
-        // Step 1: Submit to Web3Forms — owner notification to benjmcgee@yahoo.com
-        const formRes = await fetch(form.action, {
-          method: 'POST',
-          body: fd,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!formRes.ok) {
-          const errJson = await formRes.json().catch(() => ({}));
-          throw new Error(errJson.message || `Submission error ${formRes.status}`);
-        }
-
-        // Step 2: Write/update RSVP in JSONBin — overwrite if same name re-submits
-        const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
-        if (!readRes.ok) throw new Error(`Guest list read failed (${readRes.status})`);
-        const readJson = await readRes.json();
-        let current = readJson.record?.rsvps || [];
-        const existingIdx = current.findIndex(r => r.name.trim().toLowerCase() === guestName.trim().toLowerCase());
-        if (existingIdx >= 0) {
-          current[existingIdx] = entry; // overwrite — guest updated their RSVP
-        } else {
-          current.push(entry);
-        }
-        const writeRes = await fetch(BIN_URL, {
-          method: 'PUT',
-          headers: HEADERS,
-          body: JSON.stringify({ rsvps: current, poll: readJson.record?.poll || { boy: 0, girl: 0 } })
-        });
-        if (!writeRes.ok) throw new Error(`Guest list update failed (${writeRes.status})`);
-        console.log('✅ JSONBin updated — guest count:', current.length);
-
-        // Step 3: Send guest confirmation email if they provided an address
-        if (guestEmail) {
-          const isYes    = attending.toLowerCase().startsWith('yes');
-          const isMaybe  = attending.toLowerCase().startsWith('maybe');
-          const emoji    = isYes ? '🎉' : isMaybe ? '🤞' : '💛';
-          const headline = isYes
-            ? `You're on the list, ${guestName.split(' ')[0]}!`
-            : isMaybe
-            ? `Thanks for letting us know, ${guestName.split(' ')[0]}!`
-            : `Thanks for the heads up, ${guestName.split(' ')[0]}.`;
-
-          const confirmFd = new FormData();
-          confirmFd.append('access_key', '7f3339df-90c3-4fce-bd71-9cb63afe16b0');
-          confirmFd.append('to', guestEmail);
-          confirmFd.append('from_name', 'Ben & Brittney McGee');
-          confirmFd.append('subject', `${emoji} ${headline} · McGee Baby Shower`);
-          confirmFd.append('redirect', 'false');
-          confirmFd.append('message',
-            `Hi ${guestName.split(' ')[0]},\n\n` +
-            `${headline}\n\n` +
-            `Here are all the details for the McGee Baby Shower:\n\n` +
-            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-            `🌿  McGee Baby Shower\n` +
-            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-            `📅  DATE & TIME\n` +
-            `    Saturday, July 25, 2026\n` +
-            `    1:30 PM MST\n\n` +
-            (isYes || isMaybe
-              ? `📍  ADDRESS\n    22888 E Nightingale Rd\n    Queen Creek, AZ 85142\n\n`
-              : '') +
-            `🎁  REGISTRY\n` +
-            `    View the registry on the baby shower page:\n` +
-            `    https://mcgeefamily2025.com/baby-shower.html\n\n` +
-            `✏️  NEED TO UPDATE YOUR RSVP?\n` +
-            `    Just submit the form again or email us:\n` +
-            `    benjmcgee@yahoo.com\n\n` +
-            `Can't wait to celebrate with you! 🌿\n` +
-            `— Ben & Brittney McGee\n\n` +
-            `Faith. Family. Forever.\n` +
-            `mcgeefamily2025.com`
-          );
-          // Fire and forget — don't block success on this
-          fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: confirmFd,
-            headers: { 'Accept': 'application/json' }
-          }).catch(() => {}); // silent fail — guest notification is best-effort
-        }
-
-        // Step 4: Show success
-        form.style.display = 'none';
-        document.getElementById('rsvp-success').style.display = 'block';
-        loadGuestList();
-      } catch(err) {
-        console.error('RSVP error:', err);
-        btn.textContent = 'Send RSVP 🌿';
-        btn.disabled = false;
-        alert('Something went wrong submitting your RSVP.\n\nError: ' + err.message + '\n\nPlease email benjmcgee@yahoo.com directly.');
-      }
-    });
-
-    // Poll
+    // Gender Poll — powered by JSONBin
     const POLL_KEY = 'mcgee_baby_voted';
     async function castVote(choice) {
       if (localStorage.getItem(POLL_KEY)) return;
@@ -1156,76 +982,6 @@
     window.addEventListener('DOMContentLoaded', loadPoll);
     setInterval(loadPoll, 30000);
 
-    // Guest List
-    function headcount(r) { return ['adults','school','toddler','infant'].map(k => parseInt(r[k]||0)).reduce((a,b)=>a+b,0); }
-    function statusStyles(s) {
-      if (s.startsWith('Yes'))   return 'gc-yes';
-      if (s.startsWith('Maybe')) return 'gc-maybe';
-      return 'gc-no';
-    }
-    function statusIcon(s) {
-      if (s.startsWith('Yes'))   return '✅';
-      if (s.startsWith('Maybe')) return '🤞';
-      return '❌';
-    }
-    function buildHC(r) {
-      const p = [];
-      if (parseInt(r.adults||0)>0)  p.push(`${r.adults} adult${parseInt(r.adults)>1?'s':''}`);
-      if (parseInt(r.school||0)>0)  p.push(`${r.school} school age`);
-      if (parseInt(r.toddler||0)>0) p.push(`${r.toddler} toddler${parseInt(r.toddler)>1?'s':''}`);
-      if (parseInt(r.infant||0)>0)  p.push(`${r.infant} infant${parseInt(r.infant)>1?'s':''}`);
-      return p.length ? p.join(' · ') : 'Just me';
-    }
-    function timeAgo(ts) {
-      if (!ts) return '';
-      const diff = Math.floor((Date.now() - new Date(ts)) / 60000);
-      if (diff < 1)  return 'Just now';
-      if (diff < 60) return `${diff}m ago`;
-      const h = Math.floor(diff / 60);
-      if (h < 24) return `${h}h ago`;
-      return `${Math.floor(h/24)}d ago`;
-    }
-    async function loadGuestList() {
-      try {
-        const res   = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
-        const json  = await res.json();
-        const rsvps = json.record?.rsvps || [];
-        const listEl = document.getElementById('guest-list');
-        if (!rsvps.length) {
-          listEl.innerHTML = '<div style="font-size:14px;color:var(--brown-light);padding:16px;font-family:\'Lato\',sans-serif;font-style:italic;">No RSVPs yet — be the first! 🌿</div>';
-          ['count-yes','count-maybe','count-no','count-total'].forEach(id => document.getElementById(id).textContent = '0');
-          return;
-        }
-        let yes=0,maybe=0,no=0,total=0;
-        rsvps.forEach(r => {
-          const hc = headcount(r);
-          if      (r.status.startsWith('Yes'))   { yes++;   total+=hc; }
-          else if (r.status.startsWith('Maybe')) { maybe++; total+=hc; }
-          else                                    { no++; }
-        });
-        document.getElementById('count-yes').textContent   = yes;
-        document.getElementById('count-maybe').textContent = maybe;
-        document.getElementById('count-no').textContent    = no;
-        document.getElementById('count-total').textContent = total;
-        listEl.innerHTML = [...rsvps].reverse().map(r => `
-          <div class="guest-card ${statusStyles(r.status)}">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:6px;">
-                <span style="font-size:15px;">${statusIcon(r.status)}</span>
-                <span class="gc-name">${r.name}</span>
-              </div>
-              <span class="gc-time">${timeAgo(r.ts)}</span>
-            </div>
-            <div class="gc-head">👥 ${buildHC(r)}</div>
-            ${r.note ? `<div class="gc-note">"${r.note}"</div>` : ''}
-          </div>
-        `).join('');
-      } catch(e) {
-        document.getElementById('guest-list').innerHTML = '<div style="font-size:14px;color:var(--brown-light);padding:16px;font-family:\'Lato\',sans-serif;">Unable to load guest list right now.</div>';
-      }
-    }
-    loadGuestList();
-    setInterval(loadGuestList, 30000);
   </script>
 </body>
 </html>
