@@ -1016,19 +1016,34 @@
         note: fd.get('message') || '', ts: new Date().toISOString()
       };
       try {
-        await fetch(form.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+        // Step 1: Submit to Formspree — check the response this time
+        const formRes = await fetch(form.action, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!formRes.ok) {
+          const errJson = await formRes.json().catch(() => ({}));
+          const errMsg = errJson.error || `Formspree error ${formRes.status}`;
+          throw new Error(errMsg);
+        }
+
+        // Step 2: Write RSVP entry to JSONBin guest list
         const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const readJson = await readRes.json();
         const current  = readJson.record?.rsvps || [];
         current.push(entry);
         await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify({ rsvps: current, poll: readJson.record?.poll || { boy: 0, girl: 0 } }) });
+
+        // Step 3: Show success
         form.style.display = 'none';
         document.getElementById('rsvp-success').style.display = 'block';
         loadGuestList();
       } catch(err) {
+        console.error('RSVP error:', err);
         btn.textContent = 'Send RSVP 🌿';
         btn.disabled = false;
-        alert('Something went wrong. Please email benjmcgee@yahoo.com directly.');
+        alert('Something went wrong submitting your RSVP.\n\nError: ' + err.message + '\n\nPlease email benjmcgee@yahoo.com directly.');
       }
     });
 
