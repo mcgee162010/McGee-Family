@@ -810,8 +810,11 @@
           <h3>RSVP 🌿</h3>
           <p class="rsvp-sub">Let us know if you can make it — the address is shown the moment you submit.</p>
 
-          <form id="rsvp-form" action="https://formspree.io/f/xpwzagna" method="POST">
-            <input type="hidden" name="_subject" value="Baby Shower RSVP — McGee Family"/>
+          <form id="rsvp-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="7f3339df-90c3-4fce-bd71-9cb63afe16b0"/>
+            <input type="hidden" name="subject" value="Baby Shower RSVP — McGee Family"/>
+            <input type="hidden" name="from_name" value="McGee Baby Shower"/>
+            <input type="hidden" name="redirect" value="false"/>
 
             <div class="form-group">
               <label for="name">Your Name *</label>
@@ -1016,7 +1019,7 @@
         note: fd.get('message') || '', ts: new Date().toISOString()
       };
       try {
-        // Step 1: Submit to Formspree — check the response this time
+        // Step 1: Submit to Web3Forms — check the response
         const formRes = await fetch(form.action, {
           method: 'POST',
           body: fd,
@@ -1024,7 +1027,7 @@
         });
         if (!formRes.ok) {
           const errJson = await formRes.json().catch(() => ({}));
-          const errMsg = errJson.error || `Formspree error ${formRes.status}`;
+          const errMsg = errJson.message || `Submission error ${formRes.status}`;
           throw new Error(errMsg);
         }
 

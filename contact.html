@@ -170,8 +170,11 @@
         <h3>Send a Message 💌</h3>
         <p class="contact-sub">Use the form below — your message goes straight to Ben & Brittney. Your email address stays private.</p>
 
-        <form id="contact-form" action="https://formspree.io/f/xpwzagna" method="POST">
-          <input type="hidden" name="_subject" value="Message via McGee Family Website"/>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="7f3339df-90c3-4fce-bd71-9cb63afe16b0"/>
+          <input type="hidden" name="subject" value="Message via McGee Family Website"/>
+          <input type="hidden" name="from_name" value="McGee Family Website"/>
+          <input type="hidden" name="redirect" value="false"/>
 
           <div class="form-group">
             <label for="contact-name">Your Name *</label>
