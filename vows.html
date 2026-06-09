@@ -104,7 +104,54 @@
       .nav-links.open { display: flex; }
       .nav-links a { padding: 10px 14px; font-size: 15px; }
       .nav-mobile-toggle { display: block; }
+      /* Mobile More dropdown — show inline */
+      .nav-more-btn { display: none; }
+      .nav-more .nav-dropdown {
+        display: block; position: static;
+        box-shadow: none; border: none; border-radius: 0;
+        background: transparent; backdrop-filter: none;
+        padding: 0; animation: none;
+        border-top: 1px solid rgba(74,55,40,0.08);
+        margin-top: 4px;
+      }
+      .nav-dropdown a { padding: 10px 14px; font-size: 15px; color: var(--ink-light); }
     }
+
+    /* ── NAV MORE DROPDOWN ──────────────────────────────────────── */
+    .nav-more { position: relative; list-style: none; }
+    .nav-more-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 6px 12px; font-size: 13px; font-weight: 400;
+      color: var(--ink-light); background: none; border: none;
+      border-radius: 999px; cursor: pointer;
+      transition: background 0.15s, color 0.15s; font-family: 'Lato', sans-serif;
+    }
+    .nav-more-btn:hover,
+    .nav-more.open .nav-more-btn { background: var(--parchment-dd); color: var(--ink-mid); }
+    .nav-dropdown {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      min-width: 210px; list-style: none;
+      background: rgba(247,240,230,0.97);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(74,55,40,0.12);
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(60,40,20,0.14);
+      padding: 8px 0; z-index: 200;
+      animation: dropIn 0.18s ease both;
+    }
+    @keyframes dropIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .nav-more.open .nav-dropdown { display: block; }
+    .nav-dropdown li { list-style: none; }
+    .nav-dropdown a {
+      display: block; padding: 10px 18px;
+      font-size: 14px; font-weight: 400; color: var(--ink-light);
+      text-decoration: none; transition: background 0.12s, color 0.12s;
+    }
+    .nav-dropdown a:hover { background: var(--parchment-dd); color: var(--ink-mid); }
+    @media (prefers-reduced-motion: reduce) { .nav-dropdown { animation: none !important; } }
 
     /* ── OPENING HERO ───────────────────────────────────────── */
     .opening {
