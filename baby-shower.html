@@ -816,35 +816,6 @@
             <input type="hidden" name="subject" value="Baby Shower RSVP — McGee Family"/>
             <input type="hidden" name="from_name" value="McGee Baby Shower"/>
             <input type="hidden" name="redirect" value="false"/>
-            <!-- Guest confirmation email — sent to whatever email the guest provides -->
-            <input type="hidden" name="autoresponse" value="true"/>
-            <input type="hidden" name="autoresponse_subject" value="You're on the list! 🌿 McGee Baby Shower · July 25"/>
-            <input type="hidden" name="autoresponse_message" value="Hi there!
-
-Thank you for your RSVP — we can't wait to celebrate with you!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌿 McGee Baby Shower
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📅 DATE &amp; TIME
-Saturday, July 25, 2026 · 1:30 PM MST
-
-📍 ADDRESS
-22888 E Nightingale Rd
-Queen Creek, AZ 85142
-
-🎁 REGISTRY
-Elfster gift registry is linked on our baby shower page:
-https://mcgeefamily2025.com/baby-shower.html
-
-Need to update your RSVP? Just email us:
-benjmcgee@yahoo.com
-
-Can't wait to celebrate with you! 🌿
-— Ben &amp; Brittney McGee
-
-Faith. Family. Forever."/>
 
             <div class="form-group">
               <label for="name">Your Name *</label>
@@ -1042,14 +1013,17 @@ Faith. Family. Forever."/>
       btn.textContent = 'Sending… 🌿';
       btn.disabled = true;
       const fd = new FormData(form);
+      const guestName   = fd.get('name')    || '';
+      const guestEmail  = fd.get('email')   || '';
+      const attending   = fd.get('attending') || '';
       const entry = {
-        name: fd.get('name'), status: fd.get('attending'),
+        name: guestName, status: attending,
         adults: fd.get('adults') || '0', school: fd.get('children_school_age') || '0',
         toddler: fd.get('children_toddler') || '0', infant: fd.get('children_infant') || '0',
         note: fd.get('message') || '', ts: new Date().toISOString()
       };
       try {
-        // Step 1: Submit to Web3Forms — check the response
+        // Step 1: Submit to Web3Forms — owner notification to benjmcgee@yahoo.com
         const formRes = await fetch(form.action, {
           method: 'POST',
           body: fd,
@@ -1057,16 +1031,20 @@ Faith. Family. Forever."/>
         });
         if (!formRes.ok) {
           const errJson = await formRes.json().catch(() => ({}));
-          const errMsg = errJson.message || `Submission error ${formRes.status}`;
-          throw new Error(errMsg);
+          throw new Error(errJson.message || `Submission error ${formRes.status}`);
         }
 
-        // Step 2: Write RSVP entry to JSONBin guest list
+        // Step 2: Write/update RSVP in JSONBin — overwrite if same name re-submits
         const readRes  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         if (!readRes.ok) throw new Error(`Guest list read failed (${readRes.status})`);
         const readJson = await readRes.json();
-        const current  = readJson.record?.rsvps || [];
-        current.push(entry);
+        let current = readJson.record?.rsvps || [];
+        const existingIdx = current.findIndex(r => r.name.trim().toLowerCase() === guestName.trim().toLowerCase());
+        if (existingIdx >= 0) {
+          current[existingIdx] = entry; // overwrite — guest updated their RSVP
+        } else {
+          current.push(entry);
+        }
         const writeRes = await fetch(BIN_URL, {
           method: 'PUT',
           headers: HEADERS,
@@ -1075,7 +1053,56 @@ Faith. Family. Forever."/>
         if (!writeRes.ok) throw new Error(`Guest list update failed (${writeRes.status})`);
         console.log('✅ JSONBin updated — guest count:', current.length);
 
-        // Step 3: Show success
+        // Step 3: Send guest confirmation email if they provided an address
+        if (guestEmail) {
+          const isYes    = attending.toLowerCase().startsWith('yes');
+          const isMaybe  = attending.toLowerCase().startsWith('maybe');
+          const emoji    = isYes ? '🎉' : isMaybe ? '🤞' : '💛';
+          const headline = isYes
+            ? `You're on the list, ${guestName.split(' ')[0]}!`
+            : isMaybe
+            ? `Thanks for letting us know, ${guestName.split(' ')[0]}!`
+            : `Thanks for the heads up, ${guestName.split(' ')[0]}.`;
+
+          const confirmFd = new FormData();
+          confirmFd.append('access_key', '7f3339df-90c3-4fce-bd71-9cb63afe16b0');
+          confirmFd.append('to', guestEmail);
+          confirmFd.append('from_name', 'Ben & Brittney McGee');
+          confirmFd.append('subject', `${emoji} ${headline} · McGee Baby Shower`);
+          confirmFd.append('redirect', 'false');
+          confirmFd.append('message',
+            `Hi ${guestName.split(' ')[0]},\n\n` +
+            `${headline}\n\n` +
+            `Here are all the details for the McGee Baby Shower:\n\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `🌿  McGee Baby Shower\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            `📅  DATE & TIME\n` +
+            `    Saturday, July 25, 2026\n` +
+            `    1:30 PM MST\n\n` +
+            (isYes || isMaybe
+              ? `📍  ADDRESS\n    22888 E Nightingale Rd\n    Queen Creek, AZ 85142\n\n`
+              : '') +
+            `🎁  REGISTRY\n` +
+            `    View the registry on the baby shower page:\n` +
+            `    https://mcgeefamily2025.com/baby-shower.html\n\n` +
+            `✏️  NEED TO UPDATE YOUR RSVP?\n` +
+            `    Just submit the form again or email us:\n` +
+            `    benjmcgee@yahoo.com\n\n` +
+            `Can't wait to celebrate with you! 🌿\n` +
+            `— Ben & Brittney McGee\n\n` +
+            `Faith. Family. Forever.\n` +
+            `mcgeefamily2025.com`
+          );
+          // Fire and forget — don't block success on this
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: confirmFd,
+            headers: { 'Accept': 'application/json' }
+          }).catch(() => {}); // silent fail — guest notification is best-effort
+        }
+
+        // Step 4: Show success
         form.style.display = 'none';
         document.getElementById('rsvp-success').style.display = 'block';
         loadGuestList();
