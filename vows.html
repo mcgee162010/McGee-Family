@@ -104,16 +104,17 @@
       .nav-links.open { display: flex; }
       .nav-links a { padding: 10px 14px; font-size: 15px; }
       .nav-mobile-toggle { display: block; }
-      /* Mobile More dropdown — show inline */
+      /* Mobile: hide More button, show dropdown items inline only when menu is open */
       .nav-more-btn { display: none; }
       .nav-more .nav-dropdown {
-        display: block; position: static;
+        display: none; position: static;
         box-shadow: none; border: none; border-radius: 0;
         background: transparent; backdrop-filter: none;
         padding: 0; animation: none;
         border-top: 1px solid rgba(74,55,40,0.08);
         margin-top: 4px;
       }
+      .nav-links.open .nav-more .nav-dropdown { display: block; }
       .nav-dropdown a { padding: 10px 14px; font-size: 15px; color: var(--ink-light); }
     }
 

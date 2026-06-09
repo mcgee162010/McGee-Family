@@ -988,13 +988,14 @@ body { max-width: 2560px; margin-left: auto; margin-right: auto; }
 @media (max-width: 768px) {
   .nav-more-btn { display: none; }
   .nav-more .nav-dropdown {
-    display: block; position: static;
+    display: none; position: static;
     box-shadow: none; border: none; border-radius: 0;
     background: transparent; backdrop-filter: none;
     padding: 0; animation: none;
     border-top: 1px solid rgba(107,79,58,0.08);
     margin-top: 4px;
   }
+  .nav-links.open .nav-more .nav-dropdown { display: block; }
   .nav-dropdown a {
     padding: 10px 14px; font-size: 15px;
     color: var(--text-tertiary);
