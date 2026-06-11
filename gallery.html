@@ -109,6 +109,7 @@
   <div class="section" id="gallery-content">
     <div class="tab-bar">
       <button class="tab active" onclick="showGallery('family', this)">👨‍👩‍👦 Family<span class="count">(34)</span></button>
+      <button class="tab" onclick="showGallery('family-photoshoot', this)">📸 Family Photoshoot<span class="count">(19)</span></button>
       <button class="tab" onclick="showGallery('wedding', this)">💍 Wedding<span class="count">(25)</span></button>
       <button class="tab" onclick="showGallery('engagement', this)">💍 Engagement<span class="count">(5)</span></button>
       <button class="tab" onclick="showGallery('honeymoon', this)">🌏 Honeymoon<span class="count">(42)</span></button>
@@ -116,11 +117,11 @@
       <button class="tab" onclick="showGallery('levi-birthday', this)">🎂 Levi's 7th<span class="count">(9)</span></button>
       <button class="tab" onclick="showGallery('phoenix', this)">🐕 Phoenix<span class="count">(22)</span></button>
       <button class="tab" onclick="showGallery('bentley', this)">🐾 Bentley<span class="count">(30)</span></button>
-      <button class="tab" onclick="showGallery('baby-mcgee', this)">🌿 Baby McGee<span class="count">(21)</span></button>
+      <!-- Baby McGee tab hidden — publish when ready -->
     </div>
 
     <div class="gallery-section visible" id="gallery-family" aria-label="Family photos — McGee Family">
-      <div class="gallery-header"><div><h2>Family Photoshoot</h2><p>June 2026 · Queen Creek, AZ · The first professional photos of our family — taken just weeks before Baby McGee arrives. Every one a keeper.</p></div></div>
+      <div class="gallery-header"><div><h2>Family 👨‍👩‍👦</h2><p>The McGees — candid moments, everyday life, and everything in between. Queen Creek, AZ.</p></div></div>
       <div class="masonry">
         <img src="photos/family/FullSizeRender.jpeg" alt="" loading="lazy" decoding="async"/>
         <img src="photos/family/IMG_1042.jpeg" alt="" loading="lazy" decoding="async"/>
@@ -156,6 +157,31 @@
         <img src="photos/family/IMG_7481.jpeg" alt="" loading="lazy" decoding="async"/>
         <img src="photos/family/IMG_9233.jpeg" alt="" loading="lazy" decoding="async"/>
         <img src="photos/family/Tezza-9140.jpg" alt="" loading="lazy" decoding="async"/>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="gallery-family-photoshoot" aria-label="Family photoshoot — June 2026 baby announcement">
+      <div class="gallery-header"><div><h2>Family Photoshoot 📸</h2><p>June 2026 · Queen Creek, AZ · The first professional photos of our family — taken just weeks before Baby McGee arrives. Every one a keeper.</p></div></div>
+      <div class="masonry">
+        <img src="photos/family-photoshoot/324ad6de-2e69-49d3-91b9-9604b0857484.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/434a0dd2-fa2a-4a51-b3a2-430981608a57.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/468cd4d5-bbd3-4139-8e12-cf2238eccc85.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/4d58505f-6926-4f20-8946-2e1feaed0f35.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/5505c84f-2d36-4ec8-bea5-771aad5d1ea6.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/5e66ea05-9500-401f-bdc1-c846eefde67c.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/695bbe4b-5ac0-4f9d-b623-34eb2e5ad5f8.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/72165688-768d-482b-9088-1855f89f3553.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/76e10423-5920-45d0-8bbc-a321f35ece6e.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/82ddbccd-d8de-4424-b22e-60c5dc35274b.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/87fa03ce-4a28-4f8a-83c5-cd9db593392b.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/8e1e4cbb-1d7b-4630-a427-88a2070089e3.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/954e4cec-282b-4bf7-8a18-80c8d2d995fe.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/968a99c1-9f38-4ae1-aad8-63c96652727b.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/b6d793df-827a-4ab4-ae24-3edfa6888bfd.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/bfa96b0b-6c4c-49aa-a809-85eb95c52526.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/f0e7d27b-9aed-4168-9f5a-3a43c9196191.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/f3f407ba-5449-4fd4-925d-edbe66834741.jpeg" alt="" loading="lazy" decoding="async"/>
+        <img src="photos/family-photoshoot/f9c2d993-815e-43ef-97a5-7887c168d807.jpeg" alt="" loading="lazy" decoding="async"/>
       </div>
     </div>
 
@@ -492,7 +518,7 @@
     }
     window.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
-      const valid = ['wedding','engagement','honeymoon','levi','levi-birthday','brittney','phoenix','bentley'];
+      const valid = ['family','family-photoshoot','wedding','engagement','honeymoon','levi','levi-birthday','phoenix','bentley'];
       if (valid.includes(hash)) {
         const btn = document.querySelector(`.tab[onclick*="${hash}"]`);
         if (btn) showGallery(hash, btn);
