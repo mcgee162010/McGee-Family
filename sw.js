@@ -3,7 +3,7 @@
 // Especially useful for baby shower guests with spotty venue WiFi
 
 const CACHE_NAME = `mcgee-family-${CACHE_VERSION}`;
-const CACHE_VERSION = '2026-06-12b';
+const CACHE_VERSION = '2026-06-12c';
 
 // Pages and assets to cache immediately on install
 const PRECACHE = [

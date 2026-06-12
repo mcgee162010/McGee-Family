@@ -456,13 +456,18 @@ a:hover { color: var(--terracotta); }
 }
 
 .lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
   max-width: min(92vw, 1100px);
-  max-height: 82svh;
+  max-height: 80vh;
+  margin: auto;
   border-radius: var(--radius-lg);
   box-shadow: 0 32px 100px rgba(0,0,0,0.7);
   object-fit: contain;
   cursor: zoom-out;
   transition: opacity 0.15s ease;
+  flex-shrink: 0;
 }
 
 .lightbox-close {
@@ -486,11 +491,16 @@ a:hover { color: var(--terracotta); }
 .lightbox-close:hover { background: rgba(255,255,255,0.22); }
 
 .lightbox-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 12px;
   color: rgba(255,255,255,0.35);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   user-select: none;
+  white-space: nowrap;
 }
 
 /* ── FORM ───────────────────────────────────────────────── */
