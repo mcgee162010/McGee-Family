@@ -423,7 +423,7 @@ a:hover { color: var(--terracotta); }
   display: flex;
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
   background: rgba(14,8,3,0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

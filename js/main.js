@@ -66,20 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lightbox && lbImg) {
 
+    let _closeTimer = null;
+
     const openLightbox = (src, alt) => {
+      // Cancel any pending src-clear from a previous close
+      if (_closeTimer) { clearTimeout(_closeTimer); _closeTimer = null; }
       lbImg.src = src;
       lbImg.alt = alt || '';
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
-      lbClose && lbClose.focus();
+      // Defer focus so the browser paints the open state first
+      requestAnimationFrame(() => { lbClose && lbClose.focus(); });
     };
 
     const closeLightbox = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-      setTimeout(() => {
+      _closeTimer = setTimeout(() => {
+        _closeTimer = null;
         if (!lightbox.classList.contains('open')) { lbImg.src = ''; }
-      }, 250);
+      }, 300);
     };
 
     // Attach to ALL content images — photo-grid, masonry, member cards,
@@ -87,14 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const LIGHTBOX_SELECTOR =
       '.photo-grid img, .masonry img, .bentley-grid img, ' +
       '.member-photo, .wedding-photo, .pet-grid img, ' +
-      '.baby-card img, .bentley-strip img, [style*="cursor:zoom-in"]';
+      '.baby-card img, .bentley-strip img';
 
     const attachLightbox = () => {
       document.querySelectorAll(LIGHTBOX_SELECTOR).forEach(img => {
         if (!img.dataset.lbBound) {
           img.dataset.lbBound = '1';
           img.style.cursor = 'zoom-in';
-          img.addEventListener('click', () => openLightbox(img.src, img.alt));
+          // Use getAttribute to get the original src, not the browser-resolved absolute URL
+          img.addEventListener('click', e => {
+            e.stopPropagation();
+            openLightbox(img.src, img.alt);
+          });
         }
       });
     };
@@ -118,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let _lbTrigger = null;
     document.addEventListener('click', e => {
-      if (e.target.matches(LIGHTBOX_SELECTOR)) {
+      if (e.target.matches && e.target.matches(LIGHTBOX_SELECTOR)) {
         _lbTrigger = e.target;
       }
     });
@@ -142,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSrcs = [];
     let currentIdx  = 0;
 
-    lbImg.addEventListener('click', () => {
+    lbImg.addEventListener('click', e => {
+      e.stopPropagation();
       const allImgs = [...document.querySelectorAll(LIGHTBOX_SELECTOR)]
         .filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
@@ -150,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentIdx < currentSrcs.length - 1) {
         currentIdx++;
         lbImg.src = currentSrcs[currentIdx].src;
+        lbImg.alt = currentSrcs[currentIdx].alt;
       }
     });
 
