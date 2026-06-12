@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // wedding strip, pet cards, bentley grid, baby card, tribute strip, etc.
     const LIGHTBOX_SELECTOR =
       '.photo-grid img, .masonry img, .bentley-grid img, ' +
-      '.member-photo, .wedding-photo, .pet-grid img, ' +
+      '.wedding-photo, .pet-grid img, ' +
       '.baby-card img, .bentley-strip img';
 
     const attachLightbox = () => {
