@@ -88,12 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     };
 
-    // Attach to ALL content images — photo-grid, masonry, member cards,
-    // wedding strip, pet cards, bentley grid, baby card, tribute strip, etc.
+    // Attach lightbox to gallery images only (photo-grid, masonry, bentley-grid)
+    // Lightbox is intentionally disabled on family.html card/strip images due to
+    // backdrop-filter stacking context conflicts
     const LIGHTBOX_SELECTOR =
-      '.photo-grid img, .masonry img, .bentley-grid img, ' +
-      '.wedding-photo, .pet-grid img, ' +
-      '.baby-card img, .bentley-strip img';
+      '.photo-grid img, .masonry img, .bentley-grid img';
 
     const attachLightbox = () => {
       document.querySelectorAll(LIGHTBOX_SELECTOR).forEach(img => {
