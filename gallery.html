@@ -524,5 +524,111 @@
       }
     });
   </script>
+
+  <!-- ── INLINE LIGHTBOX (gallery-only, no backdrop-filter) ── -->
+  <style>
+    #glb {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,5,2,0.95);
+      align-items: center; justify-content: center;
+    }
+    #glb.on { display: flex; }
+    #glb-img {
+      max-width: 92vw; max-height: 88vh;
+      object-fit: contain; border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+      display: block;
+    }
+    #glb-close {
+      position: absolute; top: 16px; right: 20px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    #glb-close:hover { background: rgba(255,255,255,0.28); }
+    #glb-prev, #glb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #glb-prev { left: 16px; }
+    #glb-next { right: 16px; }
+    #glb-prev:hover, #glb-next:hover { background: rgba(255,255,255,0.28); }
+    #glb-hint {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em;
+      text-transform: uppercase; white-space: nowrap; pointer-events: none;
+    }
+  </style>
+  <div id="glb">
+    <button id="glb-close" aria-label="Close">✕</button>
+    <button id="glb-prev" aria-label="Previous">‹</button>
+    <img id="glb-img" src="" alt=""/>
+    <button id="glb-next" aria-label="Next">›</button>
+    <div id="glb-hint">esc to close · ← → to navigate</div>
+  </div>
+  <script>
+    (function () {
+      const glb     = document.getElementById('glb');
+      const glbImg  = document.getElementById('glb-img');
+      const glbClose= document.getElementById('glb-close');
+      const glbPrev = document.getElementById('glb-prev');
+      const glbNext = document.getElementById('glb-next');
+      let srcs = [], idx = 0;
+
+      function getVisible() {
+        const section = document.querySelector('.gallery-section.visible');
+        if (!section) return [];
+        return [...section.querySelectorAll('a[href]')].map(a => a.href);
+      }
+
+      function open(i) {
+        srcs = getVisible();
+        if (!srcs.length) return;
+        idx = Math.max(0, Math.min(i, srcs.length - 1));
+        glbImg.src = srcs[idx];
+        glb.classList.add('on');
+        document.body.style.overflow = 'hidden';
+        glbPrev.style.display = idx === 0 ? 'none' : 'flex';
+        glbNext.style.display = idx === srcs.length - 1 ? 'none' : 'flex';
+      }
+
+      function close() {
+        glb.classList.remove('on');
+        document.body.style.overflow = '';
+        setTimeout(() => { glbImg.src = ''; }, 100);
+      }
+
+      function nav(dir) {
+        open(idx + dir);
+      }
+
+      // Intercept clicks on masonry links
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('.masonry a[href]');
+        if (!link) return;
+        e.preventDefault();
+        const section = document.querySelector('.gallery-section.visible');
+        if (!section) return;
+        const all = [...section.querySelectorAll('a[href]')];
+        open(all.indexOf(link));
+      });
+
+      glbClose.addEventListener('click', close);
+      glb.addEventListener('click', function (e) { if (e.target === glb) close(); });
+      glbPrev.addEventListener('click', function (e) { e.stopPropagation(); nav(-1); });
+      glbNext.addEventListener('click', function (e) { e.stopPropagation(); nav(1); });
+      document.addEventListener('keydown', function (e) {
+        if (!glb.classList.contains('on')) return;
+        if (e.key === 'Escape')      close();
+        if (e.key === 'ArrowLeft')   nav(-1);
+        if (e.key === 'ArrowRight')  nav(1);
+      });
+    })();
+  </script>
 </body>
 </html>
