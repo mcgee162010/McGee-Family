@@ -34,84 +34,6 @@
     .letters-hero h1 { font-size: clamp(40px, 8vw, 80px); margin-bottom: 14px; }
     .letters-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.65; }
 
-    /* ── LETTER CARD ── */
-    .letter-card {
-      max-width: 720px;
-      margin: 0 auto 56px;
-      background: var(--cream);
-      border: 1.5px solid rgba(107,79,58,0.12);
-      border-radius: var(--radius-xl);
-      box-shadow: 0 4px 32px rgba(60,40,20,0.09), 0 1px 4px rgba(60,40,20,0.06);
-      overflow: hidden;
-    }
-
-    .letter-header {
-      background: var(--brown);
-      padding: 28px 40px 24px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    @media (max-width: 560px) { .letter-header { padding: 22px 24px 20px; } }
-
-    .letter-to-label {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.50); margin-bottom: 4px;
-    }
-    .letter-to {
-      font-size: clamp(26px, 5vw, 40px); font-weight: 700;
-      letter-spacing: -0.02em; color: #fff; line-height: 1.1;
-    }
-    .letter-meta {
-      text-align: right;
-    }
-    .letter-meta-from {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); margin-bottom: 4px;
-    }
-    .letter-meta-author {
-      font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.75);
-    }
-    @media (max-width: 480px) { .letter-meta { text-align: left; } }
-
-    .letter-body {
-      padding: 40px 48px 48px;
-    }
-    @media (max-width: 560px) { .letter-body { padding: 28px 24px 36px; } }
-
-    .letter-opening {
-      font-size: clamp(18px, 2.5vw, 22px);
-      font-weight: 500; color: var(--text-primary);
-      line-height: 1.55; margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(107,79,58,0.08);
-    }
-
-    .letter-para {
-      font-size: clamp(16px, 1.8vw, 18px);
-      color: var(--text-secondary);
-      line-height: 1.85; margin-bottom: 20px;
-    }
-    .letter-para:last-of-type { margin-bottom: 0; }
-
-    .letter-sig {
-      margin-top: 36px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(107,79,58,0.08);
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 700; color: var(--brown);
-      letter-spacing: -0.01em;
-    }
-    .letter-sig-date {
-      font-size: 12px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-tertiary); margin-top: 6px;
-    }
-
     /* ── FUTURE LETTERS (placeholder cards) ── */
     .future-label {
       text-align: center;
@@ -178,92 +100,9 @@
 
   <div class="section" style="padding-top:48px; padding-bottom:96px;">
 
-    <!-- ── LETTER 1: BEN TO LEVI ── -->
-    <article class="letter-card" aria-label="Letter from Ben to Levi">
-      <div class="letter-header">
-        <div>
-          <div class="letter-to-label">To</div>
-          <div class="letter-to">Levi</div>
-        </div>
-        <div class="letter-meta">
-          <div class="letter-meta-from">Written by</div>
-          <div class="letter-meta-author">Dad</div>
-        </div>
-      </div>
-      <div class="letter-body">
-        <p class="letter-opening">
-          The night I drove to meet you, I was home sick with a cold, had been up since 5 AM, and had a 45-minute drive each way. I almost didn't go.
-        </p>
-        <p class="letter-para">
-          I went anyway. And you were on my shoulders by the end of the night.
-        </p>
-        <p class="letter-para">
-          That's the thing about you, Levi — you don't let people halfway love you. You walk in a room and you pull people all the way in. You did it to me that night at the Enchanted Christmas Event in Scottsdale, when you were three years old and had no idea what you were doing to my life. You've been doing it ever since.
-        </p>
-        <p class="letter-para">
-          I didn't know what I was signing up for when I started dating your mom. I mean, I knew — but I didn't know. I didn't know what it would feel like to watch you grow up. To see you figure things out. To hear you laugh. To watch you be exactly who you are with zero apology, every single day.
-        </p>
-        <p class="letter-para">
-          I want you to know something that I'm not sure the world always makes clear: being a stepdad isn't a lesser version of being a dad. The people who step in and choose — they choose hard. And I chose you. I choose you every day. That's not something you need to carry or feel grateful for. It just is. You are my son. Full stop.
-        </p>
-        <p class="letter-para">
-          You're about to become a big brother. You're going to be incredible at it — because you're already incredible at being you. Just keep doing that. Be loud. Be curious. Ask the questions nobody has answers to. Make up songs. Beat me at whatever you decide to get good at.
-        </p>
-        <p class="letter-para">
-          I'm proud of you, Levi. Not for what you accomplish — for who you are. That's already more than enough.
-        </p>
-        <div class="letter-sig">
-          — Dad
-          <div class="letter-sig-date">Queen Creek, Arizona · June 2026</div>
-        </div>
-      </div>
-    </article>
-
-
-    <!-- ── LETTER 2: BEN TO BRITTNEY ── -->
-    <article class="letter-card" aria-label="Letter from Ben to Brittney">
-      <div class="letter-header">
-        <div>
-          <div class="letter-to-label">To</div>
-          <div class="letter-to">Brittney</div>
-        </div>
-        <div class="letter-meta">
-          <div class="letter-meta-from">Written by</div>
-          <div class="letter-meta-author">Ben</div>
-        </div>
-      </div>
-      <div class="letter-body">
-        <p class="letter-opening">
-          I've been trying to figure out how to write this for months. Every time I start, I end up just describing things that happened — the night at the Buffalo Chip, the proposal, the wedding — and none of it captures what I actually want to say.
-        </p>
-        <p class="letter-para">
-          So here it is, plainly: you changed what I thought love was supposed to feel like.
-        </p>
-        <p class="letter-para">
-          Before you, I had a version of love in my head that was mostly about logistics. Compatibility. Shared goals. Checking boxes. And then I met you and realized I had been building toward something without knowing what the finished thing was supposed to look like — and you were it.
-        </p>
-        <p class="letter-para">
-          You love without conditions and without keeping score. You gave me your trust when you had every reason not to. You let me be Levi's dad when you could have kept that door closed. You have shown me more grace in the years we've been together than I've shown myself in my entire life.
-        </p>
-        <p class="letter-para">
-          I watched you lose Bentley this year. I watched you hold that grief with more dignity than I knew a person could have. And I watched you still show up — for Levi, for Baby McGee, for me, for our home. That is who you are. You show up. No matter what.
-        </p>
-        <p class="letter-para">
-          I don't say enough that I see you. I see how hard you work at love. I see what it costs you to be as generous as you are. I see the version of yourself you're still becoming — and Britt, she is extraordinary.
-        </p>
-        <p class="letter-para">
-          Thank you for choosing me. Thank you for choosing us. I will spend the rest of my life making sure you never regret it.
-        </p>
-        <div class="letter-sig">
-          — Ben
-          <div class="letter-sig-date">Queen Creek, Arizona · June 2026</div>
-        </div>
-      </div>
-    </article>
-
     <!-- ── FUTURE LETTERS ── -->
     <div class="future-label">
-      <div class="section-label">More Coming</div>
+      <div class="section-label">Coming Soon</div>
       <h2 class="section-title" style="margin-bottom:8px;">Letters Still Being Written</h2>
       <p style="font-size:16px; color:var(--text-secondary); max-width:500px; margin:0 auto;">
         Some words take longer to find. These are saved — to be written when the time is right.
@@ -272,14 +111,19 @@
 
     <div class="placeholder-grid">
       <div class="placeholder-card">
+        <span class="ph-icon">👦</span>
+        <div class="ph-title">Ben to Levi</div>
+        <p class="ph-sub">A letter from Dad — in his own words, when the time is right.</p>
+      </div>
+      <div class="placeholder-card">
+        <span class="ph-icon">💍</span>
+        <div class="ph-title">Ben to Brittney</div>
+        <p class="ph-sub">Some things are worth taking the time to write down. This is one of them.</p>
+      </div>
+      <div class="placeholder-card">
         <span class="ph-icon">🌿</span>
         <div class="ph-title">To Baby McGee</div>
         <p class="ph-sub">Written before we knew who you'd be. Arriving September 4th — and this letter will be ready.</p>
-      </div>
-      <div class="placeholder-card" style="opacity:1; border-style:solid; border-color:rgba(107,79,58,0.22); background:var(--cream-dark);">
-        <span class="ph-icon">💍</span>
-        <div class="ph-title">Ben to Brittney ✓</div>
-        <p class="ph-sub">Published June 2026 — scroll up to read.</p>
       </div>
       <div class="placeholder-card">
         <span class="ph-icon">✝️</span>
