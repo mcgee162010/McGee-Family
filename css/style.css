@@ -402,88 +402,6 @@ a:hover { color: var(--terracotta); }
 
 /* ── LIGHTBOX ───────────────────────────────────────────── */
 /*
- * LIGHTBOX — iOS Safari fix
- *
- * Root cause of black screen: iOS Safari has a compositor bug where
- * backdrop-filter on a position:fixed element that switches from
- * display:none → display:flex renders the blur layer solid black,
- * obscuring the image behind it.
- *
- * Fix strategy:
- *   1. Keep display:flex always — hide via opacity + visibility instead.
- *      This keeps the element in the GPU layer stack at all times,
- *      preventing the black-compositor bug.
- *   2. Remove backdrop-filter on mobile (≤768px) — not needed on small
- *      screens, and it's the primary iOS black-screen trigger.
- *   3. Use will-change:opacity to hint the GPU to promote this element
- *      to its own compositing layer before it's needed.
- */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  isolation: isolate;
-  background: rgba(10,5,2,0.96);
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  flex-direction: column;
-  gap: 16px;
-}
-.lightbox.open {
-  display: flex;
-}
-
-.lightbox img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: min(92vw, 1100px);
-  max-height: 80vh;
-  margin: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 32px 100px rgba(0,0,0,0.7);
-  object-fit: contain;
-  cursor: zoom-out;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  flex-shrink: 0;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  border: 1.5px solid rgba(255,255,255,0.20);
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s;
-  line-height: 1;
-}
-.lightbox-close:hover { background: rgba(255,255,255,0.22); }
-
-.lightbox-hint {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  user-select: none;
-  white-space: nowrap;
-}
-
 /* ── FORM ───────────────────────────────────────────────── */
 .form-group {
   display: flex;
@@ -762,9 +680,6 @@ html { scroll-behavior: smooth; }
 
 /* Footer nav hover */
 .footer-nav a:hover { color: rgba(255,255,255,0.90); transform: translateX(2px); display: inline-block; transition: all 0.15s; }
-
-/* Photo hover cursor */
-.masonry img, .bently-grid img, .photo-row img { cursor: zoom-in; }
 
 /* ══════════════════════════════════════════════════════════════
    PHASE 1 — CRITICAL FIXES
