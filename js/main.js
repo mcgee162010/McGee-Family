@@ -82,11 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 250);
     };
 
-    // Attach to ALL images — photo-grid, masonry, member-photo, bentley-grid, etc.
+    // Attach to ALL content images — photo-grid, masonry, member cards,
+    // wedding strip, pet cards, bentley grid, baby card, tribute strip, etc.
+    const LIGHTBOX_SELECTOR =
+      '.photo-grid img, .masonry img, .bentley-grid img, ' +
+      '.member-photo, .wedding-photo, .pet-grid img, ' +
+      '.baby-card img, .bentley-strip img, [style*="cursor:zoom-in"]';
+
     const attachLightbox = () => {
-      document.querySelectorAll(
-        '.photo-grid img, .masonry img, .bentley-grid img, .member-photo'
-      ).forEach(img => {
+      document.querySelectorAll(LIGHTBOX_SELECTOR).forEach(img => {
         if (!img.dataset.lbBound) {
           img.dataset.lbBound = '1';
           img.style.cursor = 'zoom-in';
@@ -114,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let _lbTrigger = null;
     document.addEventListener('click', e => {
-      if (e.target.matches('.masonry img, .photo-grid img, .bentley-grid img, .member-photo')) {
+      if (e.target.matches(LIGHTBOX_SELECTOR)) {
         _lbTrigger = e.target;
       }
     });
@@ -139,9 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIdx  = 0;
 
     lbImg.addEventListener('click', () => {
-      const allImgs = [...document.querySelectorAll(
-        '.masonry img:not([style*="display:none"]), .photo-grid img, .bentley-grid img'
-      )].filter(img => img.offsetParent !== null);
+      const allImgs = [...document.querySelectorAll(LIGHTBOX_SELECTOR)]
+        .filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
       if (currentIdx < currentSrcs.length - 1) {
@@ -152,9 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
-      const allImgs = [...document.querySelectorAll(
-        '.masonry img, .photo-grid img, .bentley-grid img'
-      )].filter(img => img.offsetParent !== null);
+      const allImgs = [...document.querySelectorAll(LIGHTBOX_SELECTOR)]
+        .filter(img => img.offsetParent !== null);
       currentSrcs = allImgs.map(i => ({ src: i.src, alt: i.alt }));
       currentIdx  = currentSrcs.findIndex(s => s.src === lbImg.src);
       if (e.key === 'ArrowRight' && currentIdx < currentSrcs.length - 1) {
