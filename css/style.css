@@ -419,31 +419,20 @@ a:hover { color: var(--terracotta); }
  *      to its own compositing layer before it's needed.
  */
 .lightbox {
-  display: flex;
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
+  isolation: isolate;
   background: rgba(10,5,2,0.96);
   align-items: center;
   justify-content: center;
   padding: 24px;
   flex-direction: column;
   gap: 16px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .lightbox.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-@media (max-width: 768px) {
-  .lightbox {
-    background: rgba(10,5,2,0.97);
-  }
+  display: flex;
 }
 
 .lightbox img {
@@ -457,7 +446,8 @@ a:hover { color: var(--terracotta); }
   box-shadow: 0 32px 100px rgba(0,0,0,0.7);
   object-fit: contain;
   cursor: zoom-out;
-  transition: opacity 0.15s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   flex-shrink: 0;
 }
 

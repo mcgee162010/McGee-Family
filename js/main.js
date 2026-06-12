@@ -69,13 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let _closeTimer = null;
 
     const openLightbox = (src, alt) => {
-      // Cancel any pending src-clear from a previous close
       if (_closeTimer) { clearTimeout(_closeTimer); _closeTimer = null; }
       lbImg.src = src;
       lbImg.alt = alt || '';
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
-      // Defer focus so the browser paints the open state first
       requestAnimationFrame(() => { lbClose && lbClose.focus(); });
     };
 
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       _closeTimer = setTimeout(() => {
         _closeTimer = null;
         if (!lightbox.classList.contains('open')) { lbImg.src = ''; }
-      }, 300);
+      }, 100);
     };
 
     // Attach lightbox to gallery and content images
