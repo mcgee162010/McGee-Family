@@ -1,7 +1,7 @@
 /* ============================================================
    McGee Family Website — Shared Stylesheet
    Theme: Woodland · Sage Green · Warm Cream · Earth Brown
-   Font: SF Pro (system) · Design: Apple HIG
+   Font: System Sans · Neutral cross-platform stack
    ============================================================ */
 
 *, *::before, *::after {
@@ -47,8 +47,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, "SF Pro Text", "SF Pro Display",
-               BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: var(--cream);
   color: var(--text-primary);
   min-height: 100svh;
