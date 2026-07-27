@@ -165,6 +165,16 @@
     <p>The small moments, the big milestones, and everything in between — written down so we remember.</p>
   </div>
 
+  <div class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="filter-bar" role="group" aria-label="Filter updates by category" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:8px;">
+      <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterPosts('baby-mcgee', this)">🌿 Baby McGee</button>
+      <button class="filter-btn" onclick="filterPosts('family', this)">📸 Family</button>
+      <button class="filter-btn" onclick="filterPosts('levi', this)">🧒 Levi</button>
+      <button class="filter-btn" onclick="filterPosts('how-we-met', this)">💍 How We Met</button>
+    </div>
+  </div>
+
   <div class="section" id="updates-content">
     <div class="updates-layout">
 
@@ -213,7 +223,7 @@
             </div>
           </div>
           <div class="post-body">
-            <p>Levi is wrapping up 1st grade and we couldn't be more proud. This kid reads like a champ, loves math, and has more energy at 7 AM than most adults do with three coffees. This fall he starts 2nd grade, and this fall he also becomes a big brother. Big year, buddy.</p>
+            <p>Levi is wrapping up 1st grade and we couldn't be more proud. This kid reads like a champ, loves math, and has more energy at 7 AM than most adults do with three coffees. He starts 2nd grade on August 5, 2026 — and this fall he also becomes a big brother. Big year, buddy.</p>
           </div>
         </article>
 
@@ -311,9 +321,8 @@
         <div class="sidebar-card">
           <h4>📅 Upcoming</h4>
           <ul class="milestone-list">
-            <li><span class="mi">🎉</span><div><strong>Baby Shower</strong>July 25, 2026</div></li>
+            <li><span class="mi">📚</span><div><strong>Levi Starts 2nd Grade</strong>August 5, 2026</div></li>
             <li><span class="mi">👶</span><div><strong>Baby McGee Due</strong>September 4, 2026</div></li>
-            <li><span class="mi">📚</span><div><strong>Levi Starts 2nd Grade</strong>Fall 2026</div></li>
           </ul>
         </div>
 
@@ -322,7 +331,7 @@
           <ul class="milestone-list">
             <li><span class="mi">✅</span><div><strong>Pregnancy Announced</strong>Late December 2025</div></li>
             <li><span class="mi">✅</span><div><strong>Nursery Coming Together</strong>Warm, cozy & ready</div></li>
-            <li><span class="mi">✅</span><div><strong>Baby Shower Scheduled</strong>July 25, 2026</div></li>
+            <li><span class="mi">✅</span><div><strong>Baby Shower Celebrated</strong>July 25, 2026</div></li>
             <li><span class="mi">⏳</span><div><strong>Baby Arrives</strong>~September 4, 2026</div></li>
           </ul>
         </div>
@@ -343,7 +352,7 @@
           <ul class="milestone-list">
             <li><span class="mi">🍎</span><div><strong>Ben</strong>Program Manager @ Apple</div></li>
             <li><span class="mi">❤️</span><div><strong>Brittney</strong>Expecting, thriving</div></li>
-            <li><span class="mi">📚</span><div><strong>Levi</strong>Almost a 2nd grader</div></li>
+            <li><span class="mi">📚</span><div><strong>Levi</strong>2nd grader as of Aug 5</div></li>
             <li><span class="mi">🐕</span><div><strong>Phoenix</strong>Running at full speed</div></li>
           </ul>
         </div>
@@ -373,7 +382,8 @@
     <div class="footer-copy">© 2026 The McGee Family · Made with ♥</div>
   </footer>
 
-  <script src="js/main.js">
+  <script src="js/main.js"></script>
+  <script>
     // ── CATEGORY FILTER ──────────────────────────────────────────────
     function filterPosts(category, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -388,7 +398,7 @@
         }
       });
     }
-</script>
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "c7521f6ea6ca4b1492c416f0922645bd"}'></script>
