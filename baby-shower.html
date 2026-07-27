@@ -1718,33 +1718,17 @@
     <div class="ws-narrow">
 
       <div style="text-align:center; margin-bottom:36px;" class="reveal">
-        <div class="section-eyebrow" style="justify-content:center;">Cast Your Vote</div>
+        <div class="section-eyebrow" style="justify-content:center;">Final Results</div>
         <div class="section-script">Boy or Girl? 💙🩷</div>
         <p style="font-family:'Playfair Display',serif; font-size:16px; font-style:italic; color:var(--brown-mid); margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.70;">
-          Ben and Brittney genuinely have no idea — but you might have a hunch. One vote per device.
+          Voting is closed — here's how everyone's guesses landed.
         </p>
       </div>
 
-      <div class="poll-card reveal reveal-delay-1" role="form" aria-label="Gender vote">
-        <div id="poll-vote">
-          <p style="font-size:14px; color:var(--brown-light); text-align:center; margin-bottom:24px; line-height:1.6; font-family:'Lato',sans-serif;">
-            What's your gut feeling? 👇
-          </p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
-            <button onclick="castVote('boy')"  class="vote-btn vote-boy"  aria-label="Vote boy">
-              <span style="font-size:42px;" aria-hidden="true">💙</span>
-              It's a Boy!
-            </button>
-            <button onclick="castVote('girl')" class="vote-btn vote-girl" aria-label="Vote girl">
-              <span style="font-size:42px;" aria-hidden="true">🩷</span>
-              It's a Girl!
-            </button>
-          </div>
-        </div>
-
-        <div id="poll-results" style="display:none;">
+      <div class="poll-card reveal reveal-delay-1" role="form" aria-label="Gender vote — final results">
+        <div id="poll-results">
           <p style="font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--brown-deep); text-align:center; margin-bottom:20px;">
-            Here's where everyone stands 👇
+            Here's where everyone landed 👇
           </p>
           <div style="margin-bottom:16px;">
             <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-family:'Lato',sans-serif;">
@@ -1771,7 +1755,7 @@
             </div>
           </div>
           <div style="text-align:center; font-size:13px; color:var(--brown-light); font-family:'Lato',sans-serif; padding-top:8px; border-top:1px solid rgba(107,74,42,0.08);">
-            <span id="total-votes"></span>
+            <span id="total-votes"></span> · Poll closed
           </div>
         </div>
       </div>
@@ -1867,38 +1851,20 @@
       });
     })();
 
-    /* ── GENDER POLL ───────────────────────────────────────── */
-    const POLL_KEY = 'mcgee_baby_voted';
-
-    async function castVote(choice) {
-      if (localStorage.getItem(POLL_KEY)) { loadPoll(); return; }
-      localStorage.setItem(POLL_KEY, choice);
-      try {
-        const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
-        const json = await res.json();
-        const data = json.record || { rsvps: [], poll: { boy: 0, girl: 0 } };
-        if (!data.poll) data.poll = { boy: 0, girl: 0 };
-        data.poll[choice] = (data.poll[choice] || 0) + 1;
-        await fetch(BIN_URL, { method: 'PUT', headers: HEADERS, body: JSON.stringify(data) });
-        showResults(data.poll.boy || 0, data.poll.girl || 0);
-      } catch(e) { showResults(0, 0); }
-    }
-
+    /* ── GENDER POLL — CLOSED, READ-ONLY ─────────────────────── */
     async function loadPoll() {
       try {
         const res  = await fetch(`${BIN_URL}/latest`, { headers: { 'X-Master-Key': BIN_KEY } });
         const json = await res.json();
         const poll = json.record?.poll || { boy: 0, girl: 0 };
-        if (localStorage.getItem(POLL_KEY)) showResults(poll.boy || 0, poll.girl || 0);
-      } catch(e) {}
+        showResults(poll.boy || 0, poll.girl || 0);
+      } catch(e) { showResults(3, 11); }
     }
 
     function showResults(boys, girls) {
       const total = boys + girls;
       const bp = total ? Math.round((boys  / total) * 100) : 50;
       const gp = total ? Math.round((girls / total) * 100) : 50;
-      document.getElementById('poll-vote').style.display    = 'none';
-      document.getElementById('poll-results').style.display = 'block';
       document.getElementById('boy-count').textContent  = boys;
       document.getElementById('girl-count').textContent = girls;
       document.getElementById('boy-pct').textContent    = bp + '%';
@@ -1911,7 +1877,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', loadPoll);
-    setInterval(loadPoll, 30000);
   </script>
 
   <!-- Cloudflare Web Analytics -->
