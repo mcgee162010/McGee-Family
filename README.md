@@ -52,4 +52,4 @@ The baby shower RSVP form uses [Formspree](https://formspree.io). After submissi
 
 ---
 
-*Made with ♥ in Queen Creek, Arizona · 2026*
+*Made with ♥ · 2026*

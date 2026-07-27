@@ -108,8 +108,8 @@ html = html.replace(
 
 # Update footer
 html = html.replace(
-    'Ben · Brittney · Levi · Baby McGee · Phoenix · Queen Creek, AZ',
-    'Ben · Brittney · Levi · $BABY_NAME · Phoenix · Queen Creek, AZ'
+    'Ben · Brittney · Levi · Baby McGee · Phoenix',
+    'Ben · Brittney · Levi · $BABY_NAME · Phoenix'
 )
 
 with open(path, 'w') as f:

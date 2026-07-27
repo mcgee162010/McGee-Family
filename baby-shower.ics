@@ -7,8 +7,8 @@ BEGIN:VEVENT
 DTSTART;TZID=America/Phoenix:20260725T133000
 DTEND;TZID=America/Phoenix:20260725T163000
 SUMMARY:Baby McGee Shower 🌿
-DESCRIPTION:Join us to celebrate the arrival of Baby McGee! Woodland animal theme.\n\nAddress: 22888 E Nightingale Rd, Queen Creek, AZ 85142\nTime: 1:30 PM MST\n\nRSVP at: https://mcgeefamily2025.com/baby-shower.html\nContact: benjmcgee@yahoo.com
-LOCATION:22888 E Nightingale Rd, Queen Creek, AZ 85142
+DESCRIPTION:Join us to celebrate the arrival of Baby McGee! Woodland animal theme.\n\nTime: 1:30 PM MST\n\nDetails: https://mcgeefamily2025.com/baby-shower.html\nContact: benjmcgee@yahoo.com
+LOCATION:Queen Creek, AZ
 STATUS:CONFIRMED
 SEQUENCE:1
 TRANSP:TRANSPARENT

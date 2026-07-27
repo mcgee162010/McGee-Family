@@ -174,5 +174,5 @@ Site updates within 60–90 seconds.
 
 ---
 
-*Built with love in Queen Creek, Arizona · 2026*
+*Built with love · 2026*
 *Faith. Family. Forever.*
