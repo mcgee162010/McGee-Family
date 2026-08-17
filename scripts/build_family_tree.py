@@ -58,6 +58,15 @@ def validate(d: dict) -> list[str]:
     for pid, p in people.items():
         if not str(p.get("name", "")).strip():
             errors.append(f"person '{pid}' has no name")
+        photo = p.get("photo")
+        if photo:
+            if not (ROOT / photo).is_file():
+                errors.append(f"'{pid}' photo not found: {photo}")
+            elif photo != photo.lower():
+                errors.append(
+                    f"'{pid}' photo path has uppercase characters — GitHub Pages is "
+                    f"case-sensitive, rename the file to lowercase: {photo}"
+                )
 
     seen_uids: set[str] = set()
     for i, u in enumerate(unions):
@@ -127,6 +136,8 @@ def graph(d: dict) -> dict:
         e = {"name": p["name"], "rel": p.get("rel", ""), "face": p.get("face", "👤")}
         if p.get("photo"):
             e["photo"] = p["photo"]
+        if p.get("crop"):
+            e["crop"] = p["crop"]
         if p.get("style"):
             e["style"] = p["style"]
         if p.get("badge"):
@@ -362,7 +373,9 @@ JS = r"""
     b.setAttribute('aria-label', p.name + (p.rel ? ', ' + p.rel : ''));
 
     var ring = '<div class="p-ring">' +
-      (p.photo ? '<img src="' + esc(p.photo) + '" alt="" loading="lazy" decoding="async">' : esc(p.face)) +
+      (p.photo ? '<img src="' + esc(p.photo) + '" alt="" loading="lazy" decoding="async"' +
+                 (p.crop ? ' style="object-position:' + esc(p.crop) + '"' : '') + '>'
+               : esc(p.face)) +
       (p.badge ? '<span class="p-badge">' + esc(p.badge) + '</span>' : '') +
       (!opts.noExpand && canExpand(pid, shownUid) ? '<span class="p-more" aria-hidden="true">＋</span>' : '') +
       '</div>';
@@ -543,7 +556,8 @@ JS = r"""
       '<div class="sheet-grip" aria-hidden="true"></div>' +
       '<button class="sheet-close" aria-label="Close">✕</button>' +
       '<div class="sheet-top">' +
-        '<div class="sheet-face">' + (p.photo ? '<img src="' + esc(p.photo) + '" alt="">' : esc(p.face)) + '</div>' +
+        '<div class="sheet-face">' + (p.photo ? '<img src="' + esc(p.photo) + '" alt=""' +
+            (p.crop ? ' style="object-position:' + esc(p.crop) + '"' : '') + '>' : esc(p.face)) + '</div>' +
         '<div><h2>' + esc(p.name) + '</h2><div class="s-rel">' + esc(p.rel) + '</div></div>' +
       '</div>' +
       (p.note ? '<p class="sheet-note">' + esc(p.note) + '</p>' : '') +

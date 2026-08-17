@@ -8,14 +8,14 @@
     "updated": "2026-08-17"
   },
 
-  "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, style?, badge?, note? } — 'rel' is how they relate to Levi.",
+  "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, crop?, style?, badge?, note? }. 'photo' is a path like photos/ben/x.jpg — if absent, the emoji in 'face' is used. 'crop' aims the photo inside the circle: '50% 30%' means centered horizontally, 30% from the top. Raise the 2nd number to move DOWN the photo, lower it to move UP.",
   "people": {
-    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
-    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "note": "Britt. Bentley's person, always." },
-    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
+    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "photo": "photos/tree/ben-levi.jpg", "crop": "26% 40%", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
+    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "photo": "photos/tree/britt.jpeg",   "crop": "24% 38%", "note": "Britt. Bentley's person, always." },
+    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "photo": "photos/tree/ben-levi.jpg", "crop": "64% 40%", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
     "baby":     { "name": "Baby McGee",         "rel": "Little Sibling", "face": "🍼", "due":  "2026-09-04", "style": "baby", "badge": "Coming Soon", "note": "Woodland animals in the nursery. We can't wait to meet you." },
-    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
-    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
+    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpeg", "crop": "58% 22%", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
+    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpeg", "crop": "48% 46%", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
     "joshua":   { "name": "Joshua Parrish",     "rel": "Dad",            "face": "👨", "note": "Levi's dad." },
 
     "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1962-09-03", "note": "Dad's dad." },
@@ -63,7 +63,7 @@
     { "emoji": "👵", "title": "Great-Grandparents",
       "members": ["Sherri McGee", "Ken McGee", "Grandma George", "Grandpa George", "Mary", "Grandpa Dawson"] },
     { "emoji": "🌲", "title": "More McGees",
-      "members": ["Faith Schneider", "Jim Schneider", "Mark McGee", "Andrea McGee", "Becky Cantrell McGee", "Tim Cantrell", "Laura Kovarik McGee", "Anthony McGee", "Trevor McGee", "Katie McGee"] },
+      "members": ["Faith Schneider", "Jim Schneider", "Mark McGee", "Andrea McGee", "Becky Caminiti", "Tim Caminiti", "Laura Kovarik McGee", "Anthony McGee", "Trevor McGee", "Katie McGee"] },
     { "emoji": "🌾", "title": "The Schneiders",
       "members": ["Amber Schneider", "Aaron Schneider", "Lauren Schneider", "Andrew Schneider", "Matthew Schneider", "Elizabeth Whittington Schneider", "Bill Whittington"] },
     { "emoji": "🌻", "title": "The Georges",
