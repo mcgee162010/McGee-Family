@@ -270,14 +270,16 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
   background:linear-gradient(180deg,var(--sage-light),color-mix(in srgb,var(--sage-light) 25%,transparent))}
 
 /* couple pod */
-.pod{position:relative;display:flex;background:color-mix(in srgb,var(--card) 55%,transparent);
-  border:1px solid var(--line);border-radius:var(--r-l);padding:13px 15px 19px}
-.pod::before{content:"";position:absolute;top:44px;left:50%;width:20px;height:2px;
-  margin-left:-10px;background:var(--sage-light);border-radius:2px}
+.pod{position:relative;display:flex;align-items:stretch;
+  background:color-mix(in srgb,var(--card) 55%,transparent);
+  border:1px solid var(--line);border-radius:var(--r-l);padding:13px 15px 26px}
+.pod::before{content:"";position:absolute;top:43px;left:50%;width:20px;height:2px;
+  margin-left:-10px;background:var(--sage-light);border-radius:2px;z-index:1}
 .pod.solo::before{display:none}
 .pod .p+.p{margin-left:20px}
-.pod-l{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);font-size:10px;
-  font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.pod-l{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);font-size:9.5px;
+  font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
+  white-space:nowrap;line-height:1}
 .pod.past{border-style:dashed;border-color:color-mix(in srgb,var(--mushroom) 45%,transparent);
   background:color-mix(in srgb,var(--card) 32%,transparent)}
 .pod.past::before{background:none;border-top:2px dashed var(--mushroom);height:0}
@@ -288,24 +290,28 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
   width:132px;flex-shrink:0;background:var(--card);border:1px solid var(--line);
   border-radius:var(--r-m);padding:15px 11px 13px;text-align:center;cursor:pointer;
   box-shadow:var(--sh-1);font:inherit;color:inherit;
+  display:flex;flex-direction:column;align-items:center;
   transition:transform .22s var(--ease),box-shadow .22s,border-color .22s,opacity .3s;
 }
 .p:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:var(--sage)}
 .p:active{transform:translateY(-1px) scale(.985)}
-.av{position:relative;width:60px;height:60px;margin:0 auto 10px}
-.av-in{width:100%;height:100%;border-radius:var(--r-f);overflow:hidden;background:var(--sage-pale);
-  display:grid;place-items:center;font-size:28px;border:2.5px solid color-mix(in srgb,var(--sage) 32%,transparent)}
+.av{display:block;position:relative;width:60px;height:60px;margin:0 auto 10px;flex:0 0 auto}
+.av-in{display:grid;place-items:center;width:60px;height:60px;border-radius:var(--r-f);
+  overflow:hidden;background:var(--sage-pale);font-size:28px;
+  border:2.5px solid color-mix(in srgb,var(--sage) 32%,transparent)}
 .av-in img{width:100%;height:100%;object-fit:cover;display:block}
-.nm{font-size:14px;font-weight:700;line-height:1.24;letter-spacing:-.015em}
-.rl{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--sage);margin-top:4px}
-.lf{font-size:11px;color:var(--ink-3);margin-top:3px;font-variant-numeric:tabular-nums}
-.pip{position:absolute;right:1px;bottom:1px;width:12px;height:12px;border-radius:var(--r-f);
-  background:var(--sage);border:2.5px solid var(--card)}
+.nm{display:block;width:100%;font-size:14px;font-weight:700;line-height:1.24;letter-spacing:-.015em}
+.rl{display:block;width:100%;font-size:10.5px;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--sage);margin-top:4px;line-height:1.3}
+.lf{display:block;width:100%;font-size:11px;color:var(--ink-3);margin-top:3px;
+  font-variant-numeric:tabular-nums}
+.pip{display:block;position:absolute;right:1px;bottom:1px;width:12px;height:12px;
+  border-radius:var(--r-f);background:var(--sage);border:2.5px solid var(--card)}
 .pip.gone{background:var(--ink-3)}
-.badge{position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:var(--sage);
-  color:#fff;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:3px 8px;border-radius:var(--r-f);white-space:nowrap;box-shadow:var(--sh-1)}
+.badge{display:block;position:absolute;top:-7px;left:50%;transform:translateX(-50%);
+  background:var(--sage);color:#fff;font-size:8.5px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;padding:3px 8px;border-radius:var(--r-f);white-space:nowrap;
+  box-shadow:var(--sh-1)}
 
 .p.is-levi{border:2px solid var(--terracotta);background:linear-gradient(165deg,var(--card),var(--terra-pale))}
 .p.is-levi .rl{color:var(--terracotta)}
