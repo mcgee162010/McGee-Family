@@ -499,11 +499,22 @@ function layout(){
 
   var done={}, cursor=0;
 
+  /* A person seeds their own pod only if they are a blood descendant in this
+     tree (they have parents here) OR they have children. Married-in partners
+     with no children of their own get absorbed into their spouse's pod, which
+     is what stops the layout sprawling into one flat ribbon of root pods. */
+  function seedsOwnPod(pid){
+    if(BIRTH[pid])return true;
+    if(kids(pid).length)return true;
+    return spouses(pid).length===0;
+  }
+
   function podMembers(pid){
     var m=[pid];
     partnerUnions(pid).forEach(function(u){
       U[u].partners.forEach(function(x){
-        if(x!==pid&&!done[x]&&m.indexOf(x)<0&&!BIRTH[x]&&!hidden[x])m.push(x);
+        if(x===pid||done[x]||hidden[x]||m.indexOf(x)>-1)return;
+        if(!seedsOwnPod(x))m.push(x);
       });
     });
     return m;
@@ -542,7 +553,11 @@ function layout(){
     return {l:left,r:left+w};
   }
 
-  Object.keys(P).filter(function(p){return !BIRTH[p]&&!hidden[p];})
+  /* Roots: blood-line ancestors first (parentless people who have children),
+     shallowest generation first so their subtrees pack cleanly. Married-in
+     partners are absorbed by podMembers, then the final sweep catches strays. */
+  Object.keys(P)
+    .filter(function(p){return !BIRTH[p]&&!hidden[p]&&kids(p).length;})
     .sort(function(a,b){return generationOf(a)-generationOf(b);})
     .forEach(place);
   Object.keys(P).forEach(place);
@@ -771,10 +786,33 @@ function fitTo(ids,pad,ms){
   var r=stage.getBoundingClientRect();
   pad=pad||1;
   var k=Math.min(r.width/(b.x1-b.x0),r.height/(b.y1-b.y0))*pad;
-  k=Math.max(.12,Math.min(k,1.55));
+  /* Legibility floor: 12.5px name text must never render below ~9px, or the
+     tree becomes dust. A wide shallow family would otherwise fit at 0.27.
+     Past the floor we keep type readable and let the user pan — same tradeoff
+     Maps makes. */
+  k=Math.max(.75,Math.min(k,1.55));
   animateTo(r.width/2-((b.x0+b.x1)/2)*k, r.height/2-((b.y0+b.y1)/2)*k, k, ms);
 }
-function fitAll(ms){fitTo(null,.94,ms);}
+function fitAll(ms){
+  /* True fit-all, allowed to go small — this is an explicit user request. */
+  var b=bbox(null);if(!b)return;
+  var r=stage.getBoundingClientRect();
+  var k=Math.min(r.width/(b.x1-b.x0),r.height/(b.y1-b.y0))*.94;
+  k=Math.max(.14,Math.min(k,1.4));
+  animateTo(r.width/2-((b.x0+b.x1)/2)*k, r.height/2-((b.y0+b.y1)/2)*k, k, ms);
+}
+/* The default view: the home household plus one generation each way, at a
+   scale where faces and names are actually readable. */
+function homeView(ms){
+  var u=U[G.root], set=u.partners.slice();
+  u.partners.forEach(function(p){
+    parents(p).forEach(function(x){set.push(x);});
+    spouses(p).forEach(function(x){set.push(x);});
+  });
+  (u.children||[]).concat(u.pets||[]).forEach(function(c){set.push(c);});
+  set=set.filter(function(p){return pos[p];});
+  fitTo(set.length?set:null,.82,ms);
+}
 function centerOn(id,ms){
   var q=pos[id];if(!q)return;
   var r=stage.getBoundingClientRect(), k=Math.max(vk,.82);
@@ -827,7 +865,7 @@ stage.addEventListener('dblclick',function(e){
 /* ═══════════ selection ═══════════ */
 function select(id,opts){
   opts=opts||{};
-  if(id&&S.sel===id&&!opts.keep){S.sel=null;applyEmphasis();if(S.focus)fitAll();return;}
+  if(id&&S.sel===id&&!opts.keep){S.sel=null;applyEmphasis();if(S.focus)homeView();return;}
   S.sel=id;
   applyEmphasis();
   if(id){
@@ -1057,7 +1095,7 @@ bind('zin',function(){var r=stage.getBoundingClientRect();
 bind('zout',function(){var r=stage.getBoundingClientRect();
   zoomAt(r.left+r.width/2,r.top+r.height/2,Math.max(.1,vk/1.35));});
 bind('fit',function(){fitAll();});
-bind('reset',function(){S.sel=null;S.open={};applyEmphasis();closeProfile();fitAll();});
+bind('reset',function(){S.sel=null;S.open={};applyEmphasis();closeProfile();homeView();});
 bind('me',function(){
   if(!G.me)return;select(G.me,{keep:true});centerOn(G.me);openProfile(G.me);});
 bind('focus',function(){
@@ -1067,7 +1105,7 @@ bind('focus',function(){
     var set=[S.sel].concat(Object.keys(ancestors(S.sel)),Object.keys(descendants(S.sel)),
       spouses(S.sel),siblings(S.sel));
     fitTo(set,.86);
-  }else fitAll();
+  }else homeView();
 });
 bind('colors',function(){
   S.colors=!S.colors;this.setAttribute('aria-pressed',S.colors?'true':'false');
@@ -1110,8 +1148,8 @@ try{var th=localStorage.getItem('mcgee-theme');
 if(!G.me){var mb=document.getElementById('me');if(mb)mb.style.display='none';}
 
 layout();draw();buildTimeline();
-requestAnimationFrame(function(){fitAll(1);});
-window.addEventListener('resize',function(){if(S.view==='tree')fitAll(260);});
+requestAnimationFrame(function(){homeView(1);});
+window.addEventListener('resize',function(){if(S.view==='tree')homeView(260);});
 setTimeout(function(){var h=document.getElementById('hint');if(h)h.classList.add('hide');},7000);
 })();
 </script>

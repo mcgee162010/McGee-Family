@@ -84,12 +84,28 @@ def layout(people, unions, own, birth, big=140):
             if on:
                 hidden |= descendants_of(p)
 
+    def spouses_of(pid):
+        out = []
+        for uid in own.get(pid, []):
+            for x in unions[uid]["partners"]:
+                if x != pid and x not in out:
+                    out.append(x)
+        return out
+
+    def seeds_own_pod(pid):
+        if pid in birth:
+            return True
+        if kids_of(pid):
+            return True
+        return not spouses_of(pid)
+
     def pod_members(pid):
         m = [pid]
         for uid in own.get(pid, []):
             for x in unions[uid]["partners"]:
-                if (x != pid and x not in done and x not in m
-                        and x not in birth and x not in hidden):
+                if x == pid or x in done or x in hidden or x in m:
+                    continue
+                if not seeds_own_pod(x):
                     m.append(x)
         return m
 
@@ -122,7 +138,8 @@ def layout(people, unions, own, birth, big=140):
             order.append(m)
         return (left, left + w)
 
-    roots = sorted([p for p in people if p not in birth and p not in hidden],
+    roots = sorted([p for p in people
+                    if p not in birth and p not in hidden and kids_of(p)],
                    key=lambda p: gen[p])
     for r in roots:
         place(r)
@@ -171,7 +188,7 @@ def make_family(target, seed=7):
 
 # ── assertions ────────────────────────────────────────────────────────────
 
-def check(label, people, unions, own, birth):
+def check(label, people, unions, own, birth, root_uid=None):
     t0 = time.perf_counter()
     pos, gen, order, hidden = layout(people, unions, own, birth)
     ms = (time.perf_counter() - t0) * 1000
@@ -216,6 +233,42 @@ def check(label, people, unions, own, birth):
     if ratio > 80:
         fails.append(f"degenerate aspect ratio {ratio:.0f}:1")
 
+    # LEGIBILITY of the DEFAULT view. fit-all is an explicit "show me
+    # everything" gesture where small is acceptable — but the view the user
+    # LANDS on must be readable. homeView() shows the root household plus one
+    # generation each way, so measure that subset.
+    def home_set():
+        u = unions.get(root_uid)
+        if not u:
+            return list(pos)[:8]
+        s = list(u["partners"])
+        for p in u["partners"]:
+            b = birth.get(p)
+            if b:
+                s += unions[b]["partners"]
+            s += spouses_of_g(p)
+        s += u.get("children", []) + u.get("pets", [])
+        return [x for x in s if x in pos] or list(pos)[:8]
+
+    def spouses_of_g(pid):
+        out = []
+        for uid in own.get(pid, []):
+            for x in unions[uid]["partners"]:
+                if x != pid and x not in out:
+                    out.append(x)
+        return out
+
+    hs = home_set()
+    hx = [pos[p][0] for p in hs]
+    hy = [pos[p][1] for p in hs]
+    hw = max(hx) - min(hx) + NW
+    hh = max(hy) - min(hy) + NH
+    hk = min(1440 / hw, 740 / hh) * 0.82
+    hk = max(0.75, min(hk, 1.55))          # the scale floor in the shipped code
+    home_px = 12.5 * hk
+    if home_px < 9:
+        fails.append(f"default view renders names at {home_px:.1f}px — unreadable")
+
     if ms > 2500:
         fails.append(f"layout took {ms:.0f} ms")
 
@@ -243,11 +296,11 @@ def main():
             own.setdefault(p, []).append(u["id"])
         for c in u.get("children", []):
             birth[c] = u["id"]
-    ok &= check("real McGee family", people, unions, own, birth)
+    ok &= check("real McGee family", people, unions, own, birth, d["meta"]["root"])
 
     for size in (10, 50, 120, 520):
         p, u, o, b = make_family(size)
-        ok &= check(f"synthetic ~{size}", p, u, o, b)
+        ok &= check(f"synthetic ~{size}", p, u, o, b, next(iter(u)))
 
     print()
     if ok:
