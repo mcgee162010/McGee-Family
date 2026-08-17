@@ -160,6 +160,7 @@ def graph(d: dict) -> dict:
             "children": u.get("children", []),
             "pets": u.get("pets", []),
             "label": u.get("label", ""),
+            "status": u.get("status", ""),
         }
         for u in unions
     }
@@ -228,6 +229,9 @@ CSS = r"""
       border: 1px solid rgba(122,158,126,0.22); border-radius: var(--radius-lg); box-shadow: 0 2px 14px rgba(60,40,20,0.05); }
     .house-pair.is-root { background: linear-gradient(160deg, #fff, var(--sage-pale)); border-color: var(--sage); box-shadow: 0 8px 30px rgba(122,158,126,0.22); }
     .house-pair.two::before { content: ""; position: absolute; top: 52px; left: 50%; width: 20px; height: 2px; margin-left: -10px; background: var(--sage-light); border-radius: 2px; }
+    .house-pair.is-past { background: rgba(255,255,255,0.40); border-style: dashed; border-color: rgba(142,123,106,0.35); }
+    .house-pair.is-past.two::before { background: none; border-top: 2px dashed var(--mushroom); height: 0; width: 24px; margin-left: -12px; }
+    .house-pair.is-past .house-label { color: var(--mushroom); font-style: italic; }
     .house-label { position: absolute; left: 50%; bottom: 5px; transform: translateX(-50%); font-size: 10.5px; font-weight: 600;
       letter-spacing: .06em; text-transform: uppercase; color: var(--text-tertiary); white-space: nowrap; }
 
@@ -417,7 +421,8 @@ JS = r"""
     wrap.className = 'house';
 
     var pair = document.createElement('div');
-    pair.className = 'house-pair' + (u.partners.length === 2 ? ' two' : '') + (opts.isRoot ? ' is-root' : '');
+    pair.className = 'house-pair' + (u.partners.length === 2 ? ' two' : '') + (opts.isRoot ? ' is-root' : '') +
+                     (u.status === 'past' ? ' is-past' : '');
     u.partners.forEach(function (pid) { pair.appendChild(personEl(pid, uid)); });
     if (u.label) {
       var l = document.createElement('span');
@@ -492,7 +497,8 @@ JS = r"""
       col.style.flexDirection = 'column';
       col.style.alignItems = 'center';
       var pu = U[b], pair = document.createElement('div');
-      pair.className = 'house-pair' + (pu.partners.length === 2 ? ' two' : '');
+      pair.className = 'house-pair' + (pu.partners.length === 2 ? ' two' : '') +
+                       (pu.status === 'past' ? ' is-past' : '');
       pu.partners.forEach(function (x) { pair.appendChild(personEl(x, b)); });
       if (pu.label) {
         var l = document.createElement('span');
@@ -529,7 +535,8 @@ JS = r"""
     var out = [];
     (OWN[pid] || []).forEach(function (uid) {
       var u = U[uid];
-      u.partners.forEach(function (x) { if (x !== pid) out.push(['Partner', x]); });
+      var kind = u.status === 'past' ? 'Former' : 'Partner';
+      u.partners.forEach(function (x) { if (x !== pid) out.push([kind, x]); });
       (u.children || []).forEach(function (c) { out.push(['Child', c]); });
     });
     var b = BIRTH[pid];
@@ -558,6 +565,12 @@ JS = r"""
       }).join(', ');
       rows += '<div class="s-row"><dt>' + label + '</dt><dd>' + links + '</dd></div>';
     });
+    if (groups['Former']) {
+      var flinks = groups['Former'].map(function (id) {
+        return '<button data-goto="' + id + '">' + esc(P[id].name) + '</button>';
+      }).join(', ');
+      rows += '<div class="s-row"><dt>Divorced</dt><dd>' + flinks + '</dd></div>';
+    }
 
     sheet.innerHTML =
       '<div class="sheet-grip" aria-hidden="true"></div>' +
