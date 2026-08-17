@@ -39,8 +39,9 @@
     "liam":     { "name": "Liam McGee",         "rel": "Cousin",         "face": "🧒" },
     "desmond":  { "name": "Desmond McGee",      "rel": "Cousin",         "face": "🧒" },
 
-    "anni":     { "name": "Anni Holter",        "rel": "Aunt",           "face": "👩", "note": "Mom's sister." },
-    "jakob":    { "name": "Jakob Holter",       "rel": "Uncle",          "face": "👨", "note": "Mom's brother." },
+    "anni":     { "name": "Anni Holter",        "rel": "Aunt",           "face": "👩", "note": "Married to Uncle Jakob." },
+    "jakob":    { "name": "Jakob Holter",       "rel": "Uncle",          "face": "👨", "note": "Mom's half-brother." },
+    "helen":    { "name": "Helen Eubanks",      "rel": "Grandma",        "face": "👵", "note": "Jakob's mom." },
     "leo":      { "name": "Leo Holter",         "rel": "Cousin",         "face": "🧒" }
   },
 
@@ -50,12 +51,13 @@
     { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                             "label": "Levi's dad" },
 
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"],  "label": "Dad's mom & dad" },
-    { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt", "anni", "jakob"],           "label": "Mom's mom & dad" },
+    { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                           "label": "Mom's mom & dad" },
+    { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                           "label": "Jakob's mom & dad" },
 
     { "id": "megan+bran",  "partners": ["megan", "brandon"],  "children": ["jacey", "simon"],                   "label": "" },
     { "id": "amanda+dan",  "partners": ["amanda", "daniel"],  "children": ["avni", "justin", "mason"],          "label": "" },
     { "id": "jacob+kath",  "partners": ["jacob", "kathleen"], "children": ["liam", "desmond"],                  "label": "" },
-    { "id": "jakob+leo",   "partners": ["jakob"],             "children": ["leo"],                              "label": "" }
+    { "id": "jakob+anni",  "partners": ["jakob", "anni"],     "children": ["leo"],                              "label": "" }
   ],
 
   "_HOW_BRANCHES_WORK": "Relatives shown as names only, in the 'More Family' drawer at the bottom. Add or remove freely — no IDs needed.",
@@ -69,7 +71,7 @@
     { "emoji": "🌻", "title": "The Georges",
       "members": ["David George", "David Jr George", "Heather George", "Phillip George", "Paula George", "Sara George", "J.R. George", "Linda George", "Joyce George", "Larry George", "Shawna George", "Brooke George", "Arianna Nieves George", "Alexa Stephen George", "Astynn Morrison George", "Stephen Middleton", "Rigo Nieves", "Austin Morrison", "Knox Morrison", "Dan", "DJ", "Josh", "Tracy"] },
     { "emoji": "🍂", "title": "Appleyard & Washegesic",
-      "members": ["Michael Appleyard", "Helen Eubanks", "Megan Appleyard Washegesic", "Don Washegesic", "Alec Washegesic", "Sarah Washegesic", "Marcy Till Washegesic", "Ryan Till", "Marissa Till", "Rebecca Till", "Samantha Till"] },
+      "members": ["Michael Appleyard", "Megan Appleyard Washegesic", "Don Washegesic", "Alec Washegesic", "Sarah Washegesic", "Marcy Till Washegesic", "Ryan Till", "Marissa Till", "Rebecca Till", "Samantha Till"] },
     { "emoji": "🐿️", "title": "The Kovariks",
       "members": ["Lindsey Kovarik", "Maddy Kovarik", "Nina Kovarik"] }
   ],
