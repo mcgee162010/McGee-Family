@@ -10,27 +10,27 @@
 
   "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, crop?, style?, badge?, note? }. 'photo' is a path like photos/ben/x.jpg — if absent, the emoji in 'face' is used. 'crop' aims the photo inside the circle: '50% 30%' means centered horizontally, 30% from the top. Raise the 2nd number to move DOWN the photo, lower it to move UP.",
   "people": {
-    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "photo": "photos/tree/ben-levi.jpg", "crop": "26% 40%", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
-    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "photo": "photos/tree/britt.jpeg",   "crop": "24% 38%", "note": "Britt. Bentley's person, always." },
-    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "photo": "photos/tree/ben-levi.jpg", "crop": "64% 40%", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
+    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "photo": "photos/tree/ben.jpg",     "src": "photos/ben/RR244534.jpg", "crop": "33% 45%", "zoom": "3.1", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
+    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "photo": "photos/tree/britt.jpg",   "src": "photos/brittney/IMG_4416.jpeg", "crop": "25% 42%", "zoom": "3.0", "note": "Britt. Bentley's person, always." },
+    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "photo": "photos/tree/levi.jpg",    "src": "photos/ben/RR244534.jpg", "crop": "64% 44%", "zoom": "3.4", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
     "baby":     { "name": "Baby McGee",         "rel": "Little Sibling", "face": "🍼", "due":  "2026-09-04", "style": "baby", "badge": "Coming Soon", "note": "Woodland animals in the nursery. We can't wait to meet you." },
-    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpeg", "crop": "58% 22%", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
-    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpeg", "crop": "48% 46%", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
+    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpg", "src": "photos/phoenix/CA2384F4-D661-4FA9-B406-1690D3C0306E.jpeg", "crop": "60% 25%", "zoom": "2.1", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
+    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpg", "src": "photos/bentley/IMG_0039.jpeg", "crop": "48% 50%", "zoom": "1.5", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
     "joshua":   { "name": "Joshua Parrish",     "rel": "Dad",            "face": "👨", "note": "Levi's dad." },
 
-    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1962-09-03", "note": "Dad's dad." },
+    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1960-09-04", "note": "Dad's dad." },
     "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "note": "Dad's mom." },
     "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "note": "Mom's dad." },
     "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "note": "Mom's mom." },
 
     "megan":    { "name": "Megan Collins",      "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
     "brandon":  { "name": "Brandon Collins",    "rel": "Uncle",          "face": "👨" },
-    "jacey":    { "name": "Jacey Collins",      "rel": "Cousin",         "face": "🧒" },
+    "jacey":    { "name": "Jacie Collins",      "rel": "Cousin",         "face": "🧒" },
     "simon":    { "name": "Simon Collins",      "rel": "Cousin",         "face": "🧒" },
 
     "amanda":   { "name": "Amanda Walsh",       "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
     "daniel":   { "name": "Daniel Walsh",       "rel": "Uncle",          "face": "👨" },
-    "avni":     { "name": "Avni Walsh",         "rel": "Cousin",         "face": "🧒" },
+    "avni":     { "name": "Anni Walsh",         "rel": "Cousin",         "face": "🧒" },
     "justin":   { "name": "Justin Walsh",       "rel": "Cousin",         "face": "🧒" },
     "mason":    { "name": "Mason Walsh",        "rel": "Cousin",         "face": "🧒" },
 
@@ -63,15 +63,15 @@
     { "emoji": "👵", "title": "Great-Grandparents",
       "members": ["Sherri McGee", "Ken McGee", "Grandma George", "Grandpa George", "Mary", "Grandpa Dawson"] },
     { "emoji": "🌲", "title": "More McGees",
-      "members": ["Faith Schneider", "Jim Schneider", "Mark McGee", "Andrea McGee", "Becky Caminiti", "Tim Caminiti", "Laura Kovarik McGee", "Anthony McGee", "Trevor McGee", "Katie McGee"] },
+      "members": ["Faith McGee", "Jim Schneider", "Mark McGee", "Andrea McGee", "Becky Caminiti McGee", "Tim Caminiti", "Laura Kovarik McGee", "Anthony McGee", "Trevor McGee", "Katie McGee"] },
     { "emoji": "🌾", "title": "The Schneiders",
-      "members": ["Amber Schneider", "Aaron Schneider", "Lauren Schneider", "Andrew Schneider", "Matthew Schneider", "Elizabeth Whittington Schneider", "Bill Whittington"] },
+      "members": ["Amber Schneider", "Aaron Schneider", "Lauren Schneider", "Andrew Schneider", "Mathew Schneider", "Elizabeth Whittington Schneider", "Bill Whittington"] },
     { "emoji": "🌻", "title": "The Georges",
-      "members": ["David George", "David Jr George", "Heather George", "Phillip George", "Paula George", "Sara George", "J.R. George", "Linda George", "Joyce George", "Larry George", "Shawna George", "Brooke George", "Arianna Kleve George", "Alexa Stephen George", "Aalynn Morrison George", "Stephen Middleton", "Riga Neves", "Dan", "DJ", "Josh", "Tracy"] },
+      "members": ["David George", "David Jr George", "Heather George", "Phillip George", "Paula George", "Sara George", "J.R. George", "Linda George", "Joyce George", "Larry George", "Shawna George", "Brooke George", "Arianna Nieves George", "Alexa Stephen George", "Astynn Morrison George", "Stephen Middleton", "Rigo Nieves", "Austin Morrison", "Knox Morrison", "Dan", "DJ", "Josh", "Tracy"] },
     { "emoji": "🍂", "title": "Appleyard & Washegesic",
-      "members": ["Michael Appleyard", "Helen Eubanks", "Megan Appleyard Washegesic", "Don Washegesic", "Alec Washegesic", "Sarah Washegesic", "Mercy Till Washegesic", "Ryan Till", "Marissa Till", "Rebecca Till", "Samantha Till"] },
-    { "emoji": "🐿️", "title": "Kovarik & Morrison",
-      "members": ["Lindsey Kovarik", "Maddy Kovarik", "Nina Kovarik", "Austin Morrison", "Knox Morrison"] }
+      "members": ["Michael Appleyard", "Helen Eubanks", "Megan Appleyard Washegesic", "Don Washegesic", "Alec Washegesic", "Sarah Washegesic", "Marcy Till Washegesic", "Ryan Till", "Marissa Till", "Rebecca Till", "Samantha Till"] },
+    { "emoji": "🐿️", "title": "The Kovariks",
+      "members": ["Lindsey Kovarik", "Maddy Kovarik", "Nina Kovarik"] }
   ],
 
   "_HOW_QUESTIONS_WORK": "While this list has items, a note shows at the bottom of the page. Set to [] to hide it.",
