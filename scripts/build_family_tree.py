@@ -336,10 +336,13 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 .pod-l{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);font-size:9.5px;
   font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
   white-space:nowrap;line-height:1}
-.pod.past{border-style:dashed;border-color:color-mix(in srgb,var(--mushroom) 45%,transparent);
-  background:color-mix(in srgb,var(--card) 32%,transparent)}
-.pod.past::before{background:none;border-top:2px dashed var(--mushroom);height:0}
+.pod.past{border-style:dashed;border-color:color-mix(in srgb,var(--mushroom) 60%,transparent);
+  background:color-mix(in srgb,var(--card) 30%,transparent);padding-bottom:19px}
+.pod.past::before{background:none;border-top:2.5px dashed var(--mushroom);height:0;width:26px;
+  margin-left:-13px}
 .pod.past .pod-l{font-style:italic;color:var(--mushroom)}
+/* no caption on a past couple: the dashed rail carries the meaning */
+.pod.past:not(:has(.pod-l)){padding-bottom:13px}
 
 /* person card */
 .p{
@@ -425,6 +428,9 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
   background:color-mix(in srgb,var(--sage) 17%,transparent);color:var(--ink-2)}
 .chip.mem{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink-3)}
 .chip.soon{background:color-mix(in srgb,var(--terracotta) 18%,transparent);color:var(--terracotta)}
+.chip.legend{display:inline-flex;align-items:center;gap:7px;
+  background:color-mix(in srgb,var(--mushroom) 15%,transparent);color:var(--ink-2)}
+.chip.legend .dash{width:20px;height:0;border-top:2.5px dashed var(--mushroom);flex:0 0 20px}
 .dbio{font-size:14px;line-height:1.62;color:var(--ink-2);margin-bottom:18px}
 .dsec{margin-bottom:18px}
 .dsec h3{font:600 10.5px -apple-system,sans-serif;color:var(--ink-3);letter-spacing:.12em;
@@ -868,6 +874,7 @@ def build(d: dict) -> str:
   <div class="bar">
     <span class="chip">Tap anyone to trace their family</span>
     <span class="chip">Double-tap for their story</span>
+    <span class="chip legend"><span class="dash" aria-hidden="true"></span>No longer together</span>
   </div>
 </header>
 

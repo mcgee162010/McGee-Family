@@ -46,6 +46,10 @@
     "lindsey":  { "name": "Lindsey Kovarik",    "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
     "maddy":    { "name": "Maddy Kovarik",      "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
     "nina":     { "name": "Nina Kovarik",       "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
+    "megana":   { "name": "Megan Washegesic",   "rel": "Ben's Stepsister",       "face": "👩", "note": "Michael's daughter." },
+    "don":      { "name": "Don Washegesic",     "rel": "Megan's Husband",        "face": "👨" },
+    "marcy":    { "name": "Marcy Till",         "rel": "Ben's Stepsister",       "face": "👩", "note": "Michael's daughter." },
+    "ryan":     { "name": "Ryan Till",          "rel": "Marcy's Husband",        "face": "👨" },
     "babyh":    { "name": "Baby Holter",        "rel": "Jakob & Anni's",         "face": "🍼", "due": "2026-09-01", "style": "baby", "badge": "Coming Soon", "note": "Due September 2026 — the same month as Baby McGee." },
 
     "jacie":    { "name": "Jacie Collins",      "rel": "Megan & Brandon's",      "face": "🧒" },
@@ -56,6 +60,11 @@
     "liam":     { "name": "Liam McGee",         "rel": "Jacob & Kathleen's",     "face": "🧒" },
     "desmond":  { "name": "Desmond McGee",      "rel": "Jacob & Kathleen's",     "face": "🧒" },
     "leo":      { "name": "Leo Holter",         "rel": "Jakob & Anni's",         "face": "🧒" },
+    "alex":     { "name": "Alex Washegesic",    "rel": "Megan & Don's",          "face": "🧒" },
+    "sarahw":   { "name": "Sarah Washegesic",   "rel": "Megan & Don's",          "face": "🧒" },
+    "samantha": { "name": "Samantha Till",      "rel": "Marcy & Ryan's",         "face": "🧒" },
+    "rebecca":  { "name": "Rebecca Till",       "rel": "Marcy & Ryan's",         "face": "🧒" },
+    "marissa":  { "name": "Marissa Till",       "rel": "Marcy & Ryan's",         "face": "🧒" },
 
     "phoenix":  { "name": "Phoenix",            "rel": "Our Dog",                "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpg", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
     "bentley":  { "name": "Bentley",            "rel": "Always Loved",           "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpg", "style": "pet memory", "note": "Brittney's golden retriever and service dog. Jumped in the lake the day Ben proposed." }
@@ -70,9 +79,12 @@
     { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                 "label": "Remarried" },
     { "id": "laura+kids",  "partners": ["laura"],             "children": ["lindsey", "maddy", "nina"],       "label": "Laura's daughters" },
     { "id": "mary+mike",   "partners": ["maryann", "michael"], "children": [],                                "label": "Remarried" },
+    { "id": "mike+kids",   "partners": ["michael"],           "children": ["megana", "marcy"],                 "label": "Michael's daughters" },
+    { "id": "megan+don",   "partners": ["megana", "don"],     "children": ["alex", "sarahw"],                  "label": "" },
+    { "id": "marcy+ryan",  "partners": ["marcy", "ryan"],     "children": ["samantha", "rebecca", "marissa"],  "label": "" },
     { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "Brittney's mom & dad", "status": "past" },
     { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "Jakob's mom & dad" },
-    { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                 "label": "Divorced", "status": "past" },
+    { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                 "label": "", "status": "past" },
     { "id": "jeff+kids",   "partners": ["jeff"],              "children": ["emily", "aj"],                     "label": "Jeff's kids" },
 
     { "id": "megan+bran",  "partners": ["megan", "brandon"],  "children": ["jacie", "simon"],                  "label": "" },
@@ -89,12 +101,12 @@
 
     { "title": "Aunts & Uncles",
       "rows": [["megan","brandon"], ["amanda","daniel"], ["jacob","kathleen"],
-               ["jakob","annih"], ["emily"], ["aj"],
-               ["lindsey"], ["maddy"], ["nina"]] },
+               ["jakob","annih"], ["megana","don"], ["marcy","ryan"],
+               ["emily"], ["aj"], ["lindsey"], ["maddy"], ["nina"]] },
 
     { "title": "Cousins",
       "rows": ["jacie", "simon", "anniw", "justin", "mason", "liam", "desmond",
-               "leo", "babyh"] },
+               "leo", "babyh", "alex", "sarahw", "samantha", "rebecca", "marissa"] },
 
     { "title": "Our Dogs",
       "rows": ["phoenix", "bentley"] }
