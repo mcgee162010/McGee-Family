@@ -60,7 +60,7 @@
     "liam":     { "name": "Liam McGee",         "rel": "Jacob & Kathleen's",     "face": "🧒" },
     "desmond":  { "name": "Desmond McGee",      "rel": "Jacob & Kathleen's",     "face": "🧒" },
     "leo":      { "name": "Leo Holter",         "rel": "Jakob & Anni's",         "face": "🧒" },
-    "alex":     { "name": "Alex Washegesic",    "rel": "Megan & Don's",          "face": "🧒" },
+    "alex":     { "name": "Alec Washegesic",    "rel": "Megan & Don's",          "face": "🧒" },
     "sarahw":   { "name": "Sarah Washegesic",   "rel": "Megan & Don's",          "face": "🧒" },
     "samantha": { "name": "Samantha Till",      "rel": "Marcy & Ryan's",         "face": "🧒" },
     "rebecca":  { "name": "Rebecca Till",       "rel": "Marcy & Ryan's",         "face": "🧒" },
@@ -75,14 +75,14 @@
     { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["baby", "levi"],                    "label": "Married Nov 1, 2025", "pets": ["phoenix", "bentley"] },
     { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                            "label": "" },
 
-    { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"], "label": "Ben's mom & dad", "status": "past" },
-    { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                 "label": "Remarried" },
+    { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"], "label": "", "status": "past" },
+    { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                 "label": "Together" },
     { "id": "laura+kids",  "partners": ["laura"],             "children": ["lindsey", "maddy", "nina"],       "label": "Laura's daughters" },
-    { "id": "mary+mike",   "partners": ["maryann", "michael"], "children": [],                                "label": "Remarried" },
+    { "id": "mary+mike",   "partners": ["maryann", "michael"], "children": [],                                "label": "Together" },
     { "id": "mike+kids",   "partners": ["michael"],           "children": ["megana", "marcy"],                 "label": "Michael's daughters" },
     { "id": "megan+don",   "partners": ["megana", "don"],     "children": ["alex", "sarahw"],                  "label": "" },
     { "id": "marcy+ryan",  "partners": ["marcy", "ryan"],     "children": ["samantha", "rebecca", "marissa"],  "label": "" },
-    { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "Brittney's mom & dad", "status": "past" },
+    { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "", "status": "past" },
     { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "" },
     { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                 "label": "", "status": "past" },
     { "id": "jeff+kids",   "partners": ["jeff"],              "children": ["emily", "aj"],                     "label": "Jeff's kids" },
@@ -93,11 +93,13 @@
     { "id": "jakob+anni",  "partners": ["jakob", "annih"],    "children": ["leo", "babyh"],                    "label": "" }
   ],
 
-  "_HOW_TIERS_WORK": "Rows shown below the home block, top to bottom. Each row is a couple [\"a\",\"b\"] or a single person \"a\". Anyone in 'home' is rendered there and must NOT be repeated here.",
+  "_HOW_TIERS_WORK": "Rows below the home block. A row is a couple [\"a\",\"b\"], a single person \"a\", or a GROUP: { \"group\": [pod, pod, ...], \"cap\": \"caption\" } which draws dashed links between pods to show former relationships. Each person must appear exactly once across all tiers.",
   "tiers": [
     { "title": "Grandparents",
-      "rows": [["tim","maryann"], ["tim","laura"], ["maryann","michael"],
-               ["jimh","jennifer"], ["jennifer","jeff"], ["jimh","helen"]] },
+      "rows": [
+        { "group": [["tim","laura"], ["maryann","michael"]], "cap": "Ben's mom & dad" },
+        { "group": [["jimh","helen"], ["jennifer"], ["jeff"]], "cap": "Brittney's mom & dad" }
+      ] },
 
     { "title": "Aunts & Uncles",
       "rows": [["megan","brandon"], ["amanda","daniel"], ["jacob","kathleen"],

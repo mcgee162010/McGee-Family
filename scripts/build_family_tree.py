@@ -89,11 +89,17 @@ def validate(d: dict) -> list[str]:
                 if ref not in ids:
                     errors.append(f"union '{uid}' {key} references unknown '{ref}'")
 
-    # tiers: every person placed, each exactly once
+    # tiers: collect every referenced person, walking groups too
     placed: list[str] = []
     for t in tiers:
         for row in t.get("rows", []):
-            for pid in (row if isinstance(row, list) else [row]):
+            if isinstance(row, dict) and row.get("group"):
+                members = [p for pod in row["group"] for p in pod]
+            elif isinstance(row, list):
+                members = row
+            else:
+                members = [row]
+            for pid in members:
                 if pid not in ids:
                     errors.append(f"tier '{t.get('title')}' references unknown '{pid}'")
                 else:
@@ -124,16 +130,14 @@ def validate(d: dict) -> list[str]:
             errors.append(f"'{pid}' is in the home block AND a tier — "
                           f"remove it from tiers")
 
-    # A person may appear twice in tiers only if they head two households.
-    heads = {}
-    for u in unions:
-        for pid in u.get("partners", []):
-            heads[pid] = heads.get(pid, 0) + 1
-    for pid in set(placed):
+    # Each person must appear exactly once. Duplicates were the reason the
+    # grandparent tier read as six disconnected couples instead of a family.
+    for pid in sorted(set(placed)):
         n = placed.count(pid)
-        if n > max(1, heads.get(pid, 1)):
-            errors.append(f"'{pid}' appears {n}× in tiers but heads only "
-                          f"{heads.get(pid,0)} household(s)")
+        if n > 1:
+            errors.append(f"'{pid}' ({people[pid]['name']}) appears {n}× in tiers "
+                          f"— show them once in their current household and use a "
+                          f"group with dashed links for former relationships")
 
     everywhere = set(placed) | set(in_home)
     for pid in sorted(ids - everywhere):
@@ -359,6 +363,18 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 .pod.past .pod-l{font-style:italic;color:var(--mushroom)}
 /* no caption on a past couple: the dashed rail carries the meaning */
 .pod.past:not(:has(.pod-l)){padding-bottom:13px}
+
+/* a group of pods joined by dashed links — former relationships */
+.group{position:relative;display:flex;align-items:center;flex-wrap:nowrap;
+  padding:0 0 24px;gap:0}
+.glink{width:34px;height:0;border-top:2.5px dashed var(--mushroom);flex:0 0 34px}
+.group-cap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:9.5px;
+  font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:900px){
+  .group{flex-wrap:wrap;justify-content:center;gap:12px 0}
+  .glink{width:100%;height:0;border-top:2.5px dashed var(--mushroom);flex:1 0 60px;
+    max-width:60px}
+}
 
 /* person card */
 .p{
@@ -694,7 +710,7 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search'))re
 
 /* ── boot ── */
 try{var t=localStorage.getItem('mcgee-theme');
-  if(t){document.documentElement.dataset.theme=t;q('#theme').textContent=t==='dark'?'☾':'☀';}
+  if(t==='dark'){document.documentElement.dataset.theme='dark';q('#theme').textContent='☾';}
 }catch(_){}
 })();
 """
@@ -790,20 +806,36 @@ def render_home(d: dict) -> str:
     )
 
 
+def render_pod(d: dict, row, people: dict) -> str:
+    """One couple-or-single pod."""
+    u = union_for(d, row)
+    cards = "".join(card(x, people[x]) for x in row)
+    lbl = (f'<span class="pod-l">{escape(u["label"])}</span>'
+           if u and u.get("label") else "")
+    past = " past" if u and u.get("status") == "past" else ""
+    solo = " solo" if len(row) == 1 else ""
+    return f'<div class="pod{past}{solo}">{cards}{lbl}</div>'
+
+
 def render_tiers(d: dict) -> str:
     people = d["people"]
     out = []
     for i, t in enumerate(d["tiers"]):
         rows = []
         for row in t["rows"]:
-            if isinstance(row, list):
-                u = union_for(d, row)
-                cards = "".join(card(x, people[x]) for x in row)
-                lbl = (f'<span class="pod-l">{escape(u["label"])}</span>'
-                       if u and u.get("label") else "")
-                past = " past" if u and u.get("status") == "past" else ""
-                solo = " solo" if len(row) == 1 else ""
-                rows.append(f'          <div class="pod{past}{solo}">{cards}{lbl}</div>')
+            # a GROUP: several pods joined by dashed links (former relationships)
+            if isinstance(row, dict) and row.get("group"):
+                pods = []
+                for j, pod in enumerate(row["group"]):
+                    if j:
+                        pods.append('<span class="glink" aria-hidden="true"></span>')
+                    pods.append(render_pod(d, pod, people))
+                cap = (f'<span class="group-cap">{escape(row["cap"])}</span>'
+                       if row.get("cap") else "")
+                rows.append('          <div class="group">'
+                            + "".join(pods) + cap + "</div>")
+            elif isinstance(row, list):
+                rows.append("          " + render_pod(d, row, people))
             else:
                 rows.append("          " + card(row, people[row]))
         link = '        <div class="link" aria-hidden="true"></div>\n' if i else ""
@@ -833,7 +865,31 @@ def render_more(d: dict) -> str:
             f'    <div class="mgrid">\n{cards}    </div>\n  </section>\n')
 
 
-NAV = """  <nav class="sr"><a href="index.html">McGee Family home</a></nav>"""
+NAV = """  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="levi-family-tree.html" role="menuitem" aria-current="page">Family Tree</a></li>
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="archive.html" role="menuitem">Family Archive</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>"""
 
 
 def build(d: dict) -> str:
@@ -866,6 +922,7 @@ def build(d: dict) -> str:
 <meta name="apple-mobile-web-app-title" content="McGee Family"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="canonical" href="https://mcgeefamily2025.com/levi-family-tree.html"/>
+<link rel="stylesheet" href="css/style.css"/>
 <style>{CSS}</style>
 </head>
 <body class="tree">
@@ -923,6 +980,7 @@ def build(d: dict) -> str:
   <p class="s">The McGee Family · Queen Creek, Arizona</p>
 </footer>
 
+<script src="js/main.js"></script>
 <script>window.__FAM__={js};</script>
 <script>{JS}</script>
 </body>
