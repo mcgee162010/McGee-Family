@@ -10,8 +10,8 @@
 
   "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, style?, badge?, note? } — 'rel' is how they relate to Levi.",
   "people": {
-    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-26", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
-    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-12-05", "note": "Britt. Bentley's person, always." },
+    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
+    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "note": "Britt. Bentley's person, always." },
     "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
     "baby":     { "name": "Baby McGee",         "rel": "Little Sibling", "face": "🍼", "due":  "2026-09-04", "style": "baby", "badge": "Coming Soon", "note": "Woodland animals in the nursery. We can't wait to meet you." },
     "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
