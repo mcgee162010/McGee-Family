@@ -22,6 +22,7 @@
     "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "note": "Dad's mom." },
     "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "note": "Mom's dad." },
     "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "note": "Mom's mom." },
+    "jeff":     { "name": "Jeff Dawson",        "rel": "Grandpa",        "face": "👴", "note": "Mom's stepdad." },
 
     "megan":    { "name": "Megan Collins",      "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
     "brandon":  { "name": "Brandon Collins",    "rel": "Uncle",          "face": "👨" },
@@ -42,7 +43,10 @@
     "anni":     { "name": "Anni Holter",        "rel": "Aunt",           "face": "👩", "note": "Married to Uncle Jakob." },
     "jakob":    { "name": "Jakob Holter",       "rel": "Uncle",          "face": "👨", "note": "Mom's half-brother." },
     "helen":    { "name": "Helen Eubanks",      "rel": "Grandma",        "face": "👵", "note": "Jakob's mom." },
-    "leo":      { "name": "Leo Holter",         "rel": "Cousin",         "face": "🧒" }
+    "leo":      { "name": "Leo Holter",         "rel": "Cousin",         "face": "🧒" },
+
+    "emily":    { "name": "Emily Dawson",       "rel": "Aunt",           "face": "👩", "note": "Jeff's daughter — Mom's stepsister." },
+    "aj":       { "name": "AJ Dawson",          "rel": "Uncle",          "face": "👨", "note": "Jeff's son — Mom's stepbrother." }
   },
 
   "_HOW_UNIONS_WORK": "Each union is one household: partners plus their children. 'id' is referenced by meta.root.",
@@ -53,6 +57,8 @@
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"],  "label": "Dad's mom & dad" },
     { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                           "label": "Mom's mom & dad" },
     { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                           "label": "Jakob's mom & dad" },
+    { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                  "label": "Grandma & Grandpa Jeff" },
+    { "id": "jeff+kids",   "partners": ["jeff"],              "children": ["emily", "aj"],                     "label": "Jeff's kids" },
 
     { "id": "megan+bran",  "partners": ["megan", "brandon"],  "children": ["jacey", "simon"],                   "label": "" },
     { "id": "amanda+dan",  "partners": ["amanda", "daniel"],  "children": ["avni", "justin", "mason"],          "label": "" },
