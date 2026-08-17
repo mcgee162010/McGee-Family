@@ -43,6 +43,10 @@
     "annih":    { "name": "Anni Holter",        "rel": "Jakob's Wife",           "face": "👩" },
     "emily":    { "name": "Emily Dawson",       "rel": "Brittney's Stepsister",  "face": "👩" },
     "aj":       { "name": "AJ Dawson",          "rel": "Brittney's Stepbrother", "face": "👨" },
+    "lindsey":  { "name": "Lindsey Kovarik",    "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
+    "maddy":    { "name": "Maddy Kovarik",      "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
+    "nina":     { "name": "Nina Kovarik",       "rel": "Ben's Stepsister",       "face": "👩", "note": "Laura's daughter." },
+    "babyh":    { "name": "Baby Holter",        "rel": "Jakob & Anni's",         "face": "🍼", "due": "2026-09-01", "style": "baby", "badge": "Coming Soon", "note": "Due September 2026 — the same month as Baby McGee." },
 
     "jacie":    { "name": "Jacie Collins",      "rel": "Megan & Brandon's",      "face": "🧒" },
     "simon":    { "name": "Simon Collins",      "rel": "Megan & Brandon's",      "face": "🧒" },
@@ -64,6 +68,7 @@
 
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"], "label": "Ben's mom & dad", "status": "past" },
     { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                 "label": "Remarried" },
+    { "id": "laura+kids",  "partners": ["laura"],             "children": ["lindsey", "maddy", "nina"],       "label": "Laura's daughters" },
     { "id": "mary+mike",   "partners": ["maryann", "michael"], "children": [],                                "label": "Remarried" },
     { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "Brittney's mom & dad", "status": "past" },
     { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "Jakob's mom & dad" },
@@ -73,7 +78,7 @@
     { "id": "megan+bran",  "partners": ["megan", "brandon"],  "children": ["jacie", "simon"],                  "label": "" },
     { "id": "amanda+dan",  "partners": ["amanda", "daniel"],  "children": ["anniw", "justin", "mason"],        "label": "" },
     { "id": "jacob+kath",  "partners": ["jacob", "kathleen"], "children": ["liam", "desmond"],                 "label": "" },
-    { "id": "jakob+anni",  "partners": ["jakob", "annih"],    "children": ["leo"],                             "label": "" }
+    { "id": "jakob+anni",  "partners": ["jakob", "annih"],    "children": ["leo", "babyh"],                    "label": "" }
   ],
 
   "_HOW_TIERS_WORK": "Rows shown below the home block, top to bottom. Each row is a couple [\"a\",\"b\"] or a single person \"a\". Anyone in 'home' is rendered there and must NOT be repeated here.",
@@ -84,10 +89,12 @@
 
     { "title": "Aunts & Uncles",
       "rows": [["megan","brandon"], ["amanda","daniel"], ["jacob","kathleen"],
-               ["jakob","annih"], ["emily"], ["aj"]] },
+               ["jakob","annih"], ["emily"], ["aj"],
+               ["lindsey"], ["maddy"], ["nina"]] },
 
     { "title": "Cousins",
-      "rows": ["jacie", "simon", "anniw", "justin", "mason", "liam", "desmond", "leo"] },
+      "rows": ["jacie", "simon", "anniw", "justin", "mason", "liam", "desmond",
+               "leo", "babyh"] },
 
     { "title": "Our Dogs",
       "rows": ["phoenix", "bentley"] }
