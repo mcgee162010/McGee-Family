@@ -237,7 +237,8 @@ CSS = r"""
     .p:hover { transform: translateY(-3px); }
     .p:active { transform: translateY(-1px) scale(.98); }
     .p:focus-visible { outline: 3px solid var(--sage); outline-offset: 4px; }
-    .p-ring { position: relative; width: 66px; height: 66px; border-radius: var(--radius-full); background: var(--sage-pale); display: grid; place-items: center;
+    .p-avatar { position: relative; width: 66px; height: 66px; }
+    .p-ring { width: 100%; height: 100%; border-radius: var(--radius-full); background: var(--sage-pale); display: grid; place-items: center;
       font-size: 31px; overflow: hidden; border: 2.5px solid rgba(122,158,126,0.30); transition: border-color .2s ease, box-shadow .2s ease; }
     .p:hover .p-ring { border-color: var(--sage); box-shadow: 0 6px 18px rgba(122,158,126,0.28); }
     .p-ring img { width: 100%; height: 100%; object-fit: cover; }
@@ -258,8 +259,10 @@ CSS = r"""
       background: var(--forest); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center;
       border: 2.5px solid var(--cream); transition: transform .25s cubic-bezier(.3,1.4,.5,1), background .2s ease; }
     .p.open .p-more { transform: rotate(45deg); background: var(--terracotta); }
-    .p-badge { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); background: var(--sage); color: #fff;
-      font-size: 8.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: var(--radius-full); white-space: nowrap; }
+    .p-badge { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%); background: var(--sage); color: #fff;
+      font-size: 8px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: var(--radius-full);
+      white-space: nowrap; box-shadow: 0 1px 4px rgba(60,40,20,0.18); z-index: 2; }
+    .p.has-badge .p-name { margin-top: 15px; }
 
     /* ── Connectors ───────────────────────────────────── */
     .stem { width: 2px; height: 26px; background: var(--sage-light); }
@@ -326,7 +329,8 @@ CSS = r"""
     .hint { text-align: center; font-size: 13px; color: var(--text-tertiary); margin: 0 auto 6px; }
     @media (max-width: 640px) {
       .p { width: 96px; }
-      .p-ring { width: 58px; height: 58px; font-size: 27px; }
+      .p-avatar { width: 58px; height: 58px; }
+      .p-ring { font-size: 27px; }
       .level { gap: 22px; }
       .kids { gap: 16px; }
       #tree { padding: 0 18px; }
@@ -369,16 +373,19 @@ JS = r"""
     b.className = 'p' + (p.style ? ' ' + p.style.split(' ').map(function (s) { return 'is-' + s; }).join(' ') : '');
     if (state.focus === pid) b.className += ' is-focus';
     if (state.open[pid]) b.className += ' open';
+    if (p.badge) b.className += ' has-badge';
     b.dataset.pid = pid;
     b.setAttribute('aria-label', p.name + (p.rel ? ', ' + p.rel : ''));
 
-    var ring = '<div class="p-ring">' +
-      (p.photo ? '<img src="' + esc(p.photo) + '" alt="" loading="lazy" decoding="async"' +
-                 (p.crop ? ' style="object-position:' + esc(p.crop) + '"' : '') + '>'
-               : esc(p.face)) +
+    var ring = '<span class="p-avatar">' +
+      '<span class="p-ring">' +
+        (p.photo ? '<img src="' + esc(p.photo) + '" alt="" loading="lazy" decoding="async"' +
+                   (p.crop ? ' style="object-position:' + esc(p.crop) + '"' : '') + '>'
+                 : esc(p.face)) +
+      '</span>' +
       (p.badge ? '<span class="p-badge">' + esc(p.badge) + '</span>' : '') +
       (!opts.noExpand && canExpand(pid, shownUid) ? '<span class="p-more" aria-hidden="true">＋</span>' : '') +
-      '</div>';
+      '</span>';
 
     b.innerHTML = ring +
       '<span class="p-name">' + esc(p.name) + '</span>' +
