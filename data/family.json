@@ -4,100 +4,86 @@
   "meta": {
     "title": "McGee Family Tree",
     "family": "Faith. Family. Forever.",
-    "intro": "Start with Mom and Dad. Tap anyone to meet their family.",
-    "root": "ben+britt",
+    "intro": "Tap anyone to see how they connect to you, Levi.",
     "me": "levi",
-    "generations": ["Grandparents", "Parents", "Levi's Generation", "Cousins"],
+    "generations": ["Grandparents", "Parents, Aunts & Uncles", "Levi, Cousins & Pets"],
     "updated": "2026-08-17"
   },
 
-  "_HOW_LINEAGES_WORK": "Optional subtle tint per family line. Set \"lineage\":\"mcgee\" on the topmost person of a line and it flows down to their descendants. Toggle off in the UI with Branch colors.",
-  "lineages": {
-    "mcgee":     "#6b4f3a",
-    "george":    "#b8944d",
-    "holter":    "#3d6b52",
-    "dawson":    "#c4714a",
-    "schneider": "#8a6a4f"
-  },
+  "_SCOPE": "Levi's immediate family only: parents, step-parents, siblings, aunts & uncles, and first cousins. Grandparents are included because they are what connect the aunts and uncles to Levi's parents.",
 
-  "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, crop?, style?, badge?, note? }. 'photo' is a path like photos/ben/x.jpg — if absent, the emoji in 'face' is used. 'crop' aims the photo inside the circle: '50% 30%' means centered horizontally, 30% from the top. Raise the 2nd number to move DOWN the photo, lower it to move UP.",
+  "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, note?, badge?, style? }. 'photo' is a web path — if absent the 'face' emoji is used. 'style' can be levi, baby, pet, memory.",
   "people": {
-    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "photo": "photos/tree/ben.jpg",     "src": "photos/ben/RR244534.jpg", "crop": "33% 45%", "zoom": "3.1", "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
-    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "photo": "photos/tree/britt.jpg",   "src": "photos/brittney/IMG_4416.jpeg", "crop": "25% 42%", "zoom": "3.0", "note": "Britt. Bentley's person, always." },
-    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "photo": "photos/tree/levi.jpg",    "src": "photos/ben/RR244534.jpg", "crop": "64% 44%", "zoom": "3.4", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
-    "baby":     { "name": "Baby McGee",         "rel": "Little Sibling", "face": "🍼", "due":  "2026-09-04", "style": "baby", "badge": "Coming Soon", "note": "Woodland animals in the nursery. We can't wait to meet you." },
-    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpg", "src": "photos/phoenix/CA2384F4-D661-4FA9-B406-1690D3C0306E.jpeg", "crop": "60% 25%", "zoom": "2.1", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
-    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpg", "src": "photos/bentley/IMG_0039.jpeg", "crop": "48% 50%", "zoom": "1.5", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
+    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1960-09-04", "note": "Dad Ben's dad." },
+    "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "note": "Dad Ben's mom." },
+    "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "note": "Mom's dad." },
+    "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "note": "Mom's mom." },
+    "jeff":     { "name": "Jeff Dawson",        "rel": "Step-Grandpa",   "face": "👴", "note": "Mom's stepdad." },
+    "helen":    { "name": "Helen Eubanks",      "rel": "Grandma",        "face": "👵", "note": "Uncle Jakob's mom." },
+
+    "ben":      { "name": "Ben McGee",          "rel": "Dad",            "face": "👨", "born": "1991-10-28", "photo": "photos/tree/ben.jpg",   "note": "Program Manager at Apple. Loves Thailand, the gym, and a good plan." },
+    "britt":    { "name": "Brittney McGee",     "rel": "Mom",            "face": "👩", "born": "1995-10-25", "photo": "photos/tree/britt.jpg", "note": "Britt. Bentley's person, always." },
     "joshua":   { "name": "Joshua Parrish",     "rel": "Dad",            "face": "👨", "note": "Levi's dad." },
 
-    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1960-09-04", "lineage": "mcgee", "note": "Dad's dad." },
-    "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "lineage": "george", "note": "Dad's mom." },
-    "michael":  { "name": "Michael Appleyard",  "rel": "Grandpa",        "face": "👴", "note": "Married to Grandma Mary Ann." },
-    "laura":    { "name": "Laura Kovarik",      "rel": "Grandma",        "face": "👵", "note": "Married to Grandpa Tim." },
-    "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "lineage": "holter", "note": "Mom's dad." },
-    "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "lineage": "dawson", "note": "Mom's mom." },
-    "jeff":     { "name": "Jeff Dawson",        "rel": "Grandpa",        "face": "👴", "note": "Mom's stepdad." },
-
-    "megan":    { "name": "Megan Collins",      "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
+    "megan":    { "name": "Megan Collins",      "rel": "Aunt",           "face": "👩", "note": "Dad Ben's sister." },
     "brandon":  { "name": "Brandon Collins",    "rel": "Uncle",          "face": "👨" },
-    "jacey":    { "name": "Jacie Collins",      "rel": "Cousin",         "face": "🧒" },
-    "simon":    { "name": "Simon Collins",      "rel": "Cousin",         "face": "🧒" },
-
-    "amanda":   { "name": "Amanda Walsh",       "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
+    "amanda":   { "name": "Amanda Walsh",       "rel": "Aunt",           "face": "👩", "note": "Dad Ben's sister." },
     "daniel":   { "name": "Daniel Walsh",       "rel": "Uncle",          "face": "👨" },
-    "avni":     { "name": "Anni Walsh",         "rel": "Cousin",         "face": "🧒" },
+    "jacob":    { "name": "Jacob McGee",        "rel": "Uncle",          "face": "👨", "note": "Dad Ben's brother." },
+    "kathleen": { "name": "Kathleen McGee",     "rel": "Aunt",           "face": "👩" },
+    "jakob":    { "name": "Jakob Holter",       "rel": "Uncle",          "face": "👨", "note": "Mom's half-brother." },
+    "annih":    { "name": "Anni Holter",        "rel": "Aunt",           "face": "👩" },
+    "emily":    { "name": "Emily Dawson",       "rel": "Step-Aunt",      "face": "👩", "note": "Jeff's daughter." },
+    "aj":       { "name": "AJ Dawson",          "rel": "Step-Uncle",     "face": "👨", "note": "Jeff's son." },
+
+    "levi":     { "name": "Levi",               "rel": "That's you!",    "face": "🧒", "born": "2019-04-07", "photo": "photos/tree/levi.jpg", "style": "levi", "note": "Starting 2nd grade in fall 2026." },
+    "baby":     { "name": "Baby McGee",         "rel": "Little Sibling", "face": "🍼", "due":  "2026-09-04", "style": "baby", "badge": "Coming Soon", "note": "Woodland animals in the nursery. We can't wait to meet you." },
+
+    "jacie":    { "name": "Jacie Collins",      "rel": "Cousin",         "face": "🧒" },
+    "simon":    { "name": "Simon Collins",      "rel": "Cousin",         "face": "🧒" },
+    "anniw":    { "name": "Anni Walsh",         "rel": "Cousin",         "face": "🧒" },
     "justin":   { "name": "Justin Walsh",       "rel": "Cousin",         "face": "🧒" },
     "mason":    { "name": "Mason Walsh",        "rel": "Cousin",         "face": "🧒" },
-
-    "jacob":    { "name": "Jacob McGee",        "rel": "Uncle",          "face": "👨", "note": "Dad's brother." },
-    "kathleen": { "name": "Kathleen McGee",     "rel": "Aunt",           "face": "👩" },
     "liam":     { "name": "Liam McGee",         "rel": "Cousin",         "face": "🧒" },
     "desmond":  { "name": "Desmond McGee",      "rel": "Cousin",         "face": "🧒" },
-
-    "anni":     { "name": "Anni Holter",        "rel": "Aunt",           "face": "👩", "note": "Married to Uncle Jakob." },
-    "jakob":    { "name": "Jakob Holter",       "rel": "Uncle",          "face": "👨", "note": "Mom's half-brother." },
-    "helen":    { "name": "Helen Eubanks",      "rel": "Grandma",        "face": "👵", "note": "Jakob's mom." },
     "leo":      { "name": "Leo Holter",         "rel": "Cousin",         "face": "🧒" },
 
-    "emily":    { "name": "Emily Dawson",       "rel": "Aunt",           "face": "👩", "note": "Jeff's daughter — Mom's stepsister." },
-    "aj":       { "name": "AJ Dawson",          "rel": "Uncle",          "face": "👨", "note": "Jeff's son — Mom's stepbrother." }
+    "phoenix":  { "name": "Phoenix",            "rel": "Best Dog",       "face": "🐕", "born": "2021-11-28", "photo": "photos/tree/phoenix.jpg", "style": "pet", "note": "German Shorthaired Pointer. Speed of light." },
+    "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpg", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." }
   },
 
-  "_HOW_UNIONS_WORK": "Each union is one household: partners plus their children. 'id' is referenced by meta.root. Optional 'status': \"past\" marks a divorced or former relationship — it renders with a broken connector line.",
+  "_HOW_UNIONS_WORK": "One household per entry: partners plus their children. Optional \"status\":\"past\" renders a dashed connector for a divorce or former relationship.",
   "unions": [
-    { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["levi", "baby"],                     "label": "Married Nov 1, 2025", "date": "2025-11-01", "pets": ["phoenix", "bentley"] },
-    { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                             "label": "Levi's dad" },
+    { "id": "tim+maryann",  "partners": ["tim", "maryann"],     "children": ["ben", "megan", "amanda", "jacob"], "label": "Dad's mom & dad", "status": "past" },
+    { "id": "jim+jen",      "partners": ["jimh", "jennifer"],   "children": ["britt"],                          "label": "Mom's mom & dad", "status": "past" },
+    { "id": "jim+helen",    "partners": ["jimh", "helen"],      "children": ["jakob"],                          "label": "Jakob's mom & dad" },
+    { "id": "jen+jeff",     "partners": ["jennifer", "jeff"],   "children": [],                                 "label": "Divorced", "status": "past" },
+    { "id": "jeff+kids",    "partners": ["jeff"],               "children": ["emily", "aj"],                     "label": "Jeff's kids" },
 
-    { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"],  "label": "Dad's mom & dad", "status": "past" },
-    { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                  "label": "Remarried" },
-    { "id": "maryann+mike","partners": ["maryann", "michael"], "children": [],                                 "label": "Remarried" },
-    { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                           "label": "Mom's mom & dad", "status": "past" },
-    { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                           "label": "Jakob's mom & dad" },
-    { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                  "label": "Divorced", "status": "past" },
-    { "id": "jeff+kids",   "partners": ["jeff"],              "children": ["emily", "aj"],                     "label": "Jeff's kids" },
-
-    { "id": "megan+bran",  "partners": ["megan", "brandon"],  "children": ["jacey", "simon"],                   "label": "" },
-    { "id": "amanda+dan",  "partners": ["amanda", "daniel"],  "children": ["avni", "justin", "mason"],          "label": "" },
-    { "id": "jacob+kath",  "partners": ["jacob", "kathleen"], "children": ["liam", "desmond"],                  "label": "" },
-    { "id": "jakob+anni",  "partners": ["jakob", "anni"],     "children": ["leo"],                              "label": "" }
+    { "id": "ben+britt",    "partners": ["ben", "britt"],       "children": ["levi", "baby"],                    "label": "Married Nov 1, 2025", "pets": ["phoenix", "bentley"] },
+    { "id": "josh+britt",   "partners": ["joshua", "britt"],    "children": ["levi"],                            "label": "Levi's dad" },
+    { "id": "megan+bran",   "partners": ["megan", "brandon"],   "children": ["jacie", "simon"],                  "label": "" },
+    { "id": "amanda+dan",   "partners": ["amanda", "daniel"],   "children": ["anniw", "justin", "mason"],        "label": "" },
+    { "id": "jacob+kath",   "partners": ["jacob", "kathleen"],  "children": ["liam", "desmond"],                 "label": "" },
+    { "id": "jakob+anni",   "partners": ["jakob", "annih"],     "children": ["leo"],                             "label": "" }
   ],
 
-  "_HOW_BRANCHES_WORK": "Relatives shown as names only, in the 'More Family' drawer at the bottom. Add or remove freely — no IDs needed.",
-  "branches": [
-    { "emoji": "👵", "title": "Great-Grandparents",
-      "members": ["Sherri McGee", "Ken McGee", "Grandma George", "Grandpa George", "Mary", "Grandpa Dawson"] },
-    { "emoji": "🌲", "title": "More McGees",
-      "members": ["Faith McGee", "Jim Schneider", "Mark McGee", "Andrea McGee", "Becky Caminiti McGee", "Tim Caminiti", "Anthony McGee", "Trevor McGee", "Katie McGee"] },
-    { "emoji": "🌾", "title": "The Schneiders",
-      "members": ["Amber Schneider", "Aaron Schneider", "Lauren Schneider", "Andrew Schneider", "Mathew Schneider", "Elizabeth Whittington Schneider", "Bill Whittington"] },
-    { "emoji": "🌻", "title": "The Georges",
-      "members": ["David George", "David Jr George", "Heather George", "Phillip George", "Paula George", "Sara George", "J.R. George", "Linda George", "Joyce George", "Larry George", "Shawna George", "Brooke George", "Arianna Nieves George", "Alexa Stephen George", "Astynn Morrison George", "Stephen Middleton", "Rigo Nieves", "Austin Morrison", "Knox Morrison", "Dan", "DJ", "Josh", "Tracy"] },
-    { "emoji": "🍂", "title": "Appleyard & Washegesic",
-      "members": ["Megan Appleyard Washegesic", "Don Washegesic", "Alec Washegesic", "Sarah Washegesic", "Marcy Till Washegesic", "Ryan Till", "Marissa Till", "Rebecca Till", "Samantha Till"] },
-    { "emoji": "🐿️", "title": "The Kovariks",
-      "members": ["Lindsey Kovarik", "Maddy Kovarik", "Nina Kovarik"] }
+  "_HOW_TIERS_WORK": "Display rows, top to bottom. Each row is either a couple [\"a\",\"b\"] or a single person \"a\". Couple captions come from the matching union above.",
+  "tiers": [
+    { "title": "Grandparents",
+      "rows": [["tim","maryann"], ["jimh","jennifer"], ["helen"], ["jennifer","jeff"]] },
+
+    { "title": "Parents, Aunts & Uncles",
+      "rows": [["ben","britt"], ["joshua"], ["megan","brandon"], ["amanda","daniel"],
+               ["jacob","kathleen"], ["jakob","annih"], ["emily"], ["aj"]] },
+
+    { "title": "Levi & Cousins",
+      "rows": ["levi", "baby", "jacie", "simon", "anniw", "justin", "mason",
+               "liam", "desmond", "leo"] },
+
+    { "title": "Our Dogs",
+      "rows": ["phoenix", "bentley"] }
   ],
 
-  "_HOW_QUESTIONS_WORK": "While this list has items, a note shows at the bottom of the page. Set to [] to hide it.",
   "open_questions": []
 }
