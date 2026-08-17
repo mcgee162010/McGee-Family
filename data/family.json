@@ -26,6 +26,8 @@
 
     "tim":      { "name": "Tim McGee",          "rel": "Ben's Dad",              "face": "👴", "born": "1960-09-04" },
     "maryann":  { "name": "Mary Ann Appleyard", "rel": "Ben's Mom",              "face": "👵", "born": "1963-11-22" },
+    "laura":    { "name": "Laura Kovarik",      "rel": "Ben's Stepmom",          "face": "👵", "note": "Married to Tim." },
+    "michael":  { "name": "Michael Appleyard",  "rel": "Ben's Stepdad",          "face": "👴", "note": "Married to Mary Ann." },
     "jimh":     { "name": "Jim Holter",         "rel": "Brittney's Dad",         "face": "👴" },
     "jennifer": { "name": "Jennifer Dawson",    "rel": "Brittney's Mom",         "face": "👵" },
     "jeff":     { "name": "Jeff Dawson",        "rel": "Brittney's Stepdad",     "face": "👴" },
@@ -61,6 +63,8 @@
     { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                            "label": "" },
 
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"], "label": "Ben's mom & dad", "status": "past" },
+    { "id": "tim+laura",   "partners": ["tim", "laura"],      "children": [],                                 "label": "Remarried" },
+    { "id": "mary+mike",   "partners": ["maryann", "michael"], "children": [],                                "label": "Remarried" },
     { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "Brittney's mom & dad", "status": "past" },
     { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "Jakob's mom & dad" },
     { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                 "label": "Divorced", "status": "past" },
@@ -75,7 +79,8 @@
   "_HOW_TIERS_WORK": "Rows shown below the home block, top to bottom. Each row is a couple [\"a\",\"b\"] or a single person \"a\". Anyone in 'home' is rendered there and must NOT be repeated here.",
   "tiers": [
     { "title": "Grandparents",
-      "rows": [["tim","maryann"], ["jimh","jennifer"], ["jennifer","jeff"], ["helen"]] },
+      "rows": [["tim","maryann"], ["tim","laura"], ["maryann","michael"],
+               ["jimh","jennifer"], ["jennifer","jeff"], ["jimh","helen"]] },
 
     { "title": "Aunts & Uncles",
       "rows": [["megan","brandon"], ["amanda","daniel"], ["jacob","kathleen"],

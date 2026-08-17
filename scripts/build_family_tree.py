@@ -288,25 +288,28 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 
 /* ── home block ─────────────────────────────────────────── */
 .home{max-width:1180px;margin:0 auto;padding:8px 20px 0}
+.home-flank{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
 .home-in{background:linear-gradient(168deg,var(--card),var(--sage-pale));
   border:1.5px solid color-mix(in srgb,var(--sage) 55%,transparent);
-  border-radius:26px;padding:30px 26px 26px;box-shadow:var(--sh-2);position:relative}
+  border-radius:26px;padding:28px 30px 26px;box-shadow:var(--sh-2);position:relative}
 .home-h{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--forest);margin-bottom:22px}
-.home-row{display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:wrap}
+  text-transform:uppercase;color:var(--forest);margin-bottom:20px}
 .home-main{display:flex;flex-direction:column;align-items:center}
 .home-kids{display:flex;gap:20px;justify-content:center;margin-top:4px;flex-wrap:wrap}
 
-/* co-parent sits to the side, joined by a dashed rail */
-.co{display:flex;align-items:center;margin-top:96px}
-.co-rail{width:54px;height:0;border-top:2px dashed var(--mushroom);position:relative;flex:0 0 54px}
-.co-rail span{position:absolute;left:50%;top:-19px;transform:translateX(-50%);
-  font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--mushroom);white-space:nowrap;background:var(--cream);padding:0 6px}
-@media(max-width:760px){
-  .co{margin-top:18px;flex-direction:column;width:100%}
-  .co-rail{width:0;height:32px;border-top:none;border-left:2px dashed var(--mushroom);flex:0 0 32px}
-  .co-rail span{left:auto;right:auto;top:50%;transform:translateY(-50%) translateX(10px);white-space:nowrap}
+/* co-parent: fully outside the green box, joined by a dashed rail */
+.co{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
+.co-rail{width:62px;height:0;border-top:2px dashed var(--mushroom);position:relative;
+  flex:0 0 62px;align-self:center}
+.co-cap{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mushroom);white-space:nowrap;margin-bottom:7px;text-align:center}
+.co-wrap{display:flex;align-items:center;flex:0 0 auto}
+@media(max-width:820px){
+  .home-flank{flex-direction:column}
+  .co-wrap{flex-direction:column;margin-top:0}
+  .co-rail{width:0;height:34px;border-top:none;
+    border-left:2px dashed var(--mushroom);flex:0 0 34px;margin:0 auto}
+  .co-cap{margin:9px 0 4px}
 }
 .p.is-home{border-color:color-mix(in srgb,var(--sage) 60%,transparent);
   box-shadow:0 2px 10px rgba(60,40,20,.07)}
@@ -723,23 +726,27 @@ def render_home(d: dict) -> str:
     co_html = ""
     if co and co in people:
         co_html = (
+            '      <div class="co-wrap">\n'
+            '        <div class="co-rail"></div>\n'
             '        <div class="co">\n'
-            f'          <div class="co-rail"><span>{escape(h.get("coparentLabel","Co-parent"))}</span></div>\n'
+            f'          <div class="co-cap">{escape(h.get("coparentLabel","Co-parent"))}</div>\n'
             f'          {card(co, people[co])}\n'
             "        </div>\n"
+            "      </div>\n"
         )
 
     return (
-        '  <section class="home">\n    <div class="home-in">\n'
-        '      <p class="home-h">Our Home</p>\n'
-        '      <div class="home-row">\n'
+        '  <section class="home">\n'
+        '    <div class="home-flank">\n'
+        '      <div class="home-in">\n'
+        '        <p class="home-h">Our Home</p>\n'
         '        <div class="home-main">\n'
         f'          <div class="pod">{pair}{lbl}</div>\n'
         + ('          <div class="link" aria-hidden="true"></div>\n'
            f'          <div class="home-kids">{kids_html}</div>\n' if kids else "")
-        + "        </div>\n"
+        + "        </div>\n      </div>\n"
         + co_html
-        + "      </div>\n    </div>\n  </section>\n"
+        + "    </div>\n  </section>\n"
     )
 
 
