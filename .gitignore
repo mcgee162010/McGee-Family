@@ -5,3 +5,7 @@ photos/misc/
 *.MOV
 *.mp4
 *.MP4
+
+__pycache__/
+*.pyc
+.DS_Store

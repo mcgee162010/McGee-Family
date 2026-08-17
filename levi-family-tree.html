@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="Levi's family tree — the people who love him, from great-grandparents down to Baby McGee."/>
+  <title>Levi's Family Tree · McGee Family</title>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="The McGee Family"/>
+  <meta property="og:url"         content="https://mcgeefamily2025.com/levi-family-tree.html"/>
+  <meta property="og:title"       content="Levi's Family Tree · McGee Family"/>
+  <meta property="og:description" content="Every branch, every name — the family that loves Levi."/>
+  <meta name="theme-color"        content="#7A9E7E"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="McGee Family"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://mcgeefamily2025.com/levi-family-tree.html"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ══ Page hero ══ */
+    .page-hero {
+      background: linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--brown-pale) 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(36px, 7vw, 68px); margin-bottom: 12px; }
+    .page-hero p  { font-size: 18px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; }
+
+    /* ══ View switch ══ */
+    .tree-toolbar {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center; justify-content: center;
+      margin-bottom: 34px;
+    }
+    .seg {
+      display: inline-flex; padding: 4px;
+      background: rgba(122,158,126,0.12);
+      border-radius: var(--radius-full);
+    }
+    .seg button {
+      font: inherit; font-size: 14px; font-weight: 600;
+      color: var(--text-secondary);
+      background: none; border: none; cursor: pointer;
+      padding: 9px 20px; border-radius: var(--radius-full);
+      transition: background .22s ease, color .22s ease, transform .12s ease;
+    }
+    .seg button[aria-selected="true"] {
+      background: #fff; color: var(--forest);
+      box-shadow: 0 2px 8px rgba(60,40,20,0.10);
+    }
+    .seg button:active { transform: scale(.97); }
+    .seg button:focus-visible { outline: 3px solid var(--sage); outline-offset: 2px; }
+
+    /* ══ Generation rows ══ */
+    .gen {
+      margin-bottom: 8px;
+      padding: 26px 0 0;
+      opacity: 0; transform: translateY(14px);
+      animation: rise .55s cubic-bezier(.22,.8,.3,1) forwards;
+    }
+    .gen:nth-child(1){animation-delay:.02s}.gen:nth-child(2){animation-delay:.09s}
+    .gen:nth-child(3){animation-delay:.16s}.gen:nth-child(4){animation-delay:.23s}
+    .gen:nth-child(5){animation-delay:.30s}
+    @keyframes rise { to { opacity:1; transform:none } }
+    @media (prefers-reduced-motion: reduce) {
+      .gen { animation: none; opacity: 1; transform: none; }
+    }
+
+    .gen-title {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.10em;
+      text-transform: uppercase; color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+    .gen-title::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(122,158,126,0.35), transparent);
+    }
+
+    .row {
+      display: flex; flex-wrap: wrap;
+      gap: 18px 26px; justify-content: center;
+    }
+
+    /* ══ Couple bracket ══ */
+    .couple {
+      position: relative;
+      display: flex; align-items: stretch; gap: 0;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(122,158,126,0.20);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+    }
+    .couple::before {
+      content: "";
+      position: absolute; top: 50%; left: 50%;
+      width: 22px; height: 2px; margin-left: -11px;
+      background: var(--sage-light); border-radius: 2px;
+    }
+    .couple .person + .person { margin-left: 22px; }
+    .couple-label {
+      position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%);
+      background: var(--cream); padding: 0 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    /* ══ Person card ══ */
+    .person {
+      width: 152px; flex-shrink: 0;
+      background: #fff;
+      border: 1px solid rgba(122,158,126,0.22);
+      border-radius: var(--radius-md);
+      padding: 16px 12px 14px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(60,40,20,0.05);
+      transition: transform .22s cubic-bezier(.22,.8,.3,1), box-shadow .22s ease, border-color .22s ease;
+    }
+    .person:hover, .person:focus-within {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(60,40,20,0.12);
+      border-color: var(--sage);
+    }
+    .p-face {
+      width: 62px; height: 62px; margin: 0 auto 10px;
+      border-radius: var(--radius-full);
+      background: var(--sage-pale);
+      display: grid; place-items: center;
+      font-size: 30px; overflow: hidden;
+      border: 2px solid rgba(122,158,126,0.28);
+    }
+    .p-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .p-name { font-size: 14.5px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; color: var(--text-primary); }
+    .p-rel  { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--sage); margin-top: 5px; }
+    .p-date { font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px; }
+
+    /* Emphasis states */
+    .person.is-levi {
+      border: 2px solid var(--terracotta);
+      background: linear-gradient(160deg, #fff, var(--terra-pale));
+      box-shadow: 0 6px 22px rgba(196,113,74,0.18);
+    }
+    .person.is-levi .p-rel { color: var(--terracotta); }
+    .person.is-baby {
+      border: 2px dashed var(--sage);
+      background: linear-gradient(160deg, #fff, var(--sage-pale));
+    }
+    .person.is-pet .p-rel { color: var(--brown-light); }
+    .person.is-memory { background: var(--cream-dark); }
+    .person.is-memory .p-face { filter: grayscale(1); opacity: .8; }
+    .person.is-memory .p-rel { color: var(--mushroom); }
+
+    .badge-soon {
+      display: inline-block; margin-top: 8px;
+      background: var(--sage); color: #fff;
+      font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 4px 10px; border-radius: var(--radius-full);
+    }
+
+    /* ══ Connector ══ */
+    .connector {
+      width: 2px; height: 30px; margin: 0 auto;
+      background: linear-gradient(180deg, var(--sage-light), rgba(178,205,181,0.25));
+      border-radius: 2px;
+    }
+
+    /* ══ Extended branches ══ */
+    .branch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .branch {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(122,158,126,0.20);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .branch > summary {
+      cursor: pointer; list-style: none;
+      padding: 20px 22px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 17px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--forest);
+    }
+    .branch > summary::-webkit-details-marker { display: none; }
+    .branch > summary::after {
+      content: "＋"; margin-left: auto;
+      font-size: 18px; color: var(--text-tertiary);
+      transition: transform .25s ease;
+    }
+    .branch[open] > summary::after { transform: rotate(45deg); }
+    .branch > summary:focus-visible { outline: 3px solid var(--sage); outline-offset: -3px; }
+    .branch-emoji { font-size: 22px; }
+    .branch-body { padding: 0 22px 22px; }
+    .branch-body ul { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; }
+    .branch-body li {
+      background: var(--sage-pale); color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      padding: 6px 13px; font-size: 13.5px;
+    }
+    .branch-note {
+      font-size: 13px; color: var(--text-tertiary);
+      margin-bottom: 12px; line-height: 1.6;
+    }
+
+    /* ══ Verify callout ══ */
+    .verify {
+      background: var(--brown-pale);
+      border-left: 4px solid var(--terracotta);
+      border-radius: var(--radius-md);
+      padding: 24px 26px;
+    }
+    .verify h3 { font-size: 19px; color: var(--brown); margin-bottom: 10px; }
+    .verify ol { margin: 0 0 0 20px; }
+    .verify li { font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 6px; }
+
+    .fact-strip {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px; margin-top: 30px;
+    }
+    .fact {
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(122,158,126,0.18);
+      border-radius: var(--radius-md);
+      padding: 18px 16px; text-align: center;
+    }
+    .fact b { display: block; font-size: 26px; color: var(--forest); letter-spacing: -0.02em; }
+    .fact span { font-size: 12.5px; color: var(--text-tertiary); }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 620px) {
+      .person { width: calc(50% - 13px); min-width: 132px; }
+      .couple { width: 100%; padding: 10px; }
+      .couple .person + .person { margin-left: 12px; }
+      .row { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🌲</span> McGee Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="family.html">Our Family</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li class="nav-more">
+        <button class="nav-more-btn" aria-haspopup="true" aria-expanded="false">More ▾</button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="levi-family-tree.html" role="menuitem">Levi's Family Tree</a></li>
+          <li><a href="vows.html" role="menuitem">Our Vows</a></li>
+          <li><a href="timeline.html" role="menuitem">Timeline</a></li>
+          <li><a href="year-in-review.html" role="menuitem">Year in Review</a></li>
+          <li><a href="letters.html" role="menuitem">Letters</a></li>
+          <li><a href="archive.html" role="menuitem">Family Archive</a></li>
+          <li><a href="bentley.html" role="menuitem">In Memory of Bentley</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Levi's Family Tree</h1>
+    <p>Every name here is someone who loves you, Levi. Tap a branch to meet more of them.</p>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <div class="tree-toolbar">
+        <div class="seg" role="tablist" aria-label="Choose a view">
+          <button id="tab-close" role="tab" aria-selected="true"  aria-controls="view-close">Levi's Circle</button>
+          <button id="tab-ext"   role="tab" aria-selected="false" aria-controls="view-ext">Everybody Else</button>
+        </div>
+      </div>
+
+      <!-- ═══════════ VIEW 1 · LEVI'S CIRCLE ═══════════ -->
+      <section id="view-close" role="tabpanel" aria-labelledby="tab-close">
+
+        <div class="gen">
+          <div class="gen-title">Great-Grandparents</div>
+          <div class="row">
+            <div class="couple">
+              <div class="person"><div class="p-face">👵</div><div class="p-name">Sherri McGee</div><div class="p-rel">Great-Grandma</div></div>
+              <div class="person"><div class="p-face">👴</div><div class="p-name">Ken McGee</div><div class="p-rel">Great-Grandpa</div></div>
+              <div class="couple-label">McGee</div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👵</div><div class="p-name">Grandma George</div><div class="p-rel">Great-Grandma</div></div>
+              <div class="person"><div class="p-face">👴</div><div class="p-name">Grandpa George</div><div class="p-rel">Great-Grandpa</div></div>
+              <div class="couple-label">George</div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👵</div><div class="p-name">Mary</div><div class="p-rel">Great-Grandma</div></div>
+              <div class="person"><div class="p-face">👴</div><div class="p-name">Grandpa Dawson</div><div class="p-rel">Great-Grandpa</div></div>
+              <div class="couple-label">Dawson</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="gen">
+          <div class="gen-title">Grandparents</div>
+          <div class="row">
+            <div class="couple">
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Tim McGee</div><div class="p-rel">Grandpa</div><div class="p-date">Born Sep 3, 1962</div></div>
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Mary Ann George Appleyard</div><div class="p-rel">Grandma</div><div class="p-date">Born Nov 22, 1963</div></div>
+              <div class="couple-label">Dad Ben's parents</div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Jim Holter</div><div class="p-rel">Grandpa</div></div>
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Jennifer Dawson</div><div class="p-rel">Grandma</div></div>
+              <div class="couple-label">Mom Britt's parents</div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Faith Schneider</div><div class="p-rel">Great-Aunt</div></div>
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Jim Schneider</div><div class="p-rel">Great-Uncle</div></div>
+              <div class="couple-label">Grandpa Tim's sister</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="gen">
+          <div class="gen-title">Mom &amp; Dad</div>
+          <div class="row">
+            <div class="couple">
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Ben McGee</div><div class="p-rel">Dad</div><div class="p-date">Born Oct 26, 1991</div></div>
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Brittney Holter McGee</div><div class="p-rel">Mom</div><div class="p-date">Born Dec 5, 1995</div></div>
+              <div class="couple-label">Married Nov 1, 2025</div>
+            </div>
+            <div class="person"><div class="p-face">👨</div><div class="p-name">Joshua Parrish</div><div class="p-rel">Dad</div></div>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="gen">
+          <div class="gen-title">Aunts &amp; Uncles</div>
+          <div class="row">
+            <div class="couple">
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Megan McGee Collins</div><div class="p-rel">Aunt</div></div>
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Brandon Collins</div><div class="p-rel">Uncle</div></div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Amanda McGee Walsh</div><div class="p-rel">Aunt</div></div>
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Daniel Walsh</div><div class="p-rel">Uncle</div></div>
+            </div>
+            <div class="couple">
+              <div class="person"><div class="p-face">👨</div><div class="p-name">Jacob McGee</div><div class="p-rel">Uncle</div></div>
+              <div class="person"><div class="p-face">👩</div><div class="p-name">Kathleen McGee</div><div class="p-rel">Aunt</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="gen">
+          <div class="gen-title">Levi &amp; Family</div>
+          <div class="row">
+            <div class="person is-levi">
+              <div class="p-face">🧒</div>
+              <div class="p-name">Levi</div>
+              <div class="p-rel">That's you!</div>
+              <div class="p-date">Born Apr 7, 2019</div>
+            </div>
+            <div class="person is-baby">
+              <div class="p-face">🍼</div>
+              <div class="p-name">Baby McGee</div>
+              <div class="p-rel">Little Sibling</div>
+              <div class="p-date">Due Sep 4, 2026</div>
+              <span class="badge-soon">Coming Soon</span>
+            </div>
+            <div class="person is-pet">
+              <div class="p-face">🐕</div>
+              <div class="p-name">Phoenix</div>
+              <div class="p-rel">Best Dog</div>
+              <div class="p-date">Born Nov 28, 2021</div>
+            </div>
+            <div class="person is-pet is-memory">
+              <div class="p-face">🐾</div>
+              <div class="p-name">Bentley</div>
+              <div class="p-rel">Always Loved</div>
+              <div class="p-date">Until Apr 9, 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="gen">
+          <div class="gen-title">Levi's Cousins</div>
+          <div class="row">
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Jacey Collins</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Simon Collins</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Avni Walsh</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Justin Walsh</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Mason Walsh</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Liam McGee</div><div class="p-rel">Cousin</div></div>
+            <div class="person"><div class="p-face">🧒</div><div class="p-name">Desmond McGee</div><div class="p-rel">Cousin</div></div>
+          </div>
+        </div>
+
+        <div class="fact-strip">
+          <div class="fact"><b>7</b><span>Cousins</span></div>
+          <div class="fact"><b>6</b><span>Aunts &amp; uncles</span></div>
+          <div class="fact"><b>90+</b><span>Relatives</span></div>
+          <div class="fact"><b>1</b><span>Baby on the way</span></div>
+        </div>
+      </section>
+
+      <!-- ═══════════ VIEW 2 · EXTENDED ═══════════ -->
+      <section id="view-ext" role="tabpanel" aria-labelledby="tab-ext" hidden>
+        <p class="branch-note" style="text-align:center;max-width:620px;margin:0 auto 30px">
+          Levi's family reaches across four big branches. Tap any branch to see who's in it.
+        </p>
+
+        <div class="branch-grid">
+
+          <details class="branch" open>
+            <summary><span class="branch-emoji">🌲</span> The McGees</summary>
+            <div class="branch-body">
+              <p class="branch-note">Dad Ben's wider side — great-aunts, great-uncles, and second cousins.</p>
+              <ul>
+                <li>Mark McGee</li><li>Andrea McGee</li><li>Becky Cantrell McGee</li>
+                <li>Tim Cantrell</li><li>Laura Kovarik McGee</li>
+                <li>Anthony McGee</li><li>Trevor McGee</li><li>Katie McGee</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🌻</span> The Georges</summary>
+            <div class="branch-body">
+              <p class="branch-note">Grandma Mary Ann's family — the biggest branch of all.</p>
+              <ul>
+                <li>David George</li><li>David Jr George</li><li>Heather George</li>
+                <li>Phillip George</li><li>Paula George</li><li>Sara George</li>
+                <li>J.R. George</li><li>Linda George</li><li>Joyce George</li>
+                <li>Larry George</li><li>Shawna George</li><li>Brooke George</li>
+                <li>Arianna Kleve George</li><li>Alexa Stephen George</li>
+                <li>Aalynn Morrison George</li><li>Stephen Middleton</li>
+                <li>Riga Neves</li><li>Dan</li><li>DJ</li><li>Josh</li><li>Tracy</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🌾</span> The Holters &amp; Dawsons</summary>
+            <div class="branch-body">
+              <p class="branch-note">Mom Britt's side.</p>
+              <ul>
+                <li>Anni Holter</li><li>Jakob Holter</li><li>Leo Holter</li>
+                <li>Elizabeth Whittington Schneider</li><li>Bill Whittington</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🌲</span> The Schneiders</summary>
+            <div class="branch-body">
+              <p class="branch-note">Grandpa Tim's sister Faith married Jim Schneider — Dad Ben's aunt and uncle.</p>
+              <ul>
+                <li>Faith Schneider</li><li>Jim Schneider</li>
+                <li>Amber Schneider</li><li>Aaron Schneider</li>
+                <li>Lauren Schneider</li><li>Andrew Schneider</li><li>Matthew Schneider</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🍂</span> Appleyard &amp; Washegesic</summary>
+            <div class="branch-body">
+              <p class="branch-note">More of Grandma Mary Ann's family.</p>
+              <ul>
+                <li>Michael Appleyard</li><li>Helen Eubanks</li>
+                <li>Megan Appleyard Washegesic</li><li>Don Washegesic</li>
+                <li>Alec Washegesic</li><li>Sarah Washegesic</li>
+                <li>Mercy Till Washegesic</li><li>Ryan Till</li>
+                <li>Marissa Till</li><li>Rebecca Till</li><li>Samantha Till</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🌰</span> Collins &amp; Walsh Cousins</summary>
+            <div class="branch-body">
+              <p class="branch-note">Levi's cousins to play with.</p>
+              <ul>
+                <li>Brandon Collins</li><li>Jacey Collins</li><li>Simon Collins</li>
+                <li>Daniel Walsh</li><li>Avni Walsh</li><li>Justin Walsh</li><li>Mason Walsh</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="branch">
+            <summary><span class="branch-emoji">🐿️</span> Kovarik &amp; Morrison</summary>
+            <div class="branch-body">
+              <p class="branch-note">More cousins.</p>
+              <ul>
+                <li>Lindsey Kovarik</li><li>Maddy Kovarik</li><li>Nina Kovarik</li>
+                <li>Austin Morrison</li><li>Knox Morrison</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="verify" style="margin-top:34px">
+          <h3>Ben — one item left before this goes public</h3>
+          <ol>
+            <li><b>Cousin-to-parent mapping.</b> I matched cousins to parents by surname only. Confirm:
+              Jacey + Simon → Megan &amp; Brandon · Avni + Justin + Mason → Amanda &amp; Daniel · Liam + Desmond → Jacob &amp; Kathleen.</li>
+          </ol>
+          <p class="branch-note" style="margin:14px 0 0">
+            <b>Confirmed:</b> Sherri + Ken McGee are Tim's parents · Tim + Mary Ann are Ben's parents ·
+            Jacob, Amanda, Megan are Ben's full siblings · Brandon↔Megan, Daniel↔Amanda, Kathleen↔Jacob ·
+            Jim Holter + Jennifer Dawson are Brittney's parents · Faith Schneider is Tim's sister, married to Jim Schneider
+            (Ben's aunt &amp; uncle) · Jacey, not Josie.<br><br>
+            Delete this whole <code>div.verify</code> block once the cousin mapping is confirmed. Auto-generated placeholders
+            from Family Tree Builder ("Partner of Sara", "Child of Partner of Paula", "XXX") were intentionally dropped.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-tagline">Faith. Family. Forever.</p>
+      <p class="footer-note">The McGee Family · Queen Creek, Arizona</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var tabs = [
+        { btn: document.getElementById('tab-close'), panel: document.getElementById('view-close') },
+        { btn: document.getElementById('tab-ext'),   panel: document.getElementById('view-ext')   }
+      ];
+      function select(i) {
+        tabs.forEach(function (t, n) {
+          var on = n === i;
+          t.btn.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.panel.hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.btn.addEventListener('click', function () { select(i); });
+        t.btn.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            var next = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+            select(next); tabs[next].btn.focus();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
