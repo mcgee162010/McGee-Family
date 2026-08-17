@@ -3,9 +3,21 @@
 
   "meta": {
     "title": "McGee Family Tree",
+    "family": "Faith. Family. Forever.",
     "intro": "Start with Mom and Dad. Tap anyone to meet their family.",
     "root": "ben+britt",
+    "me": "levi",
+    "generations": ["Grandparents", "Parents", "Levi's Generation", "Cousins"],
     "updated": "2026-08-17"
+  },
+
+  "_HOW_LINEAGES_WORK": "Optional subtle tint per family line. Set \"lineage\":\"mcgee\" on the topmost person of a line and it flows down to their descendants. Toggle off in the UI with Branch colors.",
+  "lineages": {
+    "mcgee":     "#6b4f3a",
+    "george":    "#b8944d",
+    "holter":    "#3d6b52",
+    "dawson":    "#c4714a",
+    "schneider": "#8a6a4f"
   },
 
   "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, crop?, style?, badge?, note? }. 'photo' is a path like photos/ben/x.jpg — if absent, the emoji in 'face' is used. 'crop' aims the photo inside the circle: '50% 30%' means centered horizontally, 30% from the top. Raise the 2nd number to move DOWN the photo, lower it to move UP.",
@@ -18,12 +30,12 @@
     "bentley":  { "name": "Bentley",            "rel": "Always Loved",   "face": "🐾", "born": "2013-01-01", "died": "2026-04-09", "photo": "photos/tree/bentley.jpg", "src": "photos/bentley/IMG_0039.jpeg", "crop": "48% 50%", "zoom": "1.5", "style": "pet memory", "note": "Mom's golden retriever and service dog. Jumped in the lake the day Dad proposed." },
     "joshua":   { "name": "Joshua Parrish",     "rel": "Dad",            "face": "👨", "note": "Levi's dad." },
 
-    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1960-09-04", "note": "Dad's dad." },
-    "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "note": "Dad's mom." },
+    "tim":      { "name": "Tim McGee",          "rel": "Grandpa",        "face": "👴", "born": "1960-09-04", "lineage": "mcgee", "note": "Dad's dad." },
+    "maryann":  { "name": "Mary Ann Appleyard", "rel": "Grandma",        "face": "👵", "born": "1963-11-22", "lineage": "george", "note": "Dad's mom." },
     "michael":  { "name": "Michael Appleyard",  "rel": "Grandpa",        "face": "👴", "note": "Married to Grandma Mary Ann." },
     "laura":    { "name": "Laura Kovarik",      "rel": "Grandma",        "face": "👵", "note": "Married to Grandpa Tim." },
-    "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "note": "Mom's dad." },
-    "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "note": "Mom's mom." },
+    "jimh":     { "name": "Jim Holter",         "rel": "Grandpa",        "face": "👴", "lineage": "holter", "note": "Mom's dad." },
+    "jennifer": { "name": "Jennifer Dawson",    "rel": "Grandma",        "face": "👵", "lineage": "dawson", "note": "Mom's mom." },
     "jeff":     { "name": "Jeff Dawson",        "rel": "Grandpa",        "face": "👴", "note": "Mom's stepdad." },
 
     "megan":    { "name": "Megan Collins",      "rel": "Aunt",           "face": "👩", "note": "Dad's sister." },
@@ -53,7 +65,7 @@
 
   "_HOW_UNIONS_WORK": "Each union is one household: partners plus their children. 'id' is referenced by meta.root. Optional 'status': \"past\" marks a divorced or former relationship — it renders with a broken connector line.",
   "unions": [
-    { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["levi", "baby"],                     "label": "Married Nov 1, 2025", "pets": ["phoenix", "bentley"] },
+    { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["levi", "baby"],                     "label": "Married Nov 1, 2025", "date": "2025-11-01", "pets": ["phoenix", "bentley"] },
     { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                             "label": "Levi's dad" },
 
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"],  "label": "Dad's mom & dad", "status": "past" },
