@@ -264,6 +264,16 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 .search input:focus{width:250px}
 .search::before{content:"⌕";position:absolute;left:12px;top:50%;transform:translateY(-52%);
   font-size:16px;color:var(--ink-3);pointer-events:none}
+
+/* display options menu */
+#opts{position:absolute;top:52px;right:16px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r-m);padding:8px;
+  box-shadow:var(--sh-2);z-index:80;display:grid;gap:2px;min-width:186px}
+#opts[hidden]{display:none}
+#opts label{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-2);
+  padding:8px 10px;border-radius:var(--r-s);cursor:pointer}
+#opts label:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+#opts input{width:15px;height:15px;margin:0;accent-color:var(--forest);flex:0 0 15px}
 @media(max-width:620px){.search input{width:120px}.search input:focus{width:160px}}
 .results{position:absolute;top:calc(100% + 8px);left:0;min-width:280px;max-height:320px;
   overflow-y:auto;background:var(--card);border:1px solid var(--line);
@@ -638,8 +648,20 @@ q('#theme').onclick=function(){
   var d=document.documentElement,n=d.dataset.theme==='dark'?'light':'dark';
   d.dataset.theme=n;this.textContent=n==='dark'?'☾':'☀';
   try{localStorage.setItem('mcgee-theme',n);}catch(_){}};
-q('#gear').onclick=function(){
+q('#gear').onclick=function(e){
+  e.stopPropagation();
   var m=q('#opts'),o=m.hidden;m.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');};
+/* close the settings menu on outside click or Escape */
+document.addEventListener('click',function(e){
+  if(e.target.closest('#opts,#gear'))return;
+  var m=q('#opts');
+  if(m&&!m.hidden){m.hidden=true;q('#gear').setAttribute('aria-expanded','false');}
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape')return;
+  var m=q('#opts');
+  if(m&&!m.hidden){m.hidden=true;q('#gear').setAttribute('aria-expanded','false');}
+});
 q('#big').onchange=function(){document.body.classList.toggle('big',this.checked);};
 q('#hc').onchange=function(){document.documentElement.dataset.contrast=this.checked?'high':'';};
 q('#rm').onchange=function(){document.documentElement.dataset.motion=this.checked?'off':'';};
@@ -865,12 +887,10 @@ def build(d: dict) -> str:
   <button class="btn icon" id="theme" aria-label="Toggle dark mode">☀</button>
   <button class="btn icon" id="gear" aria-expanded="false" aria-controls="opts"
           aria-label="Display options">⚙</button>
-  <div id="opts" hidden style="position:absolute;top:52px;right:16px;background:var(--card);
-       border:1px solid var(--line);border-radius:var(--r-m);padding:14px 16px;
-       box-shadow:var(--sh-2);z-index:80;display:grid;gap:10px;font-size:13.5px">
-    <label><input type="checkbox" id="big"/> Larger text</label>
-    <label><input type="checkbox" id="hc"/> High contrast</label>
-    <label><input type="checkbox" id="rm"/> Reduce motion</label>
+  <div id="opts" hidden>
+    <label><input type="checkbox" id="big"/><span>Larger text</span></label>
+    <label><input type="checkbox" id="hc"/><span>High contrast</span></label>
+    <label><input type="checkbox" id="rm"/><span>Reduce motion</span></label>
   </div>
 </header>
 

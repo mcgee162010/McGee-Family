@@ -31,7 +31,7 @@
     "jimh":     { "name": "Jim Holter",         "rel": "Brittney's Dad",         "face": "👴" },
     "jennifer": { "name": "Jennifer Dawson",    "rel": "Brittney's Mom",         "face": "👵" },
     "jeff":     { "name": "Jeff Dawson",        "rel": "Brittney's Bonus Dad",     "face": "👴" },
-    "helen":    { "name": "Helen Eubanks",      "rel": "Jakob's Mom",            "face": "👵" },
+    "helen":    { "name": "Helen Eubanks",      "rel": "Brittney's Bonus Mom",   "face": "👵", "note": "Married to Jim. Jakob's mom." },
 
     "megan":    { "name": "Megan Collins",      "rel": "Ben's Sister",           "face": "👩" },
     "brandon":  { "name": "Brandon Collins",    "rel": "Megan's Husband",        "face": "👨" },
@@ -83,7 +83,7 @@
     { "id": "megan+don",   "partners": ["megana", "don"],     "children": ["alex", "sarahw"],                  "label": "" },
     { "id": "marcy+ryan",  "partners": ["marcy", "ryan"],     "children": ["samantha", "rebecca", "marissa"],  "label": "" },
     { "id": "jim+jen",     "partners": ["jimh", "jennifer"],  "children": ["britt"],                          "label": "Brittney's mom & dad", "status": "past" },
-    { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "Jakob's mom & dad" },
+    { "id": "jim+helen",   "partners": ["jimh", "helen"],     "children": ["jakob"],                          "label": "" },
     { "id": "jen+jeff",    "partners": ["jennifer", "jeff"],  "children": [],                                 "label": "", "status": "past" },
     { "id": "jeff+kids",   "partners": ["jeff"],              "children": ["emily", "aj"],                     "label": "Jeff's kids" },
 
