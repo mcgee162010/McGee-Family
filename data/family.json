@@ -13,7 +13,7 @@
     "union": "ben+britt",
     "coparent": "joshua",
     "coparentOf": "levi",
-    "coparentLabel": "Levi's dad"
+    "coparentLabel": "Levi's parents"
   },
 
   "_HOW_PEOPLE_WORK": "id: { name, rel, face, born?, died?, due?, photo?, note?, badge?, style? }. 'rel' describes their place in THIS family, not their relation to one person. 'style' can be home, baby, pet, memory.",
@@ -72,7 +72,7 @@
 
   "_HOW_UNIONS_WORK": "One household per entry: partners plus their children. Optional \"status\":\"past\" renders a dashed connector for a divorce or former relationship.",
   "unions": [
-    { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["levi", "baby"],                    "label": "Married Nov 1, 2025", "pets": ["phoenix", "bentley"] },
+    { "id": "ben+britt",   "partners": ["ben", "britt"],      "children": ["baby", "levi"],                    "label": "Married Nov 1, 2025", "pets": ["phoenix", "bentley"] },
     { "id": "josh+britt",  "partners": ["joshua", "britt"],   "children": ["levi"],                            "label": "" },
 
     { "id": "tim+maryann", "partners": ["tim", "maryann"],    "children": ["ben", "megan", "amanda", "jacob"], "label": "Ben's mom & dad", "status": "past" },

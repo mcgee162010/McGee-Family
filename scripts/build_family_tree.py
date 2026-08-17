@@ -297,22 +297,28 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 .home-main{display:flex;flex-direction:column;align-items:center}
 .home-kids{display:flex;gap:20px;justify-content:center;margin-top:4px;flex-wrap:wrap}
 
-/* co-parent: fully outside the green box, joined by a dashed rail */
+/* co-parent: fully outside the green box, joined to the CHILD's row so the
+   dashed line reads "Joshua is also Levi's parent" rather than pointing at
+   the couple. */
+.home-flank{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap}
+.co-wrap{display:flex;align-items:flex-end;flex:0 0 auto;padding-bottom:20px}
 .co{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
-.co-rail{width:62px;height:0;border-top:2px dashed var(--mushroom);position:relative;
-  flex:0 0 62px;align-self:center}
+.co-rail{width:62px;height:0;border-top:2.5px dashed var(--mushroom);
+  flex:0 0 62px;margin-bottom:74px}
 .co-cap{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
   color:var(--mushroom);white-space:nowrap;margin-bottom:7px;text-align:center}
-.co-wrap{display:flex;align-items:center;flex:0 0 auto}
 @media(max-width:820px){
-  .home-flank{flex-direction:column}
-  .co-wrap{flex-direction:column;margin-top:0}
+  .home-flank{flex-direction:column;align-items:center}
+  .co-wrap{flex-direction:column;padding-bottom:0;align-items:center}
   .co-rail{width:0;height:34px;border-top:none;
-    border-left:2px dashed var(--mushroom);flex:0 0 34px;margin:0 auto}
+    border-left:2.5px dashed var(--mushroom);flex:0 0 34px;margin:0 auto}
   .co-cap{margin:9px 0 4px}
 }
 .p.is-home{border-color:color-mix(in srgb,var(--sage) 60%,transparent);
   box-shadow:0 2px 10px rgba(60,40,20,.07)}
+/* a child with a parent outside this household */
+.p.is-shared{border-style:dashed;border-width:2px;
+  border-color:color-mix(in srgb,var(--mushroom) 65%,transparent)}
 
 /* ── tiers ──────────────────────────────────────────────── */
 .wrap{max-width:1180px;margin:0 auto;padding:34px 20px 80px}
@@ -674,8 +680,10 @@ try{var t=localStorage.getItem('mcgee-theme');
 
 # ═══════════════════════════ render ═══════════════════════════
 
-def card(pid: str, p: dict) -> str:
+def card(pid: str, p: dict, extra: str = "") -> str:
     cls = "p" + "".join(f" is-{s}" for s in str(p.get("style", "")).split() if s)
+    if extra:
+        cls += " " + extra
     ys, yd = year(p.get("born")), year(p.get("died"))
     if ys and yd:
         life = f"{ys}–{yd}"
@@ -726,7 +734,11 @@ def render_home(d: dict) -> str:
     lbl = (f'<span class="pod-l">{escape(u["label"])}</span>'
            if u.get("label") else "")
     kids = (u.get("children", []) or [])
-    kids_html = "".join(card(k, people[k]) for k in kids)
+    co_of = h.get("coparentOf")
+    kids_html = "".join(
+        card(k, people[k], extra="is-shared" if k == co_of else "")
+        for k in kids
+    )
 
     co = h.get("coparent")
     co_html = ""
