@@ -98,8 +98,33 @@ def validate(d: dict) -> list[str]:
                     errors.append(f"tier '{t.get('title')}' references unknown '{pid}'")
                 else:
                     placed.append(pid)
-    # A person may legitimately appear twice only if they head two households
-    # (e.g. Jennifer with Jim and with Jeff). Flag anything beyond that.
+
+    # people rendered in the home block
+    home = d.get("home") or {}
+    in_home: list[str] = []
+    if home:
+        hu = next((x for x in unions if x["id"] == home.get("union")), None)
+        if not hu:
+            errors.append(f"home.union '{home.get('union')}' is not a known union id")
+        else:
+            in_home += hu.get("partners", []) + hu.get("children", []) \
+                + hu.get("pets", [])
+        for key in ("coparent", "coparentOf"):
+            ref = home.get(key)
+            if ref and ref not in ids:
+                errors.append(f"home.{key} '{ref}' is not a known person")
+        if home.get("coparent"):
+            in_home.append(home["coparent"])
+        # pets render in a tier, not the home block
+        in_home = [x for x in in_home
+                   if "pet" not in str(people.get(x, {}).get("style", ""))]
+
+    for pid in in_home:
+        if pid in placed:
+            errors.append(f"'{pid}' is in the home block AND a tier — "
+                          f"remove it from tiers")
+
+    # A person may appear twice in tiers only if they head two households.
     heads = {}
     for u in unions:
         for pid in u.get("partners", []):
@@ -109,8 +134,11 @@ def validate(d: dict) -> list[str]:
         if n > max(1, heads.get(pid, 1)):
             errors.append(f"'{pid}' appears {n}× in tiers but heads only "
                           f"{heads.get(pid,0)} household(s)")
-    for pid in sorted(ids - set(placed)):
-        errors.append(f"'{pid}' ({people[pid].get('name')}) is not placed in any tier")
+
+    everywhere = set(placed) | set(in_home)
+    for pid in sorted(ids - everywhere):
+        errors.append(f"'{pid}' ({people[pid].get('name')}) is not placed "
+                      f"in the home block or any tier")
 
     me = d.get("meta", {}).get("me")
     if me and me not in ids:
@@ -257,6 +285,31 @@ html[data-motion=off] *{animation:none!important;transition:none!important}
 }
 .hero p{font-size:16.5px;color:var(--ink-2);max-width:460px;margin:0 auto}
 .bar{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:22px}
+
+/* ── home block ─────────────────────────────────────────── */
+.home{max-width:1180px;margin:0 auto;padding:8px 20px 0}
+.home-in{background:linear-gradient(168deg,var(--card),var(--sage-pale));
+  border:1.5px solid color-mix(in srgb,var(--sage) 55%,transparent);
+  border-radius:26px;padding:30px 26px 26px;box-shadow:var(--sh-2);position:relative}
+.home-h{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--forest);margin-bottom:22px}
+.home-row{display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:wrap}
+.home-main{display:flex;flex-direction:column;align-items:center}
+.home-kids{display:flex;gap:20px;justify-content:center;margin-top:4px;flex-wrap:wrap}
+
+/* co-parent sits to the side, joined by a dashed rail */
+.co{display:flex;align-items:center;margin-top:96px}
+.co-rail{width:54px;height:0;border-top:2px dashed var(--mushroom);position:relative;flex:0 0 54px}
+.co-rail span{position:absolute;left:50%;top:-19px;transform:translateX(-50%);
+  font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--mushroom);white-space:nowrap;background:var(--cream);padding:0 6px}
+@media(max-width:760px){
+  .co{margin-top:18px;flex-direction:column;width:100%}
+  .co-rail{width:0;height:32px;border-top:none;border-left:2px dashed var(--mushroom);flex:0 0 32px}
+  .co-rail span{left:auto;right:auto;top:50%;transform:translateY(-50%) translateX(10px);white-space:nowrap}
+}
+.p.is-home{border-color:color-mix(in srgb,var(--sage) 60%,transparent);
+  box-shadow:0 2px 10px rgba(60,40,20,.07)}
 
 /* ── tiers ──────────────────────────────────────────────── */
 .wrap{max-width:1180px;margin:0 auto;padding:34px 20px 80px}
@@ -564,7 +617,6 @@ qa('.p').forEach(function(n){
 
 /* ── controls ── */
 q('#note-x').onclick=function(){select(sel);};
-q('#me').onclick=function(){if(G.me){open(G.me);scrollTo_(G.me);}};
 q('#all').onclick=function(){sel=null;highlight(null);
   window.scrollTo({top:0,behavior:'smooth'});};
 q('#theme').onclick=function(){
@@ -607,7 +659,6 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search'))re
 try{var t=localStorage.getItem('mcgee-theme');
   if(t){document.documentElement.dataset.theme=t;q('#theme').textContent=t==='dark'?'☾':'☀';}
 }catch(_){}
-if(!G.me)q('#me').style.display='none';
 })();
 """
 
@@ -649,6 +700,47 @@ def union_for(d: dict, pair: list[str]) -> dict | None:
         if set(u.get("partners", [])) == want:
             return u
     return None
+
+
+def render_home(d: dict) -> str:
+    """The centerpiece household: the couple, their children, and the
+    co-parent joined by a dashed rail."""
+    h = d.get("home")
+    if not h:
+        return ""
+    people = d["people"]
+    u = next((x for x in d["unions"] if x["id"] == h["union"]), None)
+    if not u:
+        return ""
+
+    pair = "".join(card(x, people[x]) for x in u["partners"])
+    lbl = (f'<span class="pod-l">{escape(u["label"])}</span>'
+           if u.get("label") else "")
+    kids = (u.get("children", []) or [])
+    kids_html = "".join(card(k, people[k]) for k in kids)
+
+    co = h.get("coparent")
+    co_html = ""
+    if co and co in people:
+        co_html = (
+            '        <div class="co">\n'
+            f'          <div class="co-rail"><span>{escape(h.get("coparentLabel","Co-parent"))}</span></div>\n'
+            f'          {card(co, people[co])}\n'
+            "        </div>\n"
+        )
+
+    return (
+        '  <section class="home">\n    <div class="home-in">\n'
+        '      <p class="home-h">Our Home</p>\n'
+        '      <div class="home-row">\n'
+        '        <div class="home-main">\n'
+        f'          <div class="pod">{pair}{lbl}</div>\n'
+        + ('          <div class="link" aria-hidden="true"></div>\n'
+           f'          <div class="home-kids">{kids_html}</div>\n' if kids else "")
+        + "        </div>\n"
+        + co_html
+        + "      </div>\n    </div>\n  </section>\n"
+    )
 
 
 def render_tiers(d: dict) -> str:
@@ -744,7 +836,6 @@ def build(d: dict) -> str:
     <div id="results" class="results" role="listbox"></div>
   </div>
   <span class="spacer"></span>
-  <button class="btn" id="me">My family</button>
   <button class="btn" id="all">Show everyone</button>
   <button class="btn icon" id="theme" aria-label="Toggle dark mode">☀</button>
   <button class="btn icon" id="gear" aria-expanded="false" aria-controls="opts"
@@ -768,12 +859,13 @@ def build(d: dict) -> str:
 <header class="hero">
   <p>{escape(m.get('intro',''))}</p>
   <div class="bar">
-    <span class="chip">Tap a card to trace their family</span>
+    <span class="chip">Tap anyone to trace their family</span>
     <span class="chip">Double-tap for their story</span>
   </div>
 </header>
 
 <main class="wrap">
+{render_home(d)}
 {render_tiers(d)}</main>
 
 {render_more(d)}
