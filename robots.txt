@@ -1,3 +1,5 @@
+# Crawling is allowed on purpose: Google must fetch each page to see its
+# <meta name="robots" content="noindex, nofollow"> tag and drop it from results.
+# Disallowing here would hide the noindex tag and keep URLs indexed.
 User-agent: *
-Disallow: /
-Sitemap: https://mcgeefamily2025.com/sitemap.xml
+Allow: /
