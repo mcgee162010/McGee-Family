@@ -1,6 +1,6 @@
 # McGee Family Website
 
-A personal family website for the McGee family — Ben, Brittney, Levi, Phoenix, and Baby McGee.
+A personal family website for the McGee family — Ben, Brittney, Levi, Lila Jo, and Phoenix.
 
 🌐 **Live site:** https://mcgee162010.github.io/McGee-Family/
 

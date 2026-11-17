@@ -56,7 +56,7 @@ FOLDER_ORDER = [
     ("levi-birthday", "06_LeviBirthday",  "Levi's 7th Golden Birthday · April 7, 2026"),
     ("phoenix",       "07_Phoenix",       "Phoenix · Our German Shorthair Pointer"),
     ("bentley",       "08_Bentley",       "Bentley · In Loving Memory · 2015 – April 9, 2026"),
-    ("baby-mcgee",    "09_BabyMcGee",     "Baby McGee · Coming September 4, 2026"),
+    ("lila",    "09_BabyMcGee",     "Lila Jo · Born September 15, 2026"),
 ]
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────

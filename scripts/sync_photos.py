@@ -41,7 +41,7 @@ SITE_ROOT  = Path("/Users/benjamin_mcgee/Documents/Enchanté/Conversations/4A2C3
 PHOTOS_DIR = SITE_ROOT / "photos"
 
 # Maps iCloud folder name → (site subfolder, gallery tab label)
-# NOTE: "Family Photoshoot_Baby McGee Annoucement June - 2026" maps to baby-mcgee,
+# NOTE: "Family Photoshoot_Baby McGee Annoucement June - 2026" maps to lila,
 #       NOT to family. The real family photos live in the "Family" iCloud folder.
 FOLDER_MAP = {
     "Family":                                               ("family",        "👨‍👩‍👦 Family"),
@@ -52,9 +52,9 @@ FOLDER_MAP = {
     "Levi 7th Golden Birthday":                             ("levi-birthday",  "🎂 Levi's 7th"),
     "Phoenix":                                              ("phoenix",        "🐕 Phoenix"),
     "Bentley":                                              ("bentley",        "🐾 Bentley"),
-    # Both of these iCloud folders feed into baby-mcgee/
-    "Baby McGee":                                           ("baby-mcgee",    "🌿 Baby McGee"),
-    "Family Photoshoot_Baby McGee Annoucement June - 2026": ("baby-mcgee",    "🌿 Baby McGee"),
+    # Both of these iCloud folders feed into lila/
+    "Baby McGee":                                           ("lila",    "🌸 Lila Jo"),
+    "Family Photoshoot_Baby McGee Annoucement June - 2026": ("lila",    "🌸 Lila Jo"),
 }
 
 # Only copy still-image formats. Skip MOV, MP4, HEIC.
@@ -109,7 +109,7 @@ def sync_photos():
     changes = False
 
     # Track which site folders have been seeded so we don't double-remove
-    # when two iCloud folders map to the same dest (e.g. baby-mcgee).
+    # when two iCloud folders map to the same dest (e.g. lila).
     # Build a unified src set per dest folder first.
     dest_to_src: dict[str, set] = {}
     for icloud_folder, (site_folder, _) in FOLDER_MAP.items():
@@ -193,7 +193,7 @@ def rebuild_gallery():
         "gallery-levi-birthday": ("Levi Birthday",  "levi-birthday"),
         "gallery-phoenix":       ("Phoenix",        "phoenix"),
         "gallery-bentley":       ("Bentley",        "bentley"),
-        "gallery-baby-mcgee":    ("Baby McGee",     "baby-mcgee"),
+        "gallery-lila":    ("Lila Jo",        "lila"),
     }
 
     for section_id, (alt, subdir) in section_map.items():

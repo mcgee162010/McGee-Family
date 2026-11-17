@@ -12,7 +12,7 @@ Just tell Enchanté what you want and it handles everything.
 - "Add these photos to the gallery"
 - "Write a new update post about [thing]"
 - "Update the baby shower time"
-- "Baby McGee arrived — name is [X], it's a [boy/girl], born [date]"
+- "Lila Jo arrived — name is [X], it's a [boy/girl], born [date]"
 - "Add a new event to the events page"
 - "Fix the spelling on [page]"
 
@@ -30,7 +30,7 @@ mcgeefamily2025.com/
 ├── baby-shower.html    ← Baby shower RSVP + registry + poll
 ├── updates.html        ← Life updates / journal
 ├── timeline.html       ← Full family timeline
-├── letters.html        ← Letters to Levi + Baby McGee
+├── letters.html        ← Letters to Levi + Lila Jo
 ├── year-in-review.html ← Annual chapter (add one each December)
 ├── baby-mcgee.html     ← Arrival page (publish Sep 4 2026)
 ├── bentley.html        ← Bentley memorial
@@ -45,7 +45,7 @@ mcgeefamily2025.com/
     ├── brittney/       ← Brittney's photos
     ├── phoenix/        ← Phoenix's photos
     ├── bentley/        ← Bentley's photos
-    └── baby-mcgee/     ← Baby McGee photos
+    └── baby-mcgee/     ← Lila Jo photos
 ```
 
 ---
@@ -70,9 +70,9 @@ To sync immediately: `python3 scripts/sync_photos.py`
 
 ---
 
-## Publishing Baby McGee's Arrival
+## Publishing Lila Jo's Arrival
 
-When Baby McGee arrives, open Terminal and run:
+When Lila Jo arrives, open Terminal and run:
 ```bash
 bash "/Users/benjamin_mcgee/Documents/Enchanté/Conversations/4A2C3E4D-5130-4C0E-ACB6-B12ED50E5737/mcgee-family/scripts/publish_baby_mcgee.sh"
 ```

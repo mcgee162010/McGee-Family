@@ -38,7 +38,7 @@ SKIP_DIRS = {"tree"}   # already-optimized 256px thumbnails
 
 # When the same image exists in several folders, prefer these (in order).
 PREFER = ["family-photoshoot", "wedding", "levi", "brittney", "bentley",
-          "phoenix", "honeymoon", "engagement", "baby-mcgee", "family",
+          "phoenix", "honeymoon", "engagement", "lila", "family",
           "levi-birthday", "vows", "misc"]
 
 
